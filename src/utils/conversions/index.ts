@@ -6,3 +6,4 @@ export * from "./light";
 export * from "./electricity";
 export * from "./magnetism";
 export * from "./radiology";
+export * from "./other";

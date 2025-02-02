@@ -2,6 +2,16 @@ import type { Category, UnitMap } from "@/types/units";
 
 export const categoryGroups = [
   {
+    name: "Other Converters",
+    categories: [
+      { value: "prefixes", label: "Prefixes Converter" },
+      { value: "data_transfer", label: "Data Transfer Converter" },
+      { value: "sound", label: "Sound Converter" },
+      { value: "typography", label: "Typography Converter" },
+      { value: "volume_lumber", label: "Volume - Lumber Converter" },
+    ],
+  },
+  {
     name: "Common Converters",
     categories: [
       { value: "length", label: "Length" },
@@ -129,6 +139,54 @@ export const categories: Category[] = categoryGroups.flatMap(
 );
 
 export const units: UnitMap = {
+  prefixes: [
+    { value: "yotta", label: "Yotta (Y)" },
+    { value: "zetta", label: "Zetta (Z)" },
+    { value: "exa", label: "Exa (E)" },
+    { value: "peta", label: "Peta (P)" },
+    { value: "tera", label: "Tera (T)" },
+    { value: "giga", label: "Giga (G)" },
+    { value: "mega", label: "Mega (M)" },
+    { value: "kilo", label: "Kilo (k)" },
+    { value: "hecto", label: "Hecto (h)" },
+    { value: "deca", label: "Deca (da)" },
+    { value: "deci", label: "Deci (d)" },
+    { value: "centi", label: "Centi (c)" },
+    { value: "milli", label: "Milli (m)" },
+    { value: "micro", label: "Micro (µ)" },
+    { value: "nano", label: "Nano (n)" },
+    { value: "pico", label: "Pico (p)" },
+    { value: "femto", label: "Femto (f)" },
+    { value: "atto", label: "Atto (a)" },
+    { value: "zepto", label: "Zepto (z)" },
+    { value: "yocto", label: "Yocto (y)" },
+  ],
+  data_transfer: [
+    { value: "bytes_per_second", label: "Bytes per Second (B/s)" },
+    { value: "kilobytes_per_second", label: "Kilobytes per Second (KB/s)" },
+    { value: "megabytes_per_second", label: "Megabytes per Second (MB/s)" },
+    { value: "gigabytes_per_second", label: "Gigabytes per Second (GB/s)" },
+    { value: "terabytes_per_second", label: "Terabytes per Second (TB/s)" },
+  ],
+  sound: [
+    { value: "decibel", label: "Decibel (dB)" },
+    { value: "phon", label: "Phon" },
+    { value: "sone", label: "Sone" },
+    { value: "bel", label: "Bel" },
+  ],
+  typography: [
+    { value: "point", label: "Point (pt)" },
+    { value: "pica", label: "Pica (pc)" },
+    { value: "em", label: "Em" },
+    { value: "pixel", label: "Pixel (px)" },
+    { value: "millimeter", label: "Millimeter (mm)" },
+  ],
+  volume_lumber: [
+    { value: "board_feet", label: "Board Feet (BF)" },
+    { value: "cubic_feet", label: "Cubic Feet (ft³)" },
+    { value: "cubic_meters", label: "Cubic Meters (m³)" },
+    { value: "cords", label: "Cords" },
+  ],
   radiation: [
     { value: "sievert", label: "Sievert (Sv)" },
     { value: "millisievert", label: "Millisievert (mSv)" },

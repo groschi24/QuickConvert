@@ -54,6 +54,12 @@ export type UnitCategory =
   | "fuel_consumption"
   | "numbers"
   | "digital"
+  // Other Converters
+  | "prefixes"
+  | "data_transfer"
+  | "sound"
+  | "typography"
+  | "volume_lumber"
   // Engineering Converters
   | "velocity_angular"
   | "acceleration"
