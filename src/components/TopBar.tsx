@@ -2,8 +2,9 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
+import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import { CategoryDropdown } from "@/components/CategoryDropdown";
 import { categoryGroups } from "@/config/units";
 
 export function TopBar() {
@@ -41,7 +42,40 @@ export function TopBar() {
           >
             Unit Converter
           </Link>
-          <CategoryDropdown />
+          <div className="hidden md:block">
+            <Menu as="div" className="relative inline-block text-left">
+              <MenuButton className="inline-flex items-center text-sm font-medium text-gray-600 transition-colors hover:text-gray-900 dark:text-[#ffffff80] dark:hover:text-white">
+                Converters
+                <ChevronDownIcon
+                  className="-mr-1 ml-2 h-4 w-4"
+                  aria-hidden="true"
+                />
+              </MenuButton>
+
+              <MenuItems className="absolute left-0 z-50 mt-2 max-h-[calc(100vh-6rem)] w-[500px] origin-top-left overflow-y-auto rounded-xl bg-white p-4 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-[#151515] dark:ring-[#ffffff10]">
+                <div className="grid grid-cols-1 gap-6">
+                  {categoryGroups.map((group) => (
+                    <div key={group.name} className="space-y-3">
+                      <h3 className="text-sm font-medium text-gray-900 dark:text-white">
+                        {group.name}
+                      </h3>
+                      <div className="grid grid-cols-2 gap-2">
+                        {group.categories.map((category) => (
+                          <Link
+                            key={category.value}
+                            href={`/${category.value}`}
+                            className="rounded-lg p-2 text-sm text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:text-[#ffffff80] dark:hover:bg-[#ffffff10] dark:hover:text-white"
+                          >
+                            {category.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </MenuItems>
+            </Menu>
+          </div>
         </div>
         <div className="flex items-center space-x-4">
           <ThemeToggle />
@@ -134,7 +168,6 @@ export function TopBar() {
           </div>
         </div>
       </div>
-      {/* </div> */}
     </header>
   );
 }
