@@ -96,10 +96,13 @@ export function useUnitConverter(
   }, [searchParams, defaultValue, defaultFromUnit, defaultToUnit, config]);
 
   useEffect(() => {
-    if (!result || !fromValue || !isUserInteraction) return;
-
-    const numValue = parseFloat(fromValue);
-    if (isNaN(numValue)) return;
+    if (
+      !result ||
+      !fromValue ||
+      !isUserInteraction ||
+      isNaN(parseFloat(fromValue))
+    )
+      return;
 
     const timer = setTimeout(() => {
       // Check if this exact conversion is already at the top of history
