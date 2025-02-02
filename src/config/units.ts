@@ -104,6 +104,15 @@ export const categoryGroups = [
       { value: "inductance", label: "Inductance" },
     ],
   },
+  {
+    name: "Magnetism Converters",
+    categories: [
+      { value: "magnetomotive_force", label: "Magnetomotive Force" },
+      { value: "magnetic_field_strength", label: "Magnetic Field Strength" },
+      { value: "magnetic_flux", label: "Magnetic Flux" },
+      { value: "magnetic_flux_density", label: "Magnetic Flux Density" },
+    ],
+  },
 ];
 
 export const categories: Category[] = categoryGroups.flatMap(
@@ -631,5 +640,25 @@ export const units: UnitMap = {
     { value: "nanometers", label: "Nanometers (nm)" },
     { value: "angstroms", label: "Angstroms (Å)" },
     { value: "electron_volts", label: "Electron Volts (eV)" },
+  ],
+  magnetomotive_force: [
+    { value: "ampere_turns", label: "Ampere Turns (At)" },
+    { value: "gilbert", label: "Gilbert (Gb)" },
+    { value: "kiloampere_turns", label: "Kiloampere Turns (kAt)" },
+  ],
+  magnetic_field_strength: [
+    { value: "ampere_per_meter", label: "Ampere per Meter (A/m)" },
+    { value: "oersted", label: "Oersted (Oe)" },
+    { value: "kiloampere_per_meter", label: "Kiloampere per Meter (kA/m)" },
+  ],
+  magnetic_flux: [
+    { value: "weber", label: "Weber (Wb)" },
+    { value: "maxwell", label: "Maxwell (Mx)" },
+    { value: "kiloweber", label: "Kiloweber (kWb)" },
+  ],
+  magnetic_flux_density: [
+    { value: "tesla", label: "Tesla (T)" },
+    { value: "gauss", label: "Gauss (G)" },
+    { value: "millitesla", label: "Millitesla (mT)" },
   ],
 };

@@ -4,12 +4,14 @@ import { engineeringConverters } from "@/config/categories/engineering";
 import { heatConverters } from "@/config/categories/heat";
 import { fluidConverters } from "@/config/categories/fluid";
 import { lightConverters } from "@/config/categories/light";
+import { magnetismConverters } from "@/config/categories/magnetism";
 import { commonCategoryConfigs } from "@/config/categories/commonConfigs";
 import { engineeringCategoryConfigs } from "@/config/categories/engineeringConfigs";
 import { heatCategoryConfigs } from "@/config/categories/heatConfigs";
 import { fluidCategoryConfigs } from "@/config/categories/fluidConfigs";
 import { lightCategoryConfigs } from "@/config/categories/lightConfigs";
 import { electricityCategoryConfigs } from "@/config/categories/electricityConfigs";
+import { magnetismCategoryConfigs } from "@/config/categories/magnetismConfigs";
 import type { CategoryConfig } from "@/types/units";
 
 export const categories = [
@@ -18,6 +20,7 @@ export const categories = [
   ...heatConverters,
   ...fluidConverters,
   ...lightConverters,
+  ...magnetismConverters,
 ];
 
 export const categoryConfigs: Record<UnitCategory, CategoryConfig> = {
@@ -27,6 +30,7 @@ export const categoryConfigs: Record<UnitCategory, CategoryConfig> = {
   ...fluidCategoryConfigs,
   ...lightCategoryConfigs,
   ...electricityCategoryConfigs,
+  ...magnetismCategoryConfigs,
 } as Record<UnitCategory, CategoryConfig>;
 
 export type { CategoryConfig };

@@ -107,7 +107,12 @@ export type UnitCategory =
   | "electric_conductance"
   | "electric_conductivity"
   | "electrostatic_capacitance"
-  | "inductance";
+  | "inductance"
+  // Magnetism Converters
+  | "magnetomotive_force"
+  | "magnetic_field_strength"
+  | "magnetic_flux"
+  | "magnetic_flux_density";
 
 export type UnitMap = Record<UnitCategory, Unit[]>;
 
