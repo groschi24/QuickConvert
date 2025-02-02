@@ -6,7 +6,7 @@ export default function Header() {
       <div className="container mx-auto px-4">
         <div className="text-center">
           <h1 className="mb-6 bg-gradient-to-r from-indigo-400 to-indigo-600 bg-clip-text text-5xl font-extrabold tracking-tight text-transparent sm:text-6xl">
-            Unit Converter
+            Quick Convert
           </h1>
           <p className="mx-auto mb-8 max-w-2xl text-lg text-gray-600 dark:text-[#ffffffcc]">
             Fast, reliable unit conversions for everything from length and

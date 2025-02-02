@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!config) {
     return {
-      title: "Not Found | Unit Converter",
+      title: "Not Found | Quick Convert",
       description: "The requested conversion page could not be found.",
     };
   }

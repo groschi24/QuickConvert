@@ -40,7 +40,7 @@ export function TopBar() {
             href="/"
             className="text-xl font-bold text-gray-900 dark:text-white"
           >
-            Unit Converter
+            Quick Convert
           </Link>
           <div className="hidden md:block">
             <Menu as="div" className="relative inline-block text-left">
@@ -119,7 +119,7 @@ export function TopBar() {
             className="text-xl font-bold text-gray-900 dark:text-white"
             onClick={() => setIsOpen(false)}
           >
-            Unit Converter
+            Quick Convert
           </Link>
           <div className="flex items-center space-x-4">
             <ThemeToggle />
