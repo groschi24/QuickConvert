@@ -35,6 +35,7 @@ export const categoryGroups = [
       { value: "moment_of_inertia", label: "Moment of Inertia" },
       { value: "moment_of_force", label: "Moment of Force" },
       { value: "torque", label: "Torque" },
+      { value: "data_rate", label: "Data Transfer Rate" },
     ],
   },
   {
@@ -55,6 +56,21 @@ export const categoryGroups = [
       },
     ],
   },
+  {
+    name: "Fluid Converters",
+    categories: [
+      { value: "flow", label: "Flow" },
+      { value: "flow_mass", label: "Flow - Mass" },
+      { value: "flow_molar", label: "Flow - Molar" },
+      { value: "mass_flux_density", label: "Mass Flux Density" },
+      { value: "concentration_molar", label: "Concentration - Molar" },
+      { value: "concentration_solution", label: "Concentration - Solution" },
+      { value: "viscosity_dynamic", label: "Viscosity - Dynamic" },
+      { value: "viscosity_kinematic", label: "Viscosity - Kinematic" },
+      { value: "surface_tension", label: "Surface Tension" },
+      { value: "permeability", label: "Permeability" },
+    ],
+  },
 ];
 
 export const categories: Category[] = categoryGroups.flatMap(
@@ -62,6 +78,75 @@ export const categories: Category[] = categoryGroups.flatMap(
 );
 
 export const units: UnitMap = {
+  flow: [
+    {
+      value: "cubic_meters_per_second",
+      label: "Cubic Meters per Second (m³/s)",
+    },
+    { value: "liters_per_minute", label: "Liters per Minute (L/min)" },
+    { value: "gallons_per_minute", label: "Gallons per Minute (gpm)" },
+    { value: "cubic_feet_per_minute", label: "Cubic Feet per Minute (cfm)" },
+  ],
+  flow_mass: [
+    { value: "kilograms_per_second", label: "Kilograms per Second (kg/s)" },
+    { value: "pounds_per_hour", label: "Pounds per Hour (lb/h)" },
+    { value: "grams_per_minute", label: "Grams per Minute (g/min)" },
+  ],
+  flow_molar: [
+    { value: "moles_per_second", label: "Moles per Second (mol/s)" },
+    { value: "kilomoles_per_hour", label: "Kilomoles per Hour (kmol/h)" },
+    {
+      value: "millimoles_per_minute",
+      label: "Millimoles per Minute (mmol/min)",
+    },
+  ],
+  mass_flux_density: [
+    {
+      value: "kilograms_per_second_square_meter",
+      label: "Kilograms per Second Square Meter (kg/(s⋅m²))",
+    },
+    {
+      value: "pounds_per_hour_square_foot",
+      label: "Pounds per Hour Square Foot (lb/(h⋅ft²))",
+    },
+    {
+      value: "grams_per_minute_square_centimeter",
+      label: "Grams per Minute Square Centimeter (g/(min⋅cm²))",
+    },
+  ],
+  concentration_molar: [
+    { value: "moles_per_cubic_meter", label: "Moles per Cubic Meter (mol/m³)" },
+    { value: "millimoles_per_liter", label: "Millimoles per Liter (mmol/L)" },
+    { value: "moles_per_liter", label: "Moles per Liter (mol/L)" },
+  ],
+  concentration_solution: [
+    { value: "percent_by_mass", label: "Percent by Mass (% w/w)" },
+    { value: "percent_by_volume", label: "Percent by Volume (% v/v)" },
+    { value: "parts_per_million", label: "Parts per Million (ppm)" },
+  ],
+  viscosity_dynamic: [
+    { value: "pascal_second", label: "Pascal Second (Pa⋅s)" },
+    { value: "poise", label: "Poise (P)" },
+    { value: "centipoise", label: "Centipoise (cP)" },
+  ],
+  viscosity_kinematic: [
+    {
+      value: "square_meters_per_second",
+      label: "Square Meters per Second (m²/s)",
+    },
+    { value: "stokes", label: "Stokes (St)" },
+    { value: "centistokes", label: "Centistokes (cSt)" },
+  ],
+  surface_tension: [
+    { value: "newtons_per_meter", label: "Newtons per Meter (N/m)" },
+    { value: "dynes_per_centimeter", label: "Dynes per Centimeter (dyn/cm)" },
+    { value: "millinewtons_per_meter", label: "Millinewtons per Meter (mN/m)" },
+  ],
+  permeability: [
+    { value: "darcy", label: "Darcy (D)" },
+    { value: "millidarcy", label: "Millidarcy (mD)" },
+    { value: "square_meters", label: "Square Meters (m²)" },
+  ],
   fuel_efficiency_mass: [
     {
       value: "grams_per_kilowatt_hour",

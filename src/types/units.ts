@@ -74,7 +74,18 @@ export type UnitCategory =
   | "specific_heat_capacity"
   | "heat_density"
   | "heat_flux_density"
-  | "heat_transfer_coefficient";
+  | "heat_transfer_coefficient"
+  // Fluid Converters
+  | "flow"
+  | "flow_mass"
+  | "flow_molar"
+  | "mass_flux_density"
+  | "concentration_molar"
+  | "concentration_solution"
+  | "viscosity_dynamic"
+  | "viscosity_kinematic"
+  | "surface_tension"
+  | "permeability";
 
 export type UnitMap = Record<UnitCategory, Unit[]>;
 
