@@ -87,11 +87,23 @@ export function useUnitConverter(
       const fromUnitLabel =
         config.units.find((u) => u.value === from)?.label ?? from;
       const toUnitLabel = config.units.find((u) => u.value === to)?.label ?? to;
-      setResult(
-        `${numValue} ${fromUnitLabel} = ${converted.toFixed(4)} ${toUnitLabel}`,
-      );
+      const resultText = `${numValue} ${fromUnitLabel} = ${converted.toFixed(4)} ${toUnitLabel}`;
+      setResult(resultText);
     }
   }, [searchParams, defaultValue, defaultFromUnit, defaultToUnit, config]);
+
+  useEffect(() => {
+    if (!result) return;
+
+    const timer = setTimeout(() => {
+      const numValue = parseFloat(fromValue);
+      if (!isNaN(numValue)) {
+        saveToHistory(fromValue, fromUnit, toUnit, result);
+      }
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, [result, fromValue, fromUnit, toUnit]);
 
   const handleValueChange = (value: string) => {
     setFromValue(value);
@@ -105,7 +117,6 @@ export function useUnitConverter(
         config.units.find((u) => u.value === toUnit)?.label ?? toUnit;
       const resultText = `${numValue} ${fromUnitLabel} = ${converted.toFixed(4)} ${toUnitLabel}`;
       setResult(resultText);
-      saveToHistory(value, fromUnit, toUnit, resultText);
 
       const params = new URLSearchParams();
       params.set("value", value);
