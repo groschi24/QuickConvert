@@ -1,54 +1,128 @@
 import Link from "next/link";
 import { categories } from "@/config/units";
+import Header from "@/components/Header";
 
 export default function Home() {
+  const popularConversions = [
+    {
+      from: "km",
+      to: "miles",
+      category: "length",
+      label: "Kilometers to Miles",
+    },
+    { from: "kg", to: "lbs", category: "weight", label: "Kilograms to Pounds" },
+    {
+      from: "celsius",
+      to: "fahrenheit",
+      category: "temperature",
+      label: "Celsius to Fahrenheit",
+    },
+    { from: "usd", to: "eur", category: "currency", label: "USD to EUR" },
+  ];
+
   return (
-    <main className="flex min-h-screen flex-col bg-gray-50 py-12 dark:bg-[#000000]">
-      <div className="container mx-auto flex-1 px-4">
-        <div className="relative mb-12 flex flex-col items-center">
-          <h1 className="mb-6 bg-gradient-to-r from-indigo-400 to-indigo-600 bg-clip-text text-center text-5xl font-extrabold tracking-tight text-transparent">
-            Unit Converter
-          </h1>
-          <div className="group relative inline-block">
-            <button className="transform rounded-lg bg-gradient-to-r from-indigo-400 to-indigo-600 px-6 py-2 text-lg font-medium text-white transition-all duration-200 hover:from-indigo-500 hover:to-indigo-700">
-              Select Category
-            </button>
-            <div className="invisible absolute left-1/2 z-10 mt-2 w-56 -translate-x-1/2 transform rounded-xl border border-gray-200 bg-white p-2 opacity-0 shadow-lg transition-all duration-200 group-hover:visible group-hover:opacity-100 dark:border-[#ffffff10] dark:bg-[#151515]">
-              <div className="grid max-h-[70vh] grid-cols-1 gap-1 overflow-y-auto">
-                {categories.map((category) => (
-                  <Link
-                    key={category.value}
-                    href={`/${category.value}`}
-                    className="block rounded-lg px-4 py-2 text-gray-700 transition-colors hover:bg-indigo-50 hover:text-gray-900 dark:text-[#ffffffcc] dark:hover:bg-[#ffffff10] dark:hover:text-[#ffffffee]"
-                  >
-                    <span className="block text-sm font-medium">
-                      {category.label}
-                    </span>
-                  </Link>
-                ))}
-              </div>
-            </div>
+    <main className="flex min-h-screen flex-col bg-gray-50 dark:bg-[#000000]">
+      <Header />
+
+      {/* Popular Conversions */}
+      <section className="py-12">
+        <div className="container mx-auto px-4">
+          <h2 className="mb-8 text-center text-3xl font-bold text-gray-900 dark:text-[#ffffffee]">
+            Popular Conversions
+          </h2>
+          <div className="mx-auto grid max-w-4xl grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {popularConversions.map((conversion) => (
+              <Link
+                key={`${conversion.from}-${conversion.to}`}
+                href={`/${conversion.category}/${conversion.from}/${conversion.to}`}
+                className="transform rounded-xl border border-gray-200 bg-white p-4 text-center shadow-sm transition-all duration-200 hover:scale-105 hover:shadow-md dark:border-[#ffffff10] dark:bg-[#151515]"
+              >
+                <span className="block text-sm font-medium text-gray-900 dark:text-[#ffffffee]">
+                  {conversion.label}
+                </span>
+              </Link>
+            ))}
           </div>
         </div>
-        <div className="mx-auto max-w-4xl">
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      </section>
+
+      {/* All Categories */}
+      <section className="bg-gray-50 py-12 dark:bg-[#151515]">
+        <div className="container mx-auto px-4">
+          <h2 className="mb-8 text-center text-3xl font-bold text-gray-900 dark:text-[#ffffffee]">
+            All Categories
+          </h2>
+          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {categories.map((category) => (
               <Link
                 key={category.value}
                 href={`/${category.value}`}
                 className="transform rounded-xl border border-gray-200 bg-white p-6 shadow-md backdrop-blur-sm transition-all duration-200 hover:scale-105 hover:border-gray-300 hover:shadow-lg dark:border-[#ffffff10] dark:bg-[#151515] dark:hover:border-[#ffffff20]"
               >
-                <h2 className="text-xl font-semibold text-gray-700 hover:text-gray-900 dark:text-[#ffffffcc] dark:hover:text-[#ffffffee]">
+                <h3 className="text-xl font-semibold text-gray-700 hover:text-gray-900 dark:text-[#ffffffcc] dark:hover:text-[#ffffffee]">
                   {category.label}
-                </h2>
+                </h3>
                 <p className="mt-2 text-sm text-gray-600 dark:text-[#ffffff80] dark:hover:text-[#ffffffaa]">
-                  Convert {category.label.toLowerCase()}
+                  Convert {category.label.toLowerCase()} units instantly
                 </p>
               </Link>
             ))}
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-12">
+        <div className="container mx-auto px-4">
+          <h2 className="mb-8 text-center text-3xl font-bold text-gray-900 dark:text-[#ffffffee]">
+            Why Choose Our Converter?
+          </h2>
+          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              {
+                title: "Real-time Conversion",
+                description:
+                  "See results instantly as you type with our lightning-fast converter",
+              },
+              {
+                title: "Multiple Categories",
+                description:
+                  "Convert units across various categories from length to digital storage",
+              },
+              {
+                title: "Dark Mode Support",
+                description: "Easy on your eyes with automatic theme detection",
+              },
+              {
+                title: "Conversion History",
+                description:
+                  "Track your recent conversions with local storage support",
+              },
+              {
+                title: "Formula Display",
+                description:
+                  "Learn how conversions work with displayed formulas",
+              },
+              {
+                title: "Share Results",
+                description: "Easily share conversion results via URL",
+              },
+            ].map((feature, index) => (
+              <div
+                key={index}
+                className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm dark:border-[#ffffff10] dark:bg-[#151515]"
+              >
+                <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-[#ffffffee]">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-600 dark:text-[#ffffffaa]">
+                  {feature.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
