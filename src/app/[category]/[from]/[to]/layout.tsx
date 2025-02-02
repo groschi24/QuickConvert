@@ -7,7 +7,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { category, from, to } = await params;
-  const config = categoryConfigs[category as keyof typeof categoryConfigs];
+  const config = categoryConfigs[category];
 
   if (!config) {
     return {

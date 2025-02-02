@@ -23,8 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Generate conversion pages URLs
   const conversionUrls = categories.flatMap((category) => {
-    const config =
-      categoryConfigs[category.value as keyof typeof categoryConfigs];
+    const config = categoryConfigs[category.value];
     if (!config) return [];
 
     return config.units.flatMap((fromUnit: { value: string }) =>
