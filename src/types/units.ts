@@ -112,7 +112,12 @@ export type UnitCategory =
   | "magnetomotive_force"
   | "magnetic_field_strength"
   | "magnetic_flux"
-  | "magnetic_flux_density";
+  | "magnetic_flux_density"
+  // Radiology Converters
+  | "radiation"
+  | "radiation_activity"
+  | "radiation_exposure"
+  | "radiation_absorbed_dose";
 
 export type UnitMap = Record<UnitCategory, Unit[]>;
 

@@ -113,6 +113,15 @@ export const categoryGroups = [
       { value: "magnetic_flux_density", label: "Magnetic Flux Density" },
     ],
   },
+  {
+    name: "Radiology Converters",
+    categories: [
+      { value: "radiation", label: "Radiation" },
+      { value: "radiation_activity", label: "Radiation Activity" },
+      { value: "radiation_exposure", label: "Radiation Exposure" },
+      { value: "radiation_absorbed_dose", label: "Radiation Absorbed Dose" },
+    ],
+  },
 ];
 
 export const categories: Category[] = categoryGroups.flatMap(
@@ -120,6 +129,41 @@ export const categories: Category[] = categoryGroups.flatMap(
 );
 
 export const units: UnitMap = {
+  radiation: [
+    { value: "sievert", label: "Sievert (Sv)" },
+    { value: "millisievert", label: "Millisievert (mSv)" },
+    { value: "microsievert", label: "Microsievert (µSv)" },
+    { value: "rem", label: "Rem" },
+    { value: "millirem", label: "Millirem (mrem)" },
+  ],
+  radiation_activity: [
+    { value: "becquerel", label: "Becquerel (Bq)" },
+    { value: "kilobecquerel", label: "Kilobecquerel (kBq)" },
+    { value: "megabecquerel", label: "Megabecquerel (MBq)" },
+    { value: "gigabecquerel", label: "Gigabecquerel (GBq)" },
+    { value: "curie", label: "Curie (Ci)" },
+    { value: "millicurie", label: "Millicurie (mCi)" },
+    { value: "microcurie", label: "Microcurie (µCi)" },
+  ],
+  radiation_exposure: [
+    { value: "coulomb_per_kilogram", label: "Coulomb per Kilogram (C/kg)" },
+    {
+      value: "millicoulomb_per_kilogram",
+      label: "Millicoulomb per Kilogram (mC/kg)",
+    },
+    {
+      value: "microcoulomb_per_kilogram",
+      label: "Microcoulomb per Kilogram (µC/kg)",
+    },
+    { value: "roentgen", label: "Roentgen (R)" },
+  ],
+  radiation_absorbed_dose: [
+    { value: "gray", label: "Gray (Gy)" },
+    { value: "milligray", label: "Milligray (mGy)" },
+    { value: "microgray", label: "Microgray (µGy)" },
+    { value: "rad", label: "Rad" },
+    { value: "millirad", label: "Millirad (mrad)" },
+  ],
   charge: [
     { value: "coulomb", label: "Coulomb (C)" },
     { value: "millicoulomb", label: "Millicoulomb (mC)" },
