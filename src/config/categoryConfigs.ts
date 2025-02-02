@@ -9,6 +9,7 @@ import { engineeringCategoryConfigs } from "@/config/categories/engineeringConfi
 import { heatCategoryConfigs } from "@/config/categories/heatConfigs";
 import { fluidCategoryConfigs } from "@/config/categories/fluidConfigs";
 import { lightCategoryConfigs } from "@/config/categories/lightConfigs";
+import { electricityCategoryConfigs } from "@/config/categories/electricityConfigs";
 import type { CategoryConfig } from "@/types/units";
 
 export const categories = [
@@ -25,6 +26,7 @@ export const categoryConfigs: Record<UnitCategory, CategoryConfig> = {
   ...heatCategoryConfigs,
   ...fluidCategoryConfigs,
   ...lightCategoryConfigs,
+  ...electricityCategoryConfigs,
 } as Record<UnitCategory, CategoryConfig>;
 
 export type { CategoryConfig };

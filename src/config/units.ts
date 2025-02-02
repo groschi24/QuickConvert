@@ -81,6 +81,29 @@ export const categoryGroups = [
       { value: "frequency_wavelength", label: "Frequency & Wavelength" },
     ],
   },
+  {
+    name: "Electricity Converters",
+    categories: [
+      { value: "charge", label: "Charge" },
+      { value: "linear_charge_density", label: "Linear Charge Density" },
+      { value: "surface_charge_density", label: "Surface Charge Density" },
+      { value: "volume_charge_density", label: "Volume Charge Density" },
+      { value: "current", label: "Current" },
+      { value: "linear_current_density", label: "Linear Current Density" },
+      { value: "surface_current_density", label: "Surface Current Density" },
+      { value: "electric_field_strength", label: "Electric Field Strength" },
+      { value: "electric_potential", label: "Electric Potential" },
+      { value: "electric_resistance", label: "Electric Resistance" },
+      { value: "electric_resistivity", label: "Electric Resistivity" },
+      { value: "electric_conductance", label: "Electric Conductance" },
+      { value: "electric_conductivity", label: "Electric Conductivity" },
+      {
+        value: "electrostatic_capacitance",
+        label: "Electrostatic Capacitance",
+      },
+      { value: "inductance", label: "Inductance" },
+    ],
+  },
 ];
 
 export const categories: Category[] = categoryGroups.flatMap(
@@ -88,6 +111,121 @@ export const categories: Category[] = categoryGroups.flatMap(
 );
 
 export const units: UnitMap = {
+  charge: [
+    { value: "coulomb", label: "Coulomb (C)" },
+    { value: "millicoulomb", label: "Millicoulomb (mC)" },
+    { value: "microcoulomb", label: "Microcoulomb (µC)" },
+    { value: "nanocoulomb", label: "Nanocoulomb (nC)" },
+    { value: "ampere_hour", label: "Ampere Hour (Ah)" },
+    { value: "milliampere_hour", label: "Milliampere Hour (mAh)" },
+  ],
+  linear_charge_density: [
+    { value: "coulomb_per_meter", label: "Coulomb per Meter (C/m)" },
+    { value: "coulomb_per_centimeter", label: "Coulomb per Centimeter (C/cm)" },
+    { value: "coulomb_per_kilometer", label: "Coulomb per Kilometer (C/km)" },
+  ],
+  surface_charge_density: [
+    {
+      value: "coulomb_per_square_meter",
+      label: "Coulomb per Square Meter (C/m²)",
+    },
+    {
+      value: "coulomb_per_square_centimeter",
+      label: "Coulomb per Square Centimeter (C/cm²)",
+    },
+    {
+      value: "microcoulomb_per_square_meter",
+      label: "Microcoulomb per Square Meter (µC/m²)",
+    },
+  ],
+  volume_charge_density: [
+    {
+      value: "coulomb_per_cubic_meter",
+      label: "Coulomb per Cubic Meter (C/m³)",
+    },
+    {
+      value: "coulomb_per_cubic_centimeter",
+      label: "Coulomb per Cubic Centimeter (C/cm³)",
+    },
+    {
+      value: "microcoulomb_per_cubic_meter",
+      label: "Microcoulomb per Cubic Meter (µC/m³)",
+    },
+  ],
+  current: [
+    { value: "ampere", label: "Ampere (A)" },
+    { value: "milliampere", label: "Milliampere (mA)" },
+    { value: "microampere", label: "Microampere (µA)" },
+    { value: "kiloampere", label: "Kiloampere (kA)" },
+  ],
+  linear_current_density: [
+    { value: "ampere_per_meter", label: "Ampere per Meter (A/m)" },
+    { value: "ampere_per_centimeter", label: "Ampere per Centimeter (A/cm)" },
+    { value: "milliampere_per_meter", label: "Milliampere per Meter (mA/m)" },
+  ],
+  surface_current_density: [
+    {
+      value: "ampere_per_square_meter",
+      label: "Ampere per Square Meter (A/m²)",
+    },
+    {
+      value: "ampere_per_square_centimeter",
+      label: "Ampere per Square Centimeter (A/cm²)",
+    },
+    {
+      value: "milliampere_per_square_meter",
+      label: "Milliampere per Square Meter (mA/m²)",
+    },
+  ],
+  electric_field_strength: [
+    { value: "volt_per_meter", label: "Volt per Meter (V/m)" },
+    { value: "volt_per_centimeter", label: "Volt per Centimeter (V/cm)" },
+    { value: "kilovolt_per_meter", label: "Kilovolt per Meter (kV/m)" },
+    { value: "newton_per_coulomb", label: "Newton per Coulomb (N/C)" },
+  ],
+  electric_potential: [
+    { value: "volt", label: "Volt (V)" },
+    { value: "millivolt", label: "Millivolt (mV)" },
+    { value: "microvolt", label: "Microvolt (µV)" },
+    { value: "kilovolt", label: "Kilovolt (kV)" },
+    { value: "megavolt", label: "Megavolt (MV)" },
+  ],
+  electric_resistance: [
+    { value: "ohm", label: "Ohm (Ω)" },
+    { value: "milliohm", label: "Milliohm (mΩ)" },
+    { value: "microohm", label: "Microohm (µΩ)" },
+    { value: "kiloohm", label: "Kiloohm (kΩ)" },
+    { value: "megaohm", label: "Megaohm (MΩ)" },
+  ],
+  electric_resistivity: [
+    { value: "ohm_meter", label: "Ohm Meter (Ω⋅m)" },
+    { value: "ohm_centimeter", label: "Ohm Centimeter (Ω⋅cm)" },
+    { value: "microohm_meter", label: "Microohm Meter (µΩ⋅m)" },
+  ],
+  electric_conductance: [
+    { value: "siemens", label: "Siemens (S)" },
+    { value: "millisiemens", label: "Millisiemens (mS)" },
+    { value: "microsiemens", label: "Microsiemens (µS)" },
+    { value: "mho", label: "Mho" },
+  ],
+  electric_conductivity: [
+    { value: "siemens_per_meter", label: "Siemens per Meter (S/m)" },
+    { value: "siemens_per_centimeter", label: "Siemens per Centimeter (S/cm)" },
+    { value: "millisiemens_per_meter", label: "Millisiemens per Meter (mS/m)" },
+  ],
+  electrostatic_capacitance: [
+    { value: "farad", label: "Farad (F)" },
+    { value: "millifarad", label: "Millifarad (mF)" },
+    { value: "microfarad", label: "Microfarad (µF)" },
+    { value: "nanofarad", label: "Nanofarad (nF)" },
+    { value: "picofarad", label: "Picofarad (pF)" },
+  ],
+  inductance: [
+    { value: "henry", label: "Henry (H)" },
+    { value: "millihenry", label: "Millihenry (mH)" },
+    { value: "microhenry", label: "Microhenry (µH)" },
+    { value: "nanohenry", label: "Nanohenry (nH)" },
+  ],
   flow: [
     {
       value: "cubic_meters_per_second",

@@ -91,7 +91,23 @@ export type UnitCategory =
   | "luminous_intensity"
   | "illumination"
   | "digital_image_resolution"
-  | "frequency_wavelength";
+  | "frequency_wavelength"
+  // Electricity Converters
+  | "charge"
+  | "linear_charge_density"
+  | "surface_charge_density"
+  | "volume_charge_density"
+  | "current"
+  | "linear_current_density"
+  | "surface_current_density"
+  | "electric_field_strength"
+  | "electric_potential"
+  | "electric_resistance"
+  | "electric_resistivity"
+  | "electric_conductance"
+  | "electric_conductivity"
+  | "electrostatic_capacitance"
+  | "inductance";
 
 export type UnitMap = Record<UnitCategory, Unit[]>;
 
