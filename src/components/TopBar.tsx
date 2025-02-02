@@ -10,14 +10,24 @@ export function TopBar() {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
+    const handleScroll = () => {
+      if (isOpen && window.innerWidth >= 768) {
+        setIsOpen(false);
+        document.body.style.overflow = "unset";
+      }
+    };
+
     if (isOpen) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "unset";
     }
 
+    window.addEventListener("resize", handleScroll);
+
     return () => {
       document.body.style.overflow = "unset";
+      window.removeEventListener("resize", handleScroll);
     };
   }, [isOpen]);
 
