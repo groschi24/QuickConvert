@@ -28,6 +28,7 @@ export function useUnitConverter(
   const [fromValue, setFromValue] = useState(defaultValue);
   const [fromUnit, setFromUnit] = useState(defaultFromUnit);
   const [toUnit, setToUnit] = useState(defaultToUnit);
+  const [isUserInteraction, setIsUserInteraction] = useState(false);
   const [result, setResult] = useState(
     `${defaultValue} ${config.units.find((u) => u.value === defaultFromUnit)?.label ?? defaultFromUnit} = ${config.convertFn(parseFloat(defaultValue), defaultFromUnit, defaultToUnit).toFixed(4)} ${config.units.find((u) => u.value === defaultToUnit)?.label ?? defaultToUnit}`,
   );
@@ -46,6 +47,8 @@ export function useUnitConverter(
       );
     }
   }, []);
+
+  // Removed the automatic history update effect that was triggered by URL changes
 
   useEffect(() => {
     if (
@@ -93,19 +96,37 @@ export function useUnitConverter(
   }, [searchParams, defaultValue, defaultFromUnit, defaultToUnit, config]);
 
   useEffect(() => {
-    if (!result) return;
+    if (!result || !fromValue || !isUserInteraction) return;
+
+    const numValue = parseFloat(fromValue);
+    if (isNaN(numValue)) return;
 
     const timer = setTimeout(() => {
-      const numValue = parseFloat(fromValue);
-      if (!isNaN(numValue)) {
+      // Check if this exact conversion is already at the top of history
+      const isDuplicate =
+        conversionHistory.length > 0 &&
+        conversionHistory[0] !== undefined &&
+        conversionHistory[0].value === fromValue &&
+        conversionHistory[0].from === fromUnit &&
+        conversionHistory[0].to === toUnit;
+
+      if (!isDuplicate) {
         saveToHistory(fromValue, fromUnit, toUnit, result);
       }
-    }, 2000);
+    }, 1000);
 
     return () => clearTimeout(timer);
-  }, [result, fromValue, fromUnit, toUnit]);
+  }, [
+    result,
+    fromValue,
+    fromUnit,
+    toUnit,
+    conversionHistory,
+    isUserInteraction,
+  ]);
 
   const handleValueChange = (value: string) => {
+    setIsUserInteraction(true);
     setFromValue(value);
     const numValue = parseFloat(value);
     if (!isNaN(numValue)) {
@@ -130,6 +151,7 @@ export function useUnitConverter(
   };
 
   const handleUnitChange = (newFromUnit: string, newToUnit: string) => {
+    setIsUserInteraction(true);
     setFromUnit(newFromUnit);
     setToUnit(newToUnit);
     if (fromValue) {
