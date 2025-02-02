@@ -28,6 +28,7 @@ export function ConversionForm({
           type="number"
           value={fromValue}
           onChange={(e) => onValueChange(e.target.value)}
+          onWheel={(e) => (e.target as HTMLInputElement).blur()}
           className="w-full rounded-lg border border-gray-200/30 bg-white/10 p-4 font-medium text-gray-800 backdrop-blur-xl transition-all duration-200 focus:border-indigo-500/50 focus:bg-white/20 focus:ring-2 focus:ring-indigo-500/20 dark:border-[#ffffff10] dark:bg-[#ffffff05] dark:text-[#ffffffcc] dark:focus:border-[#ffffff20] dark:focus:bg-[#ffffff08]"
           placeholder="Enter value"
         />
