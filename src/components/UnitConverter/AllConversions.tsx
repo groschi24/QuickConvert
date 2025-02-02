@@ -1,5 +1,5 @@
 import React from "react";
-import { Unit } from "@/types/units";
+import type { Unit } from "@/types/units";
 
 interface AllConversionsProps {
   fromValue: string;
@@ -67,7 +67,7 @@ export function AllConversions({
               </p>
               <p className="text-gray-600 dark:text-[#ffffffaa]">
                 {fromValue}{" "}
-                {units.find((u) => u.value === fromUnit)?.label || fromUnit} ={" "}
+                {units.find((u) => u.value === fromUnit)?.label ?? fromUnit} ={" "}
                 {converted.toFixed(4)} {unit.label}
               </p>
               <p className="mt-2 text-sm text-gray-500 dark:text-[#ffffff80]">

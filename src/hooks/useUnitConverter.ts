@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { CategoryConfig } from "@/types/units";
+import type { CategoryConfig } from "@/types/units";
 
 interface ConversionHistoryEntry {
   id: string;
@@ -21,15 +21,15 @@ export function useUnitConverter(
   const searchParams = useSearchParams();
   const router = useRouter();
 
-  const defaultValue = searchParams.get("value") || "1";
-  const defaultFromUnit = initialFromUnit || config.defaultFrom;
-  const defaultToUnit = initialToUnit || config.defaultTo;
+  const defaultValue = searchParams.get("value") ?? "1";
+  const defaultFromUnit = initialFromUnit ?? config.defaultFrom;
+  const defaultToUnit = initialToUnit ?? config.defaultTo;
 
   const [fromValue, setFromValue] = useState(defaultValue);
   const [fromUnit, setFromUnit] = useState(defaultFromUnit);
   const [toUnit, setToUnit] = useState(defaultToUnit);
   const [result, setResult] = useState(
-    `${defaultValue} ${config.units.find((u) => u.value === defaultFromUnit)?.label || defaultFromUnit} = ${config.convertFn(parseFloat(defaultValue), defaultFromUnit, defaultToUnit).toFixed(4)} ${config.units.find((u) => u.value === defaultToUnit)?.label || defaultToUnit}`,
+    `${defaultValue} ${config.units.find((u) => u.value === defaultFromUnit)?.label ?? defaultFromUnit} = ${config.convertFn(parseFloat(defaultValue), defaultFromUnit, defaultToUnit).toFixed(4)} ${config.units.find((u) => u.value === defaultToUnit)?.label ?? defaultToUnit}`,
   );
   const [convertedValue, setConvertedValue] = useState<number | null>(
     config.convertFn(parseFloat(defaultValue), defaultFromUnit, defaultToUnit),
@@ -41,7 +41,9 @@ export function useUnitConverter(
   useEffect(() => {
     const savedHistory = localStorage.getItem("conversionHistory");
     if (savedHistory) {
-      setConversionHistory(JSON.parse(savedHistory));
+      setConversionHistory(
+        JSON.parse(savedHistory) as ConversionHistoryEntry[],
+      );
     }
   }, []);
 
@@ -70,9 +72,9 @@ export function useUnitConverter(
   ]);
 
   useEffect(() => {
-    const value = searchParams.get("value") || defaultValue;
-    const from = searchParams.get("from") || defaultFromUnit;
-    const to = searchParams.get("to") || defaultToUnit;
+    const value = searchParams.get("value") ?? defaultValue;
+    const from = searchParams.get("from") ?? defaultFromUnit;
+    const to = searchParams.get("to") ?? defaultToUnit;
 
     setFromValue(value);
     setFromUnit(from);
@@ -83,8 +85,8 @@ export function useUnitConverter(
       const converted = config.convertFn(numValue, from, to);
       setConvertedValue(converted);
       const fromUnitLabel =
-        config.units.find((u) => u.value === from)?.label || from;
-      const toUnitLabel = config.units.find((u) => u.value === to)?.label || to;
+        config.units.find((u) => u.value === from)?.label ?? from;
+      const toUnitLabel = config.units.find((u) => u.value === to)?.label ?? to;
       setResult(
         `${numValue} ${fromUnitLabel} = ${converted.toFixed(4)} ${toUnitLabel}`,
       );
@@ -98,9 +100,9 @@ export function useUnitConverter(
       const converted = config.convertFn(numValue, fromUnit, toUnit);
       setConvertedValue(converted);
       const fromUnitLabel =
-        config.units.find((u) => u.value === fromUnit)?.label || fromUnit;
+        config.units.find((u) => u.value === fromUnit)?.label ?? fromUnit;
       const toUnitLabel =
-        config.units.find((u) => u.value === toUnit)?.label || toUnit;
+        config.units.find((u) => u.value === toUnit)?.label ?? toUnit;
       const resultText = `${numValue} ${fromUnitLabel} = ${converted.toFixed(4)} ${toUnitLabel}`;
       setResult(resultText);
       saveToHistory(value, fromUnit, toUnit, resultText);
@@ -125,10 +127,10 @@ export function useUnitConverter(
         const converted = config.convertFn(numValue, newFromUnit, newToUnit);
         setConvertedValue(converted);
         const fromUnitLabel =
-          config.units.find((u) => u.value === newFromUnit)?.label ||
+          config.units.find((u) => u.value === newFromUnit)?.label ??
           newFromUnit;
         const toUnitLabel =
-          config.units.find((u) => u.value === newToUnit)?.label || newToUnit;
+          config.units.find((u) => u.value === newToUnit)?.label ?? newToUnit;
         setResult(
           `${numValue} ${fromUnitLabel} = ${converted.toFixed(4)} ${toUnitLabel}`,
         );

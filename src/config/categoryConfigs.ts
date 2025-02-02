@@ -1,11 +1,11 @@
-import { UnitCategory } from "@/types/units";
+import type { UnitCategory } from "@/types/units";
 import { commonConverters } from "@/config/categories/common";
 import { engineeringConverters } from "@/config/categories/engineering";
 import { heatConverters } from "@/config/categories/heat";
 import { commonCategoryConfigs } from "@/config/categories/commonConfigs";
 import { engineeringCategoryConfigs } from "@/config/categories/engineeringConfigs";
 import { heatCategoryConfigs } from "@/config/categories/heatConfigs";
-import { CategoryConfig } from "@/types/units";
+import type { CategoryConfig } from "@/types/units";
 
 export const categories = [
   ...commonConverters,

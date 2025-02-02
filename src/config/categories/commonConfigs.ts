@@ -1,4 +1,4 @@
-import { UnitCategory, CategoryConfig } from "@/types/units";
+import type { UnitCategory, CategoryConfig } from "@/types/units";
 import { units } from "@/config/units";
 import {
   convertLength,

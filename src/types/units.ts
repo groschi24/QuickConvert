@@ -76,9 +76,7 @@ export type UnitCategory =
   | "heat_flux_density"
   | "heat_transfer_coefficient";
 
-export type UnitMap = {
-  [K in UnitCategory]: Unit[];
-};
+export type UnitMap = Record<UnitCategory, Unit[]>;
 
 export type ConversionFunction = (
   value: number,

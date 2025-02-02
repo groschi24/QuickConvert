@@ -1,4 +1,4 @@
-import { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
 import { categories } from "@/config/units";
 import { categoryConfigs } from "@/config/categoryConfigs";
 

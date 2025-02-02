@@ -1,7 +1,6 @@
 "use client";
 
 import { use } from "react";
-import { useSearchParams } from "next/navigation";
 import { notFound } from "next/navigation";
 import { categoryConfigs } from "@/config/categoryConfigs";
 import { useUnitConverter } from "@/hooks/useUnitConverter";
@@ -9,7 +8,7 @@ import { ConversionForm } from "@/components/UnitConverter/ConversionForm";
 import { ConversionHistory } from "@/components/UnitConverter/ConversionHistory";
 import { ConversionResult } from "@/components/UnitConverter/ConversionResult";
 import { AllConversions } from "@/components/UnitConverter/AllConversions";
-import { UnitCategory } from "@/types/units";
+import type { UnitCategory } from "@/types/units";
 
 export default function UnitConverter({
   params,
@@ -28,7 +27,6 @@ export default function UnitConverter({
     fromUnit,
     toUnit,
     result,
-    convertedValue,
     conversionHistory,
     handleValueChange,
     handleUnitChange,

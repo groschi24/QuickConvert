@@ -1,7 +1,7 @@
-import { ConversionFunction } from "@/types/units";
+import type { ConversionFunction } from "@/types/units";
 
 export const convertVelocityAngular: ConversionFunction = (value, from, to) => {
-  const radPerSecConversions: { [key: string]: number } = {
+  const radPerSecConversions: Record<string, number> = {
     radians_per_second: 1,
     degrees_per_second: 0.0174533,
     revolutions_per_minute: 0.10472,
@@ -12,7 +12,7 @@ export const convertVelocityAngular: ConversionFunction = (value, from, to) => {
 };
 
 export const convertAcceleration: ConversionFunction = (value, from, to) => {
-  const mps2Conversions: { [key: string]: number } = {
+  const mps2Conversions: Record<string, number> = {
     meters_per_second_squared: 1,
     feet_per_second_squared: 0.3048,
     gravity: 9.80665,
@@ -27,7 +27,7 @@ export const convertAccelerationAngular: ConversionFunction = (
   from,
   to,
 ) => {
-  const radPerSec2Conversions: { [key: string]: number } = {
+  const radPerSec2Conversions: Record<string, number> = {
     radians_per_second_squared: 1,
     degrees_per_second_squared: 0.0174533,
     revolutions_per_minute_squared: 0.10472,
@@ -38,7 +38,7 @@ export const convertAccelerationAngular: ConversionFunction = (
 };
 
 export const convertDensity: ConversionFunction = (value, from, to) => {
-  const kgPerM3Conversions: { [key: string]: number } = {
+  const kgPerM3Conversions: Record<string, number> = {
     kilograms_per_cubic_meter: 1,
     grams_per_cubic_centimeter: 1000,
     pounds_per_cubic_foot: 16.0185,
@@ -49,7 +49,7 @@ export const convertDensity: ConversionFunction = (value, from, to) => {
 };
 
 export const convertSpecificVolume: ConversionFunction = (value, from, to) => {
-  const m3PerKgConversions: { [key: string]: number } = {
+  const m3PerKgConversions: Record<string, number> = {
     cubic_meters_per_kilogram: 1,
     cubic_feet_per_pound: 0.062428,
     liters_per_kilogram: 0.001,
@@ -60,7 +60,7 @@ export const convertSpecificVolume: ConversionFunction = (value, from, to) => {
 };
 
 export const convertMomentOfInertia: ConversionFunction = (value, from, to) => {
-  const kgM2Conversions: { [key: string]: number } = {
+  const kgM2Conversions: Record<string, number> = {
     kilogram_square_meter: 1,
     pound_square_foot: 0.04214,
     gram_square_centimeter: 0.0001,
@@ -71,7 +71,7 @@ export const convertMomentOfInertia: ConversionFunction = (value, from, to) => {
 };
 
 export const convertDataRate: ConversionFunction = (value, from, to) => {
-  const bpsConversions: { [key: string]: number } = {
+  const bpsConversions: Record<string, number> = {
     bits_per_second: 1,
     kilobits_per_second: 1000,
     megabits_per_second: 1000000,

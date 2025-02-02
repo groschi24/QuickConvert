@@ -1,4 +1,4 @@
-import { Category } from "@/types/units";
+import type { Category } from "@/types/units";
 
 export const engineeringConverters: Category[] = [
   { value: "velocity_angular", label: "Velocity - Angular" },

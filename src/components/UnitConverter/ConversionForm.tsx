@@ -1,5 +1,5 @@
 import React from "react";
-import { Unit } from "@/types/units";
+import type { Unit } from "@/types/units";
 
 interface ConversionFormProps {
   fromValue: string;

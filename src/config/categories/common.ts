@@ -1,4 +1,4 @@
-import { Category } from "@/types/units";
+import type { Category } from "@/types/units";
 
 export const commonConverters: Category[] = [
   { value: "length", label: "Length" },

@@ -1,11 +1,11 @@
-import { ConversionFunction } from "@/types/units";
+import type { ConversionFunction } from "@/types/units";
 
 export const convertFuelEfficiencyMass: ConversionFunction = (
   value,
   from,
   to,
 ) => {
-  const gPerKwhConversions: { [key: string]: number } = {
+  const gPerKwhConversions: Record<string, number> = {
     grams_per_kilowatt_hour: 1,
     pounds_per_horsepower_hour: 608.277,
     kilograms_per_joule: 3600000,
@@ -20,7 +20,7 @@ export const convertFuelEfficiencyVolume: ConversionFunction = (
   from,
   to,
 ) => {
-  const lPerKwhConversions: { [key: string]: number } = {
+  const lPerKwhConversions: Record<string, number> = {
     liters_per_kilowatt_hour: 1,
     gallons_per_horsepower_hour: 3.78541,
     cubic_meters_per_joule: 0.000001,
@@ -35,7 +35,7 @@ export const convertTemperatureInterval: ConversionFunction = (
   from,
   to,
 ) => {
-  const kelvinConversions: { [key: string]: number } = {
+  const kelvinConversions: Record<string, number> = {
     kelvin: 1,
     celsius_degree: 1,
     fahrenheit_degree: 5 / 9,
@@ -50,7 +50,7 @@ export const convertThermalExpansion: ConversionFunction = (
   from,
   to,
 ) => {
-  const perKelvinConversions: { [key: string]: number } = {
+  const perKelvinConversions: Record<string, number> = {
     per_kelvin: 1,
     per_celsius: 1,
     per_fahrenheit: 1.8,
@@ -65,7 +65,7 @@ export const convertThermalResistance: ConversionFunction = (
   from,
   to,
 ) => {
-  const kPerWattConversions: { [key: string]: number } = {
+  const kPerWattConversions: Record<string, number> = {
     kelvin_per_watt: 1,
     celsius_per_watt: 1,
     fahrenheit_per_btu_per_hour: 0.527108,
@@ -80,7 +80,7 @@ export const convertThermalConductivity: ConversionFunction = (
   from,
   to,
 ) => {
-  const wPerMKConversions: { [key: string]: number } = {
+  const wPerMKConversions: Record<string, number> = {
     watts_per_meter_kelvin: 1,
     btu_per_hour_foot_fahrenheit: 1.730735,
     kilocalories_per_hour_meter_celsius: 0.860421,
@@ -95,7 +95,7 @@ export const convertSpecificHeatCapacity: ConversionFunction = (
   from,
   to,
 ) => {
-  const jPerKgKConversions: { [key: string]: number } = {
+  const jPerKgKConversions: Record<string, number> = {
     joules_per_kilogram_kelvin: 1,
     btu_per_pound_fahrenheit: 4186.8,
     calories_per_gram_celsius: 4186.8,
@@ -106,7 +106,7 @@ export const convertSpecificHeatCapacity: ConversionFunction = (
 };
 
 export const convertHeatDensity: ConversionFunction = (value, from, to) => {
-  const jPerM3Conversions: { [key: string]: number } = {
+  const jPerM3Conversions: Record<string, number> = {
     joules_per_cubic_meter: 1,
     btu_per_cubic_foot: 37258.9,
     calories_per_cubic_centimeter: 4186800000,
@@ -117,7 +117,7 @@ export const convertHeatDensity: ConversionFunction = (value, from, to) => {
 };
 
 export const convertHeatFluxDensity: ConversionFunction = (value, from, to) => {
-  const wPerM2Conversions: { [key: string]: number } = {
+  const wPerM2Conversions: Record<string, number> = {
     watts_per_square_meter: 1,
     btu_per_hour_square_foot: 3.15459,
     calories_per_second_square_centimeter: 41868,
@@ -132,7 +132,7 @@ export const convertHeatTransferCoefficient: ConversionFunction = (
   from,
   to,
 ) => {
-  const wPerM2KConversions: { [key: string]: number } = {
+  const wPerM2KConversions: Record<string, number> = {
     watts_per_square_meter_kelvin: 1,
     btu_per_hour_square_foot_fahrenheit: 5.678263,
     calories_per_second_square_centimeter_celsius: 41868,

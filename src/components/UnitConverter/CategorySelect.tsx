@@ -1,4 +1,4 @@
-import { Category } from "@/types/units";
+import type { Category } from "@/types/units";
 
 interface CategorySelectProps {
   value: string;

@@ -1,4 +1,4 @@
-import { Category } from "@/types/units";
+import type { Category } from "@/types/units";
 
 export const heatConverters: Category[] = [
   { value: "fuel_efficiency_mass", label: "Fuel Efficiency - Mass" },

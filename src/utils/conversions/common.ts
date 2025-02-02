@@ -1,7 +1,7 @@
-import { ConversionFunction } from "@/types/units";
+import type { ConversionFunction } from "@/types/units";
 
 export const convertLength: ConversionFunction = (value, from, to) => {
-  const meterConversions: { [key: string]: number } = {
+  const meterConversions: Record<string, number> = {
     meters: 1,
     feet: 0.3048,
     inches: 0.0254,
@@ -17,7 +17,7 @@ export const convertLength: ConversionFunction = (value, from, to) => {
 };
 
 export const convertWeight: ConversionFunction = (value, from, to) => {
-  const kgConversions: { [key: string]: number } = {
+  const kgConversions: Record<string, number> = {
     kilograms: 1,
     pounds: 0.453592,
     ounces: 0.0283495,
@@ -60,7 +60,7 @@ export const convertTemperature: ConversionFunction = (value, from, to) => {
 };
 
 export const convertArea: ConversionFunction = (value, from, to) => {
-  const squareMeterConversions: { [key: string]: number } = {
+  const squareMeterConversions: Record<string, number> = {
     square_meters: 1,
     square_feet: 0.092903,
     acres: 4046.86,
@@ -75,7 +75,7 @@ export const convertArea: ConversionFunction = (value, from, to) => {
 };
 
 export const convertVolume: ConversionFunction = (value, from, to) => {
-  const literConversions: { [key: string]: number } = {
+  const literConversions: Record<string, number> = {
     liters: 1,
     gallons: 3.78541,
     milliliters: 0.001,
@@ -91,7 +91,7 @@ export const convertVolume: ConversionFunction = (value, from, to) => {
 };
 
 export const convertTime: ConversionFunction = (value, from, to) => {
-  const secondConversions: { [key: string]: number } = {
+  const secondConversions: Record<string, number> = {
     seconds: 1,
     minutes: 60,
     hours: 3600,
@@ -106,7 +106,7 @@ export const convertTime: ConversionFunction = (value, from, to) => {
 };
 
 export const convertDigital: ConversionFunction = (value, from, to) => {
-  const byteConversions: { [key: string]: number } = {
+  const byteConversions: Record<string, number> = {
     bytes: 1,
     kilobytes: 1024,
     megabytes: 1048576,
@@ -120,7 +120,7 @@ export const convertDigital: ConversionFunction = (value, from, to) => {
 };
 
 export const convertPressure: ConversionFunction = (value, from, to) => {
-  const pascalConversions: { [key: string]: number } = {
+  const pascalConversions: Record<string, number> = {
     pascal: 1,
     kilopascal: 1000,
     bar: 100000,
@@ -134,7 +134,7 @@ export const convertPressure: ConversionFunction = (value, from, to) => {
 };
 
 export const convertEnergy: ConversionFunction = (value, from, to) => {
-  const jouleConversions: { [key: string]: number } = {
+  const jouleConversions: Record<string, number> = {
     joule: 1,
     calorie: 4.184,
     kilocalorie: 4184,
@@ -148,7 +148,7 @@ export const convertEnergy: ConversionFunction = (value, from, to) => {
 };
 
 export const convertAngle: ConversionFunction = (value, from, to) => {
-  const degreeConversions: { [key: string]: number } = {
+  const degreeConversions: Record<string, number> = {
     degree: 1,
     radian: 57.2958,
     gradian: 0.9,
@@ -161,7 +161,7 @@ export const convertAngle: ConversionFunction = (value, from, to) => {
 };
 
 export const convertSpeed: ConversionFunction = (value, from, to) => {
-  const mpsConversions: { [key: string]: number } = {
+  const mpsConversions: Record<string, number> = {
     meters_per_second: 1,
     kilometers_per_hour: 0.277778,
     miles_per_hour: 0.44704,
@@ -174,7 +174,7 @@ export const convertSpeed: ConversionFunction = (value, from, to) => {
 };
 
 export const convertVolumeDry: ConversionFunction = (value, from, to) => {
-  const dryQuartConversions: { [key: string]: number } = {
+  const dryQuartConversions: Record<string, number> = {
     dry_quarts: 1,
     dry_pints: 0.5,
     dry_gallons: 4,
@@ -188,7 +188,7 @@ export const convertVolumeDry: ConversionFunction = (value, from, to) => {
 
 export const convertCurrency: ConversionFunction = (value, from, to) => {
   // Note: In a real application, you would fetch current exchange rates
-  const usdConversions: { [key: string]: number } = {
+  const usdConversions: Record<string, number> = {
     usd: 1,
     eur: 0.85,
     gbp: 0.73,
@@ -206,7 +206,7 @@ export const convertCase: ConversionFunction = (value, from, to) => {
 };
 
 export const convertPower: ConversionFunction = (value, from, to) => {
-  const wattConversions: { [key: string]: number } = {
+  const wattConversions: Record<string, number> = {
     watt: 1,
     kilowatt: 1000,
     megawatt: 1000000,
@@ -219,7 +219,7 @@ export const convertPower: ConversionFunction = (value, from, to) => {
 };
 
 export const convertForce: ConversionFunction = (value, from, to) => {
-  const newtonConversions: { [key: string]: number } = {
+  const newtonConversions: Record<string, number> = {
     newton: 1,
     kilonewton: 1000,
     pound_force: 4.44822,
@@ -231,14 +231,14 @@ export const convertForce: ConversionFunction = (value, from, to) => {
 };
 
 export const convertFuelConsumption: ConversionFunction = (value, from, to) => {
-  const mpgConversions: { [key: string]: number } = {
+  const mpgConversions: Record<string, number> = {
     miles_per_gallon: 1,
     kilometers_per_liter: 0.425144,
     liters_per_100km: 235.215,
   };
 
   if (to === "liters_per_100km") {
-    const litersPerHundredKm = mpgConversions["liters_per_100km"];
+    const litersPerHundredKm = mpgConversions.liters_per_100km;
     if (!litersPerHundredKm) {
       return value;
     }

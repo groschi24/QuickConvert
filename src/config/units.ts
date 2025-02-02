@@ -1,4 +1,4 @@
-import { Category, UnitMap } from "@/types/units";
+import type { Category, UnitMap } from "@/types/units";
 
 export const categoryGroups = [
   {

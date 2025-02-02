@@ -4,7 +4,7 @@ import { use, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { notFound } from "next/navigation";
 import { categoryConfigs } from "@/config/categoryConfigs";
-import { UnitCategory } from "@/types/units";
+import type { UnitCategory } from "@/types/units";
 
 export default function CategoryPage({
   params,
