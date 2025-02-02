@@ -85,7 +85,13 @@ export type UnitCategory =
   | "viscosity_dynamic"
   | "viscosity_kinematic"
   | "surface_tension"
-  | "permeability";
+  | "permeability"
+  // Light Converters
+  | "luminance"
+  | "luminous_intensity"
+  | "illumination"
+  | "digital_image_resolution"
+  | "frequency_wavelength";
 
 export type UnitMap = Record<UnitCategory, Unit[]>;
 

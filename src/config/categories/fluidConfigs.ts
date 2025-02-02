@@ -11,7 +11,7 @@ import {
   convertViscosityKinematic,
   convertSurfaceTension,
   convertPermeability,
-} from "@/utils/conversions/fluid";
+} from "@/utils/conversions";
 
 export const fluidCategoryConfigs: Partial<
   Record<UnitCategory, CategoryConfig>

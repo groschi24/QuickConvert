@@ -71,6 +71,16 @@ export const categoryGroups = [
       { value: "permeability", label: "Permeability" },
     ],
   },
+  {
+    name: "Light Converters",
+    categories: [
+      { value: "luminance", label: "Luminance" },
+      { value: "luminous_intensity", label: "Luminous Intensity" },
+      { value: "illumination", label: "Illumination" },
+      { value: "digital_image_resolution", label: "Digital Image Resolution" },
+      { value: "frequency_wavelength", label: "Frequency & Wavelength" },
+    ],
+  },
 ];
 
 export const categories: Category[] = categoryGroups.flatMap(
@@ -453,5 +463,35 @@ export const units: UnitMap = {
     { value: "gigabytes", label: "Gigabytes (GB)" },
     { value: "terabytes", label: "Terabytes (TB)" },
     { value: "petabytes", label: "Petabytes (PB)" },
+  ],
+  luminance: [
+    {
+      value: "candela_per_square_meter",
+      label: "Candela per Square Meter (cd/m²)",
+    },
+    { value: "foot_lambert", label: "Foot-Lambert (fL)" },
+    { value: "nit", label: "Nit (nt)" },
+    { value: "stilb", label: "Stilb (sb)" },
+  ],
+  luminous_intensity: [
+    { value: "candela", label: "Candela (cd)" },
+    { value: "candlepower", label: "Candlepower (cp)" },
+    { value: "hefner_unit", label: "Hefner Unit (HK)" },
+  ],
+  illumination: [
+    { value: "lux", label: "Lux (lx)" },
+    { value: "foot_candle", label: "Foot-Candle (fc)" },
+    { value: "phot", label: "Phot (ph)" },
+  ],
+  digital_image_resolution: [
+    { value: "pixels_per_inch", label: "Pixels per Inch (PPI)" },
+    { value: "pixels_per_centimeter", label: "Pixels per Centimeter (PPCM)" },
+    { value: "dots_per_inch", label: "Dots per Inch (DPI)" },
+  ],
+  frequency_wavelength: [
+    { value: "hertz", label: "Hertz (Hz)" },
+    { value: "nanometers", label: "Nanometers (nm)" },
+    { value: "angstroms", label: "Angstroms (Å)" },
+    { value: "electron_volts", label: "Electron Volts (eV)" },
   ],
 };

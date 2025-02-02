@@ -11,7 +11,7 @@ import {
   convertHeatDensity,
   convertHeatFluxDensity,
   convertHeatTransferCoefficient,
-} from "@/utils/conversions/heat";
+} from "@/utils/conversions";
 
 export const heatCategoryConfigs: Partial<
   Record<UnitCategory, CategoryConfig>
