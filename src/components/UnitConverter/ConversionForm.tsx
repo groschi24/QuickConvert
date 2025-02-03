@@ -19,9 +19,9 @@ export function ConversionForm({
   onUnitChange,
 }: ConversionFormProps) {
   return (
-    <div className="space-y-8">
-      <div className="space-y-4">
-        <label className="block text-sm font-medium uppercase tracking-wide text-gray-700 dark:text-[#ffffffcc]">
+    <div className="space-y-10">
+      <div className="space-y-3">
+        <label className="block text-sm font-medium uppercase tracking-wide text-gray-600 dark:text-[#ffffffaa]">
           Value
         </label>
         <input
@@ -29,20 +29,20 @@ export function ConversionForm({
           value={fromValue}
           onChange={(e) => onValueChange(e.target.value)}
           onWheel={(e) => (e.target as HTMLInputElement).blur()}
-          className="w-full rounded-lg border border-gray-200/30 bg-white/10 p-4 font-medium text-gray-800 backdrop-blur-xl transition-all duration-200 focus:border-indigo-500/50 focus:bg-white/20 focus:ring-2 focus:ring-indigo-500/20 dark:border-[#ffffff10] dark:bg-[#ffffff05] dark:text-[#ffffffcc] dark:focus:border-[#ffffff20] dark:focus:bg-[#ffffff08]"
+          className="w-full rounded-xl border border-gray-200 bg-white/80 p-4 text-lg font-medium text-gray-800 shadow-sm backdrop-blur-sm transition-all duration-200 placeholder:text-gray-400 hover:border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-[#ffffff15] dark:bg-[#151515]/80 dark:text-[#ffffffcc] dark:placeholder:text-[#ffffff40] dark:hover:border-[#ffffff25] dark:focus:border-indigo-500"
           placeholder="Enter value"
         />
       </div>
 
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-        <div className="space-y-4">
-          <label className="block text-sm font-medium uppercase tracking-wide text-gray-700 dark:text-[#ffffffcc]">
+        <div className="space-y-3">
+          <label className="block text-sm font-medium uppercase tracking-wide text-gray-600 dark:text-[#ffffffaa]">
             From
           </label>
           <select
             value={fromUnit}
             onChange={(e) => onUnitChange(e.target.value, toUnit)}
-            className="w-full cursor-pointer rounded-lg border border-gray-200/30 bg-white/10 p-4 pr-8 font-medium text-gray-800 backdrop-blur-xl transition-all duration-200 focus:border-indigo-500/50 focus:bg-white/20 focus:ring-2 focus:ring-indigo-500/20 dark:border-[#ffffff10] dark:bg-[#ffffff05] dark:text-[#ffffffcc] dark:focus:border-[#ffffff20] dark:focus:bg-[#ffffff08]"
+            className="w-full cursor-pointer rounded-xl border border-gray-200 bg-white/80 p-4 text-lg font-medium text-gray-800 shadow-sm backdrop-blur-sm transition-all duration-200 hover:border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-[#ffffff15] dark:bg-[#151515]/80 dark:text-[#ffffffcc] dark:hover:border-[#ffffff25] dark:focus:border-indigo-500"
           >
             {units.map((unit) => (
               <option key={unit.value} value={unit.value}>
@@ -52,14 +52,14 @@ export function ConversionForm({
           </select>
         </div>
 
-        <div className="space-y-4">
-          <label className="block text-sm font-medium uppercase tracking-wide text-gray-700 dark:text-[#ffffffcc]">
+        <div className="space-y-3">
+          <label className="block text-sm font-medium uppercase tracking-wide text-gray-600 dark:text-[#ffffffaa]">
             To
           </label>
           <select
             value={toUnit}
             onChange={(e) => onUnitChange(fromUnit, e.target.value)}
-            className="w-full cursor-pointer rounded-lg border border-gray-200/30 bg-white/10 p-4 pr-8 font-medium text-gray-800 backdrop-blur-xl transition-all duration-200 focus:border-indigo-500/50 focus:bg-white/20 focus:ring-2 focus:ring-indigo-500/20 dark:border-[#ffffff10] dark:bg-[#ffffff05] dark:text-[#ffffffcc] dark:focus:border-[#ffffff20] dark:focus:bg-[#ffffff08]"
+            className="w-full cursor-pointer rounded-xl border border-gray-200 bg-white/80 p-4 text-lg font-medium text-gray-800 shadow-sm backdrop-blur-sm transition-all duration-200 hover:border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-[#ffffff15] dark:bg-[#151515]/80 dark:text-[#ffffffcc] dark:hover:border-[#ffffff25] dark:focus:border-indigo-500"
           >
             {units.map((unit) => (
               <option key={unit.value} value={unit.value}>

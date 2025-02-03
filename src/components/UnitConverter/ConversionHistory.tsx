@@ -26,30 +26,35 @@ export function ConversionHistory({
 
   return (
     <div className="mt-8">
-      <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-xl dark:border-[#ffffff10] dark:bg-[#151515]">
-        <div className="mb-4 flex items-center justify-between">
-          <h2 className="text-xl font-semibold tracking-tight text-gray-800 dark:text-[#ffffffcc]">
+      <div className="transform rounded-2xl border border-gray-200 bg-white/90 p-8 shadow-2xl backdrop-blur-lg transition-all duration-300 hover:border-gray-300 dark:border-[#ffffff10] dark:bg-[#151515]/90 dark:hover:border-[#ffffff20]">
+        <div className="mb-6 flex items-center justify-between">
+          <h2 className="bg-gradient-to-r from-indigo-600 via-indigo-500 to-indigo-400 bg-clip-text text-2xl font-bold tracking-tight text-transparent">
             History
           </h2>
           {history.length > 0 && (
             <button
               onClick={onClearHistory}
-              className="text-sm font-medium text-red-400 transition-colors hover:text-red-500"
+              className="rounded-lg px-3 py-1.5 text-sm font-medium text-red-400 transition-all duration-200 hover:bg-red-500/10 hover:text-red-500"
             >
               Clear history
             </button>
           )}
         </div>
-        <div className="max-h-[400px] space-y-3 overflow-y-auto">
+        <div className="max-h-[400px] space-y-4 overflow-y-auto">
           {history.length === 0 ? (
-            <p className="text-center text-gray-500 dark:text-[#ffffff80]">
-              No conversion history
-            </p>
+            <div className="flex flex-col items-center justify-center py-8 text-center">
+              <p className="text-gray-500 dark:text-[#ffffff80]">
+                No conversion history yet
+              </p>
+              <p className="mt-2 text-sm text-gray-400 dark:text-[#ffffff60]">
+                Your recent conversions will appear here
+              </p>
+            </div>
           ) : (
             history.map((entry) => (
               <div
                 key={entry.id}
-                className="group relative cursor-pointer rounded-lg border border-gray-200 bg-gray-50 p-4 pr-8 transition-all duration-200 hover:border-gray-300 dark:border-[#ffffff10] dark:bg-[#1a1a1a] dark:hover:border-[#ffffff20]"
+                className="group relative cursor-pointer rounded-xl border border-gray-200 bg-gray-50/80 p-4 pr-10 transition-all duration-200 hover:border-gray-300 hover:bg-white hover:shadow-lg dark:border-[#ffffff10] dark:bg-[#1a1a1a]/80 dark:hover:border-[#ffffff20] dark:hover:bg-[#151515]"
                 onClick={() => {
                   const params = new URLSearchParams();
                   params.set("value", entry.value);
@@ -64,14 +69,14 @@ export function ConversionHistory({
                     e.stopPropagation();
                     onRemoveEntry(entry.id);
                   }}
-                  className="absolute right-2 top-2 text-gray-400 opacity-0 transition-opacity hover:text-red-500 group-hover:opacity-100 dark:text-[#ffffff40] dark:hover:text-red-500"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 rounded-md p-1 text-gray-400 opacity-0 transition-all duration-200 hover:bg-gray-100 hover:text-red-500 group-hover:opacity-100 dark:text-[#ffffff40] dark:hover:bg-[#ffffff10] dark:hover:text-red-500"
                 >
                   ×
                 </button>
                 <p className="font-medium text-gray-800 dark:text-[#ffffffcc]">
                   {entry.result}
                 </p>
-                <p className="mt-1 text-xs text-gray-500 dark:text-[#ffffff60]">
+                <p className="mt-2 text-xs text-gray-500 dark:text-[#ffffff60]">
                   {new Date(entry.timestamp).toLocaleString()}
                 </p>
               </div>

@@ -19,11 +19,11 @@ export function AllConversions({
   convertFn,
 }: AllConversionsProps) {
   return (
-    <div className="mt-8 space-y-6">
-      <h3 className="text-xl font-semibold tracking-tight text-gray-800 dark:text-[#ffffffcc]">
+    <div className="mt-12 space-y-6">
+      <h3 className="text-2xl font-bold tracking-tight text-gray-800 dark:text-[#ffffffcc]">
         All Conversions
       </h3>
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="grid gap-4 sm:grid-cols-2">
         {units.map((unit) => {
           if (unit.value === toUnit) return null;
           const converted = convertFn(
@@ -60,9 +60,9 @@ export function AllConversions({
           return (
             <div
               key={unit.value}
-              className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm transition-all duration-200 hover:border-gray-300 dark:border-[#ffffff10] dark:bg-[#1a1a1a] dark:hover:border-[#ffffff20]"
+              className="transform rounded-xl border border-gray-200 bg-white/80 p-6 shadow-lg backdrop-blur-sm transition-all duration-300 hover:scale-[1.02] hover:border-gray-300 dark:border-[#ffffff10] dark:bg-[#151515]/80 dark:hover:border-[#ffffff20]"
             >
-              <p className="mb-2 text-lg font-medium text-gray-800 dark:text-[#ffffffcc]">
+              <p className="mb-3 text-lg font-semibold text-gray-800 dark:text-[#ffffffcc]">
                 {unit.label}
               </p>
               <p className="text-gray-600 dark:text-[#ffffffaa]">
@@ -70,7 +70,7 @@ export function AllConversions({
                 {units.find((u) => u.value === fromUnit)?.label ?? fromUnit} ={" "}
                 {converted.toFixed(4)} {unit.label}
               </p>
-              <p className="mt-2 text-sm text-gray-500 dark:text-[#ffffff80]">
+              <p className="mt-3 text-sm text-gray-500 dark:text-[#ffffff80]">
                 Formula: {formula}
               </p>
             </div>
