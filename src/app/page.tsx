@@ -9,15 +9,65 @@ export default function Home() {
       to: "miles",
       category: "length",
       label: "Kilometers to Miles",
+      description: "Convert distances between metric and imperial units",
+      icon: "🛣️",
     },
-    { from: "kg", to: "lbs", category: "weight", label: "Kilograms to Pounds" },
+    {
+      from: "kg",
+      to: "lbs",
+      category: "weight",
+      label: "Kilograms to Pounds",
+      description: "Convert between metric and imperial weight units",
+      icon: "⚖️",
+    },
     {
       from: "celsius",
       to: "fahrenheit",
       category: "temperature",
       label: "Celsius to Fahrenheit",
+      description: "Convert between Celsius and Fahrenheit scales",
+      icon: "🌡️",
     },
-    { from: "usd", to: "eur", category: "currency", label: "USD to EUR" },
+    {
+      from: "usd",
+      to: "eur",
+      category: "currency",
+      label: "USD to EUR",
+      description: "Convert between US Dollars and Euros",
+      icon: "💱",
+    },
+    {
+      from: "meters",
+      to: "feet",
+      category: "length",
+      label: "Meters to Feet",
+      description: "Convert heights and depths between metric and imperial",
+      icon: "📏",
+    },
+    {
+      from: "liters",
+      to: "gallons",
+      category: "volume",
+      label: "Liters to Gallons",
+      description: "Convert liquid volumes between metric and imperial",
+      icon: "🚰",
+    },
+    {
+      from: "mph",
+      to: "kph",
+      category: "speed",
+      label: "MPH to KPH",
+      description: "Convert speeds between miles and kilometers per hour",
+      icon: "🚗",
+    },
+    {
+      from: "bytes",
+      to: "megabytes",
+      category: "digital",
+      label: "Bytes to MB",
+      description: "Convert between digital storage units",
+      icon: "💾",
+    },
   ];
 
   return (
@@ -39,19 +89,37 @@ export default function Home() {
               Start with our most frequently used conversion tools
             </p>
           </div>
-          <div className="mx-auto grid max-w-4xl grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {popularConversions.map((conversion) => (
-              <Link
-                key={`${conversion.from}-${conversion.to}`}
-                href={`/${conversion.category}/${conversion.from}/${conversion.to}`}
-                className="group relative transform overflow-hidden rounded-xl border border-gray-200 bg-white p-6 text-center shadow-sm transition-all duration-200 hover:scale-105 hover:shadow-md dark:border-[#ffffff10] dark:bg-[#151515]"
-              >
-                <div className="absolute inset-0 -z-10 bg-gradient-to-br from-indigo-50 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 dark:from-indigo-950/30"></div>
-                <span className="block text-base font-medium text-gray-900 dark:text-[#ffffffee]">
-                  {conversion.label}
-                </span>
-              </Link>
-            ))}
+          <div className="relative mx-auto w-full max-w-[95vw] overflow-hidden">
+            <div
+              className="scrollbar-none hover:animation-pause pointer-events-none flex gap-6 px-6 pb-8 pt-4 hover:pointer-events-auto"
+              style={{
+                width: `${280 * popularConversions.length * 2 + 6 * (popularConversions.length * 2 - 1)}px`,
+                animation: "scroll 40s linear infinite",
+                willChange: "transform",
+              }}
+            >
+              {[...popularConversions, ...popularConversions].map(
+                (conversion, index) => (
+                  <Link
+                    key={`${conversion.from}-${conversion.to}-${index}`}
+                    href={`/${conversion.category}/${conversion.from}/${conversion.to}`}
+                    className="group relative flex h-[220px] w-[280px] shrink-0 flex-col items-center justify-between overflow-visible rounded-xl border border-gray-200 bg-white p-8 text-center shadow-sm transition-all duration-300 hover:scale-[1.02] hover:border-indigo-100 hover:shadow-md dark:border-[#ffffff10] dark:bg-[#151515] dark:hover:border-[#ffffff20]"
+                  >
+                    <div className="absolute inset-0 -z-10 bg-gradient-to-br from-indigo-50/50 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 dark:from-indigo-950/20"></div>
+                    <span className="mb-4 text-5xl">{conversion.icon}</span>
+                    <div>
+                      <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-[#ffffffee]">
+                        {conversion.label}
+                      </h3>
+                      <p className="text-sm text-gray-600 dark:text-[#ffffffaa]">
+                        {conversion.description}
+                      </p>
+                    </div>
+                  </Link>
+                ),
+              )}
+            </div>
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-gray-50 via-gray-50/80 to-transparent dark:from-[#000000] dark:via-[#000000]/80"></div>
           </div>
         </div>
       </section>
