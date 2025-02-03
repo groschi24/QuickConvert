@@ -8,7 +8,7 @@ import type { PopularConversion } from "@/types/units";
 export default function Home() {
   const popularConversions: PopularConversion[] = [
     {
-      from: "km",
+      from: "kilometers",
       to: "miles",
       category: "length",
       label: "Kilometers to Miles",
@@ -16,8 +16,8 @@ export default function Home() {
       icon: "🛣️",
     },
     {
-      from: "kg",
-      to: "lbs",
+      from: "kilograms",
+      to: "pounds",
       category: "weight",
       label: "Kilograms to Pounds",
       description: "Convert between metric and imperial weight units",
@@ -56,8 +56,8 @@ export default function Home() {
       icon: "🚰",
     },
     {
-      from: "mph",
-      to: "kph",
+      from: "meters_per_second",
+      to: "kilometers_per_hour",
       category: "speed",
       label: "MPH to KPH",
       description: "Convert speeds between miles and kilometers per hour",
