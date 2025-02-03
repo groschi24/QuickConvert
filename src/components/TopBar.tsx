@@ -6,6 +6,7 @@ import { Menu, MenuButton, MenuItems } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { categoryGroups } from "@/config/units";
+import { UnitSearch } from "./UnitConverter/UnitSearch";
 
 export function TopBar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,7 +43,7 @@ export function TopBar() {
           >
             Quick Convert
           </Link>
-          <div className="hidden md:block">
+          <div className="hidden items-center space-x-8 md:flex">
             <Menu as="div" className="relative inline-block text-left">
               <MenuButton className="inline-flex items-center text-sm font-medium text-gray-600 transition-colors hover:text-gray-900 dark:text-[#ffffff80] dark:hover:text-white">
                 Converters
@@ -75,6 +76,9 @@ export function TopBar() {
                 </div>
               </MenuItems>
             </Menu>
+            <div className="w-[300px]">
+              <UnitSearch />
+            </div>
           </div>
         </div>
         <div className="flex items-center space-x-4">
