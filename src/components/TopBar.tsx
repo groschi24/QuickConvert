@@ -55,6 +55,9 @@ export function TopBar() {
 
               <MenuItems className="absolute left-0 z-50 mt-2 max-h-[calc(100vh-6rem)] w-[500px] origin-top-left overflow-y-auto rounded-xl bg-white p-4 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-[#151515] dark:ring-[#ffffff10]">
                 <div className="grid grid-cols-1 gap-6">
+                  <div className="mb-4 w-full">
+                    <UnitSearch />
+                  </div>
                   {categoryGroups.map((group) => (
                     <div key={group.name} className="space-y-3">
                       <h3 className="text-sm font-medium text-gray-900 dark:text-white">
@@ -150,6 +153,9 @@ export function TopBar() {
         </div>
         <div className="h-[calc(100vh-4rem)] overflow-y-auto bg-white p-6 dark:bg-[#151515]">
           <div className="relative space-y-6">
+            <div className="mb-6">
+              <UnitSearch />
+            </div>
             {categoryGroups.map((group) => (
               <div key={group.name} className="space-y-4">
                 <h3 className="text-lg font-medium text-gray-900 dark:text-white">
