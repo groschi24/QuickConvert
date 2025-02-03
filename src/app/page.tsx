@@ -91,7 +91,7 @@ export default function Home() {
           </div>
           <div className="relative mx-auto w-full max-w-[95vw] overflow-hidden">
             <div
-              className="scrollbar-none hover:animation-pause pointer-events-none flex gap-6 px-6 pb-8 pt-4 hover:pointer-events-auto"
+              className="scrollbar-none hover:animation-pause flex gap-6 px-6 pb-8 pt-4"
               style={{
                 width: `${280 * popularConversions.length * 2 + 6 * (popularConversions.length * 2 - 1)}px`,
                 animation: "scroll 40s linear infinite",
@@ -119,6 +119,7 @@ export default function Home() {
                 ),
               )}
             </div>
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-gray-50 via-gray-50/80 to-transparent dark:from-[#000000] dark:via-[#000000]/80"></div>
             <div className="pointer-events-none absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-gray-50 via-gray-50/80 to-transparent dark:from-[#000000] dark:via-[#000000]/80"></div>
           </div>
         </div>
