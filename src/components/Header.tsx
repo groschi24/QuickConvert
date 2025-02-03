@@ -30,10 +30,10 @@ export default function Header() {
               Start Converting
             </Link>
             <Link
-              href="/#features"
+              href="/#converters"
               className="rounded-lg bg-gray-50 px-6 py-3 text-base font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-100 dark:bg-[#151515] dark:text-white dark:ring-[#ffffff20] dark:hover:bg-[#202020]"
             >
-              Learn More
+              All Converters
             </Link>
           </div>
         </div>

@@ -34,6 +34,24 @@ export interface CategoryConfig {
   convertFn: ConversionFunction;
 }
 
+/**
+ * Represents a popular conversion option displayed on the homepage
+ */
+export interface PopularConversion {
+  /** Source unit to convert from */
+  from: string;
+  /** Target unit to convert to */
+  to: string;
+  /** Category of the conversion */
+  category: UnitCategory;
+  /** Display label for the conversion */
+  label: string;
+  /** Description of the conversion */
+  description: string;
+  /** Emoji icon representing the conversion */
+  icon: string;
+}
+
 export type UnitCategory =
   // Common Converters
   | "length"
@@ -97,38 +115,22 @@ export type UnitCategory =
   | "luminous_intensity"
   | "illumination"
   | "digital_image_resolution"
-  | "frequency_wavelength"
-  // Electricity Converters
-  | "charge"
-  | "linear_charge_density"
-  | "surface_charge_density"
-  | "volume_charge_density"
-  | "current"
-  | "linear_current_density"
-  | "surface_current_density"
-  | "electric_field_strength"
-  | "electric_potential"
-  | "electric_resistance"
-  | "electric_resistivity"
-  | "electric_conductance"
-  | "electric_conductivity"
-  | "electrostatic_capacitance"
-  | "inductance"
-  // Magnetism Converters
-  | "magnetomotive_force"
-  | "magnetic_field_strength"
-  | "magnetic_flux"
-  | "magnetic_flux_density"
-  // Radiology Converters
-  | "radiation"
-  | "radiation_activity"
-  | "radiation_exposure"
-  | "radiation_absorbed_dose";
-
-export type UnitMap = Record<UnitCategory, Unit[]>;
+  | "frequency_wavelength";
 
 export type ConversionFunction = (
   value: number,
   from: string,
   to: string,
 ) => number;
+
+export interface ConversionHistoryEntry {
+  id: string;
+  category: UnitCategory;
+  from: string;
+  to: string;
+  value: string;
+  result: string;
+  timestamp: number;
+}
+
+export type UnitMap = Record<UnitCategory, Unit[]>;
