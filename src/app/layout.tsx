@@ -35,11 +35,13 @@ export default function RootLayout({
           }}
         />
 
-        <script
-          defer
-          src="https://analytics.wirecore.net/script.js"
-          data-website-id="a7f38de9-163b-4073-94dc-1d2e539e7482"
-        ></script>
+        {process.env.NODE_ENV === "production" && (
+          <script
+            defer
+            src="https://analytics.wirecore.net/script.js"
+            data-website-id="a7f38de9-163b-4073-94dc-1d2e539e7482"
+          ></script>
+        )}
       </head>
 
       <body className="flex min-h-screen flex-col bg-gray-50 dark:bg-[#000000]">

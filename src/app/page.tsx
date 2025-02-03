@@ -25,19 +25,29 @@ export default function Home() {
       <Header />
 
       {/* Popular Conversions */}
-      <section className="py-12">
-        <div className="container mx-auto px-4">
-          <h2 className="mb-8 text-center text-3xl font-bold text-gray-900 dark:text-[#ffffffee]">
-            Popular Conversions
-          </h2>
+      <section className="relative overflow-hidden py-24">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"></div>
+        <div className="container relative mx-auto px-4">
+          <div className="mb-12 text-center">
+            <span className="mb-4 inline-block rounded-full bg-indigo-50 px-4 py-1.5 text-sm font-medium text-indigo-600 dark:bg-indigo-950/30 dark:text-indigo-400">
+              Most Used Conversions
+            </span>
+            <h2 className="mb-4 text-3xl font-bold text-gray-900 dark:text-[#ffffffee] sm:text-4xl">
+              Quick Access to Popular Conversions
+            </h2>
+            <p className="mx-auto max-w-2xl text-lg text-gray-600 dark:text-[#ffffffaa]">
+              Start with our most frequently used conversion tools
+            </p>
+          </div>
           <div className="mx-auto grid max-w-4xl grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {popularConversions.map((conversion) => (
               <Link
                 key={`${conversion.from}-${conversion.to}`}
                 href={`/${conversion.category}/${conversion.from}/${conversion.to}`}
-                className="transform rounded-xl border border-gray-200 bg-white p-4 text-center shadow-sm transition-all duration-200 hover:scale-105 hover:shadow-md dark:border-[#ffffff10] dark:bg-[#151515]"
+                className="group relative transform overflow-hidden rounded-xl border border-gray-200 bg-white p-6 text-center shadow-sm transition-all duration-200 hover:scale-105 hover:shadow-md dark:border-[#ffffff10] dark:bg-[#151515]"
               >
-                <span className="block text-sm font-medium text-gray-900 dark:text-[#ffffffee]">
+                <div className="absolute inset-0 -z-10 bg-gradient-to-br from-indigo-50 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 dark:from-indigo-950/30"></div>
+                <span className="block text-base font-medium text-gray-900 dark:text-[#ffffffee]">
                   {conversion.label}
                 </span>
               </Link>
@@ -47,22 +57,32 @@ export default function Home() {
       </section>
 
       {/* All Categories */}
-      <section className="bg-gray-50 py-12 dark:bg-[#151515]">
-        <div className="container mx-auto px-4">
-          <h2 className="mb-8 text-center text-3xl font-bold text-gray-900 dark:text-[#ffffffee]">
-            All Categories
-          </h2>
+      <section className="relative overflow-hidden bg-gray-50/50 py-24 dark:bg-[#151515]">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"></div>
+        <div className="container relative mx-auto px-4">
+          <div className="mb-12 text-center">
+            <span className="mb-4 inline-block rounded-full bg-indigo-50 px-4 py-1.5 text-sm font-medium text-indigo-600 dark:bg-indigo-950/30 dark:text-indigo-400">
+              All Categories
+            </span>
+            <h2 className="mb-4 text-3xl font-bold text-gray-900 dark:text-[#ffffffee] sm:text-4xl">
+              Explore All Conversion Categories
+            </h2>
+            <p className="mx-auto max-w-2xl text-lg text-gray-600 dark:text-[#ffffffaa]">
+              Find the perfect converter for your needs
+            </p>
+          </div>
           <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {categories.map((category) => (
               <Link
                 key={category.value}
                 href={`/${category.value}`}
-                className="transform rounded-xl border border-gray-200 bg-white p-6 shadow-md backdrop-blur-sm transition-all duration-200 hover:scale-105 hover:border-gray-300 hover:shadow-lg dark:border-[#ffffff10] dark:bg-[#151515] dark:hover:border-[#ffffff20]"
+                className="group relative transform overflow-hidden rounded-xl border border-gray-200 bg-white p-8 shadow-md backdrop-blur-sm transition-all duration-200 hover:scale-105 hover:border-gray-300 hover:shadow-lg dark:border-[#ffffff10] dark:bg-[#151515] dark:hover:border-[#ffffff20]"
               >
-                <h3 className="text-xl font-semibold text-gray-700 hover:text-gray-900 dark:text-[#ffffffcc] dark:hover:text-[#ffffffee]">
+                <div className="absolute inset-0 -z-10 bg-gradient-to-br from-indigo-50 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 dark:from-indigo-950/30"></div>
+                <h3 className="text-xl font-semibold text-gray-900 group-hover:text-indigo-600 dark:text-[#ffffffcc] dark:group-hover:text-indigo-400">
                   {category.label}
                 </h3>
-                <p className="mt-2 text-sm text-gray-600 dark:text-[#ffffff80] dark:hover:text-[#ffffffaa]">
+                <p className="mt-2 text-sm text-gray-600 dark:text-[#ffffff80]">
                   Convert {category.label.toLowerCase()} units instantly
                 </p>
               </Link>
@@ -72,11 +92,20 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="py-12">
-        <div className="container mx-auto px-4">
-          <h2 className="mb-8 text-center text-3xl font-bold text-gray-900 dark:text-[#ffffffee]">
-            Why Choose Our Converter?
-          </h2>
+      <section className="relative overflow-hidden py-24">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"></div>
+        <div className="container relative mx-auto px-4">
+          <div className="mb-12 text-center">
+            <span className="mb-4 inline-block rounded-full bg-indigo-50 px-4 py-1.5 text-sm font-medium text-indigo-600 dark:bg-indigo-950/30 dark:text-indigo-400">
+              Features
+            </span>
+            <h2 className="mb-4 text-3xl font-bold text-gray-900 dark:text-[#ffffffee] sm:text-4xl">
+              Why Choose Our Converter?
+            </h2>
+            <p className="mx-auto max-w-2xl text-lg text-gray-600 dark:text-[#ffffffaa]">
+              Discover the powerful features that make our converter stand out
+            </p>
+          </div>
           <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {[
               {
