@@ -36,5 +36,33 @@ export default function sitemap(): MetadataRoute.Sitemap {
     );
   });
 
-  return [homeUrl, ...categoryUrls, ...conversionUrls];
+  // Generate static pages URLs
+  const staticPages = [
+    {
+      url: `${baseUrl}/about`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/privacy`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/terms`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/imprint`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    },
+  ];
+
+  return [homeUrl, ...categoryUrls, ...conversionUrls, ...staticPages];
 }
