@@ -1,12 +1,29 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { categoryConfigs } from "@/config/categoryConfigs";
 
 export function UnitSearch() {
   const [searchTerm, setSearchTerm] = useState("");
   const router = useRouter();
+  const searchContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        searchContainerRef.current &&
+        !searchContainerRef.current.contains(event.target as Node)
+      ) {
+        setSearchTerm("");
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const searchResults = useMemo(() => {
     if (!searchTerm || searchTerm.length < 2) return [];
@@ -44,7 +61,7 @@ export function UnitSearch() {
   }, [searchTerm]);
 
   return (
-    <div className="relative">
+    <div className="relative" ref={searchContainerRef}>
       <input
         type="text"
         value={searchTerm}
