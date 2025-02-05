@@ -1,9 +1,16 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
+type ContactFormData = {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+};
+
 export async function POST(request: Request) {
   try {
-    const body = await request.json();
+    const body = (await request.json()) as ContactFormData;
     const { name, email, subject, message } = body;
 
     // Create a test account if no email configuration is provided
@@ -11,12 +18,12 @@ export async function POST(request: Request) {
 
     // Create a transporter
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST || "smtp.ethereal.email",
-      port: parseInt(process.env.SMTP_PORT || "587"),
+      host: process.env.SMTP_HOST ?? "smtp.ethereal.email",
+      port: parseInt(process.env.SMTP_PORT ?? "587"),
       secure: process.env.SMTP_SECURE === "true",
       auth: {
-        user: process.env.SMTP_USER || testAccount.user,
-        pass: process.env.SMTP_PASS || testAccount.pass,
+        user: process.env.SMTP_USER ?? testAccount.user,
+        pass: process.env.SMTP_PASS ?? testAccount.pass,
       },
     });
 
@@ -31,7 +38,7 @@ export async function POST(request: Request) {
         <p><strong>From:</strong> ${name} (${email})</p>
         <p><strong>Subject:</strong> ${subject}</p>
         <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, "<br>")}</p>
+        <p>${message.split("\n").join("<br>")}</p>
       `,
     });
 
