@@ -1,14 +1,26 @@
 "use client";
 
+type ContactFormData = {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+};
+
+type ApiResponse = {
+  error?: string;
+  success?: boolean;
+};
+
 export default function AboutPage() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const data = {
-      name: formData.get("name"),
-      email: formData.get("email"),
-      subject: formData.get("subject"),
-      message: formData.get("message"),
+    const data: ContactFormData = {
+      name: formData.get("name") as string,
+      email: formData.get("email") as string,
+      subject: formData.get("subject") as string,
+      message: formData.get("message") as string,
     };
 
     try {
@@ -20,14 +32,14 @@ export default function AboutPage() {
         body: JSON.stringify(data),
       });
 
-      const result = await response.json();
+      const result = (await response.json()) as ApiResponse;
 
       if (!response.ok) {
-        throw new Error(result.error || "Failed to send message");
+        throw new Error(result.error ?? "Failed to send message");
       }
 
       alert("Message sent successfully!");
-    } catch (error) {
+    } catch (error: unknown) {
       alert("Failed to send message. Please try again.");
     }
   };
@@ -53,10 +65,10 @@ export default function AboutPage() {
               different units of measurement effortless.
             </p>
             <p>
-              Whether you're a student, professional, or just someone who needs
-              to convert units occasionally, our tool is designed to make your
-              life easier with instant, accurate conversions across a wide range
-              of categories.
+              Whether you&apos;re a student, professional, or just someone who
+              needs to convert units occasionally, our tool is designed to make
+              your life easier with instant, accurate conversions across a wide
+              range of categories.
             </p>
           </section>
 
