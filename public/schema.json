@@ -1,0 +1,24 @@
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Quick Convert",
+  "description": "A free online unit converter tool for converting between metric, imperial, and other measurement units",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": [
+    "Multiple unit conversion categories",
+    "Real-time conversion",
+    "Dark mode support",
+    "Conversion history",
+    "Formula display",
+    "URL sharing"
+  ],
+  "browserRequirements": "Requires JavaScript. Requires HTML5.",
+  "permissions": "none",
+  "url": "https://quickconvert.app"
+}

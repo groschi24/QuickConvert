@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://quickconvert.app/sitemap.xml
+
+# Allow crawling of all content
+Disallow: /api/
+Disallow: /terms/
+Disallow: /privacy/
+Disallow: /imprint/

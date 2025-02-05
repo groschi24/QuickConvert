@@ -1,15 +1,11 @@
 import "@/styles/globals.css";
 import { GeistSans } from "geist/font/sans";
-import { type Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
+import { metadata as siteMetadata } from "./metadata";
 import { TopBar } from "@/components/TopBar";
 import Footer from "@/components/Footer";
-import { Analytics } from "@vercel/analytics/next";
 
-export const metadata: Metadata = {
-  title: "Quick Convert",
-  description: "A modern unit conversion tool",
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
-};
+export { metadata } from "./metadata";
 
 export default function RootLayout({
   children,
@@ -49,6 +45,8 @@ export default function RootLayout({
         <TopBar />
         {children}
         <Footer />
+
+        <Analytics />
       </body>
     </html>
   );
