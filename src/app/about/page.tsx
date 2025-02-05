@@ -1,4 +1,37 @@
+"use client";
+
 export default function AboutPage() {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      subject: formData.get("subject"),
+      message: formData.get("message"),
+    };
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || "Failed to send message");
+      }
+
+      alert("Message sent successfully!");
+    } catch (error) {
+      alert("Failed to send message. Please try again.");
+    }
+  };
+
   return (
     <div className="font-inter flex min-h-screen flex-col bg-gradient-to-b from-gray-50 via-white to-gray-50 dark:from-[#151515] dark:via-[#000000] dark:to-[#151515]">
       <div className="relative overflow-hidden">
@@ -77,6 +110,80 @@ export default function AboutPage() {
                 </p>
               </div>
             </div>
+          </section>
+
+          <section className="rounded-2xl border border-gray-200 bg-white/90 p-8 shadow-lg backdrop-blur-lg transition-all duration-300 hover:border-gray-300 dark:border-[#ffffff10] dark:bg-[#151515]/90 dark:hover:border-[#ffffff20]">
+            <h2 className="mb-4 text-2xl font-bold text-gray-900 dark:text-[#ffffffee]">
+              Contact Us
+            </h2>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div>
+                <label
+                  htmlFor="name"
+                  className="block text-sm font-medium text-gray-700 dark:text-[#ffffffcc]"
+                >
+                  Name
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  required
+                  className="mt-1 block w-full rounded-xl border border-gray-200 bg-white/80 p-3 text-gray-800 shadow-sm backdrop-blur-sm transition-all duration-200 placeholder:text-gray-400 hover:border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-[#ffffff15] dark:bg-[#151515]/80 dark:text-[#ffffffcc] dark:placeholder:text-[#ffffff40] dark:hover:border-[#ffffff25]"
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium text-gray-700 dark:text-[#ffffffcc]"
+                >
+                  Email
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  required
+                  className="mt-1 block w-full rounded-xl border border-gray-200 bg-white/80 p-3 text-gray-800 shadow-sm backdrop-blur-sm transition-all duration-200 placeholder:text-gray-400 hover:border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-[#ffffff15] dark:bg-[#151515]/80 dark:text-[#ffffffcc] dark:placeholder:text-[#ffffff40] dark:hover:border-[#ffffff25]"
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="subject"
+                  className="block text-sm font-medium text-gray-700 dark:text-[#ffffffcc]"
+                >
+                  Subject
+                </label>
+                <input
+                  type="text"
+                  name="subject"
+                  id="subject"
+                  required
+                  className="mt-1 block w-full rounded-xl border border-gray-200 bg-white/80 p-3 text-gray-800 shadow-sm backdrop-blur-sm transition-all duration-200 placeholder:text-gray-400 hover:border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-[#ffffff15] dark:bg-[#151515]/80 dark:text-[#ffffffcc] dark:placeholder:text-[#ffffff40] dark:hover:border-[#ffffff25]"
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium text-gray-700 dark:text-[#ffffffcc]"
+                >
+                  Message
+                </label>
+                <textarea
+                  name="message"
+                  id="message"
+                  rows={4}
+                  required
+                  className="mt-1 block w-full rounded-xl border border-gray-200 bg-white/80 p-3 text-gray-800 shadow-sm backdrop-blur-sm transition-all duration-200 placeholder:text-gray-400 hover:border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-[#ffffff15] dark:bg-[#151515]/80 dark:text-[#ffffffcc] dark:placeholder:text-[#ffffff40] dark:hover:border-[#ffffff25]"
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                className="w-full rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-indigo-400 px-4 py-3 text-center font-semibold text-white shadow-lg transition-all duration-200 hover:from-indigo-500 hover:via-indigo-400 hover:to-indigo-300 focus:ring-2 focus:ring-indigo-500/20 active:opacity-90"
+              >
+                Send Message
+              </button>
+            </form>
           </section>
         </div>
       </div>
