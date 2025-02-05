@@ -15,8 +15,8 @@ export default function PrivacyPage() {
             </h2>
             <div className="space-y-4">
               <p>
-                QuickConvert is hosted on Vercel's cloud platform. Vercel may
-                collect and process certain technical information about your
+                QuickConvert is hosted on Vercel&apos;s cloud platform. Vercel
+                may collect and process certain technical information about your
                 visit as part of their hosting services. Additionally, we use
                 Vercel Analytics to gather anonymous usage statistics that help
                 us improve our service.
@@ -30,8 +30,9 @@ export default function PrivacyPage() {
               </ul>
               <p>
                 This data is collected anonymously and used solely for improving
-                our website's performance and user experience. No personally
-                identifiable information is collected through Vercel Analytics.
+                our website&apos;s performance and user experience. No
+                personally identifiable information is collected through Vercel
+                Analytics.
               </p>
             </div>
           </section>

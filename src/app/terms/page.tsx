@@ -44,8 +44,8 @@ export default function TermsPage() {
                   materials;
                 </li>
                 <li>
-                  transfer the materials to another person or 'mirror' the
-                  materials on any other server.
+                  transfer the materials to another person or &apos;mirror&apos;
+                  the materials on any other server.
                 </li>
               </ul>
             </div>
@@ -57,11 +57,11 @@ export default function TermsPage() {
             </h2>
             <div className="space-y-4">
               <p>
-                The materials on QuickConvert are provided on an 'as is' basis.
-                QuickConvert makes no warranties, expressed or implied, and
-                hereby disclaims and negates all other warranties including,
-                without limitation, implied warranties or conditions of
-                merchantability, fitness for a particular purpose, or
+                The materials on QuickConvert are provided on an &apos;as
+                is&apos; basis. QuickConvert makes no warranties, expressed or
+                implied, and hereby disclaims and negates all other warranties
+                including, without limitation, implied warranties or conditions
+                of merchantability, fitness for a particular purpose, or
                 non-infringement of intellectual property or other violation of
                 rights.
               </p>
