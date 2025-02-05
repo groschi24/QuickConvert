@@ -1,43 +1,65 @@
+"use client";
+
 import React from "react";
 import type { Unit } from "@/types/units";
 
 interface ConversionFormProps {
   fromValue: string;
+  toValue: string;
   fromUnit: string;
   toUnit: string;
   units: Unit[];
-  onValueChange: (value: string) => void;
+  onFromValueChange: (value: string) => void;
+  onToValueChange: (value: string) => void;
   onUnitChange: (fromUnit: string, toUnit: string) => void;
 }
 
 export function ConversionForm({
   fromValue,
+  toValue,
   fromUnit,
   toUnit,
   units,
-  onValueChange,
+  onFromValueChange,
+  onToValueChange,
   onUnitChange,
 }: ConversionFormProps) {
   return (
     <div className="space-y-10">
-      <div className="space-y-3">
-        <label className="block text-sm font-medium uppercase tracking-wide text-gray-600 dark:text-[#ffffffaa]">
-          Value
-        </label>
-        <input
-          type="number"
-          value={fromValue}
-          onChange={(e) => onValueChange(e.target.value)}
-          onWheel={(e) => (e.target as HTMLInputElement).blur()}
-          className="w-full rounded-xl border border-gray-200 bg-white/80 p-4 text-lg font-medium text-gray-800 shadow-sm backdrop-blur-sm transition-all duration-200 placeholder:text-gray-400 hover:border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-[#ffffff15] dark:bg-[#151515]/80 dark:text-[#ffffffcc] dark:placeholder:text-[#ffffff40] dark:hover:border-[#ffffff25] dark:focus:border-indigo-500"
-          placeholder="Enter value"
-        />
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+        <div className="space-y-3">
+          <label className="block text-sm font-medium uppercase tracking-wide text-gray-600 dark:text-[#ffffffaa]">
+            From
+          </label>
+          <input
+            type="number"
+            value={fromValue}
+            onChange={(e) => onFromValueChange(e.target.value)}
+            onWheel={(e) => (e.target as HTMLInputElement).blur()}
+            className="w-full rounded-xl border border-gray-200 bg-white/80 p-4 text-lg font-medium text-gray-800 shadow-sm backdrop-blur-sm transition-all duration-200 placeholder:text-gray-400 hover:border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-[#ffffff15] dark:bg-[#151515]/80 dark:text-[#ffffffcc] dark:placeholder:text-[#ffffff40] dark:hover:border-[#ffffff25] dark:focus:border-indigo-500"
+            placeholder="Enter value"
+          />
+        </div>
+
+        <div className="space-y-3">
+          <label className="block text-sm font-medium uppercase tracking-wide text-gray-600 dark:text-[#ffffffaa]">
+            To
+          </label>
+          <input
+            type="number"
+            value={toValue}
+            onChange={(e) => onToValueChange(e.target.value)}
+            onWheel={(e) => (e.target as HTMLInputElement).blur()}
+            className="w-full rounded-xl border border-gray-200 bg-white/80 p-4 text-lg font-medium text-gray-800 shadow-sm backdrop-blur-sm transition-all duration-200 placeholder:text-gray-400 hover:border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-[#ffffff15] dark:bg-[#151515]/80 dark:text-[#ffffffcc] dark:placeholder:text-[#ffffff40] dark:hover:border-[#ffffff25] dark:focus:border-indigo-500"
+            placeholder="Enter value"
+          />
+        </div>
       </div>
 
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
         <div className="space-y-3">
           <label className="block text-sm font-medium uppercase tracking-wide text-gray-600 dark:text-[#ffffffaa]">
-            From
+            From Unit
           </label>
           <select
             value={fromUnit}
@@ -54,7 +76,7 @@ export function ConversionForm({
 
         <div className="space-y-3">
           <label className="block text-sm font-medium uppercase tracking-wide text-gray-600 dark:text-[#ffffffaa]">
-            To
+            To Unit
           </label>
           <select
             value={toUnit}

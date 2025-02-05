@@ -24,11 +24,13 @@ export default function UnitConverter({
 
   const {
     fromValue,
+    toValue,
     fromUnit,
     toUnit,
     result,
     conversionHistory,
-    handleValueChange,
+    handleFromValueChange,
+    handleToValueChange,
     handleUnitChange,
     removeFromHistory,
     clearHistory,
@@ -47,10 +49,12 @@ export default function UnitConverter({
           <div className="transform rounded-2xl border border-gray-200 bg-white/90 p-10 shadow-2xl backdrop-blur-lg transition-all duration-300 hover:border-gray-300 dark:border-[#ffffff10] dark:bg-[#151515]/90 dark:hover:border-[#ffffff20]">
             <ConversionForm
               fromValue={fromValue}
+              toValue={toValue}
               fromUnit={fromUnit}
               toUnit={toUnit}
               units={config.units}
-              onValueChange={handleValueChange}
+              onFromValueChange={handleFromValueChange}
+              onToValueChange={handleToValueChange}
               onUnitChange={handleUnitChange}
             />
 

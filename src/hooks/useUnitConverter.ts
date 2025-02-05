@@ -26,14 +26,16 @@ export function useUnitConverter(
   const defaultToUnit = initialToUnit ?? config.defaultTo;
 
   const [fromValue, setFromValue] = useState(defaultValue);
+  const [toValue, setToValue] = useState(
+    config
+      .convertFn(parseFloat(defaultValue), defaultFromUnit, defaultToUnit)
+      .toFixed(4),
+  );
   const [fromUnit, setFromUnit] = useState(defaultFromUnit);
   const [toUnit, setToUnit] = useState(defaultToUnit);
   const [isUserInteraction, setIsUserInteraction] = useState(false);
   const [result, setResult] = useState(
     `${defaultValue} ${config.units.find((u) => u.value === defaultFromUnit)?.label ?? defaultFromUnit} = ${config.convertFn(parseFloat(defaultValue), defaultFromUnit, defaultToUnit).toFixed(4)} ${config.units.find((u) => u.value === defaultToUnit)?.label ?? defaultToUnit}`,
-  );
-  const [convertedValue, setConvertedValue] = useState<number | null>(
-    config.convertFn(parseFloat(defaultValue), defaultFromUnit, defaultToUnit),
   );
   const [conversionHistory, setConversionHistory] = useState<
     ConversionHistoryEntry[]
@@ -47,8 +49,6 @@ export function useUnitConverter(
       );
     }
   }, []);
-
-  // Removed the automatic history update effect that was triggered by URL changes
 
   useEffect(() => {
     if (
@@ -86,7 +86,7 @@ export function useUnitConverter(
     const numValue = parseFloat(value);
     if (!isNaN(numValue)) {
       const converted = config.convertFn(numValue, from, to);
-      setConvertedValue(converted);
+      setToValue(converted.toFixed(4));
       const fromUnitLabel =
         config.units.find((u) => u.value === from)?.label ?? from;
       const toUnitLabel = config.units.find((u) => u.value === to)?.label ?? to;
@@ -105,7 +105,6 @@ export function useUnitConverter(
       return;
 
     const timer = setTimeout(() => {
-      // Check if this exact conversion is already at the top of history
       const isDuplicate =
         conversionHistory.length > 0 &&
         conversionHistory[0] !== undefined &&
@@ -128,13 +127,13 @@ export function useUnitConverter(
     isUserInteraction,
   ]);
 
-  const handleValueChange = (value: string) => {
+  const handleFromValueChange = (value: string) => {
     setIsUserInteraction(true);
     setFromValue(value);
     const numValue = parseFloat(value);
     if (!isNaN(numValue)) {
       const converted = config.convertFn(numValue, fromUnit, toUnit);
-      setConvertedValue(converted);
+      setToValue(converted.toFixed(4));
       const fromUnitLabel =
         config.units.find((u) => u.value === fromUnit)?.label ?? fromUnit;
       const toUnitLabel =
@@ -148,7 +147,32 @@ export function useUnitConverter(
         scroll: false,
       });
     } else {
-      setConvertedValue(null);
+      setToValue("");
+      setResult("");
+    }
+  };
+
+  const handleToValueChange = (value: string) => {
+    setIsUserInteraction(true);
+    setToValue(value);
+    const numValue = parseFloat(value);
+    if (!isNaN(numValue)) {
+      const converted = config.convertFn(numValue, toUnit, fromUnit);
+      setFromValue(converted.toFixed(4));
+      const toUnitLabel =
+        config.units.find((u) => u.value === toUnit)?.label ?? toUnit;
+      const fromUnitLabel =
+        config.units.find((u) => u.value === fromUnit)?.label ?? fromUnit;
+      const resultText = `${converted.toFixed(4)} ${fromUnitLabel} = ${numValue} ${toUnitLabel}`;
+      setResult(resultText);
+
+      const params = new URLSearchParams();
+      params.set("value", converted.toFixed(4));
+      router.push(`/${category}/${fromUnit}/${toUnit}?${params.toString()}`, {
+        scroll: false,
+      });
+    } else {
+      setFromValue("");
       setResult("");
     }
   };
@@ -161,7 +185,7 @@ export function useUnitConverter(
       const numValue = parseFloat(fromValue);
       if (!isNaN(numValue)) {
         const converted = config.convertFn(numValue, newFromUnit, newToUnit);
-        setConvertedValue(converted);
+        setToValue(converted.toFixed(4));
         const fromUnitLabel =
           config.units.find((u) => u.value === newFromUnit)?.label ??
           newFromUnit;
@@ -215,12 +239,13 @@ export function useUnitConverter(
 
   return {
     fromValue,
+    toValue,
     fromUnit,
     toUnit,
     result,
-    convertedValue,
     conversionHistory,
-    handleValueChange,
+    handleFromValueChange,
+    handleToValueChange,
     handleUnitChange,
     removeFromHistory,
     clearHistory,
