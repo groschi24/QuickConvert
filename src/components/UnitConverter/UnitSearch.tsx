@@ -53,7 +53,26 @@ export function UnitSearch() {
         className="w-full rounded-lg border border-gray-200 bg-white/50 px-4 py-2 text-sm text-gray-800 outline-none transition-all duration-200 hover:border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-[#ffffff15] dark:bg-[#ffffff08] dark:text-[#ffffffdd] dark:hover:border-[#ffffff25] dark:focus:border-indigo-500"
       />
       {searchTerm.length >= 2 && (
-        <div className="absolute left-0 right-0 z-50 mt-2 max-h-[400px] overflow-y-auto rounded-lg border border-gray-200 bg-white shadow-lg dark:border-[#ffffff15] dark:bg-[#151515]">
+        <div
+          ref={(el) => {
+            if (el) {
+              el.addEventListener(
+                "wheel",
+                (e) => {
+                  if (el.contains(e.target as Node)) {
+                    el.scrollTop += e.deltaY;
+                    e.preventDefault();
+                  }
+                },
+                { passive: false },
+              );
+            }
+          }}
+          className="absolute left-0 right-0 z-50 mt-2 max-h-[400px] overflow-y-auto rounded-lg border border-gray-200 bg-white shadow-lg dark:border-[#ffffff15] dark:bg-[#151515]"
+          onTouchMove={(e) => {
+            e.stopPropagation();
+          }}
+        >
           <div className="space-y-1 p-2">
             {searchResults.map((result, index) => (
               <button
