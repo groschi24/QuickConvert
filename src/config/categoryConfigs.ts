@@ -15,13 +15,16 @@ const categories = [
 
 export type CategoryType = (typeof categories)[number];
 
-export const categoryConfigs = categories.reduce(
-  (acc, category) => {
+export const categoryConfigs = await Promise.all(
+  categories.map(async (category) => {
     const categoryStr = String(category);
-    acc[categoryStr as UnitCategory] = loadUnitConfig(
-      categoryStr as UnitCategory,
-    );
-    return acc;
-  },
-  {} as Record<UnitCategory, ReturnType<typeof loadUnitConfig>>,
+    const config = await loadUnitConfig(categoryStr as UnitCategory);
+    return [categoryStr, config] as const;
+  }),
+).then(
+  (configs) =>
+    Object.fromEntries(configs) as Record<
+      UnitCategory,
+      Awaited<ReturnType<typeof loadUnitConfig>>
+    >,
 );

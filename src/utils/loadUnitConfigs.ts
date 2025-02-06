@@ -1,4 +1,5 @@
 import type { UnitCategory } from "@/types/units";
+import type { UnitApiResponse } from "@/types/api";
 
 interface UnitConfig {
   title: string;
@@ -19,12 +20,21 @@ interface UnitConfig {
   };
 }
 
-export function loadUnitConfig(category: UnitCategory): UnitConfig & {
-  convertFn: (value: number, from: string, to: string) => number;
-} {
+export async function loadUnitConfig(category: UnitCategory): Promise<
+  UnitConfig & {
+    convertFn: (value: number, from: string, to: string) => number;
+  }
+> {
   try {
     const categoryStr = String(category);
-    const rawConfig = require(`../config/categories/${categoryStr}.json`);
+
+    const response = await fetch(
+      `http://localhost:3000/api/units/${categoryStr}`,
+    );
+    if (!response.ok) {
+      throw new Error(`Failed to fetch ${categoryStr} config`);
+    }
+    const rawConfig: UnitApiResponse = await response.json();
     const config: UnitConfig = {
       title: categoryStr.charAt(0).toUpperCase() + categoryStr.slice(1),
       units: {},
@@ -142,9 +152,8 @@ export function loadUnitConfig(category: UnitCategory): UnitConfig & {
   }
 }
 
-export function loadAllUnitConfigs(): Record<
-  UnitCategory,
-  ReturnType<typeof loadUnitConfig>
+export async function loadAllUnitConfigs(): Promise<
+  Record<UnitCategory, Awaited<ReturnType<typeof loadUnitConfig>>>
 > {
   const categories: UnitCategory[] = [
     "common",
@@ -158,11 +167,15 @@ export function loadAllUnitConfigs(): Record<
     "radiology",
   ];
 
-  return categories.reduce(
-    (acc, category) => {
-      acc[category] = loadUnitConfig(category);
-      return acc;
-    },
-    {} as Record<UnitCategory, ReturnType<typeof loadUnitConfig>>,
+  const configs = await Promise.all(
+    categories.map(async (category) => {
+      const config = await loadUnitConfig(category);
+      return [category, config] as const;
+    }),
   );
+
+  return Object.fromEntries(configs) as Record<
+    UnitCategory,
+    Awaited<ReturnType<typeof loadUnitConfig>>
+  >;
 }

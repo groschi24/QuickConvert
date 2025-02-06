@@ -69,22 +69,17 @@ export function TopBar() {
                             <div className="font-medium text-gray-900 dark:text-white">
                               {config.title}
                             </div>
-                            {Object.keys(config.units).map((subcategory) => (
-                              <Link
-                                key={`${category}-${subcategory}`}
-                                href={`/${category}?type=${subcategory}`}
-                                className="block rounded-lg p-2 text-sm text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:text-[#ffffff80] dark:hover:bg-[#ffffff10] dark:hover:text-white"
-                              >
-                                {subcategory
-                                  .split("_")
-                                  .map(
-                                    (word) =>
-                                      word.charAt(0).toUpperCase() +
-                                      word.slice(1),
-                                  )
-                                  .join(" ")}
-                              </Link>
-                            ))}
+                            {Object.entries(config.units).map(
+                              ([subcategory, unitConfig]) => (
+                                <Link
+                                  key={`${category}-${subcategory}`}
+                                  href={`/${category}?type=${subcategory}`}
+                                  className="block rounded-lg p-2 text-sm text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:text-[#ffffff80] dark:hover:bg-[#ffffff10] dark:hover:text-white"
+                                >
+                                  {unitConfig.label}
+                                </Link>
+                              ),
+                            )}
                           </div>
                         ),
                       )}

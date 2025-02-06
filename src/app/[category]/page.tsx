@@ -1,36 +1,27 @@
-"use client";
-
-import { use, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
-import { categoryConfigs } from "@/config/categoryConfigs";
+import { loadUnitConfig } from "@/utils/loadUnitConfigs";
 import type { UnitCategory } from "@/types/units";
 
-export default function CategoryPage({
+export default async function CategoryPage({
   params,
 }: {
   params: Promise<{ category: UnitCategory }>;
 }) {
-  const { category } = use(params);
-  const config = categoryConfigs[category];
-  const router = useRouter();
+  const { category } = await params;
+
+  const config = await loadUnitConfig(category);
 
   if (!config) {
     notFound();
   }
 
-  useEffect(() => {
-    const params = new URLSearchParams();
-    params.set("value", "1");
-    router.push(
-      `/${category}/${config.defaultFrom}/${config.defaultTo}?${params.toString()}`,
-      { scroll: false },
-    );
-  }, [category, config, router]);
+  const units = Object.keys(config.units);
+  if (units.length >= 2) {
+    const searchParams = new URLSearchParams();
+    searchParams.set("value", "1");
+    redirect(`/${category}/${units[0]}/${units[1]}?${searchParams.toString()}`);
+  }
 
-  return (
-    <div className="flex h-screen items-center justify-center">
-      <div className="h-12 w-12 animate-spin rounded-full border-4 border-gray-200 border-t-indigo-500 dark:border-[#ffffff20] dark:border-t-indigo-500" />
-    </div>
-  );
+  return notFound();
 }
