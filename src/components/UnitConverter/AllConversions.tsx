@@ -66,9 +66,10 @@ export function AllConversions({
                 {unit.label}
               </p>
               <p className="text-gray-600 dark:text-[#ffffffaa]">
-                {fromValue}{" "}
+                {parseFloat(fromValue).toFixed(4)}{" "}
                 {units.find((u) => u.value === fromUnit)?.label ?? fromUnit} ={" "}
-                {converted.toFixed(4)} {unit.label}
+                {Number.isFinite(converted) ? converted.toFixed(4) : "Invalid"}{" "}
+                {unit.label}
               </p>
               <p className="mt-3 text-sm text-gray-500 dark:text-[#ffffff80]">
                 Formula: {formula}

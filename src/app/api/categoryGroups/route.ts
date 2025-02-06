@@ -4,9 +4,9 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
-    const data = await import("@/config/categoryGroups.json").then(
-      (m) => m.default,
-    );
+    const filePath = join(process.cwd(), "src/config/categoryGroups.json");
+    const fileContent = readFileSync(filePath, "utf-8");
+    const data = JSON.parse(fileContent);
 
     return NextResponse.json(data);
   } catch (error) {
