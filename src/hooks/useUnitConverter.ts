@@ -29,6 +29,13 @@ export function useUnitConverter(
 
   const [fromValue, setFromValue] = useState(defaultValue);
   const [toValue, setToValue] = useState("");
+  const [fromUnit, setFromUnit] = useState(defaultFromUnit);
+  const [toUnit, setToUnit] = useState(defaultToUnit);
+  const [isUserInteraction, setIsUserInteraction] = useState(false);
+  const [result, setResult] = useState("");
+  const [conversionHistory, setConversionHistory] = useState<
+    ConversionHistoryEntry[]
+  >([]);
 
   useEffect(() => {
     const initializeConversion = async () => {
@@ -41,41 +48,18 @@ export function useUnitConverter(
         );
         if (!isNaN(converted)) {
           setToValue(converted.toFixed(4));
-        }
-      } catch (error) {
-        console.error("Error in initial conversion:", error);
-      }
-    };
-    initializeConversion();
-  }, [defaultValue, defaultFromUnit, defaultToUnit, category]);
-  const [fromUnit, setFromUnit] = useState(defaultFromUnit);
-  const [toUnit, setToUnit] = useState(defaultToUnit);
-  const [isUserInteraction, setIsUserInteraction] = useState(false);
-  const [result, setResult] = useState("");
-
-  useEffect(() => {
-    const initializeResult = async () => {
-      try {
-        const converted = await convertWithFormula(
-          parseFloat(defaultValue),
-          defaultFromUnit,
-          defaultToUnit,
-          category,
-        );
-        if (!isNaN(converted)) {
           setResult(
             `${defaultValue} ${defaultFromUnit} = ${converted.toFixed(4)} ${defaultToUnit}`,
           );
         }
       } catch (error) {
-        console.error("Error in initial result calculation:", error);
+        console.error("Error in initial conversion:", error);
+        setToValue("");
+        setResult("");
       }
     };
-    initializeResult();
+    initializeConversion();
   }, [defaultValue, defaultFromUnit, defaultToUnit, category]);
-  const [conversionHistory, setConversionHistory] = useState<
-    ConversionHistoryEntry[]
-  >([]);
 
   useEffect(() => {
     const savedHistory = localStorage.getItem("conversionHistory");
@@ -111,38 +95,39 @@ export function useUnitConverter(
   ]);
 
   useEffect(() => {
-    const value = searchParams.get("value") ?? defaultValue;
-    const from = searchParams.get("from") ?? defaultFromUnit;
-    const to = searchParams.get("to") ?? defaultToUnit;
+    const updateFromSearchParams = async () => {
+      const value = searchParams.get("value") ?? defaultValue;
+      const from = searchParams.get("from") ?? defaultFromUnit;
+      const to = searchParams.get("to") ?? defaultToUnit;
 
-    setFromValue(value);
-    setFromUnit(from);
-    setToUnit(to);
+      setFromValue(value);
+      setFromUnit(from);
+      setToUnit(to);
 
-    const numValue = parseFloat(value);
-    if (!isNaN(numValue)) {
-      try {
-        const converted = await convertWithFormula(
-          numValue,
-          from,
-          to,
-          category,
-        );
-        if (isNaN(converted)) {
-          console.error("Invalid conversion result");
+      const numValue = parseFloat(value);
+      if (!isNaN(numValue)) {
+        try {
+          const converted = await convertWithFormula(
+            numValue,
+            from,
+            to,
+            category,
+          );
+          if (!isNaN(converted)) {
+            setToValue(converted.toFixed(4));
+            setResult(`${numValue} ${from} = ${converted.toFixed(4)} ${to}`);
+          } else {
+            setToValue("");
+            setResult("");
+          }
+        } catch (error) {
+          console.error("Error during conversion:", error);
           setToValue("");
           setResult("");
-          return;
         }
-        setToValue(converted.toFixed(4));
-        const resultText = `${numValue} ${from} = ${converted.toFixed(4)} ${to}`;
-        setResult(resultText);
-      } catch (error) {
-        console.error("Error during conversion:", error);
-        setToValue("");
-        setResult("");
       }
-    }
+    };
+    updateFromSearchParams();
   }, [searchParams, defaultValue, defaultFromUnit, defaultToUnit, category]);
 
   useEffect(() => {
@@ -177,34 +162,37 @@ export function useUnitConverter(
     isUserInteraction,
   ]);
 
-  const handleFromValueChange = (value: string) => {
+  const handleFromValueChange = async (value: string) => {
     setIsUserInteraction(true);
     setFromValue(value);
     const numValue = parseFloat(value);
     if (!isNaN(numValue)) {
       try {
-        const converted = convertWithFormula(
+        const converted = await convertWithFormula(
           numValue,
           fromUnit,
           toUnit,
           category,
         );
-        if (isNaN(converted)) {
-          console.error("Invalid conversion result");
-          setToValue("");
-          return;
-        }
-        setToValue(converted.toFixed(4));
-        const resultText = `${numValue} ${fromUnit} = ${converted.toFixed(4)} ${toUnit}`;
-        setResult(resultText);
+        if (!isNaN(converted)) {
+          setToValue(converted.toFixed(4));
+          const resultText = `${numValue} ${fromUnit} = ${converted.toFixed(4)} ${toUnit}`;
+          setResult(resultText);
 
-        const params = new URLSearchParams();
-        params.set("value", value);
-        params.set("from", fromUnit);
-        params.set("to", toUnit);
-        router.push(`/${category}/${fromUnit}/${toUnit}?${params.toString()}`, {
-          scroll: false,
-        });
+          const params = new URLSearchParams();
+          params.set("value", value);
+          params.set("from", fromUnit);
+          params.set("to", toUnit);
+          router.push(
+            `/${category}/${fromUnit}/${toUnit}?${params.toString()}`,
+            {
+              scroll: false,
+            },
+          );
+        } else {
+          setToValue("");
+          setResult("");
+        }
       } catch (error) {
         console.error("Error during conversion:", error);
         setToValue("");
@@ -216,35 +204,37 @@ export function useUnitConverter(
     }
   };
 
-  const handleToValueChange = (value: string) => {
+  const handleToValueChange = async (value: string) => {
     setIsUserInteraction(true);
     setToValue(value);
     const numValue = parseFloat(value);
     if (!isNaN(numValue)) {
       try {
-        const converted = convertWithFormula(
+        const converted = await convertWithFormula(
           numValue,
           toUnit,
           fromUnit,
           category,
         );
-        if (isNaN(converted)) {
-          console.error("Invalid conversion result");
+        if (!isNaN(converted)) {
+          setFromValue(converted.toFixed(4));
+          const resultText = `${converted.toFixed(4)} ${fromUnit} = ${numValue} ${toUnit}`;
+          setResult(resultText);
+
+          const params = new URLSearchParams();
+          params.set("value", converted.toFixed(4));
+          params.set("from", fromUnit);
+          params.set("to", toUnit);
+          router.push(
+            `/${category}/${fromUnit}/${toUnit}?${params.toString()}`,
+            {
+              scroll: false,
+            },
+          );
+        } else {
           setFromValue("");
           setResult("");
-          return;
         }
-        setFromValue(converted.toFixed(4));
-        const resultText = `${converted.toFixed(4)} ${fromUnit} = ${numValue} ${toUnit}`;
-        setResult(resultText);
-
-        const params = new URLSearchParams();
-        params.set("value", converted.toFixed(4));
-        params.set("from", fromUnit);
-        params.set("to", toUnit);
-        router.push(`/${category}/${fromUnit}/${toUnit}?${params.toString()}`, {
-          scroll: false,
-        });
       } catch (error) {
         console.error("Error during conversion:", error);
         setFromValue("");
@@ -256,7 +246,7 @@ export function useUnitConverter(
     }
   };
 
-  const handleUnitChange = (newFromUnit: string, newToUnit: string) => {
+  const handleUnitChange = async (newFromUnit: string, newToUnit: string) => {
     setIsUserInteraction(true);
     setFromUnit(newFromUnit);
     setToUnit(newToUnit);
@@ -264,32 +254,31 @@ export function useUnitConverter(
       const numValue = parseFloat(fromValue);
       if (!isNaN(numValue)) {
         try {
-          const converted = convertWithFormula(
+          const converted = await convertWithFormula(
             numValue,
             newFromUnit,
             newToUnit,
             category,
           );
-          if (isNaN(converted)) {
-            console.error("Invalid conversion result");
+          if (!isNaN(converted)) {
+            setToValue(converted.toFixed(4));
+            const resultText = `${numValue} ${newFromUnit} = ${converted.toFixed(4)} ${newToUnit}`;
+            setResult(resultText);
+
+            const params = new URLSearchParams();
+            params.set("value", fromValue);
+            params.set("from", newFromUnit);
+            params.set("to", newToUnit);
+            router.push(
+              `/${category}/${newFromUnit}/${newToUnit}?${params.toString()}`,
+              {
+                scroll: false,
+              },
+            );
+          } else {
             setToValue("");
             setResult("");
-            return;
           }
-          setToValue(converted.toFixed(4));
-          const resultText = `${numValue} ${newFromUnit} = ${converted.toFixed(4)} ${newToUnit}`;
-          setResult(resultText);
-
-          const params = new URLSearchParams();
-          params.set("value", fromValue);
-          params.set("from", newFromUnit);
-          params.set("to", newToUnit);
-          router.push(
-            `/${category}/${newFromUnit}/${newToUnit}?${params.toString()}`,
-            {
-              scroll: false,
-            },
-          );
         } catch (error) {
           console.error("Error during conversion:", error);
           setToValue("");
