@@ -25,7 +25,7 @@ export function AllConversions({
       </h3>
       <div className="grid gap-4 sm:grid-cols-2">
         {units.map((unit) => {
-          if (unit.value === toUnit) return null;
+          if (unit.value === toUnit || unit.value === fromUnit) return null;
           const converted = convertFn(
             parseFloat(fromValue),
             fromUnit,
