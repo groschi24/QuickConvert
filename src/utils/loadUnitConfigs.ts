@@ -28,9 +28,15 @@ export async function loadUnitConfig(category: UnitCategory): Promise<
   try {
     const categoryStr = String(category);
 
-    const response = await fetch(
-      `http://localhost:3000/api/units/${categoryStr}`,
-    );
+    const baseUrl =
+      typeof window === "undefined"
+        ? process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
+        : "";
+    const response = await fetch(`${baseUrl}/api/units/${categoryStr}`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     if (!response.ok) {
       throw new Error(`Failed to fetch ${categoryStr} config`);
     }
@@ -58,7 +64,7 @@ export async function loadUnitConfig(category: UnitCategory): Promise<
     // Process units and build conversion table
     Object.entries(firstMeasureConfig.units).forEach(
       ([unitKey, unitConfig]: [string, any]) => {
-        const formula = unitConfig.conversion.formula;
+        const formula = unitConfig?.conversion?.formula ?? "x=x";
         let factor = 1;
 
         if (formula !== "x=x") {
@@ -102,7 +108,7 @@ export async function loadUnitConfig(category: UnitCategory): Promise<
             if (unitKey === toKey) {
               config.conversions[unitKey].to[toKey] = 1;
             } else {
-              const toFormula = toUnitConfig.conversion.formula;
+              const toFormula = toUnitConfig?.conversion?.formula ?? "x=x";
               try {
                 const fromExpression = formula.split("=")[1]?.trim();
                 const toExpression = toFormula.split("=")[1]?.trim();

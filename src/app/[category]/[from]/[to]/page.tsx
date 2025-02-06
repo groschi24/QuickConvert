@@ -1,21 +1,46 @@
+"use client";
+
 import { notFound } from "next/navigation";
 import type { UnitCategory } from "@/types/units";
 import { loadUnitConfig } from "@/utils/loadUnitConfigs";
 import ConversionWrapper from "@/components/UnitConverter/ConversionWrapper";
+import { use, useEffect, useState } from "react";
 
-export default async function UnitConverter({
+export default function UnitConverter({
   params,
 }: {
   params: Promise<{ category: UnitCategory; from: string; to: string }>;
 }) {
-  const { category, from, to } = await params;
-  const config = await loadUnitConfig(category);
+  const { category, from, to } = use(params);
+  const [config, setConfig] = useState<Awaited<
+    ReturnType<typeof loadUnitConfig>
+  > | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-  if (!config) {
-    notFound();
+  useEffect(() => {
+    const loadConfig = async () => {
+      try {
+        const loadedConfig = await loadUnitConfig(category);
+        if (!loadedConfig) {
+          notFound();
+        }
+        setConfig(loadedConfig);
+      } catch (error) {
+        console.error("Error loading config:", error);
+        notFound();
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadConfig();
+  }, [category]);
+
+  if (isLoading || !config) {
+    return <div>Loading...</div>;
   }
 
-  console.log("U: ", config.units);
+  console.log("C: ", config);
 
   return (
     <ConversionWrapper

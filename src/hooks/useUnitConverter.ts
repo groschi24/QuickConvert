@@ -28,39 +28,51 @@ export function useUnitConverter(
   const defaultToUnit = initialToUnit ?? "";
 
   const [fromValue, setFromValue] = useState(defaultValue);
-  const [toValue, setToValue] = useState(() => {
-    try {
-      const converted = convertWithFormula(
-        parseFloat(defaultValue),
-        defaultFromUnit,
-        defaultToUnit,
-        category,
-      );
-      return isNaN(converted) ? "" : converted.toFixed(4);
-    } catch (error) {
-      console.error("Error in initial conversion:", error);
-      return "";
-    }
-  });
+  const [toValue, setToValue] = useState("");
+
+  useEffect(() => {
+    const initializeConversion = async () => {
+      try {
+        const converted = await convertWithFormula(
+          parseFloat(defaultValue),
+          defaultFromUnit,
+          defaultToUnit,
+          category,
+        );
+        if (!isNaN(converted)) {
+          setToValue(converted.toFixed(4));
+        }
+      } catch (error) {
+        console.error("Error in initial conversion:", error);
+      }
+    };
+    initializeConversion();
+  }, [defaultValue, defaultFromUnit, defaultToUnit, category]);
   const [fromUnit, setFromUnit] = useState(defaultFromUnit);
   const [toUnit, setToUnit] = useState(defaultToUnit);
   const [isUserInteraction, setIsUserInteraction] = useState(false);
-  const [result, setResult] = useState(() => {
-    try {
-      const converted = convertWithFormula(
-        parseFloat(defaultValue),
-        defaultFromUnit,
-        defaultToUnit,
-        category,
-      );
-      return isNaN(converted)
-        ? ""
-        : `${defaultValue} ${defaultFromUnit} = ${converted.toFixed(4)} ${defaultToUnit}`;
-    } catch (error) {
-      console.error("Error in initial result calculation:", error);
-      return "";
-    }
-  });
+  const [result, setResult] = useState("");
+
+  useEffect(() => {
+    const initializeResult = async () => {
+      try {
+        const converted = await convertWithFormula(
+          parseFloat(defaultValue),
+          defaultFromUnit,
+          defaultToUnit,
+          category,
+        );
+        if (!isNaN(converted)) {
+          setResult(
+            `${defaultValue} ${defaultFromUnit} = ${converted.toFixed(4)} ${defaultToUnit}`,
+          );
+        }
+      } catch (error) {
+        console.error("Error in initial result calculation:", error);
+      }
+    };
+    initializeResult();
+  }, [defaultValue, defaultFromUnit, defaultToUnit, category]);
   const [conversionHistory, setConversionHistory] = useState<
     ConversionHistoryEntry[]
   >([]);
@@ -110,7 +122,12 @@ export function useUnitConverter(
     const numValue = parseFloat(value);
     if (!isNaN(numValue)) {
       try {
-        const converted = convertWithFormula(numValue, from, to, category);
+        const converted = await convertWithFormula(
+          numValue,
+          from,
+          to,
+          category,
+        );
         if (isNaN(converted)) {
           console.error("Invalid conversion result");
           setToValue("");

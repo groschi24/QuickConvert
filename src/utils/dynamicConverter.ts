@@ -2,16 +2,16 @@ import { evaluate } from "mathjs";
 import { loadUnitConfig } from "./loadUnitConfigs";
 import type { UnitCategory } from "@/types/units";
 
-export const convertWithFormula = (
+export const convertWithFormula = async (
   value: number,
   from: string,
   to: string,
   category: UnitCategory,
-): number => {
+): Promise<number> => {
   if (from === to) return value;
 
   try {
-    const config = loadUnitConfig(category);
+    const config = await loadUnitConfig(category);
 
     // First try using the convertFn which uses the factor-based conversion
     try {
