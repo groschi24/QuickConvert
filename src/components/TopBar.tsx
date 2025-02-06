@@ -5,11 +5,23 @@ import Link from "next/link";
 import { Menu, MenuButton, MenuItems } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import { categoryConfigs } from "@/config/categoryConfigs";
+import { loadAllUnitConfigs } from "@/utils/loadUnitConfigs";
 import { UnitSearch } from "./UnitConverter/UnitSearch";
+import type { UnitCategory } from "@/types/units";
 
 export function TopBar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [configs, setConfigs] = useState<Record<UnitCategory, any>>({});
+
+  console.log("configs: ", configs);
+
+  useEffect(() => {
+    const fetchConfigs = async () => {
+      const allConfigs = await loadAllUnitConfigs();
+      setConfigs(allConfigs);
+    };
+    fetchConfigs();
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -60,29 +72,45 @@ export function TopBar() {
                   </div>
                   <div className="space-y-3">
                     <h3 className="text-sm font-medium text-gray-900 dark:text-white">
-                      All Converters
+                      Categories
                     </h3>
-                    <div className="grid grid-cols-2 gap-2">
-                      {Object.entries(categoryConfigs).map(
-                        ([category, config]) => (
-                          <div key={category} className="space-y-2">
-                            <div className="font-medium text-gray-900 dark:text-white">
-                              {config.title}
-                            </div>
-                            {Object.entries(config.units).map(
-                              ([subcategory, unitConfig]) => (
-                                <Link
-                                  key={`${category}-${subcategory}`}
-                                  href={`/${category}?type=${subcategory}`}
-                                  className="block rounded-lg p-2 text-sm text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:text-[#ffffff80] dark:hover:bg-[#ffffff10] dark:hover:text-white"
-                                >
-                                  {unitConfig.label}
-                                </Link>
-                              ),
-                            )}
-                          </div>
+                    <div className="grid grid-cols-1 gap-4">
+                      {Object.entries(
+                        Object.entries(configs).reduce(
+                          (groups, [category, config]) => {
+                            const groupKey = config.group || "Other";
+                            if (!groups[groupKey]) {
+                              groups[groupKey] = [];
+                            }
+                            groups[groupKey].push([category, config]);
+                            return groups;
+                          },
+                          {} as Record<string, [string, any][]>,
                         ),
-                      )}
+                      ).map(([groupName, categories]) => (
+                        <div key={groupName} className="space-y-3">
+                          <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                            {groupName}
+                          </h4>
+                          <div className="grid grid-cols-2 gap-2">
+                            {categories.map(([category, config]) => (
+                              <div key={category} className="space-y-2">
+                                {Object.entries(config.subcategories || {}).map(
+                                  ([subKey, subConfig]) => (
+                                    <Link
+                                      key={`${category}-${subKey}`}
+                                      href={`/${category}/${subKey}`}
+                                      className="block rounded-lg p-2 text-sm text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:text-[#ffffff80] dark:hover:bg-[#ffffff10] dark:hover:text-white"
+                                    >
+                                      {subConfig.title}
+                                    </Link>
+                                  ),
+                                )}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -170,10 +198,10 @@ export function TopBar() {
                 All Converters
               </h3>
               <div className="grid grid-cols-2 gap-3">
-                {Object.entries(categoryConfigs).map(([category, config]) => (
+                {Object.entries(configs).map(([category, config]) => (
                   <Link
                     key={category}
-                    href={`/${category}`}
+                    href={`/${category}/${Object.keys(config.subcategories || {})[0] || ""}`}
                     className="rounded-lg bg-gray-50 p-3 text-base text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:bg-[#ffffff08] dark:text-[#ffffff80] dark:hover:bg-[#ffffff10] dark:hover:text-white"
                     onClick={() => setIsOpen(false)}
                   >

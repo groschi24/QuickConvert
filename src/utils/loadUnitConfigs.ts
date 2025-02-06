@@ -105,7 +105,7 @@ export async function loadUnitConfig(category: UnitCategory): Promise<
         config.conversions[unitKey] = { to: {} };
         Object.entries(firstMeasureConfig.units).forEach(
           ([toKey, toUnitConfig]: [string, any]) => {
-            if (unitKey === toKey) {
+            if (unitKey === toKey && config.conversions[unitKey]) {
               config.conversions[unitKey].to[toKey] = 1;
             } else {
               const toFormula = toUnitConfig?.conversion?.formula ?? "x=x";
@@ -119,14 +119,19 @@ export async function loadUnitConfig(category: UnitCategory): Promise<
                   );
                 }
 
-                config.conversions[unitKey].to[toKey] =
-                  `(${fromExpression})/(${toExpression})`;
+                if (config.conversions[unitKey]) {
+                  config.conversions[unitKey].to[toKey] =
+                    `(${fromExpression})/(${toExpression})`;
+                }
               } catch (error) {
                 console.error(
                   `Error creating conversion formula from ${unitKey} to ${toKey}:`,
                   error,
                 );
-                config.conversions[unitKey].to[toKey] = "1";
+
+                if (config.conversions[unitKey]) {
+                  config.conversions[unitKey].to[toKey] = "1";
+                }
               }
             }
           },
@@ -158,20 +163,53 @@ export async function loadUnitConfig(category: UnitCategory): Promise<
   }
 }
 
+interface CategoryGroup {
+  id: string;
+  label: string;
+  categories: UnitCategory[];
+}
+
+interface CategoryGroupsConfig {
+  groups: CategoryGroup[];
+}
+
 export async function loadAllUnitConfigs(): Promise<
   Record<UnitCategory, Awaited<ReturnType<typeof loadUnitConfig>>>
 > {
-  const categories: UnitCategory[] = [
-    "common",
-    "electricity",
-    "engineering",
-    "fluid",
-    "heat",
-    "light",
-    "magnetism",
-    "other",
-    "radiology",
-  ];
+  const baseUrl =
+    typeof window === "undefined"
+      ? process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
+      : "";
+
+  // Fetch category groups
+  const groupsResponse = await fetch(`${baseUrl}/categoryGroups.json`);
+
+  if (!groupsResponse.ok) {
+    throw new Error("Failed to fetch category groups");
+  }
+
+  const groupsConfig = (await groupsResponse.json()) as CategoryGroupsConfig;
+
+  // Get all categories from the groups
+  const categories = Array.from(
+    new Set(groupsConfig.groups.flatMap((group) => group.categories)),
+  ) as UnitCategory[];
+
+  // Organize categories based on groups
+  const categoryGroups = new Map<string, string[]>();
+  groupsConfig.groups.forEach((group) => {
+    categoryGroups.set(
+      group.id,
+      group.categories.filter((cat) => categories.includes(cat)),
+    );
+  });
+
+  // Add remaining categories to 'other' group
+  const assignedCategories = Array.from(categoryGroups.values()).flat();
+  const otherCategories = categories.filter(
+    (cat) => !assignedCategories.includes(cat),
+  );
+  categoryGroups.set("other", otherCategories);
 
   const configs = await Promise.all(
     categories.map(async (category) => {

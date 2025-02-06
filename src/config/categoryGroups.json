@@ -1,0 +1,40 @@
+{
+  "groups": [
+    {
+      "id": "common",
+      "label": "Common Conversions"
+    },
+    {
+      "id": "engineering",
+      "label": "Engineering"
+    },
+    {
+      "id": "heat",
+      "label": "Heat"
+    },
+    {
+      "id": "light",
+      "label": "Light"
+    },
+    {
+      "id": "electricity",
+      "label": "Electricity"
+    },
+    {
+      "id": "magnetism",
+      "label": "Magnetism"
+    },
+    {
+      "id": "fluid",
+      "label": "Fluid"
+    },
+    {
+      "id": "radiology",
+      "label": "Radiology"
+    },
+    {
+      "id": "other",
+      "label": "Other"
+    }
+  ]
+}

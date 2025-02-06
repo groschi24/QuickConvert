@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { categoryConfigs } from "@/config/categoryConfigs";
+import { loadUnitConfig } from "@/utils/loadUnitConfigs";
+import { UnitCategory } from "@/types/units";
 
 type Props = {
   params: Promise<{ category: string; from: string; to: string }>;
@@ -7,17 +8,17 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { category, from, to } = await params;
-  const config = categoryConfigs[category];
+  const config = await loadUnitConfig(category as UnitCategory);
 
-  if (!config) {
+  if (!config || Object.keys(config.units).length === 0) {
     return {
       title: "Not Found | Quick Convert",
       description: "The requested conversion page could not be found.",
     };
   }
 
-  const fromUnit = config.units.find((u) => u.value === from);
-  const toUnit = config.units.find((u) => u.value === to);
+  const fromUnit = config.units[from];
+  const toUnit = config.units[to];
 
   const title = `Convert ${fromUnit?.label ?? from} to ${toUnit?.label ?? to} | ${config.title}`;
   const description = `Convert ${fromUnit?.label ?? from} to ${toUnit?.label ?? to} with our free online ${config.title.toLowerCase()}. Quick, easy, and accurate conversions.`;
