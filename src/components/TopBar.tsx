@@ -67,47 +67,25 @@ export function TopBar() {
 
               <MenuItems className="absolute left-0 z-50 mt-2 max-h-[calc(100vh-6rem)] w-[500px] origin-top-left overflow-y-auto rounded-xl bg-white p-4 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-[#151515] dark:ring-[#ffffff10]">
                 <div className="grid grid-cols-1 gap-6">
-                  <div className="mb-4 w-full">
-                    <UnitSearch />
-                  </div>
                   <div className="space-y-3">
-                    <h3 className="text-sm font-medium text-gray-900 dark:text-white">
-                      Categories
-                    </h3>
                     <div className="grid grid-cols-1 gap-4">
-                      {Object.entries(
-                        Object.entries(configs).reduce(
-                          (groups, [category, config]) => {
-                            const groupKey = config.group || "Other";
-                            if (!groups[groupKey]) {
-                              groups[groupKey] = [];
-                            }
-                            groups[groupKey].push([category, config]);
-                            return groups;
-                          },
-                          {} as Record<string, [string, any][]>,
-                        ),
-                      ).map(([groupName, categories]) => (
-                        <div key={groupName} className="space-y-3">
+                      {Object.entries(configs).map(([groupKey, group]) => (
+                        <div key={groupKey} className="space-y-3">
                           <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                            {groupName}
+                            {group.label}
                           </h4>
                           <div className="grid grid-cols-2 gap-2">
-                            {categories.map(([category, config]) => (
-                              <div key={category} className="space-y-2">
-                                {Object.entries(config.subcategories || {}).map(
-                                  ([subKey, subConfig]) => (
-                                    <Link
-                                      key={`${category}-${subKey}`}
-                                      href={`/${category}/${subKey}`}
-                                      className="block rounded-lg p-2 text-sm text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:text-[#ffffff80] dark:hover:bg-[#ffffff10] dark:hover:text-white"
-                                    >
-                                      {subConfig.title}
-                                    </Link>
-                                  ),
-                                )}
-                              </div>
-                            ))}
+                            {Object.entries(group.categories || {}).map(
+                              ([categoryKey, category]) => (
+                                <Link
+                                  key={categoryKey}
+                                  href={`/${categoryKey}`}
+                                  className="block rounded-lg p-2 text-sm text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:text-[#ffffff80] dark:hover:bg-[#ffffff10] dark:hover:text-white"
+                                >
+                                  {category.label}
+                                </Link>
+                              ),
+                            )}
                           </div>
                         </div>
                       ))}
@@ -198,16 +176,20 @@ export function TopBar() {
                 All Converters
               </h3>
               <div className="grid grid-cols-2 gap-3">
-                {Object.entries(configs).map(([category, config]) => (
-                  <Link
-                    key={category}
-                    href={`/${category}/${Object.keys(config.subcategories || {})[0] || ""}`}
-                    className="rounded-lg bg-gray-50 p-3 text-base text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:bg-[#ffffff08] dark:text-[#ffffff80] dark:hover:bg-[#ffffff10] dark:hover:text-white"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {config.title}
-                  </Link>
-                ))}
+                {Object.entries(configs).flatMap(([groupKey, group]) =>
+                  Object.entries(group.categories || {}).map(
+                    ([categoryKey, category]) => (
+                      <Link
+                        key={`${groupKey}-${categoryKey}`}
+                        href={`/${categoryKey}`}
+                        className="rounded-lg bg-gray-50 p-3 text-base text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:bg-[#ffffff08] dark:text-[#ffffff80] dark:hover:bg-[#ffffff10] dark:hover:text-white"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        {category.label}
+                      </Link>
+                    ),
+                  ),
+                )}
               </div>
             </div>
           </div>

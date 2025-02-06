@@ -15,18 +15,11 @@ export async function GET(
       ).then((m) => m.default);
       return NextResponse.json(rawConfig);
     } catch {
-      // If direct import fails, check parent categories
-      const parentCategories = [
-        "common",
-        "electricity",
-        "engineering",
-        "fluid",
-        "heat",
-        "light",
-        "magnetism",
-        "other",
-        "radiology",
-      ];
+      // If direct import fails, check parent categories from categoryGroups.json
+      const { groups } = await import("@/config/categoryGroups.json").then(
+        (m) => m.default,
+      );
+      const parentCategories = groups.map((group) => group.id);
 
       for (const parentCategory of parentCategories) {
         try {

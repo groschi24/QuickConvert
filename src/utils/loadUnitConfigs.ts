@@ -166,60 +166,62 @@ export async function loadUnitConfig(category: UnitCategory): Promise<
 interface CategoryGroup {
   id: string;
   label: string;
-  categories: UnitCategory[];
 }
 
 interface CategoryGroupsConfig {
   groups: CategoryGroup[];
 }
 
-export async function loadAllUnitConfigs(): Promise<
-  Record<UnitCategory, Awaited<ReturnType<typeof loadUnitConfig>>>
-> {
+interface GroupedUnitConfigs {
+  [groupId: string]: {
+    label: string;
+    categories: {
+      [category: string]: UnitConfig & {
+        convertFn: (value: number, from: string, to: string) => number;
+      };
+    };
+  };
+}
+
+export async function loadAllUnitConfigs(): Promise<GroupedUnitConfigs> {
   const baseUrl =
     typeof window === "undefined"
       ? process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
       : "";
 
-  // Fetch category groups
-  const groupsResponse = await fetch(`${baseUrl}/categoryGroups.json`);
+  // Fetch category groups from API
+  const groupsResponse = await fetch(`${baseUrl}/api/categoryGroups`);
 
   if (!groupsResponse.ok) {
     throw new Error("Failed to fetch category groups");
   }
 
   const groupsConfig = (await groupsResponse.json()) as CategoryGroupsConfig;
+  const result: GroupedUnitConfigs = {};
 
-  // Get all categories from the groups
-  const categories = Array.from(
-    new Set(groupsConfig.groups.flatMap((group) => group.categories)),
-  ) as UnitCategory[];
+  // Process each group and its categories
+  await Promise.all(
+    groupsConfig.groups.map(async (group) => {
+      try {
+        // Fetch categories for this group
+        const categoriesResponse = await fetch(
+          `${baseUrl}/api/units/${group.id}`,
+        );
+        if (!categoriesResponse.ok) {
+          throw new Error(`Failed to fetch categories for group ${group.id}`);
+        }
 
-  // Organize categories based on groups
-  const categoryGroups = new Map<string, string[]>();
-  groupsConfig.groups.forEach((group) => {
-    categoryGroups.set(
-      group.id,
-      group.categories.filter((cat) => categories.includes(cat)),
-    );
-  });
+        const categories = await categoriesResponse.json();
 
-  // Add remaining categories to 'other' group
-  const assignedCategories = Array.from(categoryGroups.values()).flat();
-  const otherCategories = categories.filter(
-    (cat) => !assignedCategories.includes(cat),
-  );
-  categoryGroups.set("other", otherCategories);
-
-  const configs = await Promise.all(
-    categories.map(async (category) => {
-      const config = await loadUnitConfig(category);
-      return [category, config] as const;
+        result[group.id] = {
+          label: group.label,
+          categories: categories,
+        };
+      } catch (error) {
+        console.error(`Error processing group ${group.id}:`, error);
+      }
     }),
   );
 
-  return Object.fromEntries(configs) as Record<
-    UnitCategory,
-    Awaited<ReturnType<typeof loadUnitConfig>>
-  >;
+  return result;
 }
