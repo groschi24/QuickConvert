@@ -13,8 +13,6 @@ export function TopBar() {
   const [isOpen, setIsOpen] = useState(false);
   const [configs, setConfigs] = useState<Record<UnitCategory, any>>({});
 
-  console.log("configs: ", configs);
-
   useEffect(() => {
     const fetchConfigs = async () => {
       const allConfigs = await loadAllUnitConfigs();

@@ -40,8 +40,6 @@ export default function UnitConverter({
     return <div>Loading...</div>;
   }
 
-  console.log("C: ", config);
-
   return (
     <ConversionWrapper
       category={category}

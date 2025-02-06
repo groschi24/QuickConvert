@@ -19,6 +19,7 @@ export function useUnitConverter(
   category: UnitCategory,
   initialFromUnit?: string,
   initialToUnit?: string,
+  units: { value: string; label: string }[] = [],
 ) {
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -48,8 +49,14 @@ export function useUnitConverter(
         );
         if (!isNaN(converted)) {
           setToValue(converted.toFixed(4));
+          const fromUnitLabel =
+            units.find((u) => u.value === defaultFromUnit)?.label ??
+            defaultFromUnit;
+          const toUnitLabel =
+            units.find((u) => u.value === defaultToUnit)?.label ??
+            defaultToUnit;
           setResult(
-            `${defaultValue} ${defaultFromUnit} = ${converted.toFixed(4)} ${defaultToUnit}`,
+            `${defaultValue} ${fromUnitLabel} = ${converted.toFixed(4)} ${toUnitLabel}`,
           );
         }
       } catch (error) {
@@ -59,7 +66,7 @@ export function useUnitConverter(
       }
     };
     initializeConversion();
-  }, [defaultValue, defaultFromUnit, defaultToUnit, category]);
+  }, [defaultValue, defaultFromUnit, defaultToUnit, category, units]);
 
   useEffect(() => {
     const savedHistory = localStorage.getItem("conversionHistory");
@@ -115,7 +122,12 @@ export function useUnitConverter(
           );
           if (!isNaN(converted)) {
             setToValue(converted.toFixed(4));
-            setResult(`${numValue} ${from} = ${converted.toFixed(4)} ${to}`);
+            const fromUnitLabel =
+              units.find((u) => u.value === from)?.label ?? from;
+            const toUnitLabel = units.find((u) => u.value === to)?.label ?? to;
+            setResult(
+              `${numValue} ${fromUnitLabel} = ${converted.toFixed(4)} ${toUnitLabel}`,
+            );
           } else {
             setToValue("");
             setResult("");
@@ -128,7 +140,14 @@ export function useUnitConverter(
       }
     };
     updateFromSearchParams();
-  }, [searchParams, defaultValue, defaultFromUnit, defaultToUnit, category]);
+  }, [
+    searchParams,
+    defaultValue,
+    defaultFromUnit,
+    defaultToUnit,
+    category,
+    units,
+  ]);
 
   useEffect(() => {
     if (
@@ -176,7 +195,11 @@ export function useUnitConverter(
         );
         if (!isNaN(converted)) {
           setToValue(converted.toFixed(4));
-          const resultText = `${numValue} ${fromUnit} = ${converted.toFixed(4)} ${toUnit}`;
+          const fromUnitLabel =
+            units.find((u) => u.value === fromUnit)?.label ?? fromUnit;
+          const toUnitLabel =
+            units.find((u) => u.value === toUnit)?.label ?? toUnit;
+          const resultText = `${numValue} ${fromUnitLabel} = ${converted.toFixed(4)} ${toUnitLabel}`;
           setResult(resultText);
 
           const params = new URLSearchParams();
@@ -218,7 +241,11 @@ export function useUnitConverter(
         );
         if (!isNaN(converted)) {
           setFromValue(converted.toFixed(4));
-          const resultText = `${converted.toFixed(4)} ${fromUnit} = ${numValue} ${toUnit}`;
+          const fromUnitLabel =
+            units.find((u) => u.value === fromUnit)?.label ?? fromUnit;
+          const toUnitLabel =
+            units.find((u) => u.value === toUnit)?.label ?? toUnit;
+          const resultText = `${converted.toFixed(4)} ${fromUnitLabel} = ${numValue} ${toUnitLabel}`;
           setResult(resultText);
 
           const params = new URLSearchParams();
@@ -262,7 +289,11 @@ export function useUnitConverter(
           );
           if (!isNaN(converted)) {
             setToValue(converted.toFixed(4));
-            const resultText = `${numValue} ${newFromUnit} = ${converted.toFixed(4)} ${newToUnit}`;
+            const fromUnitLabel =
+              units.find((u) => u.value === newFromUnit)?.label ?? newFromUnit;
+            const toUnitLabel =
+              units.find((u) => u.value === newToUnit)?.label ?? newToUnit;
+            const resultText = `${numValue} ${fromUnitLabel} = ${converted.toFixed(4)} ${toUnitLabel}`;
             setResult(resultText);
 
             const params = new URLSearchParams();
