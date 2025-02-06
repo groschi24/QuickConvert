@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { loadUnitConfig } from "@/utils/loadUnitConfigs";
-import { UnitCategory } from "@/types/units";
+import type { UnitCategory } from "@/types/units";
 
 type Props = {
   params: Promise<{ category: string; from: string; to: string }>;

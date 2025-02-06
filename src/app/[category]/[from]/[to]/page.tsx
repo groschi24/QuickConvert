@@ -33,7 +33,7 @@ export default function UnitConverter({
       }
     };
 
-    loadConfig();
+    void loadConfig();
   }, [category]);
 
   if (isLoading || !config) {
