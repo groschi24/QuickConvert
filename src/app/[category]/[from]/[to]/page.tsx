@@ -34,7 +34,7 @@ export default function UnitConverter({
     handleUnitChange,
     removeFromHistory,
     clearHistory,
-  } = useUnitConverter(config, category, from, to);
+  } = useUnitConverter(category, from, to);
 
   return (
     <div className="font-inter flex min-h-screen flex-col bg-gradient-to-b from-gray-50 via-white to-gray-50 dark:from-[#151515] dark:via-[#000000] dark:to-[#151515]">

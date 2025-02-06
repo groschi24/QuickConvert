@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "value": { "type": "string" },
+          "label": { "type": "string" },
+          "units": {
+            "type": "object",
+            "patternProperties": {
+              "^.*$": {
+                "type": "object",
+                "properties": {
+                  "label": { "type": "string" },
+                  "conversion": {
+                    "type": "object",
+                    "properties": {
+                      "baseUnit": { "type": "string" },
+                      "formula": { "type": "string" },
+                      "reverseFormula": { "type": "string" }
+                    },
+                    "required": ["baseUnit", "formula"]
+                  }
+                },
+                "required": ["label", "conversion"]
+              }
+            }
+          }
+        },
+        "required": ["name", "value", "label", "units"]
+      }
+    }
+  },
+  "required": ["categories"]
+}

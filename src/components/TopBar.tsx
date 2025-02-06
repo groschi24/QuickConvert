@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Menu, MenuButton, MenuItems } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import { categoryGroups } from "@/config/units";
+import { categoryConfigs } from "@/config/categoryConfigs";
 import { UnitSearch } from "./UnitConverter/UnitSearch";
 
 export function TopBar() {
@@ -58,24 +58,38 @@ export function TopBar() {
                   <div className="mb-4 w-full">
                     <UnitSearch />
                   </div>
-                  {categoryGroups.map((group) => (
-                    <div key={group.name} className="space-y-3">
-                      <h3 className="text-sm font-medium text-gray-900 dark:text-white">
-                        {group.name}
-                      </h3>
-                      <div className="grid grid-cols-2 gap-2">
-                        {group.categories.map((category) => (
-                          <Link
-                            key={category.value}
-                            href={`/${category.value}`}
-                            className="rounded-lg p-2 text-sm text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:text-[#ffffff80] dark:hover:bg-[#ffffff10] dark:hover:text-white"
-                          >
-                            {category.label}
-                          </Link>
-                        ))}
-                      </div>
+                  <div className="space-y-3">
+                    <h3 className="text-sm font-medium text-gray-900 dark:text-white">
+                      All Converters
+                    </h3>
+                    <div className="grid grid-cols-2 gap-2">
+                      {Object.entries(categoryConfigs).map(
+                        ([category, config]) => (
+                          <div key={category} className="space-y-2">
+                            <div className="font-medium text-gray-900 dark:text-white">
+                              {config.title}
+                            </div>
+                            {Object.keys(config.units).map((subcategory) => (
+                              <Link
+                                key={`${category}-${subcategory}`}
+                                href={`/${category}?type=${subcategory}`}
+                                className="block rounded-lg p-2 text-sm text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:text-[#ffffff80] dark:hover:bg-[#ffffff10] dark:hover:text-white"
+                              >
+                                {subcategory
+                                  .split("_")
+                                  .map(
+                                    (word) =>
+                                      word.charAt(0).toUpperCase() +
+                                      word.slice(1),
+                                  )
+                                  .join(" ")}
+                              </Link>
+                            ))}
+                          </div>
+                        ),
+                      )}
                     </div>
-                  ))}
+                  </div>
                 </div>
               </MenuItems>
             </Menu>
@@ -156,25 +170,23 @@ export function TopBar() {
             <div className="mb-6">
               <UnitSearch />
             </div>
-            {categoryGroups.map((group) => (
-              <div key={group.name} className="space-y-4">
-                <h3 className="text-lg font-medium text-gray-900 dark:text-white">
-                  {group.name}
-                </h3>
-                <div className="grid grid-cols-2 gap-3">
-                  {group.categories.map((category) => (
-                    <Link
-                      key={category.value}
-                      href={`/${category.value}`}
-                      className="rounded-lg bg-gray-50 p-3 text-base text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:bg-[#ffffff08] dark:text-[#ffffff80] dark:hover:bg-[#ffffff10] dark:hover:text-white"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {category.label}
-                    </Link>
-                  ))}
-                </div>
+            <div className="space-y-4">
+              <h3 className="text-lg font-medium text-gray-900 dark:text-white">
+                All Converters
+              </h3>
+              <div className="grid grid-cols-2 gap-3">
+                {Object.entries(categoryConfigs).map(([category, config]) => (
+                  <Link
+                    key={category}
+                    href={`/${category}`}
+                    className="rounded-lg bg-gray-50 p-3 text-base text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:bg-[#ffffff08] dark:text-[#ffffff80] dark:hover:bg-[#ffffff10] dark:hover:text-white"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {config.title}
+                  </Link>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </div>

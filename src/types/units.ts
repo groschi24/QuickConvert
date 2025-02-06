@@ -30,8 +30,18 @@ export interface CategoryConfig {
   defaultFrom: string;
   /** Default 'to' unit */
   defaultTo: string;
-  /** Function to perform the conversion */
-  convertFn: ConversionFunction;
+  /** Formula template for displaying the conversion formula */
+  formula?: string;
+  /** Base unit for the category (if applicable) */
+  baseUnit?: string;
+  /** Conversion factors and formulas */
+  conversions: Record<
+    string,
+    {
+      to: Record<string, number | string>;
+      formula?: string;
+    }
+  >;
 }
 
 /**

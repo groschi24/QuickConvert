@@ -1,0 +1,76 @@
+{
+  "illuminance": {
+    "label": "Illuminance",
+    "baseUnit": "lux",
+    "units": {
+      "lux": {
+        "label": "Lux",
+        "conversion": {
+          "baseUnit": "lux",
+          "formula": "x=x"
+        }
+      },
+      "foot_candle": {
+        "label": "Foot Candle",
+        "conversion": {
+          "baseUnit": "lux",
+          "formula": "x=x*10.7639"
+        }
+      },
+      "phot": {
+        "label": "Phot",
+        "conversion": {
+          "baseUnit": "lux",
+          "formula": "x=x*10000"
+        }
+      }
+    }
+  },
+  "luminance": {
+    "label": "Luminance",
+    "baseUnit": "candela_per_square_meter",
+    "units": {
+      "candela_per_square_meter": {
+        "label": "Candela per Square Meter",
+        "conversion": {
+          "baseUnit": "candela_per_square_meter",
+          "formula": "x=x"
+        }
+      },
+      "foot_lambert": {
+        "label": "Foot Lambert",
+        "conversion": {
+          "baseUnit": "candela_per_square_meter",
+          "formula": "x=x*3.426259"
+        }
+      },
+      "lambert": {
+        "label": "Lambert",
+        "conversion": {
+          "baseUnit": "candela_per_square_meter",
+          "formula": "x=x*3183.099"
+        }
+      }
+    }
+  },
+  "luminous_flux": {
+    "label": "Luminous Flux",
+    "baseUnit": "lumen",
+    "units": {
+      "lumen": {
+        "label": "Lumen",
+        "conversion": {
+          "baseUnit": "lumen",
+          "formula": "x=x"
+        }
+      },
+      "candela_steradian": {
+        "label": "Candela Steradian",
+        "conversion": {
+          "baseUnit": "lumen",
+          "formula": "x=x"
+        }
+      }
+    }
+  }
+}

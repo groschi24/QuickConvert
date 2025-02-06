@@ -1,0 +1,83 @@
+{
+  "velocity_angular": {
+    "label": "Angular Velocity",
+    "baseUnit": "radians_per_second",
+    "units": {
+      "radians_per_second": {
+        "label": "Radians per Second",
+        "conversion": {
+          "baseUnit": "radians_per_second",
+          "formula": "x=x"
+        }
+      },
+      "degrees_per_second": {
+        "label": "Degrees per Second",
+        "conversion": {
+          "baseUnit": "radians_per_second",
+          "formula": "x=x*0.0174533"
+        }
+      },
+      "revolutions_per_minute": {
+        "label": "Revolutions per Minute",
+        "conversion": {
+          "baseUnit": "radians_per_second",
+          "formula": "x=x*0.10472"
+        }
+      }
+    }
+  },
+  "acceleration": {
+    "label": "Acceleration",
+    "baseUnit": "meters_per_second_squared",
+    "units": {
+      "meters_per_second_squared": {
+        "label": "Meters per Second²",
+        "conversion": {
+          "baseUnit": "meters_per_second_squared",
+          "formula": "x=x"
+        }
+      },
+      "feet_per_second_squared": {
+        "label": "Feet per Second²",
+        "conversion": {
+          "baseUnit": "meters_per_second_squared",
+          "formula": "x=x*0.3048"
+        }
+      },
+      "gravity": {
+        "label": "Standard Gravity (g)",
+        "conversion": {
+          "baseUnit": "meters_per_second_squared",
+          "formula": "x=x*9.80665"
+        }
+      }
+    }
+  },
+  "acceleration_angular": {
+    "label": "Angular Acceleration",
+    "baseUnit": "radians_per_second_squared",
+    "units": {
+      "radians_per_second_squared": {
+        "label": "Radians per Second²",
+        "conversion": {
+          "baseUnit": "radians_per_second_squared",
+          "formula": "x=x"
+        }
+      },
+      "degrees_per_second_squared": {
+        "label": "Degrees per Second²",
+        "conversion": {
+          "baseUnit": "radians_per_second_squared",
+          "formula": "x=x*0.0174533"
+        }
+      },
+      "revolutions_per_minute_squared": {
+        "label": "Revolutions per Minute²",
+        "conversion": {
+          "baseUnit": "radians_per_second_squared",
+          "formula": "x=x*0.10472"
+        }
+      }
+    }
+  }
+}

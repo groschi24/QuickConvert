@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { categories } from "@/config/units";
+import { loadAllUnitConfigs } from "@/utils/loadUnitConfigs";
 import Header from "@/components/Header";
 import ScrollingContainer from "@/components/ScrollingContainer";
 
@@ -115,18 +115,18 @@ export default function Home() {
             </p>
           </div>
           <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            {categories.map((category) => (
+            {Object.entries(loadAllUnitConfigs()).map(([key, config]) => (
               <Link
-                key={category.value}
-                href={`/${category.value}`}
+                key={key}
+                href={`/${key}`}
                 className="group relative transform overflow-hidden rounded-xl border border-gray-200 bg-white p-8 shadow-md backdrop-blur-sm transition-all duration-200 hover:scale-105 hover:border-gray-300 hover:shadow-lg dark:border-[#ffffff10] dark:bg-[#151515] dark:hover:border-[#ffffff20]"
               >
                 <div className="absolute inset-0 -z-10 bg-gradient-to-br from-indigo-50 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 dark:from-indigo-950/30"></div>
                 <h3 className="text-xl font-semibold text-gray-900 group-hover:text-indigo-600 dark:text-[#ffffffcc] dark:group-hover:text-indigo-400">
-                  {category.label}
+                  {config.title || key}
                 </h3>
                 <p className="mt-2 text-sm text-gray-600 dark:text-[#ffffff80]">
-                  Convert {category.label.toLowerCase()} units instantly
+                  Convert {(config.title || key).toLowerCase()} units instantly
                 </p>
               </Link>
             ))}
@@ -148,50 +148,6 @@ export default function Home() {
             <p className="mx-auto max-w-2xl text-lg text-gray-600 dark:text-[#ffffffaa]">
               Discover the powerful features that make our converter stand out
             </p>
-          </div>
-          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              {
-                title: "Real-time Conversion",
-                description:
-                  "See results instantly as you type with our lightning-fast converter",
-              },
-              {
-                title: "Multiple Categories",
-                description:
-                  "Convert units across various categories from length to digital storage",
-              },
-              {
-                title: "Dark Mode Support",
-                description: "Easy on your eyes with automatic theme detection",
-              },
-              {
-                title: "Conversion History",
-                description:
-                  "Track your recent conversions with local storage support",
-              },
-              {
-                title: "Formula Display",
-                description:
-                  "Learn how conversions work with displayed formulas",
-              },
-              {
-                title: "Share Results",
-                description: "Easily share conversion results via URL",
-              },
-            ].map((feature, index) => (
-              <div
-                key={index}
-                className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm dark:border-[#ffffff10] dark:bg-[#151515]"
-              >
-                <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-[#ffffffee]">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-600 dark:text-[#ffffffaa]">
-                  {feature.description}
-                </p>
-              </div>
-            ))}
           </div>
         </div>
       </section>

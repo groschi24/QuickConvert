@@ -1,0 +1,201 @@
+{
+  "length": {
+    "label": "Length",
+    "baseUnit": "meters",
+    "units": {
+      "meters": {
+        "label": "Meters",
+        "conversion": {
+          "baseUnit": "meters",
+          "formula": "x=x"
+        }
+      },
+      "kilometers": {
+        "label": "Kilometers",
+        "conversion": {
+          "baseUnit": "meters",
+          "formula": "x=x*1000"
+        }
+      },
+      "centimeters": {
+        "label": "Centimeters",
+        "conversion": {
+          "baseUnit": "meters",
+          "formula": "x=x*0.01"
+        }
+      },
+      "millimeters": {
+        "label": "Millimeters",
+        "conversion": {
+          "baseUnit": "meters",
+          "formula": "x=x*0.001"
+        }
+      },
+      "feet": {
+        "label": "Feet",
+        "conversion": {
+          "baseUnit": "meters",
+          "formula": "x=x*0.3048"
+        }
+      },
+      "inches": {
+        "label": "Inches",
+        "conversion": {
+          "baseUnit": "meters",
+          "formula": "x=x*0.0254"
+        }
+      },
+      "yards": {
+        "label": "Yards",
+        "conversion": {
+          "baseUnit": "meters",
+          "formula": "x=x*0.9144"
+        }
+      },
+      "miles": {
+        "label": "Miles",
+        "conversion": {
+          "baseUnit": "meters",
+          "formula": "x=x*1609.344"
+        }
+      }
+    }
+  },
+  "mass": {
+    "label": "Mass",
+    "baseUnit": "kilograms",
+    "units": {
+      "kilograms": {
+        "label": "Kilograms",
+        "conversion": {
+          "baseUnit": "kilograms",
+          "formula": "x=x"
+        }
+      },
+      "grams": {
+        "label": "Grams",
+        "conversion": {
+          "baseUnit": "kilograms",
+          "formula": "x=x*0.001"
+        }
+      },
+      "milligrams": {
+        "label": "Milligrams",
+        "conversion": {
+          "baseUnit": "kilograms",
+          "formula": "x=x*0.000001"
+        }
+      },
+      "pounds": {
+        "label": "Pounds",
+        "conversion": {
+          "baseUnit": "kilograms",
+          "formula": "x=x*0.453592"
+        }
+      },
+      "ounces": {
+        "label": "Ounces",
+        "conversion": {
+          "baseUnit": "kilograms",
+          "formula": "x=x*0.0283495"
+        }
+      },
+      "metric_tons": {
+        "label": "Metric Tons",
+        "conversion": {
+          "baseUnit": "kilograms",
+          "formula": "x=x*1000"
+        }
+      }
+    }
+  },
+  "time": {
+    "label": "Time",
+    "baseUnit": "seconds",
+    "units": {
+      "seconds": {
+        "label": "Seconds",
+        "conversion": {
+          "baseUnit": "seconds",
+          "formula": "x=x"
+        }
+      },
+      "minutes": {
+        "label": "Minutes",
+        "conversion": {
+          "baseUnit": "seconds",
+          "formula": "x=x*60"
+        }
+      },
+      "hours": {
+        "label": "Hours",
+        "conversion": {
+          "baseUnit": "seconds",
+          "formula": "x=x*3600"
+        }
+      },
+      "days": {
+        "label": "Days",
+        "conversion": {
+          "baseUnit": "seconds",
+          "formula": "x=x*86400"
+        }
+      },
+      "weeks": {
+        "label": "Weeks",
+        "conversion": {
+          "baseUnit": "seconds",
+          "formula": "x=x*604800"
+        }
+      }
+    }
+  },
+  "area": {
+    "label": "Area",
+    "baseUnit": "square_meters",
+    "units": {
+      "square_meters": {
+        "label": "Square Meters",
+        "conversion": {
+          "baseUnit": "square_meters",
+          "formula": "x=x"
+        }
+      },
+      "square_kilometers": {
+        "label": "Square Kilometers",
+        "conversion": {
+          "baseUnit": "square_meters",
+          "formula": "x=x*1000000"
+        }
+      },
+      "square_feet": {
+        "label": "Square Feet",
+        "conversion": {
+          "baseUnit": "square_meters",
+          "formula": "x=x*0.092903"
+        }
+      },
+      "square_yards": {
+        "label": "Square Yards",
+        "conversion": {
+          "baseUnit": "square_meters",
+          "formula": "x=x*0.836127"
+        }
+      },
+      "acres": {
+        "label": "Acres",
+        "conversion": {
+          "baseUnit": "square_meters",
+          "formula": "x=x*4046.86"
+        }
+      },
+      "hectares": {
+        "label": "Hectares",
+        "conversion": {
+          "baseUnit": "square_meters",
+          "formula": "x=x*10000"
+        }
+      }
+    }
+  }
+}

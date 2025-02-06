@@ -1,0 +1,123 @@
+{
+  "voltage": {
+    "label": "Voltage",
+    "baseUnit": "volts",
+    "units": {
+      "volts": {
+        "label": "Volts",
+        "conversion": {
+          "baseUnit": "volts",
+          "formula": "x=x"
+        }
+      },
+      "kilovolts": {
+        "label": "Kilovolts",
+        "conversion": {
+          "baseUnit": "volts",
+          "formula": "x=x*1000"
+        }
+      },
+      "millivolts": {
+        "label": "Millivolts",
+        "conversion": {
+          "baseUnit": "volts",
+          "formula": "x=x*0.001"
+        }
+      }
+    }
+  },
+  "current": {
+    "label": "Current",
+    "baseUnit": "amperes",
+    "units": {
+      "amperes": {
+        "label": "Amperes",
+        "conversion": {
+          "baseUnit": "amperes",
+          "formula": "x=x"
+        }
+      },
+      "milliamperes": {
+        "label": "Milliamperes",
+        "conversion": {
+          "baseUnit": "amperes",
+          "formula": "x=x*0.001"
+        }
+      },
+      "kiloamperes": {
+        "label": "Kiloamperes",
+        "conversion": {
+          "baseUnit": "amperes",
+          "formula": "x=x*1000"
+        }
+      }
+    }
+  },
+  "resistance": {
+    "label": "Resistance",
+    "baseUnit": "ohms",
+    "units": {
+      "ohms": {
+        "label": "Ohms",
+        "conversion": {
+          "baseUnit": "ohms",
+          "formula": "x=x"
+        }
+      },
+      "kiloohms": {
+        "label": "Kiloohms",
+        "conversion": {
+          "baseUnit": "ohms",
+          "formula": "x=x*1000"
+        }
+      },
+      "megaohms": {
+        "label": "Megaohms",
+        "conversion": {
+          "baseUnit": "ohms",
+          "formula": "x=x*1000000"
+        }
+      }
+    }
+  },
+  "power": {
+    "label": "Power",
+    "baseUnit": "watts",
+    "units": {
+      "watts": {
+        "label": "Watts",
+        "conversion": {
+          "baseUnit": "watts",
+          "formula": "x=x"
+        },
+        "voltageConversion": {
+          "formula": "x=Math.sqrt(x*1)"
+        }
+      },
+      "kilowatts": {
+        "label": "Kilowatts",
+        "conversion": {
+          "baseUnit": "watts",
+          "formula": "x=x*1000"
+        },
+        "voltageConversion": {
+          "formula": "x=Math.sqrt(x*1000)"
+        }
+      },
+      "megawatts": {
+        "label": "Megawatts",
+        "conversion": {
+          "baseUnit": "watts",
+          "formula": "x=x*1000000"
+        }
+      },
+      "horsepower": {
+        "label": "Horsepower",
+        "conversion": {
+          "baseUnit": "watts",
+          "formula": "x=x*745.7"
+        }
+      }
+    }
+  }
+}

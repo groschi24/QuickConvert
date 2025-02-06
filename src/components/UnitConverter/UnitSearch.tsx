@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
-import { categoryConfigs } from "@/config/categoryConfigs";
+import { loadAllUnitConfigs } from "@/utils/loadUnitConfigs";
 
 export function UnitSearch() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -37,17 +37,18 @@ export function UnitSearch() {
 
     const searchLower = searchTerm.toLowerCase();
 
-    Object.entries(categoryConfigs).forEach(([category, config]) => {
-      config.units.forEach((fromUnit) => {
+    const configs = loadAllUnitConfigs();
+    Object.entries(configs).forEach(([category, config]) => {
+      Object.entries(config.units).forEach(([fromKey, fromUnit]) => {
         if (
           fromUnit.label.toLowerCase().includes(searchLower) ||
-          fromUnit.value.toLowerCase().includes(searchLower)
+          fromKey.toLowerCase().includes(searchLower)
         ) {
-          config.units.forEach((toUnit) => {
-            if (fromUnit.value !== toUnit.value) {
+          Object.entries(config.units).forEach(([toKey, toUnit]) => {
+            if (fromKey !== toKey) {
               results.push({
-                fromUnit,
-                toUnit,
+                fromUnit: { value: fromKey, label: fromUnit.label },
+                toUnit: { value: toKey, label: toUnit.label },
                 category,
                 categoryTitle: config.title,
               });

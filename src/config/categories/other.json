@@ -1,0 +1,104 @@
+{
+  "angle": {
+    "label": "Angle",
+    "baseUnit": "radians",
+    "units": {
+      "radians": {
+        "label": "Radians",
+        "conversion": {
+          "baseUnit": "radians",
+          "formula": "x=x"
+        }
+      },
+      "degrees": {
+        "label": "Degrees",
+        "conversion": {
+          "baseUnit": "radians",
+          "formula": "x=x*0.0174533"
+        }
+      },
+      "gradians": {
+        "label": "Gradians",
+        "conversion": {
+          "baseUnit": "radians",
+          "formula": "x=x*0.015708"
+        }
+      }
+    }
+  },
+  "data_storage": {
+    "label": "Data Storage",
+    "baseUnit": "bytes",
+    "units": {
+      "bytes": {
+        "label": "Bytes",
+        "conversion": {
+          "baseUnit": "bytes",
+          "formula": "x=x"
+        }
+      },
+      "kilobytes": {
+        "label": "Kilobytes",
+        "conversion": {
+          "baseUnit": "bytes",
+          "formula": "x=x*1024"
+        }
+      },
+      "megabytes": {
+        "label": "Megabytes",
+        "conversion": {
+          "baseUnit": "bytes",
+          "formula": "x=x*1048576"
+        }
+      },
+      "gigabytes": {
+        "label": "Gigabytes",
+        "conversion": {
+          "baseUnit": "bytes",
+          "formula": "x=x*1073741824"
+        }
+      },
+      "terabytes": {
+        "label": "Terabytes",
+        "conversion": {
+          "baseUnit": "bytes",
+          "formula": "x=x*1099511627776"
+        }
+      }
+    }
+  },
+  "frequency": {
+    "label": "Frequency",
+    "baseUnit": "hertz",
+    "units": {
+      "hertz": {
+        "label": "Hertz",
+        "conversion": {
+          "baseUnit": "hertz",
+          "formula": "x=x"
+        }
+      },
+      "kilohertz": {
+        "label": "Kilohertz",
+        "conversion": {
+          "baseUnit": "hertz",
+          "formula": "x=x*1000"
+        }
+      },
+      "megahertz": {
+        "label": "Megahertz",
+        "conversion": {
+          "baseUnit": "hertz",
+          "formula": "x=x*1000000"
+        }
+      },
+      "gigahertz": {
+        "label": "Gigahertz",
+        "conversion": {
+          "baseUnit": "hertz",
+          "formula": "x=x*1000000000"
+        }
+      }
+    }
+  }
+}

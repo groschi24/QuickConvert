@@ -1,6 +1,5 @@
 import type { MetadataRoute } from "next";
-import { categories } from "@/config/units";
-import { categoryConfigs } from "@/config/categoryConfigs";
+import { loadAllUnitConfigs } from "@/utils/loadUnitConfigs";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://quickconvert.app";
@@ -13,28 +12,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 1,
   };
 
+  // Load all unit configurations
+  const unitConfigs = loadAllUnitConfigs();
+
   // Generate category pages URLs
-  const categoryUrls = categories.map((category) => ({
-    url: `${baseUrl}/${category.value}`,
+  const categoryUrls = Object.entries(unitConfigs).map(([value]) => ({
+    url: `${baseUrl}/${value}`,
     lastModified: new Date(),
     changeFrequency: "monthly" as const,
     priority: 0.8,
   }));
 
   // Generate conversion pages URLs
-  const conversionUrls = categories.flatMap((category) => {
-    const config = categoryConfigs[category.value];
-    if (!config) return [];
-
-    return config.units.flatMap((fromUnit: { value: string }) =>
-      config.units.map((toUnit: { value: string }) => ({
-        url: `${baseUrl}/${category.value}/${fromUnit.value}/${toUnit.value}`,
-        lastModified: new Date(),
-        changeFrequency: "monthly" as const,
-        priority: 0.5,
-      })),
-    );
-  });
+  const conversionUrls = Object.entries(unitConfigs).flatMap(
+    ([category, config]) => {
+      const unitEntries = Object.entries(config.units);
+      return unitEntries.flatMap(([fromUnit]) =>
+        unitEntries.map(([toUnit]) => ({
+          url: `${baseUrl}/${category}/${fromUnit}/${toUnit}`,
+          lastModified: new Date(),
+          changeFrequency: "monthly" as const,
+          priority: 0.5,
+        })),
+      );
+    },
+  );
 
   // Generate static pages URLs
   const staticPages = [
