@@ -88,12 +88,16 @@ export async function loadUnitConfig(category: UnitCategory): Promise<
               formulaExpression.startsWith("x*") ||
               formulaExpression.startsWith("x/")
             ) {
-              const evalResult = eval(formulaExpression.replace("x", "1"));
-              factor = typeof evalResult === "number" ? evalResult : 1;
+              const evalResult = Number(
+                eval(formulaExpression.replace("x", "1")),
+              );
+              factor = !Number.isNaN(evalResult) ? evalResult : 1;
             } else {
               // For more complex formulas, evaluate with x=1
-              const evalResult = eval(formulaExpression.replace(/x/g, "1"));
-              factor = typeof evalResult === "number" ? evalResult : 1;
+              const evalResult = Number(
+                eval(formulaExpression.replace(/x/g, "1")),
+              );
+              factor = !Number.isNaN(evalResult) ? evalResult : 1;
             }
 
             if (isNaN(factor)) {
