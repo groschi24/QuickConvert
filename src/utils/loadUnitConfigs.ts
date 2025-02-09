@@ -3,21 +3,21 @@ import type { UnitApiResponse } from "@/types/api";
 
 interface UnitConfig {
   label: string;
-  units: {
-    [key: string]: {
+  units: Record<
+    string,
+    {
       label: string;
       value: string;
       factor: number;
-    };
-  };
+    }
+  >;
   baseUnit?: string;
-  conversions: {
-    [from: string]: {
-      to: {
-        [to: string]: number | string;
-      };
-    };
-  };
+  conversions: Record<
+    string,
+    {
+      to: Record<string, number | string>;
+    }
+  >;
 }
 
 export async function loadUnitConfig(category: UnitCategory): Promise<
@@ -30,7 +30,7 @@ export async function loadUnitConfig(category: UnitCategory): Promise<
 
     const baseUrl =
       typeof window === "undefined"
-        ? process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
+        ? (process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3000")
         : "";
     const response = await fetch(`${baseUrl}/api/units/${categoryStr}`, {
       headers: {
@@ -40,7 +40,7 @@ export async function loadUnitConfig(category: UnitCategory): Promise<
     if (!response.ok) {
       throw new Error(`Failed to fetch ${categoryStr} config`);
     }
-    const rawConfig: UnitApiResponse = await response.json();
+    const rawConfig = (await response.json()) as UnitApiResponse;
 
     const config: UnitConfig = {
       label:
@@ -66,8 +66,13 @@ export async function loadUnitConfig(category: UnitCategory): Promise<
 
     // Process units and build conversion table
     Object.entries(firstMeasureConfig.units).forEach(
-      ([unitKey, unitConfig]: [string, any]) => {
-        const formula = unitConfig?.conversion?.formula ?? "x=x";
+      ([unitKey, unitConfig]) => {
+        type UnitConfigType = {
+          conversion?: { formula: string };
+          label: string;
+        };
+        const typedUnitConfig = unitConfig as UnitConfigType;
+        const formula = typedUnitConfig?.conversion?.formula ?? "x=x";
         let factor = 1;
 
         if (formula !== "x=x") {
@@ -99,7 +104,7 @@ export async function loadUnitConfig(category: UnitCategory): Promise<
         }
 
         config.units[unitKey] = {
-          label: unitConfig.label,
+          label: typedUnitConfig.label,
           value: unitKey,
           factor,
         };
@@ -107,11 +112,12 @@ export async function loadUnitConfig(category: UnitCategory): Promise<
         // Add conversion formulas
         config.conversions[unitKey] = { to: {} };
         Object.entries(firstMeasureConfig.units).forEach(
-          ([toKey, toUnitConfig]: [string, any]) => {
+          ([toKey, toUnitConfig]) => {
+            const typedToUnitConfig = toUnitConfig as UnitConfigType;
             if (unitKey === toKey && config.conversions[unitKey]) {
               config.conversions[unitKey].to[toKey] = 1;
             } else {
-              const toFormula = toUnitConfig?.conversion?.formula ?? "x=x";
+              const toFormula = typedToUnitConfig?.conversion?.formula ?? "x=x";
               try {
                 const fromExpression = formula.split("=")[1]?.trim();
                 const toExpression = toFormula.split("=")[1]?.trim();
@@ -178,18 +184,19 @@ interface CategoryGroupsConfig {
 export interface GroupedUnitConfigs {
   [groupId: string]: {
     label: string;
-    categories: {
-      [category: string]: UnitConfig & {
+    categories: Record<
+      string,
+      UnitConfig & {
         convertFn: (value: number, from: string, to: string) => number;
-      };
-    };
+      }
+    >;
   };
 }
 
 export async function loadAllUnitConfigs(): Promise<GroupedUnitConfigs> {
   const baseUrl =
     typeof window === "undefined"
-      ? process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
+      ? (process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3000")
       : "";
 
   // Fetch category groups from API
