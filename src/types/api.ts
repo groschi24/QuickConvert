@@ -9,12 +9,10 @@ export interface UnitDefinition {
 
 export interface MeasurementTypeConfig {
   label?: string;
-  units: {
-    [key: string]: UnitDefinition;
-  };
+  units: Record<string, UnitDefinition>;
   baseUnit?: string;
 }
 
 export interface UnitApiResponse {
-  [measurementType: string]: MeasurementTypeConfig;
+  measurementType: Record<string, MeasurementTypeConfig>;
 }
