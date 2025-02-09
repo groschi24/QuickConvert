@@ -13,6 +13,5 @@ export interface MeasurementTypeConfig {
   baseUnit?: string;
 }
 
-export interface UnitApiResponse {
-  measurementType: Record<string, MeasurementTypeConfig>;
-}
+export interface UnitApiResponse
+  extends Record<string, MeasurementTypeConfig> {}
