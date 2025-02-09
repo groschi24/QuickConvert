@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import type { UnitCategory } from "@/types/units";
 import { convertWithFormula } from "@/utils/dynamicConverter";
@@ -33,6 +33,12 @@ export function useUnitConverter(
   const [fromUnit, setFromUnit] = useState(defaultFromUnit);
   const [toUnit, setToUnit] = useState(defaultToUnit);
   const [isUserInteraction, setIsUserInteraction] = useState(false);
+  const [lastConversion, setLastConversion] = useState<{
+    value: string;
+    from: string;
+    to: string;
+    result: string;
+  } | null>(null);
   const [result, setResult] = useState("");
   const [conversionHistory, setConversionHistory] = useState<
     ConversionHistoryEntry[]
@@ -65,7 +71,7 @@ export function useUnitConverter(
         setResult("");
       }
     };
-    initializeConversion();
+    void initializeConversion();
   }, [defaultValue, defaultFromUnit, defaultToUnit, category, units]);
 
   useEffect(() => {
@@ -101,6 +107,36 @@ export function useUnitConverter(
     searchParams,
   ]);
 
+  const handleFromValueChange = (value: string) => {
+    setFromValue(value);
+    setIsUserInteraction(true);
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("value", value);
+    router.push(`/${category}/${fromUnit}/${toUnit}?${params.toString()}`, {
+      scroll: false,
+    });
+  };
+
+  const handleToValueChange = (value: string) => {
+    setToValue(value);
+    setIsUserInteraction(true);
+  };
+
+  const handleUnitChange = (newFromUnit: string, newToUnit: string) => {
+    setFromUnit(newFromUnit);
+    setToUnit(newToUnit);
+    setIsUserInteraction(true);
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("from", newFromUnit);
+    params.set("to", newToUnit);
+    router.push(
+      `/${category}/${newFromUnit}/${newToUnit}?${params.toString()}`,
+      {
+        scroll: false,
+      },
+    );
+  };
+
   useEffect(() => {
     const updateFromSearchParams = async () => {
       const value = searchParams.get("value") ?? defaultValue;
@@ -125,9 +161,13 @@ export function useUnitConverter(
             const fromUnitLabel =
               units.find((u) => u.value === from)?.label ?? from;
             const toUnitLabel = units.find((u) => u.value === to)?.label ?? to;
-            setResult(
-              `${numValue} ${fromUnitLabel} = ${converted.toFixed(4)} ${toUnitLabel}`,
-            );
+            const resultText = `${numValue} ${fromUnitLabel} = ${converted.toFixed(4)} ${toUnitLabel}`;
+            setResult(resultText);
+
+            if (isUserInteraction) {
+              saveToHistory(value, from, to, resultText);
+              setIsUserInteraction(false);
+            }
           } else {
             setToValue("");
             setResult("");
@@ -139,7 +179,7 @@ export function useUnitConverter(
         }
       }
     };
-    updateFromSearchParams();
+    void updateFromSearchParams();
   }, [
     searchParams,
     defaultValue,
@@ -149,196 +189,24 @@ export function useUnitConverter(
     units,
   ]);
 
-  useEffect(() => {
-    if (
-      !result ||
-      !fromValue ||
-      !isUserInteraction ||
-      isNaN(parseFloat(fromValue))
-    )
-      return;
+  const saveToHistory = useCallback(
+    (value: string, fromUnit: string, toUnit: string, result: string) => {
+      const newEntry = {
+        id: Math.random().toString(36).substr(2, 9),
+        from: fromUnit,
+        to: toUnit,
+        value,
+        result,
+        category,
+        timestamp: Date.now(),
+      };
 
-    const timer = setTimeout(() => {
-      const isDuplicate =
-        conversionHistory.length > 0 &&
-        conversionHistory[0] !== undefined &&
-        conversionHistory[0].value === fromValue &&
-        conversionHistory[0].from === fromUnit &&
-        conversionHistory[0].to === toUnit;
-
-      if (!isDuplicate) {
-        saveToHistory(fromValue, fromUnit, toUnit, result);
-      }
-    }, 1000);
-
-    return () => clearTimeout(timer);
-  }, [
-    result,
-    fromValue,
-    fromUnit,
-    toUnit,
-    conversionHistory,
-    isUserInteraction,
-  ]);
-
-  const handleFromValueChange = async (value: string) => {
-    setIsUserInteraction(true);
-    setFromValue(value);
-    const numValue = parseFloat(value);
-    if (!isNaN(numValue)) {
-      try {
-        const converted = await convertWithFormula(
-          numValue,
-          fromUnit,
-          toUnit,
-          category,
-        );
-        if (!isNaN(converted)) {
-          setToValue(converted.toFixed(4));
-          const fromUnitLabel =
-            units.find((u) => u.value === fromUnit)?.label ?? fromUnit;
-          const toUnitLabel =
-            units.find((u) => u.value === toUnit)?.label ?? toUnit;
-          const resultText = `${numValue} ${fromUnitLabel} = ${converted.toFixed(4)} ${toUnitLabel}`;
-          setResult(resultText);
-
-          const params = new URLSearchParams();
-          params.set("value", value);
-          params.set("from", fromUnit);
-          params.set("to", toUnit);
-          router.push(
-            `/${category}/${fromUnit}/${toUnit}?${params.toString()}`,
-            {
-              scroll: false,
-            },
-          );
-        } else {
-          setToValue("");
-          setResult("");
-        }
-      } catch (error) {
-        console.error("Error during conversion:", error);
-        setToValue("");
-        setResult("");
-      }
-    } else {
-      setToValue("");
-      setResult("");
-    }
-  };
-
-  const handleToValueChange = async (value: string) => {
-    setIsUserInteraction(true);
-    setToValue(value);
-    const numValue = parseFloat(value);
-    if (!isNaN(numValue)) {
-      try {
-        const converted = await convertWithFormula(
-          numValue,
-          toUnit,
-          fromUnit,
-          category,
-        );
-        if (!isNaN(converted)) {
-          setFromValue(converted.toFixed(4));
-          const fromUnitLabel =
-            units.find((u) => u.value === fromUnit)?.label ?? fromUnit;
-          const toUnitLabel =
-            units.find((u) => u.value === toUnit)?.label ?? toUnit;
-          const resultText = `${converted.toFixed(4)} ${fromUnitLabel} = ${numValue} ${toUnitLabel}`;
-          setResult(resultText);
-
-          const params = new URLSearchParams();
-          params.set("value", converted.toFixed(4));
-          params.set("from", fromUnit);
-          params.set("to", toUnit);
-          router.push(
-            `/${category}/${fromUnit}/${toUnit}?${params.toString()}`,
-            {
-              scroll: false,
-            },
-          );
-        } else {
-          setFromValue("");
-          setResult("");
-        }
-      } catch (error) {
-        console.error("Error during conversion:", error);
-        setFromValue("");
-        setResult("");
-      }
-    } else {
-      setFromValue("");
-      setResult("");
-    }
-  };
-
-  const handleUnitChange = async (newFromUnit: string, newToUnit: string) => {
-    setIsUserInteraction(true);
-    setFromUnit(newFromUnit);
-    setToUnit(newToUnit);
-    if (fromValue) {
-      const numValue = parseFloat(fromValue);
-      if (!isNaN(numValue)) {
-        try {
-          const converted = await convertWithFormula(
-            numValue,
-            newFromUnit,
-            newToUnit,
-            category,
-          );
-          if (!isNaN(converted)) {
-            setToValue(converted.toFixed(4));
-            const fromUnitLabel =
-              units.find((u) => u.value === newFromUnit)?.label ?? newFromUnit;
-            const toUnitLabel =
-              units.find((u) => u.value === newToUnit)?.label ?? newToUnit;
-            const resultText = `${numValue} ${fromUnitLabel} = ${converted.toFixed(4)} ${toUnitLabel}`;
-            setResult(resultText);
-
-            const params = new URLSearchParams();
-            params.set("value", fromValue);
-            params.set("from", newFromUnit);
-            params.set("to", newToUnit);
-            router.push(
-              `/${category}/${newFromUnit}/${newToUnit}?${params.toString()}`,
-              {
-                scroll: false,
-              },
-            );
-          } else {
-            setToValue("");
-            setResult("");
-          }
-        } catch (error) {
-          console.error("Error during conversion:", error);
-          setToValue("");
-          setResult("");
-        }
-      }
-    }
-  };
-
-  const saveToHistory = (
-    value: string,
-    fromUnit: string,
-    toUnit: string,
-    result: string,
-  ) => {
-    const newEntry = {
-      id: Math.random().toString(36).substr(2, 9),
-      from: fromUnit,
-      to: toUnit,
-      value,
-      result,
-      category,
-      timestamp: Date.now(),
-    };
-
-    const updatedHistory = [newEntry, ...conversionHistory].slice(0, 10);
-    setConversionHistory(updatedHistory);
-    localStorage.setItem("conversionHistory", JSON.stringify(updatedHistory));
-  };
+      const updatedHistory = [newEntry, ...conversionHistory].slice(0, 10);
+      setConversionHistory(updatedHistory);
+      localStorage.setItem("conversionHistory", JSON.stringify(updatedHistory));
+    },
+    [category, conversionHistory],
+  );
 
   const removeFromHistory = (id: string) => {
     const updatedHistory = conversionHistory.filter((entry) => entry.id !== id);
