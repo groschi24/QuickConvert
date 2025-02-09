@@ -36,7 +36,7 @@ export function UnitSearch() {
       const allConfigs = await loadAllUnitConfigs();
       setConfigs(allConfigs);
     };
-    fetchConfigs();
+    void fetchConfigs();
   }, []);
 
   useEffect(() => {
@@ -67,7 +67,7 @@ export function UnitSearch() {
 
     const searchLower = searchTerm.toLowerCase();
 
-    Object.entries(configs).forEach(([groupId, group]) => {
+    Object.entries(configs).forEach(([_groupId, group]) => {
       if (group.categories) {
         Object.entries(group.categories).forEach(([category, config]) => {
           if (config.units) {
@@ -82,7 +82,7 @@ export function UnitSearch() {
                       fromUnit: { value: fromKey, label: fromUnit.label },
                       toUnit: { value: toKey, label: toUnit.label },
                       category,
-                      categoryTitle: config.title || "",
+                      categoryTitle: config.title ?? "",
                     });
                   }
                 });

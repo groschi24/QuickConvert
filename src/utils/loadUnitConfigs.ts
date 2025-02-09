@@ -41,8 +41,11 @@ export async function loadUnitConfig(category: UnitCategory): Promise<
       throw new Error(`Failed to fetch ${categoryStr} config`);
     }
     const rawConfig: UnitApiResponse = await response.json();
+
     const config: UnitConfig = {
-      label: categoryStr.charAt(0).toUpperCase() + categoryStr.slice(1),
+      label:
+        rawConfig[categoryStr]?.label ??
+        categoryStr.charAt(0).toUpperCase() + categoryStr.slice(1),
       units: {},
       conversions: {},
       baseUnit: undefined,

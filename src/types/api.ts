@@ -8,6 +8,7 @@ export interface UnitDefinition {
 }
 
 export interface MeasurementTypeConfig {
+  label?: string;
   units: {
     [key: string]: UnitDefinition;
   };
