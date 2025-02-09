@@ -19,7 +19,7 @@ export const convertWithFormula = async (
     } catch (error) {
       // If factor-based conversion fails, fall back to formula-based conversion
       console.warn(
-        `Factor-based conversion failed for ${from} to ${to}: ${error}. Trying formula-based conversion.`,
+        `Factor-based conversion failed for ${String(from)} to ${String(to)}: ${String(error)}. Trying formula-based conversion.`,
       );
     }
 
@@ -30,7 +30,10 @@ export const convertWithFormula = async (
         return value * conversion;
       } else if (typeof conversion === "string") {
         try {
-          return evaluate(conversion.replace(/x/g, value.toString()));
+          const result = evaluate(
+            conversion.replace(/x/g, value.toString()),
+          ) as number;
+          return typeof result === "number" ? result : value;
         } catch (error) {
           console.error(`Error evaluating formula: ${conversion}`, error);
           return value;
@@ -51,12 +54,13 @@ export const convertWithFormula = async (
           baseValue = value * toBaseConversion;
         } else {
           try {
-            baseValue = evaluate(
+            const result = evaluate(
               toBaseConversion.replace(/x/g, value.toString()),
-            );
+            ) as number;
+            baseValue = typeof result === "number" ? result : value;
           } catch (error) {
             console.error(
-              `Error converting to base unit: ${toBaseConversion}`,
+              `Error converting to base unit: ${String(toBaseConversion)}`,
               error,
             );
             return value;
@@ -68,12 +72,13 @@ export const convertWithFormula = async (
           return baseValue * fromBaseConversion;
         } else {
           try {
-            return evaluate(
+            const result = evaluate(
               fromBaseConversion.replace(/x/g, baseValue.toString()),
-            );
+            ) as number;
+            return typeof result === "number" ? result : value;
           } catch (error) {
             console.error(
-              `Error converting from base unit: ${fromBaseConversion}`,
+              `Error converting from base unit: ${String(fromBaseConversion)}`,
               error,
             );
             return value;
@@ -82,10 +87,10 @@ export const convertWithFormula = async (
       }
     }
 
-    console.error(`No conversion path found: ${from} -> ${to}`);
+    console.error(`No conversion path found: ${String(from)} -> ${String(to)}`);
     return value;
   } catch (error) {
-    console.error(`Error loading unit config for ${category}:`, error);
+    console.error(`Error loading unit config for ${String(category)}:`, error);
     return value;
   }
 };
