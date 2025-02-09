@@ -210,34 +210,76 @@ export async function loadAllUnitConfigs(): Promise<GroupedUnitConfigs> {
       ? (process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3000")
       : "";
 
-  // Fetch category groups from API
-  const groupsResponse = await fetch(`${baseUrl}/api/categoryGroups`);
+  let groupsConfig: CategoryGroupsConfig;
 
-  if (!groupsResponse.ok) {
-    throw new Error("Failed to fetch category groups");
+  // During build time or server-side, read directly from the file system
+  if (typeof window === "undefined") {
+    try {
+      const fs = await import("fs");
+      const path = await import("path");
+      const filePath = path.join(
+        process.cwd(),
+        "src/config/categoryGroups.json",
+      );
+      const fileContent = fs.readFileSync(filePath, "utf-8");
+      const parsedContent = JSON.parse(fileContent) as unknown;
+      groupsConfig = parsedContent as CategoryGroupsConfig;
+    } catch (error) {
+      console.error("Error reading category groups:", error);
+      throw new Error("Failed to load category groups");
+    }
+  } else {
+    // In the browser, fetch from API
+    const groupsResponse = await fetch(`${baseUrl}/api/categoryGroups`);
+    if (!groupsResponse.ok) {
+      throw new Error("Failed to fetch category groups");
+    }
+    const groupsData = (await groupsResponse.json()) as unknown;
+    groupsConfig = groupsData as CategoryGroupsConfig;
   }
-
-  const groupsConfig = (await groupsResponse.json()) as CategoryGroupsConfig;
   const result: GroupedUnitConfigs = {};
 
   // Process each group and its categories
   await Promise.all(
     groupsConfig.groups.map(async (group) => {
       try {
-        // Fetch categories for this group
-        const categoriesResponse = await fetch(
-          `${baseUrl}/api/units/${group.id}`,
-        );
-        if (!categoriesResponse.ok) {
-          throw new Error(`Failed to fetch categories for group ${group.id}`);
-        }
-
-        const categories = (await categoriesResponse.json()) as Record<
+        let categories: Record<
           string,
           UnitConfig & {
             convertFn: (value: number, from: string, to: string) => number;
           }
         >;
+
+        if (typeof window === "undefined") {
+          // During build time, read from file system
+          try {
+            const fs = await import("fs");
+            const path = await import("path");
+            const filePath = path.join(
+              process.cwd(),
+              `src/config/categories/${group.id}.json`,
+            );
+            const fileContent = fs.readFileSync(filePath, "utf-8");
+            const parsedContent = JSON.parse(fileContent) as unknown;
+            categories = parsedContent as typeof categories;
+          } catch (error) {
+            console.error(
+              `Error reading categories for group ${group.id}:`,
+              error,
+            );
+            throw new Error(`Failed to load categories for group ${group.id}`);
+          }
+        } else {
+          // In the browser, fetch from API
+          const categoriesResponse = await fetch(
+            `${baseUrl}/api/units/${group.id}`,
+          );
+          if (!categoriesResponse.ok) {
+            throw new Error(`Failed to fetch categories for group ${group.id}`);
+          }
+          const categoriesData = (await categoriesResponse.json()) as unknown;
+          categories = categoriesData as typeof categories;
+        }
 
         result[group.id] = {
           label: group.label,

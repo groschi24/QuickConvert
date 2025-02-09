@@ -10,7 +10,6 @@ import {
   loadAllUnitConfigs,
 } from "@/utils/loadUnitConfigs";
 import { UnitSearch } from "./UnitConverter/UnitSearch";
-import type { UnitCategory } from "@/types/units";
 
 export function TopBar() {
   const [isOpen, setIsOpen] = useState(false);
