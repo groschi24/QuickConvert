@@ -8,10 +8,12 @@ export interface UnitDefinition {
 }
 
 export interface MeasurementTypeConfig {
-  label?: string;
+  label?: string | { label: string };
   units: Record<string, UnitDefinition>;
   baseUnit?: string;
 }
 
-export interface UnitApiResponse
-  extends Record<string, MeasurementTypeConfig> {}
+export type UnitApiResponse = Record<
+  string,
+  MeasurementTypeConfig | Record<string, { label: string }>
+>;

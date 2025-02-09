@@ -11,7 +11,7 @@ interface UnitConfig {
       factor: number;
     }
   >;
-  baseUnit?: string;
+  baseUnit?: string | { label: string };
   conversions: Record<
     string,
     {
@@ -44,8 +44,12 @@ export async function loadUnitConfig(category: UnitCategory): Promise<
 
     const config: UnitConfig = {
       label:
-        rawConfig[categoryStr]?.label ??
-        categoryStr.charAt(0).toUpperCase() + categoryStr.slice(1),
+        typeof rawConfig[categoryStr]?.label === "string"
+          ? rawConfig[categoryStr]?.label
+          : typeof rawConfig[categoryStr]?.label === "object" &&
+              "label" in rawConfig[categoryStr]?.label
+            ? (rawConfig[categoryStr]?.label as { label: string }).label
+            : categoryStr.charAt(0).toUpperCase() + categoryStr.slice(1),
       units: {},
       conversions: {},
       baseUnit: undefined,
@@ -88,12 +92,16 @@ export async function loadUnitConfig(category: UnitCategory): Promise<
               formulaExpression.startsWith("x*") ||
               formulaExpression.startsWith("x/")
             ) {
-              const evalResult = eval(formulaExpression.replace("x", "1"));
-              factor = typeof evalResult === "number" ? evalResult : 1;
+              const evalResult = eval(
+                formulaExpression.replace("x", "1"),
+              ) as number;
+              factor = !isNaN(evalResult) ? evalResult : 1;
             } else {
               // For more complex formulas, evaluate with x=1
-              const evalResult = eval(formulaExpression.replace(/x/g, "1"));
-              factor = typeof evalResult === "number" ? evalResult : 1;
+              const evalResult = eval(
+                formulaExpression.replace(/x/g, "1"),
+              ) as number;
+              factor = !isNaN(evalResult) ? evalResult : 1;
             }
 
             if (isNaN(factor)) {
