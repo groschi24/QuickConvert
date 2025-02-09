@@ -1,5 +1,5 @@
 /** @type {import('next-sitemap').IConfig} */
-module.exports = {
+const config = {
   siteUrl: "https://quickconvert.app",
   generateRobotsTxt: true,
   changefreq: "monthly",
@@ -14,3 +14,5 @@ module.exports = {
     ],
   },
 };
+
+export default config;
