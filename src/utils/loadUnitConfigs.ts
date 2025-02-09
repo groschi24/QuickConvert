@@ -53,7 +53,7 @@ export async function loadUnitConfig(category: UnitCategory): Promise<
 
     // Get the first measurement type
     const firstMeasureConfig = Object.values(rawConfig)[0];
-    if (!firstMeasureConfig || !firstMeasureConfig.units) {
+    if (!firstMeasureConfig?.units) {
       throw new Error(
         `Invalid or missing measurement types in ${categoryStr} config`,
       );
@@ -88,10 +88,12 @@ export async function loadUnitConfig(category: UnitCategory): Promise<
               formulaExpression.startsWith("x*") ||
               formulaExpression.startsWith("x/")
             ) {
-              factor = eval(formulaExpression.replace("x", "1"));
+              const evalResult = eval(formulaExpression.replace("x", "1"));
+              factor = typeof evalResult === "number" ? evalResult : 1;
             } else {
               // For more complex formulas, evaluate with x=1
-              factor = eval(formulaExpression.replace(/x/g, "1"));
+              const evalResult = eval(formulaExpression.replace(/x/g, "1"));
+              factor = typeof evalResult === "number" ? evalResult : 1;
             }
 
             if (isNaN(factor)) {
@@ -181,8 +183,9 @@ interface CategoryGroupsConfig {
   groups: CategoryGroup[];
 }
 
-export interface GroupedUnitConfigs {
-  [groupId: string]: {
+export type GroupedUnitConfigs = Record<
+  string,
+  {
     label: string;
     categories: Record<
       string,
@@ -190,8 +193,8 @@ export interface GroupedUnitConfigs {
         convertFn: (value: number, from: string, to: string) => number;
       }
     >;
-  };
-}
+  }
+>;
 
 export async function loadAllUnitConfigs(): Promise<GroupedUnitConfigs> {
   const baseUrl =
@@ -221,11 +224,16 @@ export async function loadAllUnitConfigs(): Promise<GroupedUnitConfigs> {
           throw new Error(`Failed to fetch categories for group ${group.id}`);
         }
 
-        const categories = await categoriesResponse.json();
+        const categories = (await categoriesResponse.json()) as Record<
+          string,
+          UnitConfig & {
+            convertFn: (value: number, from: string, to: string) => number;
+          }
+        >;
 
         result[group.id] = {
           label: group.label,
-          categories: categories,
+          categories,
         };
       } catch (error) {
         console.error(`Error processing group ${group.id}:`, error);
