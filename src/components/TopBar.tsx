@@ -5,20 +5,27 @@ import Link from "next/link";
 import { Menu, MenuButton, MenuItems } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import { loadAllUnitConfigs } from "@/utils/loadUnitConfigs";
+import {
+  GroupedUnitConfigs,
+  loadAllUnitConfigs,
+} from "@/utils/loadUnitConfigs";
 import { UnitSearch } from "./UnitConverter/UnitSearch";
 import type { UnitCategory } from "@/types/units";
 
 export function TopBar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [configs, setConfigs] = useState<Record<UnitCategory, any>>({});
+  const [configs, setConfigs] = useState<GroupedUnitConfigs>({});
 
   useEffect(() => {
     const fetchConfigs = async () => {
-      const allConfigs = await loadAllUnitConfigs();
-      setConfigs(allConfigs);
+      try {
+        const allConfigs = await loadAllUnitConfigs();
+        setConfigs(allConfigs);
+      } catch (error) {
+        console.error("Error loading configs:", error);
+      }
     };
-    fetchConfigs();
+    void fetchConfigs();
   }, []);
 
   useEffect(() => {

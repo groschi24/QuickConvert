@@ -2,7 +2,7 @@ import type { UnitCategory } from "@/types/units";
 import type { UnitApiResponse } from "@/types/api";
 
 interface UnitConfig {
-  title: string;
+  label: string;
   units: {
     [key: string]: {
       label: string;
@@ -42,7 +42,7 @@ export async function loadUnitConfig(category: UnitCategory): Promise<
     }
     const rawConfig: UnitApiResponse = await response.json();
     const config: UnitConfig = {
-      title: categoryStr.charAt(0).toUpperCase() + categoryStr.slice(1),
+      label: categoryStr.charAt(0).toUpperCase() + categoryStr.slice(1),
       units: {},
       conversions: {},
       baseUnit: undefined,
@@ -155,7 +155,7 @@ export async function loadUnitConfig(category: UnitCategory): Promise<
   } catch (error) {
     console.error(`Error loading config for category ${category}:`, error);
     return {
-      title: category.charAt(0).toUpperCase() + category.slice(1),
+      label: category.charAt(0).toUpperCase() + category.slice(1),
       units: {},
       conversions: {},
       convertFn: () => 0,
@@ -172,7 +172,7 @@ interface CategoryGroupsConfig {
   groups: CategoryGroup[];
 }
 
-interface GroupedUnitConfigs {
+export interface GroupedUnitConfigs {
   [groupId: string]: {
     label: string;
     categories: {

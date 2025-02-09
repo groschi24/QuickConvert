@@ -45,7 +45,7 @@ export default function UnitConverter({
       category={category}
       from={from}
       to={to}
-      title={config.title}
+      title={config.label}
       units={Object.values(config.units).map((item) => ({
         value: item.value,
         label: item.label,

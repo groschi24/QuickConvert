@@ -20,10 +20,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const fromUnit = config.units[from];
   const toUnit = config.units[to];
 
-  const title = `Convert ${fromUnit?.label ?? from} to ${toUnit?.label ?? to} | ${config.title}`;
-  const description = `Convert ${fromUnit?.label ?? from} to ${toUnit?.label ?? to} with our free online ${config.title.toLowerCase()}. Quick, easy, and accurate conversions.`;
+  const title = `Convert ${fromUnit?.label ?? from} to ${toUnit?.label ?? to} | ${config.label}`;
+  const description = `Convert ${fromUnit?.label ?? from} to ${toUnit?.label ?? to} with our free online ${config.label.toLowerCase()}. Quick, easy, and accurate conversions.`;
 
-  const keywords = `unit converter, ${config.title.toLowerCase()}, convert ${fromUnit?.label?.toLowerCase() ?? from} to ${toUnit?.label?.toLowerCase() ?? to}, ${category} converter, online converter, measurement converter, unit conversion tool`;
+  const keywords = `unit converter, ${config.label.toLowerCase()}, convert ${fromUnit?.label?.toLowerCase() ?? from} to ${toUnit?.label?.toLowerCase() ?? to}, ${category} converter, online converter, measurement converter, unit conversion tool`;
 
   return {
     title,

@@ -5,6 +5,12 @@ import ScrollingContainer from "@/components/ScrollingContainer";
 
 import type { PopularConversion } from "@/types/units";
 
+type GroupConfig = {
+  label: string;
+  categories: Record<string, unknown>;
+  title?: string;
+};
+
 export default function Home() {
   const popularConversions: PopularConversion[] = [
     {
@@ -115,7 +121,9 @@ export default function Home() {
             </p>
           </div>
           <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            {Object.entries(loadAllUnitConfigs()).map(([key, config]) => (
+            {Object.entries(
+              loadAllUnitConfigs() as Record<string, GroupConfig>,
+            ).map(([key, config]) => (
               <Link
                 key={key}
                 href={`/${key}`}
@@ -123,10 +131,10 @@ export default function Home() {
               >
                 <div className="absolute inset-0 -z-10 bg-gradient-to-br from-indigo-50 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 dark:from-indigo-950/30"></div>
                 <h3 className="text-xl font-semibold text-gray-900 group-hover:text-indigo-600 dark:text-[#ffffffcc] dark:group-hover:text-indigo-400">
-                  {config.title || key}
+                  {config.label || key}
                 </h3>
                 <p className="mt-2 text-sm text-gray-600 dark:text-[#ffffff80]">
-                  Convert {(config.title || key).toLowerCase()} units instantly
+                  Convert {(config.label || key).toLowerCase()} units instantly
                 </p>
               </Link>
             ))}
