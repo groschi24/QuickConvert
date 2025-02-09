@@ -11,7 +11,7 @@ type GroupConfig = {
   title?: string;
 };
 
-export default function Home() {
+export default async function Home() {
   const popularConversions: PopularConversion[] = [
     {
       from: "kilometers",
@@ -121,9 +121,7 @@ export default function Home() {
             </p>
           </div>
           <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            {Object.entries(
-              loadAllUnitConfigs() as Record<string, GroupConfig>,
-            ).map(([key, config]) => (
+            {Object.entries(await loadAllUnitConfigs()).map(([key, config]) => (
               <Link
                 key={key}
                 href={`/${key}`}

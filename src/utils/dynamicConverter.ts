@@ -43,8 +43,12 @@ export const convertWithFormula = async (
 
     // If no direct conversion, try converting through base unit if available
     if (config.baseUnit) {
-      const toBaseConversion = config.conversions[from]?.to[config.baseUnit];
-      const fromBaseConversion = config.conversions[config.baseUnit]?.to[to];
+      const baseUnitKey =
+        typeof config.baseUnit === "string"
+          ? config.baseUnit
+          : config.baseUnit.label;
+      const toBaseConversion = config.conversions[from]?.to[baseUnitKey];
+      const fromBaseConversion = config.conversions[baseUnitKey]?.to[to];
 
       if (toBaseConversion && fromBaseConversion) {
         let baseValue: number;
