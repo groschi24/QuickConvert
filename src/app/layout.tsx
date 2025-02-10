@@ -34,8 +34,8 @@ export default function RootLayout({
         {process.env.NODE_ENV === "production" && (
           <script
             defer
-            src="https://analytics.wirecore.net/script.js"
-            data-website-id="a7f38de9-163b-4073-94dc-1d2e539e7482"
+            src={process.env.NEXT_PUBLIC_ANALYTICS_URL}
+            data-website-id={process.env.NEXT_PUBLIC_ANALYTICS_WEBSITE_ID}
           ></script>
         )}
       </head>
