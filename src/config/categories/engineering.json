@@ -271,5 +271,43 @@
         "conversion": { "baseUnit": "newton_meter", "formula": "x=x*9.80665" }
       }
     }
+  },
+  "pressure": {
+    "label": "Pressure",
+    "baseUnit": "pascals",
+    "units": {
+      "pascals": {
+        "label": "Pascals (Pa)",
+        "conversion": { "baseUnit": "pascals", "formula": "x=x" }
+      },
+      "kilopascals": {
+        "label": "Kilopascals (kPa)",
+        "conversion": { "baseUnit": "pascals", "formula": "x=x*1000" }
+      },
+      "megapascals": {
+        "label": "Megapascals (MPa)",
+        "conversion": { "baseUnit": "pascals", "formula": "x=x*1000000" }
+      },
+      "bars": {
+        "label": "Bars (bar)",
+        "conversion": { "baseUnit": "pascals", "formula": "x=x*100000" }
+      },
+      "psi": {
+        "label": "Pounds per Square Inch (psi)",
+        "conversion": { "baseUnit": "pascals", "formula": "x=x*6894.757" }
+      },
+      "atmospheres": {
+        "label": "Atmospheres (atm)",
+        "conversion": { "baseUnit": "pascals", "formula": "x=x*101325" }
+      },
+      "torr": {
+        "label": "Torr (Torr)",
+        "conversion": { "baseUnit": "pascals", "formula": "x=x*133.322" }
+      },
+      "mmHg": {
+        "label": "Millimeters of Mercury (mmHg)",
+        "conversion": { "baseUnit": "pascals", "formula": "x=x*133.322" }
+      }
+    }
   }
 }
