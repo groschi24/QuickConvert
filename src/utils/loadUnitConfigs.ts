@@ -1,5 +1,5 @@
-import type { UnitCategory } from "@/types/units";
 import type { UnitApiResponse } from "@/types/api";
+import type { UnitCategory } from "@/types/categoryTypes";
 
 interface UnitConfig {
   label: string;

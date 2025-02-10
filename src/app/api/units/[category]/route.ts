@@ -1,5 +1,5 @@
+import type { UnitCategory } from "@/types/categoryTypes";
 import { type NextRequest, NextResponse } from "next/server";
-import type { UnitCategory } from "@/types/units";
 
 type UnitConfig = Record<string, unknown>;
 type CategoryGroup = { id: string; label: string };
@@ -40,7 +40,7 @@ export async function GET(
           if (category in parentConfig) {
             // If the category exists as a subcategory, return it wrapped in an object
             return NextResponse.json({
-              [category]: parentConfig[category as keyof typeof parentConfig],
+              [category]: parentConfig[category],
             });
           }
         } catch {

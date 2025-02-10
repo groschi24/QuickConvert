@@ -2,10 +2,11 @@
 
 import { useUnitConverter } from "@/hooks/useUnitConverter";
 import { ConversionForm } from "./ConversionForm";
-import { Unit, UnitCategory } from "@/types/units";
+import type { Unit } from "@/types/units";
 import { ConversionResult } from "./ConversionResult";
 import { AllConversions } from "./AllConversions";
 import { ConversionHistory } from "./ConversionHistory";
+import type { UnitCategory } from "@/types/categoryTypes";
 
 interface IProps {
   category: UnitCategory;

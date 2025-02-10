@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { loadUnitConfig } from "@/utils/loadUnitConfigs";
-import type { UnitCategory } from "@/types/units";
 
 type Props = {
   params: Promise<{ category: string; from: string; to: string }>;
@@ -8,7 +7,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { category, from, to } = await params;
-  const config = await loadUnitConfig(category as UnitCategory);
+  const config = await loadUnitConfig(category);
 
   if (!config || Object.keys(config.units).length === 0) {
     return {

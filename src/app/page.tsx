@@ -5,12 +5,6 @@ import ScrollingContainer from "@/components/ScrollingContainer";
 
 import type { PopularConversion } from "@/types/units";
 
-type GroupConfig = {
-  label: string;
-  categories: Record<string, unknown>;
-  title?: string;
-};
-
 export default async function Home() {
   const popularConversions: PopularConversion[] = [
     {

@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import { notFound } from "next/navigation";
 import { loadUnitConfig } from "@/utils/loadUnitConfigs";
-import type { UnitCategory } from "@/types/units";
+import type { UnitCategory } from "@/types/categoryTypes";
 
 export default async function CategoryPage({
   params,

@@ -1,6 +1,6 @@
 import { evaluate } from "mathjs";
 import { loadUnitConfig } from "./loadUnitConfigs";
-import type { UnitCategory } from "@/types/units";
+import type { UnitCategory } from "@/types/categoryTypes";
 
 export const convertWithFormula = async (
   value: number,

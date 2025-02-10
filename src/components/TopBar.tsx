@@ -6,7 +6,7 @@ import { Menu, MenuButton, MenuItems } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import {
-  GroupedUnitConfigs,
+  type GroupedUnitConfigs,
   loadAllUnitConfigs,
 } from "@/utils/loadUnitConfigs";
 import { UnitSearch } from "./UnitConverter/UnitSearch";

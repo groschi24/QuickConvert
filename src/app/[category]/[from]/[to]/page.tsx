@@ -1,10 +1,10 @@
 "use client";
 
 import { notFound } from "next/navigation";
-import type { UnitCategory } from "@/types/units";
 import { loadUnitConfig } from "@/utils/loadUnitConfigs";
 import ConversionWrapper from "@/components/UnitConverter/ConversionWrapper";
 import { use, useEffect, useState } from "react";
+import type { UnitCategory } from "@/types/categoryTypes";
 
 export default function UnitConverter({
   params,

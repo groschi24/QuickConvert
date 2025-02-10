@@ -15,7 +15,6 @@ export function AllConversions({
   fromUnit,
   toUnit,
   units,
-  category,
   convertFn,
 }: AllConversionsProps) {
   return (
@@ -31,31 +30,8 @@ export function AllConversions({
             fromUnit,
             unit.value,
           );
-          let formula = "";
-
-          if (category === "temperature") {
-            if (fromUnit === "celsius") {
-              if (unit.value === "fahrenheit") {
-                formula = "°F = (°C × 9/5) + 32";
-              } else if (unit.value === "kelvin") {
-                formula = "K = °C + 273.15";
-              }
-            } else if (fromUnit === "fahrenheit") {
-              if (unit.value === "celsius") {
-                formula = "°C = (°F - 32) × 5/9";
-              } else if (unit.value === "kelvin") {
-                formula = "K = (°F - 32) × 5/9 + 273.15";
-              }
-            } else if (fromUnit === "kelvin") {
-              if (unit.value === "celsius") {
-                formula = "°C = K - 273.15";
-              } else if (unit.value === "fahrenheit") {
-                formula = "°F = (K - 273.15) × 9/5 + 32";
-              }
-            }
-          } else {
-            formula = `Multiply by ${convertFn(1, fromUnit, unit.value)}`;
-          }
+          const conversionFactor = convertFn(1, fromUnit, unit.value);
+          const formula = `Multiply by ${conversionFactor}`;
 
           return (
             <div

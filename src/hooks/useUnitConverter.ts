@@ -2,8 +2,8 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import type { UnitCategory } from "@/types/units";
 import { convertWithFormula } from "@/utils/dynamicConverter";
+import type { UnitCategory } from "@/types/categoryTypes";
 
 interface ConversionHistoryEntry {
   id: string;
@@ -33,12 +33,7 @@ export function useUnitConverter(
   const [fromUnit, setFromUnit] = useState(defaultFromUnit);
   const [toUnit, setToUnit] = useState(defaultToUnit);
   const [isUserInteraction, setIsUserInteraction] = useState(false);
-  const [lastConversion, setLastConversion] = useState<{
-    value: string;
-    from: string;
-    to: string;
-    result: string;
-  } | null>(null);
+
   const [result, setResult] = useState("");
   const [conversionHistory, setConversionHistory] = useState<
     ConversionHistoryEntry[]
