@@ -4,14 +4,35 @@
     "baseUnit": "radians_per_second",
     "units": {
       "radians_per_second": {
-        "label": "Radians per Second",
+        "label": "Radians/s",
         "conversion": { "baseUnit": "radians_per_second", "formula": "x=x" }
       },
       "degrees_per_second": {
-        "label": "Degrees per Second",
+        "label": "Degrees/s",
         "conversion": {
           "baseUnit": "radians_per_second",
           "formula": "x=x*0.0174533"
+        }
+      },
+      "gradians_per_second": {
+        "label": "Gradians/s",
+        "conversion": {
+          "baseUnit": "radians_per_second",
+          "formula": "x=x*0.01570796"
+        }
+      },
+      "revolutions_per_minute": {
+        "label": "RPM",
+        "conversion": {
+          "baseUnit": "radians_per_second",
+          "formula": "x=x*0.10472"
+        }
+      },
+      "revolutions_per_second": {
+        "label": "RPS",
+        "conversion": {
+          "baseUnit": "radians_per_second",
+          "formula": "x=x*6.28319"
         }
       }
     }
@@ -21,10 +42,24 @@
     "baseUnit": "meters_per_second_squared",
     "units": {
       "meters_per_second_squared": {
-        "label": "Meters per Second²",
+        "label": "m/s²",
         "conversion": {
           "baseUnit": "meters_per_second_squared",
           "formula": "x=x"
+        }
+      },
+      "feet_per_second_squared": {
+        "label": "ft/s²",
+        "conversion": {
+          "baseUnit": "meters_per_second_squared",
+          "formula": "x=x*0.3048"
+        }
+      },
+      "gals": {
+        "label": "Gals",
+        "conversion": {
+          "baseUnit": "meters_per_second_squared",
+          "formula": "x=x*0.01"
         }
       },
       "gravity": {
@@ -32,6 +67,47 @@
         "conversion": {
           "baseUnit": "meters_per_second_squared",
           "formula": "x=x*9.80665"
+        }
+      }
+    }
+  },
+  "angular_acceleration": {
+    "label": "Angular Acceleration",
+    "baseUnit": "radians_per_second_squared",
+    "units": {
+      "radians_per_second_squared": {
+        "label": "rad/s²",
+        "conversion": {
+          "baseUnit": "radians_per_second_squared",
+          "formula": "x=x"
+        }
+      },
+      "degrees_per_second_squared": {
+        "label": "°/s²",
+        "conversion": {
+          "baseUnit": "radians_per_second_squared",
+          "formula": "x=x*0.0174533"
+        }
+      },
+      "gradians_per_second_squared": {
+        "label": "grad/s²",
+        "conversion": {
+          "baseUnit": "radians_per_second_squared",
+          "formula": "x=x*0.01570796"
+        }
+      },
+      "revolutions_per_minute_squared": {
+        "label": "RPM²",
+        "conversion": {
+          "baseUnit": "radians_per_second_squared",
+          "formula": "x=x*0.10472"
+        }
+      },
+      "revolutions_per_second_squared": {
+        "label": "RPS²",
+        "conversion": {
+          "baseUnit": "radians_per_second_squared",
+          "formula": "x=x*6.28319"
         }
       }
     }
@@ -45,8 +121,16 @@
         "conversion": { "baseUnit": "newtons", "formula": "x=x" }
       },
       "pound_force": {
-        "label": "Pound-Force",
+        "label": "lbf",
         "conversion": { "baseUnit": "newtons", "formula": "x=x*4.44822" }
+      },
+      "kilogram_force": {
+        "label": "kgf",
+        "conversion": { "baseUnit": "newtons", "formula": "x=x*9.80665" }
+      },
+      "dynes": {
+        "label": "Dynes",
+        "conversion": { "baseUnit": "newtons", "formula": "x=x*0.00001" }
       }
     }
   },
@@ -67,6 +151,13 @@
           "baseUnit": "kilograms_per_cubic_meter",
           "formula": "x=x*1000"
         }
+      },
+      "pounds_per_cubic_foot": {
+        "label": "lb/ft³",
+        "conversion": {
+          "baseUnit": "kilograms_per_cubic_meter",
+          "formula": "x=x*0.06243"
+        }
       }
     }
   },
@@ -79,6 +170,13 @@
         "conversion": {
           "baseUnit": "cubic_meters_per_kilogram",
           "formula": "x=x"
+        }
+      },
+      "liters_per_kilogram": {
+        "label": "L/kg",
+        "conversion": {
+          "baseUnit": "cubic_meters_per_kilogram",
+          "formula": "x=x*1000"
         }
       },
       "cubic_feet_per_pound": {
@@ -95,18 +193,32 @@
     "baseUnit": "meters_per_second",
     "units": {
       "meters_per_second": {
-        "label": "Meters per Second",
+        "label": "m/s",
         "conversion": { "baseUnit": "meters_per_second", "formula": "x=x" }
       },
       "kilometers_per_hour": {
-        "label": "Kilometers per Hour",
+        "label": "km/h",
         "conversion": { "baseUnit": "meters_per_second", "formula": "x=x*3.6" }
       },
       "miles_per_hour": {
-        "label": "Miles per Hour",
+        "label": "mph",
         "conversion": {
           "baseUnit": "meters_per_second",
           "formula": "x=x*2.23694"
+        }
+      },
+      "feet_per_second": {
+        "label": "ft/s",
+        "conversion": {
+          "baseUnit": "meters_per_second",
+          "formula": "x=x*3.28084"
+        }
+      },
+      "knots": {
+        "label": "Knots",
+        "conversion": {
+          "baseUnit": "meters_per_second",
+          "formula": "x=x*1.94384"
         }
       }
     }
@@ -147,12 +259,16 @@
     "baseUnit": "newton_meter",
     "units": {
       "newton_meter": {
-        "label": "Newton Meter",
+        "label": "N·m",
         "conversion": { "baseUnit": "newton_meter", "formula": "x=x" }
       },
       "pound_force_foot": {
-        "label": "Pound-Force Foot",
+        "label": "lb·ft",
         "conversion": { "baseUnit": "newton_meter", "formula": "x=x*1.35582" }
+      },
+      "kilogram_force_meter": {
+        "label": "kgf·m",
+        "conversion": { "baseUnit": "newton_meter", "formula": "x=x*9.80665" }
       }
     }
   }

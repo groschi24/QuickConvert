@@ -10,6 +10,22 @@
       "degrees": {
         "label": "Degrees",
         "conversion": { "baseUnit": "radians", "formula": "x=x*0.0174533" }
+      },
+      "gradians": {
+        "label": "Gradians",
+        "conversion": { "baseUnit": "radians", "formula": "x=x*0.015708" }
+      },
+      "turns": {
+        "label": "Turns",
+        "conversion": { "baseUnit": "radians", "formula": "x=x*6.28319" }
+      },
+      "minutes_of_arc": {
+        "label": "Minutes of Arc",
+        "conversion": { "baseUnit": "radians", "formula": "x=x*0.000290888" }
+      },
+      "seconds_of_arc": {
+        "label": "Seconds of Arc",
+        "conversion": { "baseUnit": "radians", "formula": "x=x*4.8481e-6" }
       }
     }
   },
@@ -24,6 +40,22 @@
       "kilobytes": {
         "label": "Kilobytes",
         "conversion": { "baseUnit": "bytes", "formula": "x=x*1024" }
+      },
+      "megabytes": {
+        "label": "Megabytes",
+        "conversion": { "baseUnit": "bytes", "formula": "x=x*1048576" }
+      },
+      "gigabytes": {
+        "label": "Gigabytes",
+        "conversion": { "baseUnit": "bytes", "formula": "x=x*1073741824" }
+      },
+      "terabytes": {
+        "label": "Terabytes",
+        "conversion": { "baseUnit": "bytes", "formula": "x=x*1099511627776" }
+      },
+      "petabytes": {
+        "label": "Petabytes",
+        "conversion": { "baseUnit": "bytes", "formula": "x=x*1125899906842624" }
       }
     }
   },
@@ -38,6 +70,14 @@
       "kilohertz": {
         "label": "Kilohertz",
         "conversion": { "baseUnit": "hertz", "formula": "x=x*1000" }
+      },
+      "megahertz": {
+        "label": "Megahertz",
+        "conversion": { "baseUnit": "hertz", "formula": "x=x*1000000" }
+      },
+      "gigahertz": {
+        "label": "Gigahertz",
+        "conversion": { "baseUnit": "hertz", "formula": "x=x*1000000000" }
       }
     }
   },
@@ -52,6 +92,22 @@
       "kilo": {
         "label": "Kilo",
         "conversion": { "baseUnit": "none", "formula": "x=x*1000" }
+      },
+      "mega": {
+        "label": "Mega",
+        "conversion": { "baseUnit": "none", "formula": "x=x*1000000" }
+      },
+      "giga": {
+        "label": "Giga",
+        "conversion": { "baseUnit": "none", "formula": "x=x*1000000000" }
+      },
+      "tera": {
+        "label": "Tera",
+        "conversion": { "baseUnit": "none", "formula": "x=x*1e12" }
+      },
+      "peta": {
+        "label": "Peta",
+        "conversion": { "baseUnit": "none", "formula": "x=x*1e15" }
       }
     }
   },
@@ -63,12 +119,27 @@
         "label": "bps",
         "conversion": { "baseUnit": "bits_per_second", "formula": "x=x" }
       },
+      "kilobits_per_second": {
+        "label": "Kbps",
+        "conversion": { "baseUnit": "bits_per_second", "formula": "x=x*1000" }
+      },
       "megabits_per_second": {
         "label": "Mbps",
         "conversion": {
           "baseUnit": "bits_per_second",
           "formula": "x=x*1000000"
         }
+      },
+      "gigabits_per_second": {
+        "label": "Gbps",
+        "conversion": {
+          "baseUnit": "bits_per_second",
+          "formula": "x=x*1000000000"
+        }
+      },
+      "terabits_per_second": {
+        "label": "Tbps",
+        "conversion": { "baseUnit": "bits_per_second", "formula": "x=x*1e12" }
       }
     }
   },
@@ -111,6 +182,14 @@
       "eur": {
         "label": "Euros",
         "conversion": { "baseUnit": "usd", "formula": "x=x*0.9" }
+      },
+      "gbp": {
+        "label": "British Pounds",
+        "conversion": { "baseUnit": "usd", "formula": "x=x*0.8" }
+      },
+      "jpy": {
+        "label": "Japanese Yen",
+        "conversion": { "baseUnit": "usd", "formula": "x=x*110" }
       }
     }
   },
@@ -125,6 +204,14 @@
       "binary": {
         "label": "Binary",
         "conversion": { "baseUnit": "decimal", "formula": "x=parseInt(x,2)" }
+      },
+      "hexadecimal": {
+        "label": "Hexadecimal",
+        "conversion": { "baseUnit": "decimal", "formula": "x=parseInt(x,16)" }
+      },
+      "octal": {
+        "label": "Octal",
+        "conversion": { "baseUnit": "decimal", "formula": "x=parseInt(x,8)" }
       }
     }
   }

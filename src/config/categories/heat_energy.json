@@ -4,11 +4,11 @@
     "baseUnit": "kelvin",
     "units": {
       "kelvin": {
-        "label": "Kelvin",
+        "label": "K",
         "conversion": { "baseUnit": "kelvin", "formula": "x=x" }
       },
       "celsius": {
-        "label": "Celsius",
+        "label": "°C",
         "conversion": {
           "baseUnit": "kelvin",
           "formula": "x=x+273.15",
@@ -16,7 +16,7 @@
         }
       },
       "fahrenheit": {
-        "label": "Fahrenheit",
+        "label": "°F",
         "conversion": {
           "baseUnit": "kelvin",
           "formula": "x=(x-32)*5/9+273.15",
@@ -24,7 +24,7 @@
         }
       },
       "rankine": {
-        "label": "Rankine",
+        "label": "°R",
         "conversion": {
           "baseUnit": "kelvin",
           "formula": "x=x*0.555556",
@@ -47,6 +47,13 @@
           "baseUnit": "watts_per_meter_kelvin",
           "formula": "x=x*1.730735"
         }
+      },
+      "kilocalories_per_hour_meter_celsius": {
+        "label": "kcal/h·m·°C",
+        "conversion": {
+          "baseUnit": "watts_per_meter_kelvin",
+          "formula": "x=x*0.860421"
+        }
       }
     }
   },
@@ -55,16 +62,24 @@
     "baseUnit": "joules",
     "units": {
       "joules": {
-        "label": "Joules",
+        "label": "J",
         "conversion": { "baseUnit": "joules", "formula": "x=x" }
       },
       "kilojoules": {
-        "label": "Kilojoules",
+        "label": "kJ",
         "conversion": { "baseUnit": "joules", "formula": "x=x*1000" }
       },
       "calories": {
-        "label": "Calories",
+        "label": "cal",
         "conversion": { "baseUnit": "joules", "formula": "x=x*4.184" }
+      },
+      "kilowatt_hours": {
+        "label": "kWh",
+        "conversion": { "baseUnit": "joules", "formula": "x=x*3600000" }
+      },
+      "btu": {
+        "label": "BTU",
+        "conversion": { "baseUnit": "joules", "formula": "x=x*1055.06" }
       }
     }
   },
@@ -73,7 +88,7 @@
     "baseUnit": "grams_per_kilowatt_hour",
     "units": {
       "grams_per_kilowatt_hour": {
-        "label": "Grams/kWh",
+        "label": "g/kWh",
         "conversion": {
           "baseUnit": "grams_per_kilowatt_hour",
           "formula": "x=x"
@@ -84,6 +99,13 @@
         "conversion": {
           "baseUnit": "grams_per_kilowatt_hour",
           "formula": "x=x*608.277"
+        }
+      },
+      "kilograms_per_megajoule": {
+        "label": "kg/MJ",
+        "conversion": {
+          "baseUnit": "grams_per_kilowatt_hour",
+          "formula": "x=x*0.0036"
         }
       }
     }
@@ -102,6 +124,14 @@
           "baseUnit": "liters_per_100km",
           "formula": "x=235.215/x"
         }
+      },
+      "kilometers_per_liter": {
+        "label": "km/L",
+        "conversion": { "baseUnit": "liters_per_100km", "formula": "x=100/x" }
+      },
+      "gallons_per_100_miles": {
+        "label": "gal/100mi",
+        "conversion": { "baseUnit": "liters_per_100km", "formula": "x=1000/x" }
       }
     }
   }

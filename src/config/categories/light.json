@@ -10,6 +10,14 @@
       "foot_candle": {
         "label": "Foot Candle",
         "conversion": { "baseUnit": "lux", "formula": "x=x*10.7639" }
+      },
+      "millilux": {
+        "label": "Millilux",
+        "conversion": { "baseUnit": "lux", "formula": "x=x*0.001" }
+      },
+      "phot": {
+        "label": "Phot",
+        "conversion": { "baseUnit": "lux", "formula": "x=x*10000" }
       }
     }
   },
@@ -30,6 +38,13 @@
           "baseUnit": "candela_per_square_meter",
           "formula": "x=x*3.426259"
         }
+      },
+      "lambert": {
+        "label": "Lambert",
+        "conversion": {
+          "baseUnit": "candela_per_square_meter",
+          "formula": "x=x*3183.099"
+        }
       }
     }
   },
@@ -43,6 +58,10 @@
       },
       "candela_steradian": {
         "label": "Candela Steradian",
+        "conversion": { "baseUnit": "lumen", "formula": "x=x" }
+      },
+      "talbot": {
+        "label": "Talbot",
         "conversion": { "baseUnit": "lumen", "formula": "x=x" }
       }
     }

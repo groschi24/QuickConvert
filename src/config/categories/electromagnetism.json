@@ -10,6 +10,14 @@
       "kilovolts": {
         "label": "Kilovolts",
         "conversion": { "baseUnit": "volts", "formula": "x=x*1000" }
+      },
+      "millivolts": {
+        "label": "Millivolts",
+        "conversion": { "baseUnit": "volts", "formula": "x=x*0.001" }
+      },
+      "megavolts": {
+        "label": "Megavolts",
+        "conversion": { "baseUnit": "volts", "formula": "x=x*1000000" }
       }
     }
   },
@@ -24,6 +32,10 @@
       "milliamperes": {
         "label": "Milliamperes",
         "conversion": { "baseUnit": "amperes", "formula": "x=x*1000" }
+      },
+      "kiloamperes": {
+        "label": "Kiloamperes",
+        "conversion": { "baseUnit": "amperes", "formula": "x=x*0.001" }
       }
     }
   },
@@ -38,6 +50,10 @@
       "kiloohms": {
         "label": "Kiloohms",
         "conversion": { "baseUnit": "ohms", "formula": "x=x*1000" }
+      },
+      "megaohms": {
+        "label": "Megaohms",
+        "conversion": { "baseUnit": "ohms", "formula": "x=x*1000000" }
       }
     }
   },
@@ -52,6 +68,10 @@
       "kilowatts": {
         "label": "Kilowatts",
         "conversion": { "baseUnit": "watts", "formula": "x=x*1000" }
+      },
+      "horsepower": {
+        "label": "Horsepower",
+        "conversion": { "baseUnit": "watts", "formula": "x=x*745.7" }
       }
     }
   },
@@ -66,6 +86,10 @@
       "microfarads": {
         "label": "Microfarads",
         "conversion": { "baseUnit": "farads", "formula": "x=x*0.000001" }
+      },
+      "nanofarads": {
+        "label": "Nanofarads",
+        "conversion": { "baseUnit": "farads", "formula": "x=x*0.000000001" }
       }
     }
   },
@@ -80,6 +104,10 @@
       "millihenries": {
         "label": "Millihenries",
         "conversion": { "baseUnit": "henries", "formula": "x=x*0.001" }
+      },
+      "microhenries": {
+        "label": "Microhenries",
+        "conversion": { "baseUnit": "henries", "formula": "x=x*0.000001" }
       }
     }
   },
@@ -201,6 +229,14 @@
       "ohms": {
         "label": "Ohms",
         "conversion": { "baseUnit": "ohms", "formula": "x=x" }
+      },
+      "kiloohms": {
+        "label": "Kiloohms",
+        "conversion": { "baseUnit": "ohms", "formula": "x=x*1000" }
+      },
+      "megaohms": {
+        "label": "Megaohms",
+        "conversion": { "baseUnit": "ohms", "formula": "x=x*1000000" }
       }
     }
   },
