@@ -100,6 +100,27 @@
           "baseUnit": "meters",
           "formula": "x=x*3.086e+16"
         }
+      },
+      "angstroms": {
+        "label": "Angstroms",
+        "conversion": {
+          "baseUnit": "meters",
+          "formula": "x=x*1e-10"
+        }
+      },
+      "picometers": {
+        "label": "Picometers",
+        "conversion": {
+          "baseUnit": "meters",
+          "formula": "x=x*1e-12"
+        }
+      },
+      "femtometers": {
+        "label": "Femtometers",
+        "conversion": {
+          "baseUnit": "meters",
+          "formula": "x=x*1e-15"
+        }
       }
     }
   },

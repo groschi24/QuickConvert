@@ -120,6 +120,34 @@
           "baseUnit": "bytes",
           "formula": "x=x*1073741824"
         }
+      },
+      "exabytes": {
+        "label": "Exabytes",
+        "conversion": {
+          "baseUnit": "bytes",
+          "formula": "x=x*1.152921504606847e+18"
+        }
+      },
+      "zettabytes": {
+        "label": "Zettabytes",
+        "conversion": {
+          "baseUnit": "bytes",
+          "formula": "x=x*1.180591620717411e+21"
+        }
+      },
+      "exbibytes": {
+        "label": "Exbibytes",
+        "conversion": {
+          "baseUnit": "bytes",
+          "formula": "x=x*1152921504606846976"
+        }
+      },
+      "zebibytes": {
+        "label": "Zebibytes",
+        "conversion": {
+          "baseUnit": "bytes",
+          "formula": "x=x*1180591620717411303424"
+        }
       }
     }
   },
