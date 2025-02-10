@@ -71,26 +71,42 @@ export function TopBar() {
 
               <MenuItems className="absolute left-0 z-50 mt-2 max-h-[calc(100vh-6rem)] w-[500px] origin-top-left overflow-y-auto rounded-xl bg-white p-4 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-[#151515] dark:ring-[#ffffff10]">
                 <div className="grid grid-cols-1 gap-6">
-                  {Object.entries(configs).map(([groupKey, group]) => (
-                    <div key={groupKey} className="space-y-3">
-                      <h3 className="text-sm font-semibold text-gray-900 dark:text-[#ffffffee]">
-                        {group.label || groupKey}
-                      </h3>
-                      <div className="grid grid-cols-2 gap-2">
-                        {Object.entries(group.categories || {}).map(
-                          ([categoryKey, category]) => (
-                            <Link
-                              key={`${groupKey}-${categoryKey}`}
-                              href={`/${categoryKey}`}
-                              className="block rounded-lg p-2 text-sm text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:text-[#ffffff80] dark:hover:bg-[#ffffff10] dark:hover:text-white"
-                            >
-                              {category.label}
-                            </Link>
-                          ),
-                        )}
+                  {Object.entries(configs)
+                    .sort(([keyA], [keyB]) => {
+                      const groupOrder: Record<string, number> = {
+                        common: 0,
+                        engineering: 1,
+                        heat_energy: 2,
+                        fluid_volume: 3,
+                        light: 4,
+                        electromagnetism: 5,
+                        radiation: 6,
+                        misc: 7,
+                      };
+                      return (
+                        (groupOrder[keyA] ?? 999) - (groupOrder[keyB] ?? 999)
+                      );
+                    })
+                    .map(([groupKey, group]) => (
+                      <div key={groupKey} className="space-y-3">
+                        <h3 className="text-sm font-semibold text-gray-900 dark:text-[#ffffffee]">
+                          {group.label || groupKey}
+                        </h3>
+                        <div className="grid grid-cols-2 gap-2">
+                          {Object.entries(group.categories || {})
+                            .sort(([a], [b]) => a.localeCompare(b))
+                            .map(([categoryKey, category]) => (
+                              <Link
+                                key={`${groupKey}-${categoryKey}`}
+                                href={`/${categoryKey}`}
+                                className="block rounded-lg p-2 text-sm text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:text-[#ffffff80] dark:hover:bg-[#ffffff10] dark:hover:text-white"
+                              >
+                                {category.label}
+                              </Link>
+                            ))}
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
                 </div>
               </MenuItems>
             </Menu>
@@ -176,20 +192,36 @@ export function TopBar() {
                 All Converters
               </h3>
               <div className="grid grid-cols-2 gap-3">
-                {Object.entries(configs).flatMap(([groupKey, group]) =>
-                  Object.entries(group.categories || {}).map(
-                    ([categoryKey, category]) => (
-                      <Link
-                        key={`${groupKey}-${categoryKey}`}
-                        href={`/${categoryKey}`}
-                        className="rounded-lg bg-gray-50 p-3 text-base text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:bg-[#ffffff08] dark:text-[#ffffff80] dark:hover:bg-[#ffffff10] dark:hover:text-white"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        {category.label}
-                      </Link>
-                    ),
-                  ),
-                )}
+                {Object.entries(configs)
+                  .sort(([keyA], [keyB]) => {
+                    const groupOrder: Record<string, number> = {
+                      common: 0,
+                      engineering: 1,
+                      heat_energy: 2,
+                      fluid_volume: 3,
+                      light: 4,
+                      electromagnetism: 5,
+                      radiation: 6,
+                      misc: 7,
+                    };
+                    return (
+                      (groupOrder[keyA] ?? 999) - (groupOrder[keyB] ?? 999)
+                    );
+                  })
+                  .flatMap(([groupKey, group]) =>
+                    Object.entries(group.categories || {})
+                      .sort(([a], [b]) => a.localeCompare(b))
+                      .map(([categoryKey, category]) => (
+                        <Link
+                          key={`${groupKey}-${categoryKey}`}
+                          href={`/${categoryKey}`}
+                          className="rounded-lg bg-gray-50 p-3 text-base text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:bg-[#ffffff08] dark:text-[#ffffff80] dark:hover:bg-[#ffffff10] dark:hover:text-white"
+                          onClick={() => setIsOpen(false)}
+                        >
+                          {category.label}
+                        </Link>
+                      )),
+                  )}
               </div>
             </div>
           </div>
