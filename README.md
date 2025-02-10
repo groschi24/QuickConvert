@@ -80,10 +80,6 @@ Please follow our coding standards and include tests if applicable. For any majo
 
 This project is licensed under the [MIT License](LICENSE).
 
-## Contact
-
-For questions or suggestions, please open an issue in the repository or contact the maintainer at [groschi24@example.com](mailto:groschi24@example.com).
-
 ---
 
 QuickConvert is developed and maintained by [groschi24](https://github.com/groschi24). Enjoy converting units with ease!
