@@ -36,7 +36,7 @@ export function ConversionForm({
             value={fromValue}
             onChange={(e) => onFromValueChange(e.target.value)}
             onWheel={(e) => (e.target as HTMLInputElement).blur()}
-            className="w-full rounded-xl border border-gray-200 bg-white/80 p-4 text-lg font-medium text-gray-800 shadow-sm backdrop-blur-sm transition-all duration-200 placeholder:text-gray-400 hover:border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-[#ffffff15] dark:bg-[#151515]/80 dark:text-[#ffffffcc] dark:placeholder:text-[#ffffff40] dark:hover:border-[#ffffff25] dark:focus:border-indigo-500"
+            className="w-full rounded-lg border border-gray-300 bg-white p-4 text-lg text-gray-900 shadow-sm focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 dark:border-gray-600 dark:bg-[#1A1A1A] dark:text-white dark:placeholder:text-gray-400"
             placeholder="Enter value"
           />
         </div>
@@ -50,7 +50,7 @@ export function ConversionForm({
             value={toValue}
             onChange={(e) => onToValueChange(e.target.value)}
             onWheel={(e) => (e.target as HTMLInputElement).blur()}
-            className="w-full rounded-xl border border-gray-200 bg-white/80 p-4 text-lg font-medium text-gray-800 shadow-sm backdrop-blur-sm transition-all duration-200 placeholder:text-gray-400 hover:border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-[#ffffff15] dark:bg-[#151515]/80 dark:text-[#ffffffcc] dark:placeholder:text-[#ffffff40] dark:hover:border-[#ffffff25] dark:focus:border-indigo-500"
+            className="w-full rounded-lg border border-gray-300 bg-white p-4 text-lg text-gray-900 shadow-sm focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 dark:border-gray-600 dark:bg-[#1A1A1A] dark:text-white dark:placeholder:text-gray-400"
             placeholder="Enter value"
           />
         </div>
@@ -64,7 +64,7 @@ export function ConversionForm({
           <select
             value={fromUnit}
             onChange={(e) => onUnitChange(e.target.value, toUnit)}
-            className="w-full cursor-pointer rounded-xl border border-gray-200 bg-white/80 p-4 text-lg font-medium text-gray-800 shadow-sm backdrop-blur-sm transition-all duration-200 hover:border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-[#ffffff15] dark:bg-[#151515]/80 dark:text-[#ffffffcc] dark:hover:border-[#ffffff25] dark:focus:border-indigo-500"
+            className="w-full cursor-pointer rounded-xl border border-gray-200 bg-white/80 p-4 text-lg font-medium text-gray-800 shadow-sm backdrop-blur-sm transition-all duration-200 hover:border-indigo-200 hover:bg-white/90 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-[#ffffff15] dark:bg-[#151515]/80 dark:text-[#ffffffcc] dark:hover:border-[#ffffff25] dark:hover:bg-[#151515]/90 dark:focus:border-indigo-500"
           >
             {units.map((unit) => (
               <option key={unit.value} value={unit.value}>
@@ -81,7 +81,7 @@ export function ConversionForm({
           <select
             value={toUnit}
             onChange={(e) => onUnitChange(fromUnit, e.target.value)}
-            className="w-full cursor-pointer rounded-xl border border-gray-200 bg-white/80 p-4 text-lg font-medium text-gray-800 shadow-sm backdrop-blur-sm transition-all duration-200 hover:border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-[#ffffff15] dark:bg-[#151515]/80 dark:text-[#ffffffcc] dark:hover:border-[#ffffff25] dark:focus:border-indigo-500"
+            className="w-full cursor-pointer rounded-xl border border-gray-200 bg-white/80 p-4 text-lg font-medium text-gray-800 shadow-sm backdrop-blur-sm transition-all duration-200 hover:border-indigo-200 hover:bg-white/90 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-[#ffffff15] dark:bg-[#151515]/80 dark:text-[#ffffffcc] dark:hover:border-[#ffffff25] dark:hover:bg-[#151515]/90 dark:focus:border-indigo-500"
           >
             {units.map((unit) => (
               <option key={unit.value} value={unit.value}>

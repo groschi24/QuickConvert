@@ -40,40 +40,44 @@ export default function ConversionWrapper({
   } = useUnitConverter(category, from, to, units, convertFn);
 
   return (
-    <div className="font-inter flex min-h-screen flex-col bg-gradient-to-b from-gray-50 via-white to-gray-50 dark:from-[#151515] dark:via-[#000000] dark:to-[#151515]">
-      <div className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
-      </div>
-      <div className="container relative mx-auto flex-grow px-4 py-16">
-        <h1 className="mb-16 bg-gradient-to-r from-indigo-600 via-indigo-500 to-indigo-400 bg-clip-text text-center text-6xl font-extrabold tracking-tight text-transparent lg:text-7xl">
-          {title}
-        </h1>
-        <div className="mx-auto max-w-5xl space-y-8">
-          <div className="transform rounded-2xl border border-gray-200 bg-white/90 p-10 shadow-2xl backdrop-blur-lg transition-all duration-300 hover:border-gray-300 dark:border-[#ffffff10] dark:bg-[#151515]/90 dark:hover:border-[#ffffff20]">
-            <ConversionForm
-              fromValue={fromValue}
-              toValue={toValue}
-              fromUnit={fromUnit}
-              toUnit={toUnit}
-              units={units}
-              onFromValueChange={handleFromValueChange}
-              onToValueChange={handleToValueChange}
-              onUnitChange={handleUnitChange}
-            />
+    <div className="font-inter flex min-h-screen flex-col bg-white dark:bg-[#151515]">
+      <div className="container mx-auto flex-grow px-4 py-12">
+        <div className="mb-12 text-center">
+          <span className="mb-3 inline-block rounded bg-indigo-100 px-3 py-1 text-sm font-medium text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200">
+            Unit Converter
+          </span>
+          <h1 className="text-4xl font-bold text-gray-900 dark:text-white sm:text-5xl">
+            {title}
+          </h1>
+        </div>
+        <div className="mx-auto max-w-4xl space-y-6">
+          <div className="rounded-lg border border-gray-200 bg-white p-8 shadow-sm dark:border-gray-700 dark:bg-[#1A1A1A]">
+            <div>
+              <ConversionForm
+                fromValue={fromValue}
+                toValue={toValue}
+                fromUnit={fromUnit}
+                toUnit={toUnit}
+                units={units}
+                onFromValueChange={handleFromValueChange}
+                onToValueChange={handleToValueChange}
+                onUnitChange={handleUnitChange}
+              />
 
-            {result && (
-              <div className="animate-fadeIn mt-10 space-y-10">
-                <ConversionResult result={result} />
-                <AllConversions
-                  fromValue={fromValue}
-                  fromUnit={fromUnit}
-                  toUnit={toUnit}
-                  units={units}
-                  category={category}
-                  convertFn={convertFn}
-                />
-              </div>
-            )}
+              {result && (
+                <div className="animate-fadeIn mt-10 space-y-10">
+                  <ConversionResult result={result} />
+                  <AllConversions
+                    fromValue={fromValue}
+                    fromUnit={fromUnit}
+                    toUnit={toUnit}
+                    units={units}
+                    category={category}
+                    convertFn={convertFn}
+                  />
+                </div>
+              )}
+            </div>
           </div>
 
           <ConversionHistory

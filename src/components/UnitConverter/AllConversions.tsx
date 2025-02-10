@@ -10,6 +10,14 @@ interface AllConversionsProps {
   convertFn: (value: number, from: string, to: string) => number;
 }
 
+const formatNumber = (num: number): string => {
+  // Convert to a fixed number of decimal places (max 12)
+  const fixed = num.toFixed(12);
+  // Remove trailing zeros while keeping significant decimals
+  const formatted = fixed.replace(/\.?0+$/, "");
+  return formatted || "0";
+};
+
 export function AllConversions({
   fromValue,
   fromUnit,
@@ -31,20 +39,22 @@ export function AllConversions({
             unit.value,
           );
           const conversionFactor = convertFn(1, fromUnit, unit.value);
-          const formula = `Multiply by ${conversionFactor}`;
+          const formula = `Multiply by ${formatNumber(conversionFactor)}`;
 
           return (
             <div
               key={unit.value}
-              className="transform rounded-xl border border-gray-200 bg-white/80 p-6 shadow-lg backdrop-blur-sm transition-all duration-300 hover:scale-[1.02] hover:border-gray-300 dark:border-[#ffffff10] dark:bg-[#151515]/80 dark:hover:border-[#ffffff20]"
+              className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-[#1A1A1A]"
             >
               <p className="mb-3 text-lg font-semibold text-gray-800 dark:text-[#ffffffcc]">
                 {unit.label}
               </p>
               <p className="text-gray-600 dark:text-[#ffffffaa]">
-                {parseFloat(fromValue).toFixed(4)}{" "}
+                {formatNumber(parseFloat(fromValue))}{" "}
                 {units.find((u) => u.value === fromUnit)?.label ?? fromUnit} ={" "}
-                {Number.isFinite(converted) ? converted.toFixed(4) : "Invalid"}{" "}
+                {Number.isFinite(converted)
+                  ? formatNumber(converted)
+                  : "Invalid"}{" "}
                 {unit.label}
               </p>
               <p className="mt-3 text-sm text-gray-500 dark:text-[#ffffff80]">

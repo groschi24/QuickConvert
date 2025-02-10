@@ -30,7 +30,7 @@ export function ConversionResult({ result }: ConversionResultProps) {
           </p>
           <button
             onClick={handleCopy}
-            className={`flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-all duration-200 ${copied ? "bg-green-500 text-white" : "bg-indigo-50 text-indigo-600 hover:bg-indigo-100 dark:bg-indigo-950/30 dark:text-indigo-400 dark:hover:bg-indigo-950/50"}`}
+            className={`flex items-center gap-2 rounded-xl px-6 py-2.5 text-sm font-medium shadow-sm transition-all duration-200 ${copied ? "bg-green-500 text-white shadow-green-500/25" : "bg-indigo-50 text-indigo-600 shadow-indigo-500/10 hover:bg-indigo-100 dark:bg-indigo-950/30 dark:text-indigo-400 dark:shadow-indigo-500/5 dark:hover:bg-indigo-950/50"}`}
           >
             {copied ? (
               <>
