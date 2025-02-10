@@ -1,72 +1,89 @@
-# Unit Converter
+# QuickConvert
 
-A modern, user-friendly unit conversion tool built with Next.js, TypeScript, and Tailwind CSS. This web application provides a comprehensive set of unit conversion capabilities across multiple categories.
+QuickConvert is a free, fast, and reliable online unit converter and calculator. It supports a wide range of conversion categories—from common units (length, mass, time, area) to specialized areas such as Engineering & Mechanics, Heat & Energy, Fluid & Volume, Light Conversions, Electromagnetism, Radiation, and Miscellaneous conversions. The app is highly configurable via JSON files, making it easy to extend or modify conversion data.
 
 ## Features
 
-- **Multiple Conversion Categories**: Support for length, weight, temperature, area, volume, speed, time, digital storage, pressure, energy, angle, data rate, and more
-- **Real-time Conversion**: Instant unit conversion as you type
-- **Dark Mode Support**: Automatic theme detection with manual toggle option
-- **Conversion History**: Track your recent conversions with local storage
-- **Responsive Design**: Works seamlessly across desktop and mobile devices
-- **URL Sharing**: Share conversion results via URL parameters
-- **Formula Display**: Shows the conversion formula for educational purposes
-- **Modern UI**: Clean and intuitive interface with smooth transitions
+- **Real-Time Conversions:** Get instant conversion results as you type.
+- **Wide Range of Units:** Covers everyday measurements (e.g., meters, kilograms, seconds) as well as specialized units (e.g., dynes, torr, microfarads).
+- **Configurable via JSON:** All conversion data is stored in human-readable JSON files.
+- **Responsive Design:** Optimized for desktops, tablets, and mobile devices.
+- **Open Source:** Contributions are welcome; help us expand the unit library or improve the UI!
 
-## Getting Started
+## Live Demo
+
+Try QuickConvert live at [https://quickconvert.app](https://quickconvert.app)
+
+## Installation
 
 ### Prerequisites
 
-- Node.js (v18 or higher)
-- npm or yarn
+- [Node.js](https://nodejs.org/) (v12 or higher recommended)
+- [npm](https://www.npmjs.com/) or [Yarn](https://yarnpkg.com/)
 
-### Installation
+### Clone the Repository
 
-1. Clone the repository:
+```bash
+git clone https://github.com/groschi24/QuickConvert.git
+cd QuickConvert
+```
 
-   ```bash
-   git clone <repository-url>
-   cd converter-website
-   ```
+### Install Dependencies
 
-2. Install dependencies:
+If using npm:
 
-   ```bash
-   npm install
-   # or
-   yarn install
-   ```
+```bash
+npm install
+```
 
-3. Start the development server:
+Or with Yarn:
 
-   ```bash
-   npm run dev
-   # or
-   yarn dev
-   ```
+```bash
+yarn install
+```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser
+### Run the App Locally
 
-## Usage
+```bash
+npm dev
+```
 
-1. Select a conversion category from the dropdown menu or homepage
-2. Enter a value in the input field
-3. Choose your source and target units
-4. View the converted result and related conversions
-5. Check the conversion history below the converter
+Then open your browser and navigate to [http://localhost:3000](http://localhost:3000).
 
-## Built With
+## Configuration
 
-- [Next.js](https://nextjs.org/) - React framework
-- [TypeScript](https://www.typescriptlang.org/) - Type safety
-- [Tailwind CSS](https://tailwindcss.com/) - Styling
-- [Geist Font](https://vercel.com/font) - Typography
-- [Headless UI](https://headlessui.com/) - UI components
+All conversion categories and units are defined in JSON files located in the `config/` folder. You can customize or add new units by editing these files. For example:
+
+- **Common Conversions:** `config/common.json`
+- **Engineering & Mechanics:** `config/engineering.json`
+- **Heat & Energy:** `config/heat_energy.json`
+- **Fluid & Volume:** `config/fluid_volume.json`
+- **Light Conversions:** `config/light.json`
+- **Electromagnetism:** `config/electromagnetism.json`
+- **Radiation:** `config/radiation.json`
+- **Miscellaneous:** `config/misc.json`
+
+Each JSON file follows a consistent structure where the base unit and conversion formulas are defined.
 
 ## Contributing
 
-Contributions are welcome! Feel free to submit issues and pull requests.
+Contributions are very welcome! To contribute:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Make your changes and ensure everything works as expected.
+4. Submit a pull request.
+
+Please follow our coding standards and include tests if applicable. For any major changes, please open an issue first to discuss what you would like to change.
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the [MIT License](LICENSE).
+
+## Contact
+
+For questions or suggestions, please open an issue in the repository or contact the maintainer at [groschi24@example.com](mailto:groschi24@example.com).
+
+---
+
+QuickConvert is developed and maintained by [groschi24](https://github.com/groschi24). Enjoy converting units with ease!
