@@ -44,6 +44,13 @@
           "baseUnit": "radians",
           "formula": "x=x*4.8481e-6"
         }
+      },
+      "millidegrees": {
+        "label": "Millidegrees",
+        "conversion": {
+          "baseUnit": "radians",
+          "formula": "x=x*0.0000174533"
+        }
       }
     }
   },
@@ -148,6 +155,20 @@
           "baseUnit": "bytes",
           "formula": "x=x*1180591620717411303424"
         }
+      },
+      "terabits": {
+        "label": "Terabits",
+        "conversion": {
+          "baseUnit": "bytes",
+          "formula": "x=x*125000000000"
+        }
+      },
+      "petabits": {
+        "label": "Petabits",
+        "conversion": {
+          "baseUnit": "bytes",
+          "formula": "x=x*125000000000000"
+        }
       }
     }
   },
@@ -202,6 +223,13 @@
         "conversion": {
           "baseUnit": "hertz",
           "formula": "x=x*0.0166667"
+        }
+      },
+      "millihertz": {
+        "label": "Millihertz",
+        "conversion": {
+          "baseUnit": "hertz",
+          "formula": "x=x*0.001"
         }
       }
     }

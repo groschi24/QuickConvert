@@ -1,0 +1,43 @@
+{
+  "force": {
+    "label": "Force",
+    "baseUnit": "newtons",
+    "units": {
+      "newtons": {
+        "label": "Newtons",
+        "conversion": {
+          "baseUnit": "newtons",
+          "formula": "x=x"
+        }
+      },
+      "kilonewtons": {
+        "label": "Kilonewtons",
+        "conversion": {
+          "baseUnit": "newtons",
+          "formula": "x=x*1000"
+        }
+      },
+      "pound_force": {
+        "label": "Pound-Force",
+        "conversion": {
+          "baseUnit": "newtons",
+          "formula": "x=x*4.44822"
+        }
+      },
+      "dyne": {
+        "label": "Dyne",
+        "conversion": {
+          "baseUnit": "newtons",
+          "formula": "x=x*0.00001"
+        }
+      },
+      "kilogram_force": {
+        "label": "Kilogram-Force",
+        "conversion": {
+          "baseUnit": "newtons",
+          "formula": "x=x*9.80665"
+        }
+      }
+    }
+  }
+}

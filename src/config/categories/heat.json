@@ -52,6 +52,14 @@
           "formula": "x=(x-32)*5/9+273.15",
           "reverseFormula": "x=(x-273.15)*9/5+32"
         }
+      },
+      "rankine": {
+        "label": "Rankine",
+        "conversion": {
+          "baseUnit": "kelvin",
+          "formula": "x=x*0.555556",
+          "reverseFormula": "x=x*1.8"
+        }
       }
     }
   },
@@ -165,6 +173,13 @@
         "conversion": {
           "baseUnit": "joules_per_kilogram_kelvin",
           "formula": "x=x*4186.8"
+        }
+      },
+      "calorie_per_gram_celsius": {
+        "label": "Calorie per Gram Celsius",
+        "conversion": {
+          "baseUnit": "joules_per_kilogram_kelvin",
+          "formula": "x=x*4184"
         }
       }
     }

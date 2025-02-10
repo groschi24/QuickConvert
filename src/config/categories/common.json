@@ -121,6 +121,27 @@
           "baseUnit": "meters",
           "formula": "x=x*1e-15"
         }
+      },
+      "furlongs": {
+        "label": "Furlongs",
+        "conversion": {
+          "baseUnit": "meters",
+          "formula": "x=x*201.168"
+        }
+      },
+      "rods": {
+        "label": "Rods",
+        "conversion": {
+          "baseUnit": "meters",
+          "formula": "x=x*5.0292"
+        }
+      },
+      "cubits": {
+        "label": "Cubits",
+        "conversion": {
+          "baseUnit": "meters",
+          "formula": "x=x*0.4572"
+        }
       }
     }
   },
@@ -211,6 +232,13 @@
           "baseUnit": "kilograms",
           "formula": "x=x*14.5939"
         }
+      },
+      "ounces_troy": {
+        "label": "Troy Ounces",
+        "conversion": {
+          "baseUnit": "kilograms",
+          "formula": "x=x*0.0311035"
+        }
       }
     }
   },
@@ -300,6 +328,13 @@
         "conversion": {
           "baseUnit": "seconds",
           "formula": "x=x*1e-9"
+        }
+      },
+      "fortnights": {
+        "label": "Fortnights",
+        "conversion": {
+          "baseUnit": "seconds",
+          "formula": "x=x*1209600"
         }
       }
     }

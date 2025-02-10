@@ -23,6 +23,20 @@
           "baseUnit": "cubic_meters_per_second",
           "formula": "x=x*0.00006309"
         }
+      },
+      "liters_per_second": {
+        "label": "Liters per Second",
+        "conversion": {
+          "baseUnit": "cubic_meters_per_second",
+          "formula": "x=x*0.001"
+        }
+      },
+      "cubic_feet_per_second": {
+        "label": "Cubic Feet per Second",
+        "conversion": {
+          "baseUnit": "cubic_meters_per_second",
+          "formula": "x=x*0.0283168"
+        }
       }
     }
   },
@@ -50,6 +64,13 @@
           "baseUnit": "pascal_second",
           "formula": "x=x*6894.757"
         }
+      },
+      "centipoise": {
+        "label": "Centipoise",
+        "conversion": {
+          "baseUnit": "pascal_second",
+          "formula": "x=x*0.001"
+        }
       }
     }
   },
@@ -76,6 +97,13 @@
         "conversion": {
           "baseUnit": "square_meters_per_second",
           "formula": "x=x*0.092903"
+        }
+      },
+      "centistokes": {
+        "label": "Centistokes",
+        "conversion": {
+          "baseUnit": "square_meters_per_second",
+          "formula": "x=x*0.000001"
         }
       }
     }

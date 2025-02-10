@@ -1,0 +1,71 @@
+{
+  "pressure": {
+    "label": "Pressure",
+    "baseUnit": "pascals",
+    "units": {
+      "pascals": {
+        "label": "Pascals",
+        "conversion": {
+          "baseUnit": "pascals",
+          "formula": "x=x"
+        }
+      },
+      "kilopascals": {
+        "label": "Kilopascals",
+        "conversion": {
+          "baseUnit": "pascals",
+          "formula": "x=x*1000"
+        }
+      },
+      "megapascals": {
+        "label": "Megapascals",
+        "conversion": {
+          "baseUnit": "pascals",
+          "formula": "x=x*1000000"
+        }
+      },
+      "bars": {
+        "label": "Bars",
+        "conversion": {
+          "baseUnit": "pascals",
+          "formula": "x=x*100000"
+        }
+      },
+      "psi": {
+        "label": "PSI",
+        "conversion": {
+          "baseUnit": "pascals",
+          "formula": "x=x*6894.757"
+        }
+      },
+      "atm": {
+        "label": "Atmospheres",
+        "conversion": {
+          "baseUnit": "pascals",
+          "formula": "x=x*101325"
+        }
+      },
+      "torr": {
+        "label": "Torr",
+        "conversion": {
+          "baseUnit": "pascals",
+          "formula": "x=x*133.322"
+        }
+      },
+      "mmHg": {
+        "label": "mmHg",
+        "conversion": {
+          "baseUnit": "pascals",
+          "formula": "x=x*133.322"
+        }
+      },
+      "inches_of_mercury": {
+        "label": "Inches of Mercury",
+        "conversion": {
+          "baseUnit": "pascals",
+          "formula": "x=x*3386.39"
+        }
+      }
+    }
+  }
+}

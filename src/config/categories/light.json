@@ -30,6 +30,13 @@
           "baseUnit": "lux",
           "formula": "x=x*0.001"
         }
+      },
+      "millilux": {
+        "label": "Millilux",
+        "conversion": {
+          "baseUnit": "lux",
+          "formula": "x=x*0.001"
+        }
       }
     }
   },

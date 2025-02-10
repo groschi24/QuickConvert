@@ -23,6 +23,13 @@
           "baseUnit": "radians_per_second",
           "formula": "x=x*0.10472"
         }
+      },
+      "revolutions_per_second": {
+        "label": "Revolutions per Second",
+        "conversion": {
+          "baseUnit": "radians_per_second",
+          "formula": "x=x*6.28319"
+        }
       }
     }
   },

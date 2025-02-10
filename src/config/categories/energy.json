@@ -1,0 +1,71 @@
+{
+  "energy": {
+    "label": "Energy",
+    "baseUnit": "joules",
+    "units": {
+      "joules": {
+        "label": "Joules",
+        "conversion": {
+          "baseUnit": "joules",
+          "formula": "x=x"
+        }
+      },
+      "kilojoules": {
+        "label": "Kilojoules",
+        "conversion": {
+          "baseUnit": "joules",
+          "formula": "x=x*1000"
+        }
+      },
+      "megajoules": {
+        "label": "Megajoules",
+        "conversion": {
+          "baseUnit": "joules",
+          "formula": "x=x*1000000"
+        }
+      },
+      "calories": {
+        "label": "Calories",
+        "conversion": {
+          "baseUnit": "joules",
+          "formula": "x=x*4.184"
+        }
+      },
+      "kilocalories": {
+        "label": "Kilocalories",
+        "conversion": {
+          "baseUnit": "joules",
+          "formula": "x=x*4184"
+        }
+      },
+      "BTU": {
+        "label": "BTU",
+        "conversion": {
+          "baseUnit": "joules",
+          "formula": "x=x*1055.06"
+        }
+      },
+      "electronvolts": {
+        "label": "Electronvolts",
+        "conversion": {
+          "baseUnit": "joules",
+          "formula": "x=x*1.60218e-19"
+        }
+      },
+      "watt_hours": {
+        "label": "Watt Hours",
+        "conversion": {
+          "baseUnit": "joules",
+          "formula": "x=x*3600"
+        }
+      },
+      "kilowatt_hours": {
+        "label": "Kilowatt Hours",
+        "conversion": {
+          "baseUnit": "joules",
+          "formula": "x=x*3600000"
+        }
+      }
+    }
+  }
+}

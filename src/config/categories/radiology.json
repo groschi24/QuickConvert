@@ -16,6 +16,13 @@
           "baseUnit": "gray",
           "formula": "x=x*0.01"
         }
+      },
+      "milligray": {
+        "label": "Milligray",
+        "conversion": {
+          "baseUnit": "gray",
+          "formula": "x=x*0.001"
+        }
       }
     }
   },
@@ -55,6 +62,13 @@
         "conversion": {
           "baseUnit": "sievert",
           "formula": "x=x*0.01"
+        }
+      },
+      "millisievert": {
+        "label": "Millisievert",
+        "conversion": {
+          "baseUnit": "sievert",
+          "formula": "x=x*0.001"
         }
       }
     }

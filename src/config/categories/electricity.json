@@ -30,6 +30,13 @@
           "baseUnit": "volts",
           "formula": "x=x*0.000001"
         }
+      },
+      "megavolts": {
+        "label": "Megavolts",
+        "conversion": {
+          "baseUnit": "volts",
+          "formula": "x=x*1000000"
+        }
       }
     }
   },
@@ -63,6 +70,13 @@
         "conversion": {
           "baseUnit": "amperes",
           "formula": "x=x*0.000001"
+        }
+      },
+      "megaamperes": {
+        "label": "Megaamperes",
+        "conversion": {
+          "baseUnit": "amperes",
+          "formula": "x=x*1000000"
         }
       }
     }
@@ -104,6 +118,13 @@
         "conversion": {
           "baseUnit": "ohms",
           "formula": "x=x*0.000001"
+        }
+      },
+      "gigaohms": {
+        "label": "Gigaohms",
+        "conversion": {
+          "baseUnit": "ohms",
+          "formula": "x=x*1000000000"
         }
       }
     }
@@ -160,6 +181,13 @@
           "baseUnit": "watts",
           "formula": "x=x*1000000000"
         }
+      },
+      "BTU_per_second": {
+        "label": "BTU per Second",
+        "conversion": {
+          "baseUnit": "watts",
+          "formula": "x=x*1055.06"
+        }
       }
     }
   },
@@ -201,6 +229,13 @@
           "baseUnit": "farads",
           "formula": "x=x*0.001"
         }
+      },
+      "kilofarads": {
+        "label": "Kilofarads",
+        "conversion": {
+          "baseUnit": "farads",
+          "formula": "x=x*1000"
+        }
       }
     }
   },
@@ -234,6 +269,13 @@
         "conversion": {
           "baseUnit": "henries",
           "formula": "x=x*0.000000001"
+        }
+      },
+      "kilohenries": {
+        "label": "Kilohenries",
+        "conversion": {
+          "baseUnit": "henries",
+          "formula": "x=x*1000"
         }
       }
     }

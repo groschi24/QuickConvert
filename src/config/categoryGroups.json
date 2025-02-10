@@ -35,6 +35,26 @@
     {
       "id": "other",
       "label": "Other"
+    },
+    {
+      "id": "pressure",
+      "label": "Pressure"
+    },
+    {
+      "id": "volume",
+      "label": "Volume"
+    },
+    {
+      "id": "energy",
+      "label": "Energy"
+    },
+    {
+      "id": "force",
+      "label": "Force"
+    },
+    {
+      "id": "radioactivity",
+      "label": "Radioactivity"
     }
   ]
 }
