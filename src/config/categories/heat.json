@@ -26,8 +26,8 @@
       }
     }
   },
-  "temperature_interval": {
-    "label": "Temperature Interval",
+  "temperature": {
+    "label": "Temperature",
     "baseUnit": "kelvin",
     "units": {
       "kelvin": {
@@ -37,18 +37,20 @@
           "formula": "x=x"
         }
       },
-      "celsius_degree": {
-        "label": "Celsius Degree",
+      "celsius": {
+        "label": "Celsius",
         "conversion": {
           "baseUnit": "kelvin",
-          "formula": "x=x"
+          "formula": "x=x+273.15",
+          "reverseFormula": "x=x-273.15"
         }
       },
-      "fahrenheit_degree": {
-        "label": "Fahrenheit Degree",
+      "fahrenheit": {
+        "label": "Fahrenheit",
         "conversion": {
           "baseUnit": "kelvin",
-          "formula": "x=x*5/9"
+          "formula": "x=(x-32)*5/9+273.15",
+          "reverseFormula": "x=(x-273.15)*9/5+32"
         }
       }
     }
