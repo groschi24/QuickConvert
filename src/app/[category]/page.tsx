@@ -12,6 +12,8 @@ export default async function CategoryPage({
 
   const config = await loadUnitConfig(category);
 
+  console.log("config: ", config);
+
   if (!config) {
     notFound();
   }

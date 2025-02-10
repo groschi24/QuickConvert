@@ -1,0 +1,113 @@
+{
+  "flow_rate": {
+    "label": "Flow Rate",
+    "baseUnit": "cubic_meters_per_second",
+    "units": {
+      "cubic_meters_per_second": {
+        "label": "m³/s",
+        "conversion": {
+          "baseUnit": "cubic_meters_per_second",
+          "formula": "x=x"
+        }
+      },
+      "liters_per_second": {
+        "label": "L/s",
+        "conversion": {
+          "baseUnit": "cubic_meters_per_second",
+          "formula": "x=x*0.001"
+        }
+      },
+      "cubic_feet_per_second": {
+        "label": "ft³/s",
+        "conversion": {
+          "baseUnit": "cubic_meters_per_second",
+          "formula": "x=x*0.0283168"
+        }
+      }
+    }
+  },
+  "viscosity": {
+    "label": "Viscosity",
+    "baseUnit": "pascal_second",
+    "units": {
+      "pascal_second": {
+        "label": "Pa·s",
+        "conversion": { "baseUnit": "pascal_second", "formula": "x=x" }
+      },
+      "poise": {
+        "label": "Poise",
+        "conversion": { "baseUnit": "pascal_second", "formula": "x=x*0.1" }
+      }
+    }
+  },
+  "volume": {
+    "label": "Volume",
+    "baseUnit": "cubic_meters",
+    "units": {
+      "cubic_meters": {
+        "label": "m³",
+        "conversion": { "baseUnit": "cubic_meters", "formula": "x=x" }
+      },
+      "liters": {
+        "label": "Liters",
+        "conversion": { "baseUnit": "cubic_meters", "formula": "x=x*0.001" }
+      },
+      "gallons": {
+        "label": "Gallons",
+        "conversion": {
+          "baseUnit": "cubic_meters",
+          "formula": "x=x*0.00378541"
+        }
+      },
+      "bushels": {
+        "label": "Bushels (Dry)",
+        "conversion": { "baseUnit": "cubic_meters", "formula": "x=x*0.0352391" }
+      },
+      "board_feet": {
+        "label": "Board Feet (Lumber)",
+        "conversion": {
+          "baseUnit": "cubic_meters",
+          "formula": "x=x*0.00235974"
+        }
+      }
+    }
+  },
+  "flow": {
+    "label": "Flow (Mass/Molar)",
+    "baseUnit": "kilograms_per_second",
+    "units": {
+      "kilograms_per_second": {
+        "label": "kg/s",
+        "conversion": { "baseUnit": "kilograms_per_second", "formula": "x=x" }
+      },
+      "moles_per_second": {
+        "label": "mol/s",
+        "conversion": { "baseUnit": "moles_per_second", "formula": "x=x" }
+      }
+    }
+  },
+  "concentration": {
+    "label": "Concentration",
+    "baseUnit": "moles_per_liter",
+    "units": {
+      "moles_per_liter": {
+        "label": "mol/L",
+        "conversion": { "baseUnit": "moles_per_liter", "formula": "x=x" }
+      },
+      "percent": {
+        "label": "Percent",
+        "conversion": { "baseUnit": "percent", "formula": "x=x" }
+      }
+    }
+  },
+  "surface_tension": {
+    "label": "Surface Tension",
+    "baseUnit": "newtons_per_meter",
+    "units": {
+      "newtons_per_meter": {
+        "label": "N/m",
+        "conversion": { "baseUnit": "newtons_per_meter", "formula": "x=x" }
+      }
+    }
+  }
+}

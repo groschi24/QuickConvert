@@ -5,10 +5,7 @@
     "units": {
       "radians_per_second": {
         "label": "Radians per Second",
-        "conversion": {
-          "baseUnit": "radians_per_second",
-          "formula": "x=x"
-        }
+        "conversion": { "baseUnit": "radians_per_second", "formula": "x=x" }
       },
       "degrees_per_second": {
         "label": "Degrees per Second",
@@ -16,25 +13,11 @@
           "baseUnit": "radians_per_second",
           "formula": "x=x*0.0174533"
         }
-      },
-      "revolutions_per_minute": {
-        "label": "Revolutions per Minute",
-        "conversion": {
-          "baseUnit": "radians_per_second",
-          "formula": "x=x*0.10472"
-        }
-      },
-      "revolutions_per_second": {
-        "label": "Revolutions per Second",
-        "conversion": {
-          "baseUnit": "radians_per_second",
-          "formula": "x=x*6.28319"
-        }
       }
     }
   },
   "acceleration": {
-    "label": "Acceleration",
+    "label": "Linear Acceleration",
     "baseUnit": "meters_per_second_squared",
     "units": {
       "meters_per_second_squared": {
@@ -42,13 +25,6 @@
         "conversion": {
           "baseUnit": "meters_per_second_squared",
           "formula": "x=x"
-        }
-      },
-      "feet_per_second_squared": {
-        "label": "Feet per Second²",
-        "conversion": {
-          "baseUnit": "meters_per_second_squared",
-          "formula": "x=x*0.3048"
         }
       },
       "gravity": {
@@ -60,44 +36,105 @@
       }
     }
   },
-  "acceleration_angular": {
-    "label": "Angular Acceleration",
-    "baseUnit": "radians_per_second_squared",
+  "force": {
+    "label": "Force",
+    "baseUnit": "newtons",
     "units": {
-      "radians_per_second_squared": {
-        "label": "Radians per Second²",
+      "newtons": {
+        "label": "Newtons",
+        "conversion": { "baseUnit": "newtons", "formula": "x=x" }
+      },
+      "pound_force": {
+        "label": "Pound-Force",
+        "conversion": { "baseUnit": "newtons", "formula": "x=x*4.44822" }
+      }
+    }
+  },
+  "density": {
+    "label": "Density",
+    "baseUnit": "kilograms_per_cubic_meter",
+    "units": {
+      "kilograms_per_cubic_meter": {
+        "label": "kg/m³",
         "conversion": {
-          "baseUnit": "radians_per_second_squared",
+          "baseUnit": "kilograms_per_cubic_meter",
           "formula": "x=x"
         }
       },
-      "degrees_per_second_squared": {
-        "label": "Degrees per Second²",
+      "grams_per_cubic_centimeter": {
+        "label": "g/cm³",
         "conversion": {
-          "baseUnit": "radians_per_second_squared",
-          "formula": "x=x*0.0174533"
+          "baseUnit": "kilograms_per_cubic_meter",
+          "formula": "x=x*1000"
         }
+      }
+    }
+  },
+  "specific_volume": {
+    "label": "Specific Volume",
+    "baseUnit": "cubic_meters_per_kilogram",
+    "units": {
+      "cubic_meters_per_kilogram": {
+        "label": "m³/kg",
+        "conversion": {
+          "baseUnit": "cubic_meters_per_kilogram",
+          "formula": "x=x"
+        }
+      }
+    }
+  },
+  "speed": {
+    "label": "Speed",
+    "baseUnit": "meters_per_second",
+    "units": {
+      "meters_per_second": {
+        "label": "Meters per Second",
+        "conversion": { "baseUnit": "meters_per_second", "formula": "x=x" }
       },
-      "revolutions_per_minute_squared": {
-        "label": "Revolutions per Minute²",
-        "conversion": {
-          "baseUnit": "radians_per_second_squared",
-          "formula": "x=x*0.10472"
-        }
+      "kilometers_per_hour": {
+        "label": "Kilometers per Hour",
+        "conversion": { "baseUnit": "meters_per_second", "formula": "x=x*3.6" }
       },
-      "revolutions_per_second_squared": {
-        "label": "Revolutions per Second²",
+      "miles_per_hour": {
+        "label": "Miles per Hour",
         "conversion": {
-          "baseUnit": "radians_per_second_squared",
-          "formula": "x=x*6.28319"
+          "baseUnit": "meters_per_second",
+          "formula": "x=x*2.23694"
         }
+      }
+    }
+  },
+  "moment_of_inertia": {
+    "label": "Moment of Inertia",
+    "baseUnit": "kilogram_meter_squared",
+    "units": {
+      "kilogram_meter_squared": {
+        "label": "kg·m²",
+        "conversion": { "baseUnit": "kilogram_meter_squared", "formula": "x=x" }
+      }
+    }
+  },
+  "moment_of_force": {
+    "label": "Moment of Force",
+    "baseUnit": "newton_meter",
+    "units": {
+      "newton_meter": {
+        "label": "N·m",
+        "conversion": { "baseUnit": "newton_meter", "formula": "x=x" }
+      }
+    }
+  },
+  "torque": {
+    "label": "Torque",
+    "baseUnit": "newton_meter",
+    "units": {
+      "newton_meter": {
+        "label": "Newton Meter",
+        "conversion": { "baseUnit": "newton_meter", "formula": "x=x" }
       },
-      "gradians_per_second_squared": {
-        "label": "Gradians per Second²",
-        "conversion": {
-          "baseUnit": "radians_per_second_squared",
-          "formula": "x=x*0.015708"
-        }
+      "pound_force_foot": {
+        "label": "Pound-Force Foot",
+        "conversion": { "baseUnit": "newton_meter", "formula": "x=x*1.35582" }
       }
     }
   }

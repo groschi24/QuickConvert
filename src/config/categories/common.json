@@ -5,143 +5,31 @@
     "units": {
       "meters": {
         "label": "Meters",
-        "conversion": {
-          "baseUnit": "meters",
-          "formula": "x=x"
-        }
+        "conversion": { "baseUnit": "meters", "formula": "x=x" }
       },
       "kilometers": {
         "label": "Kilometers",
-        "conversion": {
-          "baseUnit": "meters",
-          "formula": "x=x*1000"
-        }
+        "conversion": { "baseUnit": "meters", "formula": "x=x*1000" }
       },
       "centimeters": {
         "label": "Centimeters",
-        "conversion": {
-          "baseUnit": "meters",
-          "formula": "x=x*0.01"
-        }
+        "conversion": { "baseUnit": "meters", "formula": "x=x*0.01" }
       },
       "millimeters": {
         "label": "Millimeters",
-        "conversion": {
-          "baseUnit": "meters",
-          "formula": "x=x*0.001"
-        }
+        "conversion": { "baseUnit": "meters", "formula": "x=x*0.001" }
       },
       "feet": {
         "label": "Feet",
-        "conversion": {
-          "baseUnit": "meters",
-          "formula": "x=x*0.3048"
-        }
+        "conversion": { "baseUnit": "meters", "formula": "x=x*0.3048" }
       },
       "inches": {
         "label": "Inches",
-        "conversion": {
-          "baseUnit": "meters",
-          "formula": "x=x*0.0254"
-        }
-      },
-      "yards": {
-        "label": "Yards",
-        "conversion": {
-          "baseUnit": "meters",
-          "formula": "x=x*0.9144"
-        }
+        "conversion": { "baseUnit": "meters", "formula": "x=x*0.0254" }
       },
       "miles": {
         "label": "Miles",
-        "conversion": {
-          "baseUnit": "meters",
-          "formula": "x=x*1609.344"
-        }
-      },
-      "nautical_miles": {
-        "label": "Nautical Miles",
-        "conversion": {
-          "baseUnit": "meters",
-          "formula": "x=x*1852"
-        }
-      },
-      "micrometers": {
-        "label": "Micrometers",
-        "conversion": {
-          "baseUnit": "meters",
-          "formula": "x=x*0.000001"
-        }
-      },
-      "nanometers": {
-        "label": "Nanometers",
-        "conversion": {
-          "baseUnit": "meters",
-          "formula": "x=x*1e-9"
-        }
-      },
-      "astronomical_units": {
-        "label": "Astronomical Units",
-        "conversion": {
-          "baseUnit": "meters",
-          "formula": "x=x*1.496e+11"
-        }
-      },
-      "light_years": {
-        "label": "Light Years",
-        "conversion": {
-          "baseUnit": "meters",
-          "formula": "x=x*9.461e+15"
-        }
-      },
-      "parsecs": {
-        "label": "Parsecs",
-        "conversion": {
-          "baseUnit": "meters",
-          "formula": "x=x*3.086e+16"
-        }
-      },
-      "angstroms": {
-        "label": "Angstroms",
-        "conversion": {
-          "baseUnit": "meters",
-          "formula": "x=x*1e-10"
-        }
-      },
-      "picometers": {
-        "label": "Picometers",
-        "conversion": {
-          "baseUnit": "meters",
-          "formula": "x=x*1e-12"
-        }
-      },
-      "femtometers": {
-        "label": "Femtometers",
-        "conversion": {
-          "baseUnit": "meters",
-          "formula": "x=x*1e-15"
-        }
-      },
-      "furlongs": {
-        "label": "Furlongs",
-        "conversion": {
-          "baseUnit": "meters",
-          "formula": "x=x*201.168"
-        }
-      },
-      "rods": {
-        "label": "Rods",
-        "conversion": {
-          "baseUnit": "meters",
-          "formula": "x=x*5.0292"
-        }
-      },
-      "cubits": {
-        "label": "Cubits",
-        "conversion": {
-          "baseUnit": "meters",
-          "formula": "x=x*0.4572"
-        }
+        "conversion": { "baseUnit": "meters", "formula": "x=x*1609.344" }
       }
     }
   },
@@ -151,94 +39,15 @@
     "units": {
       "kilograms": {
         "label": "Kilograms",
-        "conversion": {
-          "baseUnit": "kilograms",
-          "formula": "x=x"
-        }
+        "conversion": { "baseUnit": "kilograms", "formula": "x=x" }
       },
       "grams": {
         "label": "Grams",
-        "conversion": {
-          "baseUnit": "kilograms",
-          "formula": "x=x*0.001"
-        }
-      },
-      "milligrams": {
-        "label": "Milligrams",
-        "conversion": {
-          "baseUnit": "kilograms",
-          "formula": "x=x*0.000001"
-        }
+        "conversion": { "baseUnit": "kilograms", "formula": "x=x*0.001" }
       },
       "pounds": {
         "label": "Pounds",
-        "conversion": {
-          "baseUnit": "kilograms",
-          "formula": "x=x*0.453592"
-        }
-      },
-      "ounces": {
-        "label": "Ounces",
-        "conversion": {
-          "baseUnit": "kilograms",
-          "formula": "x=x*0.0283495"
-        }
-      },
-      "metric_tons": {
-        "label": "Metric Tons",
-        "conversion": {
-          "baseUnit": "kilograms",
-          "formula": "x=x*1000"
-        }
-      },
-      "stone": {
-        "label": "Stone",
-        "conversion": {
-          "baseUnit": "kilograms",
-          "formula": "x=x*6.35029"
-        }
-      },
-      "short_tons": {
-        "label": "Short Tons",
-        "conversion": {
-          "baseUnit": "kilograms",
-          "formula": "x=x*907.185"
-        }
-      },
-      "carats": {
-        "label": "Carats",
-        "conversion": {
-          "baseUnit": "kilograms",
-          "formula": "x=x*0.0002"
-        }
-      },
-      "long_tons": {
-        "label": "Long Tons",
-        "conversion": {
-          "baseUnit": "kilograms",
-          "formula": "x=x*1016.047"
-        }
-      },
-      "atomic_mass_units": {
-        "label": "Atomic Mass Units",
-        "conversion": {
-          "baseUnit": "kilograms",
-          "formula": "x=x*1.66053907e-27"
-        }
-      },
-      "slugs": {
-        "label": "Slugs",
-        "conversion": {
-          "baseUnit": "kilograms",
-          "formula": "x=x*14.5939"
-        }
-      },
-      "ounces_troy": {
-        "label": "Troy Ounces",
-        "conversion": {
-          "baseUnit": "kilograms",
-          "formula": "x=x*0.0311035"
-        }
+        "conversion": { "baseUnit": "kilograms", "formula": "x=x*0.453592" }
       }
     }
   },
@@ -248,94 +57,19 @@
     "units": {
       "seconds": {
         "label": "Seconds",
-        "conversion": {
-          "baseUnit": "seconds",
-          "formula": "x=x"
-        }
+        "conversion": { "baseUnit": "seconds", "formula": "x=x" }
       },
       "minutes": {
         "label": "Minutes",
-        "conversion": {
-          "baseUnit": "seconds",
-          "formula": "x=x*60"
-        }
+        "conversion": { "baseUnit": "seconds", "formula": "x=x*60" }
       },
       "hours": {
         "label": "Hours",
-        "conversion": {
-          "baseUnit": "seconds",
-          "formula": "x=x*3600"
-        }
+        "conversion": { "baseUnit": "seconds", "formula": "x=x*3600" }
       },
       "days": {
         "label": "Days",
-        "conversion": {
-          "baseUnit": "seconds",
-          "formula": "x=x*86400"
-        }
-      },
-      "weeks": {
-        "label": "Weeks",
-        "conversion": {
-          "baseUnit": "seconds",
-          "formula": "x=x*604800"
-        }
-      },
-      "months": {
-        "label": "Months",
-        "conversion": {
-          "baseUnit": "seconds",
-          "formula": "x=x*2629746"
-        }
-      },
-      "years": {
-        "label": "Years",
-        "conversion": {
-          "baseUnit": "seconds",
-          "formula": "x=x*31556952"
-        }
-      },
-      "decades": {
-        "label": "Decades",
-        "conversion": {
-          "baseUnit": "seconds",
-          "formula": "x=x*315569520"
-        }
-      },
-      "centuries": {
-        "label": "Centuries",
-        "conversion": {
-          "baseUnit": "seconds",
-          "formula": "x=x*3155695200"
-        }
-      },
-      "milliseconds": {
-        "label": "Milliseconds",
-        "conversion": {
-          "baseUnit": "seconds",
-          "formula": "x=x*0.001"
-        }
-      },
-      "microseconds": {
-        "label": "Microseconds",
-        "conversion": {
-          "baseUnit": "seconds",
-          "formula": "x=x*0.000001"
-        }
-      },
-      "nanoseconds": {
-        "label": "Nanoseconds",
-        "conversion": {
-          "baseUnit": "seconds",
-          "formula": "x=x*1e-9"
-        }
-      },
-      "fortnights": {
-        "label": "Fortnights",
-        "conversion": {
-          "baseUnit": "seconds",
-          "formula": "x=x*1209600"
-        }
+        "conversion": { "baseUnit": "seconds", "formula": "x=x*86400" }
       }
     }
   },
@@ -345,94 +79,11 @@
     "units": {
       "square_meters": {
         "label": "Square Meters",
-        "conversion": {
-          "baseUnit": "square_meters",
-          "formula": "x=x"
-        }
-      },
-      "square_kilometers": {
-        "label": "Square Kilometers",
-        "conversion": {
-          "baseUnit": "square_meters",
-          "formula": "x=x*1000000"
-        }
-      },
-      "square_feet": {
-        "label": "Square Feet",
-        "conversion": {
-          "baseUnit": "square_meters",
-          "formula": "x=x*0.092903"
-        }
-      },
-      "square_yards": {
-        "label": "Square Yards",
-        "conversion": {
-          "baseUnit": "square_meters",
-          "formula": "x=x*0.836127"
-        }
+        "conversion": { "baseUnit": "square_meters", "formula": "x=x" }
       },
       "acres": {
         "label": "Acres",
-        "conversion": {
-          "baseUnit": "square_meters",
-          "formula": "x=x*4046.86"
-        }
-      },
-      "hectares": {
-        "label": "Hectares",
-        "conversion": {
-          "baseUnit": "square_meters",
-          "formula": "x=x*10000"
-        }
-      },
-      "square_inches": {
-        "label": "Square Inches",
-        "conversion": {
-          "baseUnit": "square_meters",
-          "formula": "x=x*0.00064516"
-        }
-      },
-      "square_miles": {
-        "label": "Square Miles",
-        "conversion": {
-          "baseUnit": "square_meters",
-          "formula": "x=x*2589988.11"
-        }
-      },
-      "square_centimeters": {
-        "label": "Square Centimeters",
-        "conversion": {
-          "baseUnit": "square_meters",
-          "formula": "x=x*0.0001"
-        }
-      },
-      "are": {
-        "label": "Are",
-        "conversion": {
-          "baseUnit": "square_meters",
-          "formula": "x=x*100"
-        }
-      },
-      "square_rods": {
-        "label": "Square Rods",
-        "conversion": {
-          "baseUnit": "square_meters",
-          "formula": "x=x*25.2929"
-        }
-      },
-      "square_chains": {
-        "label": "Square Chains",
-        "conversion": {
-          "baseUnit": "square_meters",
-          "formula": "x=x*404.6873"
-        }
-      },
-      "square_millimeters": {
-        "label": "Square Millimeters",
-        "conversion": {
-          "baseUnit": "square_meters",
-          "formula": "x=x*0.000001"
-        }
+        "conversion": { "baseUnit": "square_meters", "formula": "x=x*4046.86" }
       }
     }
   }

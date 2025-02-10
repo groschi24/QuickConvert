@@ -1,0 +1,40 @@
+{
+  "radiation_absorbed_dose": {
+    "label": "Radiation Absorbed Dose",
+    "baseUnit": "gray",
+    "units": {
+      "gray": {
+        "label": "Gray",
+        "conversion": { "baseUnit": "gray", "formula": "x=x" }
+      },
+      "rad": {
+        "label": "Rad",
+        "conversion": { "baseUnit": "gray", "formula": "x=x*0.01" }
+      }
+    }
+  },
+  "radiation_exposure": {
+    "label": "Radiation Exposure",
+    "baseUnit": "coulomb_per_kilogram",
+    "units": {
+      "coulomb_per_kilogram": {
+        "label": "C/kg",
+        "conversion": { "baseUnit": "coulomb_per_kilogram", "formula": "x=x" }
+      }
+    }
+  },
+  "radiation_equivalent_dose": {
+    "label": "Radiation Equivalent Dose",
+    "baseUnit": "sievert",
+    "units": {
+      "sievert": {
+        "label": "Sievert",
+        "conversion": { "baseUnit": "sievert", "formula": "x=x" }
+      },
+      "rem": {
+        "label": "Rem",
+        "conversion": { "baseUnit": "sievert", "formula": "x=x*0.01" }
+      }
+    }
+  }
+}

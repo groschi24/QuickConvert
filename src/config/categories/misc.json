@@ -1,0 +1,127 @@
+{
+  "angle": {
+    "label": "Angle",
+    "baseUnit": "radians",
+    "units": {
+      "radians": {
+        "label": "Radians",
+        "conversion": { "baseUnit": "radians", "formula": "x=x" }
+      },
+      "degrees": {
+        "label": "Degrees",
+        "conversion": { "baseUnit": "radians", "formula": "x=x*0.0174533" }
+      }
+    }
+  },
+  "data_storage": {
+    "label": "Data Storage",
+    "baseUnit": "bytes",
+    "units": {
+      "bytes": {
+        "label": "Bytes",
+        "conversion": { "baseUnit": "bytes", "formula": "x=x" }
+      },
+      "kilobytes": {
+        "label": "Kilobytes",
+        "conversion": { "baseUnit": "bytes", "formula": "x=x*1024" }
+      }
+    }
+  },
+  "frequency": {
+    "label": "Frequency",
+    "baseUnit": "hertz",
+    "units": {
+      "hertz": {
+        "label": "Hertz",
+        "conversion": { "baseUnit": "hertz", "formula": "x=x" }
+      },
+      "kilohertz": {
+        "label": "Kilohertz",
+        "conversion": { "baseUnit": "hertz", "formula": "x=x*1000" }
+      }
+    }
+  },
+  "prefixes": {
+    "label": "Prefixes",
+    "baseUnit": "none",
+    "units": {
+      "none": {
+        "label": "None",
+        "conversion": { "baseUnit": "none", "formula": "x=x" }
+      },
+      "kilo": {
+        "label": "Kilo",
+        "conversion": { "baseUnit": "none", "formula": "x=x*1000" }
+      }
+    }
+  },
+  "data_transfer": {
+    "label": "Data Transfer",
+    "baseUnit": "bits_per_second",
+    "units": {
+      "bits_per_second": {
+        "label": "bps",
+        "conversion": { "baseUnit": "bits_per_second", "formula": "x=x" }
+      },
+      "megabits_per_second": {
+        "label": "Mbps",
+        "conversion": {
+          "baseUnit": "bits_per_second",
+          "formula": "x=x*1000000"
+        }
+      }
+    }
+  },
+  "sound": {
+    "label": "Sound",
+    "baseUnit": "decibels",
+    "units": {
+      "decibels": {
+        "label": "Decibels",
+        "conversion": { "baseUnit": "decibels", "formula": "x=x" }
+      }
+    }
+  },
+  "typography": {
+    "label": "Typography",
+    "baseUnit": "points",
+    "units": {
+      "points": {
+        "label": "Points",
+        "conversion": { "baseUnit": "points", "formula": "x=x" }
+      },
+      "picas": {
+        "label": "Picas",
+        "conversion": { "baseUnit": "points", "formula": "x=x*12" }
+      }
+    }
+  },
+  "currency": {
+    "label": "Currency",
+    "baseUnit": "usd",
+    "units": {
+      "usd": {
+        "label": "US Dollars",
+        "conversion": { "baseUnit": "usd", "formula": "x=x" }
+      },
+      "eur": {
+        "label": "Euros",
+        "conversion": { "baseUnit": "usd", "formula": "x=x*0.9" }
+      }
+    }
+  },
+  "numbers": {
+    "label": "Numbers",
+    "baseUnit": "decimal",
+    "units": {
+      "decimal": {
+        "label": "Decimal",
+        "conversion": { "baseUnit": "decimal", "formula": "x=x" }
+      },
+      "binary": {
+        "label": "Binary",
+        "conversion": { "baseUnit": "decimal", "formula": "x=parseInt(x,2)" }
+      }
+    }
+  }
+}

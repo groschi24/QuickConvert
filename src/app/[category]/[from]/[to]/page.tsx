@@ -37,7 +37,16 @@ export default function UnitConverter({
   }, [category]);
 
   if (isLoading || !config) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-gradient-to-b from-gray-50 via-white to-gray-50 dark:from-[#151515] dark:via-[#000000] dark:to-[#151515]">
+        <div className="space-y-4 text-center">
+          <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-indigo-500 border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" />
+          <div className="text-sm font-medium text-gray-600 dark:text-[#ffffffaa]">
+            Loading converter...
+          </div>
+        </div>
+      </div>
+    );
   }
 
   return (

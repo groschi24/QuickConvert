@@ -1,0 +1,101 @@
+{
+  "temperature": {
+    "label": "Temperature",
+    "baseUnit": "kelvin",
+    "units": {
+      "kelvin": {
+        "label": "Kelvin",
+        "conversion": { "baseUnit": "kelvin", "formula": "x=x" }
+      },
+      "celsius": {
+        "label": "Celsius",
+        "conversion": {
+          "baseUnit": "kelvin",
+          "formula": "x=x+273.15",
+          "reverseFormula": "x=x-273.15"
+        }
+      },
+      "fahrenheit": {
+        "label": "Fahrenheit",
+        "conversion": {
+          "baseUnit": "kelvin",
+          "formula": "x=(x-32)*5/9+273.15",
+          "reverseFormula": "x=(x-273.15)*9/5+32"
+        }
+      },
+      "rankine": {
+        "label": "Rankine",
+        "conversion": {
+          "baseUnit": "kelvin",
+          "formula": "x=x*0.555556",
+          "reverseFormula": "x=x*1.8"
+        }
+      }
+    }
+  },
+  "thermal_conductivity": {
+    "label": "Thermal Conductivity",
+    "baseUnit": "watts_per_meter_kelvin",
+    "units": {
+      "watts_per_meter_kelvin": {
+        "label": "W/m·K",
+        "conversion": { "baseUnit": "watts_per_meter_kelvin", "formula": "x=x" }
+      }
+    }
+  },
+  "energy": {
+    "label": "Energy",
+    "baseUnit": "joules",
+    "units": {
+      "joules": {
+        "label": "Joules",
+        "conversion": { "baseUnit": "joules", "formula": "x=x" }
+      },
+      "kilojoules": {
+        "label": "Kilojoules",
+        "conversion": { "baseUnit": "joules", "formula": "x=x*1000" }
+      },
+      "calories": {
+        "label": "Calories",
+        "conversion": { "baseUnit": "joules", "formula": "x=x*4.184" }
+      }
+    }
+  },
+  "fuel_efficiency": {
+    "label": "Fuel Efficiency",
+    "baseUnit": "grams_per_kilowatt_hour",
+    "units": {
+      "grams_per_kilowatt_hour": {
+        "label": "Grams/kWh",
+        "conversion": {
+          "baseUnit": "grams_per_kilowatt_hour",
+          "formula": "x=x"
+        }
+      },
+      "pounds_per_horsepower_hour": {
+        "label": "lb/hp·h",
+        "conversion": {
+          "baseUnit": "grams_per_kilowatt_hour",
+          "formula": "x=x*608.277"
+        }
+      }
+    }
+  },
+  "fuel_consumption": {
+    "label": "Fuel Consumption",
+    "baseUnit": "liters_per_100km",
+    "units": {
+      "liters_per_100km": {
+        "label": "L/100km",
+        "conversion": { "baseUnit": "liters_per_100km", "formula": "x=x" }
+      },
+      "miles_per_gallon": {
+        "label": "MPG",
+        "conversion": {
+          "baseUnit": "liters_per_100km",
+          "formula": "x=235.215/x"
+        }
+      }
+    }
+  }
+}
