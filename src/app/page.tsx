@@ -115,15 +115,29 @@ export default async function Home() {
             </p>
           </div>
           <div className="mx-auto grid max-w-6xl gap-8">
-            {Object.entries(await loadAllUnitConfigs()).map(
-              ([groupKey, group]) => (
+            {Object.entries(await loadAllUnitConfigs())
+              .sort(([keyA], [keyB]) => {
+                const groupOrder: Record<string, number> = {
+                  common: 0,
+                  engineering: 1,
+                  heat_energy: 2,
+                  fluid_volume: 3,
+                  light: 4,
+                  electromagnetism: 5,
+                  radiation: 6,
+                  misc: 7,
+                };
+                return (groupOrder[keyA] ?? 999) - (groupOrder[keyB] ?? 999);
+              })
+              .map(([groupKey, group]) => (
                 <div key={groupKey} className="space-y-6">
                   <h3 className="text-2xl font-bold text-gray-900 dark:text-[#ffffffee]">
                     {group.label || groupKey}
                   </h3>
                   <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-                    {Object.entries(group.categories || {}).map(
-                      ([categoryKey, category]) => (
+                    {Object.entries(group.categories || {})
+                      .sort(([a], [b]) => a.localeCompare(b))
+                      .map(([categoryKey, category]) => (
                         <Link
                           key={`${groupKey}-${categoryKey}`}
                           href={`/${categoryKey}`}
@@ -138,12 +152,10 @@ export default async function Home() {
                             instantly
                           </p>
                         </Link>
-                      ),
-                    )}
+                      ))}
                   </div>
                 </div>
-              ),
-            )}
+              ))}
           </div>
         </div>
       </section>
