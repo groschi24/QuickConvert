@@ -80,6 +80,13 @@
           "baseUnit": "cubic_meters_per_kilogram",
           "formula": "x=x"
         }
+      },
+      "cubic_feet_per_pound": {
+        "label": "ft³/lb",
+        "conversion": {
+          "baseUnit": "cubic_meters_per_kilogram",
+          "formula": "x=x*16.0185"
+        }
       }
     }
   },
@@ -111,6 +118,13 @@
       "kilogram_meter_squared": {
         "label": "kg·m²",
         "conversion": { "baseUnit": "kilogram_meter_squared", "formula": "x=x" }
+      },
+      "pound_foot_squared": {
+        "label": "lb·ft²",
+        "conversion": {
+          "baseUnit": "kilogram_meter_squared",
+          "formula": "x=x*7.23301"
+        }
       }
     }
   },
@@ -121,6 +135,10 @@
       "newton_meter": {
         "label": "N·m",
         "conversion": { "baseUnit": "newton_meter", "formula": "x=x" }
+      },
+      "pound_force_foot": {
+        "label": "lb·ft",
+        "conversion": { "baseUnit": "newton_meter", "formula": "x=x*0.737562" }
       }
     }
   },

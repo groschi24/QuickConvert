@@ -20,6 +20,10 @@
       "amperes": {
         "label": "Amperes",
         "conversion": { "baseUnit": "amperes", "formula": "x=x" }
+      },
+      "milliamperes": {
+        "label": "Milliamperes",
+        "conversion": { "baseUnit": "amperes", "formula": "x=x*1000" }
       }
     }
   },
@@ -30,6 +34,10 @@
       "ohms": {
         "label": "Ohms",
         "conversion": { "baseUnit": "ohms", "formula": "x=x" }
+      },
+      "kiloohms": {
+        "label": "Kiloohms",
+        "conversion": { "baseUnit": "ohms", "formula": "x=x*1000" }
       }
     }
   },
@@ -40,6 +48,10 @@
       "watts": {
         "label": "Watts",
         "conversion": { "baseUnit": "watts", "formula": "x=x" }
+      },
+      "kilowatts": {
+        "label": "Kilowatts",
+        "conversion": { "baseUnit": "watts", "formula": "x=x*1000" }
       }
     }
   },
@@ -50,6 +62,10 @@
       "farads": {
         "label": "Farads",
         "conversion": { "baseUnit": "farads", "formula": "x=x" }
+      },
+      "microfarads": {
+        "label": "Microfarads",
+        "conversion": { "baseUnit": "farads", "formula": "x=x*0.000001" }
       }
     }
   },
@@ -60,6 +76,10 @@
       "henries": {
         "label": "Henries",
         "conversion": { "baseUnit": "henries", "formula": "x=x" }
+      },
+      "millihenries": {
+        "label": "Millihenries",
+        "conversion": { "baseUnit": "henries", "formula": "x=x*0.001" }
       }
     }
   },
@@ -70,6 +90,13 @@
       "ampere_per_meter": {
         "label": "A/m",
         "conversion": { "baseUnit": "ampere_per_meter", "formula": "x=x" }
+      },
+      "oersted": {
+        "label": "Oersted",
+        "conversion": {
+          "baseUnit": "ampere_per_meter",
+          "formula": "x=x*79.5775"
+        }
       }
     }
   },
@@ -80,6 +107,10 @@
       "weber": {
         "label": "Weber",
         "conversion": { "baseUnit": "weber", "formula": "x=x" }
+      },
+      "maxwell": {
+        "label": "Maxwell",
+        "conversion": { "baseUnit": "weber", "formula": "x=x*1e-8" }
       }
     }
   },
@@ -90,6 +121,10 @@
       "tesla": {
         "label": "Tesla",
         "conversion": { "baseUnit": "tesla", "formula": "x=x" }
+      },
+      "gauss": {
+        "label": "Gauss",
+        "conversion": { "baseUnit": "tesla", "formula": "x=x*0.0001" }
       }
     }
   },
@@ -100,6 +135,10 @@
       "coulomb": {
         "label": "Coulomb",
         "conversion": { "baseUnit": "coulomb", "formula": "x=x" }
+      },
+      "millicoulomb": {
+        "label": "Millicoulomb",
+        "conversion": { "baseUnit": "coulomb", "formula": "x=x*0.001" }
       }
     }
   },
@@ -134,6 +173,10 @@
       "volts_per_meter": {
         "label": "V/m",
         "conversion": { "baseUnit": "volts_per_meter", "formula": "x=x" }
+      },
+      "kilovolts_per_meter": {
+        "label": "kV/m",
+        "conversion": { "baseUnit": "volts_per_meter", "formula": "x=x*1000" }
       }
     }
   },
@@ -144,6 +187,10 @@
       "volts": {
         "label": "Volts",
         "conversion": { "baseUnit": "volts", "formula": "x=x" }
+      },
+      "kilovolts": {
+        "label": "Kilovolts",
+        "conversion": { "baseUnit": "volts", "formula": "x=x*1000" }
       }
     }
   },
@@ -164,6 +211,10 @@
       "ohm_meters": {
         "label": "Ω·m",
         "conversion": { "baseUnit": "ohm_meters", "formula": "x=x" }
+      },
+      "milliohm_meters": {
+        "label": "mΩ·m",
+        "conversion": { "baseUnit": "ohm_meters", "formula": "x=x*0.001" }
       }
     }
   },
@@ -174,6 +225,10 @@
       "siemens": {
         "label": "Siemens",
         "conversion": { "baseUnit": "siemens", "formula": "x=x" }
+      },
+      "miliSiemens": {
+        "label": "mS",
+        "conversion": { "baseUnit": "siemens", "formula": "x=x*0.001" }
       }
     }
   },
@@ -184,6 +239,13 @@
       "siemens_per_meter": {
         "label": "S/m",
         "conversion": { "baseUnit": "siemens_per_meter", "formula": "x=x" }
+      },
+      "miliSiemens_per_meter": {
+        "label": "mS/m",
+        "conversion": {
+          "baseUnit": "siemens_per_meter",
+          "formula": "x=x*0.001"
+        }
       }
     }
   },
@@ -194,6 +256,10 @@
       "farads": {
         "label": "Farads",
         "conversion": { "baseUnit": "farads", "formula": "x=x" }
+      },
+      "picofarads": {
+        "label": "Picofarads",
+        "conversion": { "baseUnit": "farads", "formula": "x=x*0.000000000001" }
       }
     }
   },
@@ -204,6 +270,10 @@
       "ampere_turns": {
         "label": "A·turns",
         "conversion": { "baseUnit": "ampere_turns", "formula": "x=x" }
+      },
+      "kilampere_turns": {
+        "label": "kA·turns",
+        "conversion": { "baseUnit": "ampere_turns", "formula": "x=x*1000" }
       }
     }
   }

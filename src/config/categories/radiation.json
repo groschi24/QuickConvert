@@ -20,6 +20,13 @@
       "coulomb_per_kilogram": {
         "label": "C/kg",
         "conversion": { "baseUnit": "coulomb_per_kilogram", "formula": "x=x" }
+      },
+      "roentgen": {
+        "label": "Roentgen",
+        "conversion": {
+          "baseUnit": "coulomb_per_kilogram",
+          "formula": "x=x*0.000258"
+        }
       }
     }
   },

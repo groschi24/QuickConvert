@@ -79,6 +79,10 @@
       "decibels": {
         "label": "Decibels",
         "conversion": { "baseUnit": "decibels", "formula": "x=x" }
+      },
+      "bels": {
+        "label": "Bels",
+        "conversion": { "baseUnit": "decibels", "formula": "x=x*10" }
       }
     }
   },

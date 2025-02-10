@@ -23,6 +23,13 @@
           "baseUnit": "candela_per_square_meter",
           "formula": "x=x"
         }
+      },
+      "foot_lambert": {
+        "label": "Foot Lambert",
+        "conversion": {
+          "baseUnit": "candela_per_square_meter",
+          "formula": "x=x*3.426259"
+        }
       }
     }
   },
@@ -32,6 +39,10 @@
     "units": {
       "lumen": {
         "label": "Lumen",
+        "conversion": { "baseUnit": "lumen", "formula": "x=x" }
+      },
+      "candela_steradian": {
+        "label": "Candela Steradian",
         "conversion": { "baseUnit": "lumen", "formula": "x=x" }
       }
     }
@@ -43,6 +54,10 @@
       "candela": {
         "label": "Candela",
         "conversion": { "baseUnit": "candela", "formula": "x=x" }
+      },
+      "millicandela": {
+        "label": "Millicandela",
+        "conversion": { "baseUnit": "candela", "formula": "x=x*0.001" }
       }
     }
   },
@@ -53,6 +68,10 @@
       "pixels_per_inch": {
         "label": "PPI",
         "conversion": { "baseUnit": "pixels_per_inch", "formula": "x=x" }
+      },
+      "pixels_per_centimeter": {
+        "label": "PPCM",
+        "conversion": { "baseUnit": "pixels_per_inch", "formula": "x=x/2.54" }
       }
     }
   },

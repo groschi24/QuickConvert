@@ -107,6 +107,10 @@
       "newtons_per_meter": {
         "label": "N/m",
         "conversion": { "baseUnit": "newtons_per_meter", "formula": "x=x" }
+      },
+      "dynes_per_centimeter": {
+        "label": "dynes/cm",
+        "conversion": { "baseUnit": "newtons_per_meter", "formula": "x=x*1000" }
       }
     }
   }

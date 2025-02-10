@@ -40,6 +40,13 @@
       "watts_per_meter_kelvin": {
         "label": "W/m·K",
         "conversion": { "baseUnit": "watts_per_meter_kelvin", "formula": "x=x" }
+      },
+      "btu_per_hour_foot_fahrenheit": {
+        "label": "BTU/h·ft·°F",
+        "conversion": {
+          "baseUnit": "watts_per_meter_kelvin",
+          "formula": "x=x*1.730735"
+        }
       }
     }
   },
