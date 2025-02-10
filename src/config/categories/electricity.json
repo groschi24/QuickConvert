@@ -23,6 +23,13 @@
           "baseUnit": "volts",
           "formula": "x=x*0.001"
         }
+      },
+      "microvolts": {
+        "label": "Microvolts",
+        "conversion": {
+          "baseUnit": "volts",
+          "formula": "x=x*0.000001"
+        }
       }
     }
   },
@@ -49,6 +56,13 @@
         "conversion": {
           "baseUnit": "amperes",
           "formula": "x=x*1000"
+        }
+      },
+      "microamperes": {
+        "label": "Microamperes",
+        "conversion": {
+          "baseUnit": "amperes",
+          "formula": "x=x*0.000001"
         }
       }
     }
@@ -77,6 +91,13 @@
           "baseUnit": "ohms",
           "formula": "x=x*1000000"
         }
+      },
+      "milliohms": {
+        "label": "Milliohms",
+        "conversion": {
+          "baseUnit": "ohms",
+          "formula": "x=x*0.001"
+        }
       }
     }
   },
@@ -89,9 +110,6 @@
         "conversion": {
           "baseUnit": "watts",
           "formula": "x=x"
-        },
-        "voltageConversion": {
-          "formula": "x=Math.sqrt(x*1)"
         }
       },
       "kilowatts": {
@@ -99,9 +117,6 @@
         "conversion": {
           "baseUnit": "watts",
           "formula": "x=x*1000"
-        },
-        "voltageConversion": {
-          "formula": "x=Math.sqrt(x*1000)"
         }
       },
       "megawatts": {
@@ -116,6 +131,74 @@
         "conversion": {
           "baseUnit": "watts",
           "formula": "x=x*745.7"
+        }
+      },
+      "milliwatts": {
+        "label": "Milliwatts",
+        "conversion": {
+          "baseUnit": "watts",
+          "formula": "x=x*0.001"
+        }
+      }
+    }
+  },
+  "capacitance": {
+    "label": "Capacitance",
+    "baseUnit": "farads",
+    "units": {
+      "farads": {
+        "label": "Farads",
+        "conversion": {
+          "baseUnit": "farads",
+          "formula": "x=x"
+        }
+      },
+      "microfarads": {
+        "label": "Microfarads",
+        "conversion": {
+          "baseUnit": "farads",
+          "formula": "x=x*0.000001"
+        }
+      },
+      "nanofarads": {
+        "label": "Nanofarads",
+        "conversion": {
+          "baseUnit": "farads",
+          "formula": "x=x*0.000000001"
+        }
+      },
+      "picofarads": {
+        "label": "Picofarads",
+        "conversion": {
+          "baseUnit": "farads",
+          "formula": "x=x*0.000000000001"
+        }
+      }
+    }
+  },
+  "inductance": {
+    "label": "Inductance",
+    "baseUnit": "henries",
+    "units": {
+      "henries": {
+        "label": "Henries",
+        "conversion": {
+          "baseUnit": "henries",
+          "formula": "x=x"
+        }
+      },
+      "millihenries": {
+        "label": "Millihenries",
+        "conversion": {
+          "baseUnit": "henries",
+          "formula": "x=x*0.001"
+        }
+      },
+      "microhenries": {
+        "label": "Microhenries",
+        "conversion": {
+          "baseUnit": "henries",
+          "formula": "x=x*0.000001"
         }
       }
     }
