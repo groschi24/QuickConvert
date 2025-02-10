@@ -206,7 +206,7 @@ export function useUnitConverter(
         timestamp: Date.now(),
       };
 
-      const updatedHistory = [newEntry, ...conversionHistory].slice(0, 10);
+      const updatedHistory = [newEntry, ...conversionHistory].slice(0, 100);
       setConversionHistory(updatedHistory);
       localStorage.setItem("conversionHistory", JSON.stringify(updatedHistory));
     },

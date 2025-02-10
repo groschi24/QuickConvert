@@ -28,10 +28,10 @@ export function ConversionHistory({
 
   return (
     <div className="mt-8">
-      <div className="transform rounded-2xl border border-gray-200 bg-white/90 p-8 shadow-2xl backdrop-blur-lg transition-all duration-300 hover:border-gray-300 dark:border-[#ffffff10] dark:bg-[#151515]/90 dark:hover:border-[#ffffff20]">
+      <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-[#1A1A1A]">
         <div className="mb-6 flex items-center justify-between">
-          <h2 className="bg-gradient-to-r from-indigo-600 via-indigo-500 to-indigo-400 bg-clip-text text-2xl font-bold tracking-tight text-transparent">
-            History
+          <h2 className="text-2xl font-semibold text-gray-900 dark:text-[#ffffffee]">
+            Conversion History
           </h2>
           {history.length > 0 && (
             <button
@@ -42,11 +42,11 @@ export function ConversionHistory({
             </button>
           )}
         </div>
-        <div className="max-h-[400px] space-y-4 overflow-y-auto">
+        <div className="max-h-[400px] overflow-y-auto">
           {history.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-8 text-center">
-              <p className="text-gray-500 dark:text-[#ffffff80]">
-                No conversion history yet
+              <p className="text-gray-600 dark:text-[#ffffffaa]">
+                No previous conversions available
               </p>
               <p className="mt-2 text-sm text-gray-400 dark:text-[#ffffff60]">
                 Your recent conversions will appear here
@@ -56,7 +56,7 @@ export function ConversionHistory({
             history.map((entry) => (
               <div
                 key={entry.id}
-                className="group relative cursor-pointer rounded-xl border border-gray-200 bg-gray-50/80 p-4 pr-10 transition-all duration-200 hover:border-gray-300 hover:bg-white hover:shadow-lg dark:border-[#ffffff10] dark:bg-[#1a1a1a]/80 dark:hover:border-[#ffffff20] dark:hover:bg-[#151515]"
+                className="group relative mb-4 cursor-pointer rounded-xl border border-gray-200 bg-gray-50/80 p-4 pr-10 transition-all duration-200 hover:border-gray-300 hover:bg-white hover:shadow-lg dark:border-[#ffffff10] dark:bg-[#1a1a1a]/80 dark:hover:border-[#ffffff20] dark:hover:bg-[#151515]"
                 onClick={() => {
                   const params = new URLSearchParams();
                   params.set("value", entry.value);
