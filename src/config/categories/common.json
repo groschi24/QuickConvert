@@ -58,6 +58,20 @@
           "baseUnit": "meters",
           "formula": "x=x*1609.344"
         }
+      },
+      "nautical_miles": {
+        "label": "Nautical Miles",
+        "conversion": {
+          "baseUnit": "meters",
+          "formula": "x=x*1852"
+        }
+      },
+      "micrometers": {
+        "label": "Micrometers",
+        "conversion": {
+          "baseUnit": "meters",
+          "formula": "x=x*0.000001"
+        }
       }
     }
   },
@@ -106,6 +120,20 @@
           "baseUnit": "kilograms",
           "formula": "x=x*1000"
         }
+      },
+      "stone": {
+        "label": "Stone",
+        "conversion": {
+          "baseUnit": "kilograms",
+          "formula": "x=x*6.35029"
+        }
+      },
+      "short_tons": {
+        "label": "Short Tons",
+        "conversion": {
+          "baseUnit": "kilograms",
+          "formula": "x=x*907.185"
+        }
       }
     }
   },
@@ -146,6 +174,20 @@
         "conversion": {
           "baseUnit": "seconds",
           "formula": "x=x*604800"
+        }
+      },
+      "months": {
+        "label": "Months",
+        "conversion": {
+          "baseUnit": "seconds",
+          "formula": "x=x*2629746"
+        }
+      },
+      "years": {
+        "label": "Years",
+        "conversion": {
+          "baseUnit": "seconds",
+          "formula": "x=x*31556952"
         }
       }
     }
@@ -194,6 +236,20 @@
         "conversion": {
           "baseUnit": "square_meters",
           "formula": "x=x*10000"
+        }
+      },
+      "square_inches": {
+        "label": "Square Inches",
+        "conversion": {
+          "baseUnit": "square_meters",
+          "formula": "x=x*0.00064516"
+        }
+      },
+      "square_miles": {
+        "label": "Square Miles",
+        "conversion": {
+          "baseUnit": "square_meters",
+          "formula": "x=x*2589988.11"
         }
       }
     }
