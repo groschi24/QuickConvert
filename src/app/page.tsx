@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { categories } from "@/config/units";
+import { loadAllUnitConfigs } from "@/utils/loadUnitConfigs";
 import Header from "@/components/Header";
 import ScrollingContainer from "@/components/ScrollingContainer";
 
 import type { PopularConversion } from "@/types/units";
 
-export default function Home() {
+export default async function Home() {
   const popularConversions: PopularConversion[] = [
     {
       from: "kilometers",
@@ -14,30 +14,6 @@ export default function Home() {
       label: "Kilometers to Miles",
       description: "Convert distances between metric and imperial units",
       icon: "🛣️",
-    },
-    {
-      from: "kilograms",
-      to: "pounds",
-      category: "weight",
-      label: "Kilograms to Pounds",
-      description: "Convert between metric and imperial weight units",
-      icon: "⚖️",
-    },
-    {
-      from: "celsius",
-      to: "fahrenheit",
-      category: "temperature",
-      label: "Celsius to Fahrenheit",
-      description: "Convert between Celsius and Fahrenheit scales",
-      icon: "🌡️",
-    },
-    {
-      from: "usd",
-      to: "eur",
-      category: "currency",
-      label: "USD to EUR",
-      description: "Convert between US Dollars and Euros",
-      icon: "💱",
     },
     {
       from: "meters",
@@ -57,19 +33,51 @@ export default function Home() {
     },
     {
       from: "meters_per_second",
-      to: "kilometers_per_hour",
+      to: "feet_per_second",
       category: "speed",
-      label: "MPH to KPH",
-      description: "Convert speeds between miles and kilometers per hour",
-      icon: "🚗",
+      label: "m/s to ft/s",
+      description: "Convert velocity between metric and imperial units",
+      icon: "🏃",
     },
     {
-      from: "bytes",
-      to: "megabytes",
-      category: "digital",
-      label: "Bytes to MB",
-      description: "Convert between digital storage units",
-      icon: "💾",
+      from: "watts",
+      to: "kilowatts",
+      category: "power",
+      label: "Watts to Kilowatts",
+      description: "Convert power measurements for electrical devices",
+      icon: "⚡",
+    },
+    {
+      from: "meters_per_second_squared",
+      to: "gravity",
+      category: "acceleration",
+      label: "m/s² to g",
+      description: "Convert acceleration to standard gravity units",
+      icon: "🎢",
+    },
+    {
+      from: "radians_per_second",
+      to: "revolutions_per_minute",
+      category: "velocity_angular",
+      label: "rad/s to RPM",
+      description: "Convert between angular velocity units",
+      icon: "🔄",
+    },
+    {
+      from: "cubic_meters_per_second",
+      to: "gallons_per_minute",
+      category: "flow_rate",
+      label: "m³/s to GPM",
+      description: "Convert between flow rate measurements",
+      icon: "💧",
+    },
+    {
+      from: "pascal_second",
+      to: "poise",
+      category: "viscosity",
+      label: "Pa·s to Poise",
+      description: "Convert between viscosity measurements",
+      icon: "🌊",
     },
   ];
 
@@ -114,22 +122,48 @@ export default function Home() {
               Find the perfect converter for your needs
             </p>
           </div>
-          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            {categories.map((category) => (
-              <Link
-                key={category.value}
-                href={`/${category.value}`}
-                className="group relative transform overflow-hidden rounded-xl border border-gray-200 bg-white p-8 shadow-md backdrop-blur-sm transition-all duration-200 hover:scale-105 hover:border-gray-300 hover:shadow-lg dark:border-[#ffffff10] dark:bg-[#151515] dark:hover:border-[#ffffff20]"
-              >
-                <div className="absolute inset-0 -z-10 bg-gradient-to-br from-indigo-50 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 dark:from-indigo-950/30"></div>
-                <h3 className="text-xl font-semibold text-gray-900 group-hover:text-indigo-600 dark:text-[#ffffffcc] dark:group-hover:text-indigo-400">
-                  {category.label}
-                </h3>
-                <p className="mt-2 text-sm text-gray-600 dark:text-[#ffffff80]">
-                  Convert {category.label.toLowerCase()} units instantly
-                </p>
-              </Link>
-            ))}
+          <div className="mx-auto grid max-w-6xl gap-8">
+            {Object.entries(await loadAllUnitConfigs())
+              .sort(([keyA], [keyB]) => {
+                const groupOrder: Record<string, number> = {
+                  common: 0,
+                  engineering: 1,
+                  heat_energy: 2,
+                  fluid_volume: 3,
+                  light: 4,
+                  electromagnetism: 5,
+                  radiation: 6,
+                  misc: 7,
+                };
+                return (groupOrder[keyA] ?? 999) - (groupOrder[keyB] ?? 999);
+              })
+              .map(([groupKey, group]) => (
+                <div key={groupKey} className="space-y-6">
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-[#ffffffee]">
+                    {group.label || groupKey}
+                  </h3>
+                  <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                    {Object.entries(group.categories || {})
+                      .sort(([a], [b]) => a.localeCompare(b))
+                      .map(([categoryKey, category]) => (
+                        <Link
+                          key={`${groupKey}-${categoryKey}`}
+                          href={`/${categoryKey}`}
+                          className="group relative transform overflow-hidden rounded-xl border border-gray-200 bg-white p-8 shadow-md backdrop-blur-sm transition-all duration-200 hover:scale-105 hover:border-gray-300 hover:shadow-lg dark:border-[#ffffff10] dark:bg-[#151515] dark:hover:border-[#ffffff20]"
+                        >
+                          <div className="absolute inset-0 -z-10 bg-gradient-to-br from-indigo-50 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 dark:from-indigo-950/30"></div>
+                          <h3 className="text-xl font-semibold text-gray-900 group-hover:text-indigo-600 dark:text-[#ffffffcc] dark:group-hover:text-indigo-400">
+                            {category.label}
+                          </h3>
+                          <p className="mt-2 text-sm text-gray-600 dark:text-[#ffffff80]">
+                            Convert {category.label.toLowerCase()} units
+                            instantly
+                          </p>
+                        </Link>
+                      ))}
+                  </div>
+                </div>
+              ))}
           </div>
         </div>
       </section>
@@ -149,49 +183,78 @@ export default function Home() {
               Discover the powerful features that make our converter stand out
             </p>
           </div>
-          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              {
-                title: "Real-time Conversion",
-                description:
-                  "See results instantly as you type with our lightning-fast converter",
-              },
-              {
-                title: "Multiple Categories",
-                description:
-                  "Convert units across various categories from length to digital storage",
-              },
-              {
-                title: "Dark Mode Support",
-                description: "Easy on your eyes with automatic theme detection",
-              },
-              {
-                title: "Conversion History",
-                description:
-                  "Track your recent conversions with local storage support",
-              },
-              {
-                title: "Formula Display",
-                description:
-                  "Learn how conversions work with displayed formulas",
-              },
-              {
-                title: "Share Results",
-                description: "Easily share conversion results via URL",
-              },
-            ].map((feature, index) => (
-              <div
-                key={index}
-                className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm dark:border-[#ffffff10] dark:bg-[#151515]"
-              >
-                <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-[#ffffffee]">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-600 dark:text-[#ffffffaa]">
-                  {feature.description}
-                </p>
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="group rounded-2xl border border-gray-200 bg-white/90 p-8 shadow-lg backdrop-blur-lg transition-all duration-300 hover:scale-105 hover:border-gray-300 dark:border-[#ffffff10] dark:bg-[#151515]/90 dark:hover:border-[#ffffff20]">
+              <div className="mb-5 inline-flex rounded-lg bg-indigo-100 p-3 text-2xl dark:bg-indigo-950/30">
+                ⚡️
               </div>
-            ))}
+              <h3 className="mb-3 text-xl font-semibold text-gray-900 group-hover:text-indigo-600 dark:text-[#ffffffcc] dark:group-hover:text-indigo-400">
+                Instant Calculations
+              </h3>
+              <p className="text-gray-600 dark:text-[#ffffff80]">
+                Get real-time conversions as you type, with instant updates and
+                precise results.
+              </p>
+            </div>
+            <div className="group rounded-2xl border border-gray-200 bg-white/90 p-8 shadow-lg backdrop-blur-lg transition-all duration-300 hover:scale-105 hover:border-gray-300 dark:border-[#ffffff10] dark:bg-[#151515]/90 dark:hover:border-[#ffffff20]">
+              <div className="mb-5 inline-flex rounded-lg bg-indigo-100 p-3 text-2xl dark:bg-indigo-950/30">
+                🎯
+              </div>
+              <h3 className="mb-3 text-xl font-semibold text-gray-900 group-hover:text-indigo-600 dark:text-[#ffffffcc] dark:group-hover:text-indigo-400">
+                Precision & Accuracy
+              </h3>
+              <p className="text-gray-600 dark:text-[#ffffff80]">
+                High-precision conversions you can trust, with detailed formulas
+                for transparency.
+              </p>
+            </div>
+            <div className="group rounded-2xl border border-gray-200 bg-white/90 p-8 shadow-lg backdrop-blur-lg transition-all duration-300 hover:scale-105 hover:border-gray-300 dark:border-[#ffffff10] dark:bg-[#151515]/90 dark:hover:border-[#ffffff20]">
+              <div className="mb-5 inline-flex rounded-lg bg-indigo-100 p-3 text-2xl dark:bg-indigo-950/30">
+                🌙
+              </div>
+              <h3 className="mb-3 text-xl font-semibold text-gray-900 group-hover:text-indigo-600 dark:text-[#ffffffcc] dark:group-hover:text-indigo-400">
+                Dark Mode Support
+              </h3>
+              <p className="text-gray-600 dark:text-[#ffffff80]">
+                Comfortable viewing day or night with automatic theme detection
+                and manual toggle.
+              </p>
+            </div>
+            <div className="group rounded-2xl border border-gray-200 bg-white/90 p-8 shadow-lg backdrop-blur-lg transition-all duration-300 hover:scale-105 hover:border-gray-300 dark:border-[#ffffff10] dark:bg-[#151515]/90 dark:hover:border-[#ffffff20]">
+              <div className="mb-5 inline-flex rounded-lg bg-indigo-100 p-3 text-2xl dark:bg-indigo-950/30">
+                📱
+              </div>
+              <h3 className="mb-3 text-xl font-semibold text-gray-900 group-hover:text-indigo-600 dark:text-[#ffffffcc] dark:group-hover:text-indigo-400">
+                Responsive Design
+              </h3>
+              <p className="text-gray-600 dark:text-[#ffffff80]">
+                Perfect experience across all devices - from desktop to mobile.
+              </p>
+            </div>
+            <div className="group rounded-2xl border border-gray-200 bg-white/90 p-8 shadow-lg backdrop-blur-lg transition-all duration-300 hover:scale-105 hover:border-gray-300 dark:border-[#ffffff10] dark:bg-[#151515]/90 dark:hover:border-[#ffffff20]">
+              <div className="mb-5 inline-flex rounded-lg bg-indigo-100 p-3 text-2xl dark:bg-indigo-950/30">
+                🔄
+              </div>
+              <h3 className="mb-3 text-xl font-semibold text-gray-900 group-hover:text-indigo-600 dark:text-[#ffffffcc] dark:group-hover:text-indigo-400">
+                Conversion History
+              </h3>
+              <p className="text-gray-600 dark:text-[#ffffff80]">
+                Track your recent conversions with built-in history, saved right
+                in your browser.
+              </p>
+            </div>
+            <div className="group rounded-2xl border border-gray-200 bg-white/90 p-8 shadow-lg backdrop-blur-lg transition-all duration-300 hover:scale-105 hover:border-gray-300 dark:border-[#ffffff10] dark:bg-[#151515]/90 dark:hover:border-[#ffffff20]">
+              <div className="mb-5 inline-flex rounded-lg bg-indigo-100 p-3 text-2xl dark:bg-indigo-950/30">
+                📋
+              </div>
+              <h3 className="mb-3 text-xl font-semibold text-gray-900 group-hover:text-indigo-600 dark:text-[#ffffffcc] dark:group-hover:text-indigo-400">
+                Value Copying
+              </h3>
+              <p className="text-gray-600 dark:text-[#ffffff80]">
+                Copy values to share them with others instantly, making it easy
+                to use conversion results anywhere you need them.
+              </p>
+            </div>
           </div>
         </div>
       </section>

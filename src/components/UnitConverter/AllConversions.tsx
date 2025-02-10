@@ -15,7 +15,6 @@ export function AllConversions({
   fromUnit,
   toUnit,
   units,
-  category,
   convertFn,
 }: AllConversionsProps) {
   return (
@@ -25,37 +24,14 @@ export function AllConversions({
       </h3>
       <div className="grid gap-4 sm:grid-cols-2">
         {units.map((unit) => {
-          if (unit.value === toUnit) return null;
+          if (unit.value === toUnit || unit.value === fromUnit) return null;
           const converted = convertFn(
             parseFloat(fromValue),
             fromUnit,
             unit.value,
           );
-          let formula = "";
-
-          if (category === "temperature") {
-            if (fromUnit === "celsius") {
-              if (unit.value === "fahrenheit") {
-                formula = "°F = (°C × 9/5) + 32";
-              } else if (unit.value === "kelvin") {
-                formula = "K = °C + 273.15";
-              }
-            } else if (fromUnit === "fahrenheit") {
-              if (unit.value === "celsius") {
-                formula = "°C = (°F - 32) × 5/9";
-              } else if (unit.value === "kelvin") {
-                formula = "K = (°F - 32) × 5/9 + 273.15";
-              }
-            } else if (fromUnit === "kelvin") {
-              if (unit.value === "celsius") {
-                formula = "°C = K - 273.15";
-              } else if (unit.value === "fahrenheit") {
-                formula = "°F = (K - 273.15) × 9/5 + 32";
-              }
-            }
-          } else {
-            formula = `Multiply by ${convertFn(1, fromUnit, unit.value)}`;
-          }
+          const conversionFactor = convertFn(1, fromUnit, unit.value);
+          const formula = `Multiply by ${conversionFactor}`;
 
           return (
             <div
@@ -66,9 +42,10 @@ export function AllConversions({
                 {unit.label}
               </p>
               <p className="text-gray-600 dark:text-[#ffffffaa]">
-                {fromValue}{" "}
+                {parseFloat(fromValue).toFixed(4)}{" "}
                 {units.find((u) => u.value === fromUnit)?.label ?? fromUnit} ={" "}
-                {converted.toFixed(4)} {unit.label}
+                {Number.isFinite(converted) ? converted.toFixed(4) : "Invalid"}{" "}
+                {unit.label}
               </p>
               <p className="mt-3 text-sm text-gray-500 dark:text-[#ffffff80]">
                 Formula: {formula}

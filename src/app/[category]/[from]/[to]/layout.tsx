@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { categoryConfigs } from "@/config/categoryConfigs";
+import { loadUnitConfig } from "@/utils/loadUnitConfigs";
 
 type Props = {
   params: Promise<{ category: string; from: string; to: string }>;
@@ -7,22 +7,22 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { category, from, to } = await params;
-  const config = categoryConfigs[category];
+  const config = await loadUnitConfig(category);
 
-  if (!config) {
+  if (!config || Object.keys(config.units).length === 0) {
     return {
       title: "Not Found | Quick Convert",
       description: "The requested conversion page could not be found.",
     };
   }
 
-  const fromUnit = config.units.find((u) => u.value === from);
-  const toUnit = config.units.find((u) => u.value === to);
+  const fromUnit = config.units[from];
+  const toUnit = config.units[to];
 
-  const title = `Convert ${fromUnit?.label ?? from} to ${toUnit?.label ?? to} | ${config.title}`;
-  const description = `Convert ${fromUnit?.label ?? from} to ${toUnit?.label ?? to} with our free online ${config.title.toLowerCase()}. Quick, easy, and accurate conversions.`;
+  const title = `Convert ${fromUnit?.label ?? from} to ${toUnit?.label ?? to} | ${config.label}`;
+  const description = `Convert ${fromUnit?.label ?? from} to ${toUnit?.label ?? to} with our free online ${config.label.toLowerCase()}. Quick, easy, and accurate conversions.`;
 
-  const keywords = `unit converter, ${config.title.toLowerCase()}, convert ${fromUnit?.label?.toLowerCase() ?? from} to ${toUnit?.label?.toLowerCase() ?? to}, ${category} converter, online converter, measurement converter, unit conversion tool`;
+  const keywords = `unit converter, ${config.label.toLowerCase()}, convert ${fromUnit?.label?.toLowerCase() ?? from} to ${toUnit?.label?.toLowerCase() ?? to}, ${category} converter, online converter, measurement converter, unit conversion tool`;
 
   return {
     title,

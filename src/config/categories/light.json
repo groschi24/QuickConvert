@@ -1,0 +1,111 @@
+{
+  "illuminance": {
+    "label": "Illuminance",
+    "baseUnit": "lux",
+    "units": {
+      "lux": {
+        "label": "Lux (lx)",
+        "conversion": { "baseUnit": "lux", "formula": "x=x" }
+      },
+      "foot_candle": {
+        "label": "Foot Candle (fc)",
+        "conversion": { "baseUnit": "lux", "formula": "x=x*10.7639" }
+      },
+      "millilux": {
+        "label": "Millilux (mlx)",
+        "conversion": { "baseUnit": "lux", "formula": "x=x*0.001" }
+      },
+      "phot": {
+        "label": "Phot (ph)",
+        "conversion": { "baseUnit": "lux", "formula": "x=x*10000" }
+      }
+    }
+  },
+  "luminance": {
+    "label": "Luminance",
+    "baseUnit": "candela_per_square_meter",
+    "units": {
+      "candela_per_square_meter": {
+        "label": "Candela per Square Meter (cd/m²)",
+        "conversion": {
+          "baseUnit": "candela_per_square_meter",
+          "formula": "x=x"
+        }
+      },
+      "foot_lambert": {
+        "label": "Foot Lambert (fL)",
+        "conversion": {
+          "baseUnit": "candela_per_square_meter",
+          "formula": "x=x*3.426259"
+        }
+      },
+      "lambert": {
+        "label": "Lambert (L)",
+        "conversion": {
+          "baseUnit": "candela_per_square_meter",
+          "formula": "x=x*3183.099"
+        }
+      }
+    }
+  },
+  "luminous_flux": {
+    "label": "Luminous Flux",
+    "baseUnit": "lumen",
+    "units": {
+      "lumen": {
+        "label": "Lumen (lm)",
+        "conversion": { "baseUnit": "lumen", "formula": "x=x" }
+      },
+      "candela_steradian": {
+        "label": "Candela Steradian (cd·sr)",
+        "conversion": { "baseUnit": "lumen", "formula": "x=x" }
+      },
+      "talbot": {
+        "label": "Talbot (Tal)",
+        "conversion": { "baseUnit": "lumen", "formula": "x=x" }
+      }
+    }
+  },
+  "luminous_intensity": {
+    "label": "Luminous Intensity",
+    "baseUnit": "candela",
+    "units": {
+      "candela": {
+        "label": "Candela (cd)",
+        "conversion": { "baseUnit": "candela", "formula": "x=x" }
+      },
+      "millicandela": {
+        "label": "Millicandela (mcd)",
+        "conversion": { "baseUnit": "candela", "formula": "x=x*0.001" }
+      }
+    }
+  },
+  "digital_image_resolution": {
+    "label": "Digital Image Resolution",
+    "baseUnit": "pixels_per_inch",
+    "units": {
+      "pixels_per_inch": {
+        "label": "Pixels per Inch (PPI)",
+        "conversion": { "baseUnit": "pixels_per_inch", "formula": "x=x" }
+      },
+      "pixels_per_centimeter": {
+        "label": "Pixels per Centimeter (PPCM)",
+        "conversion": { "baseUnit": "pixels_per_inch", "formula": "x=x/2.54" }
+      }
+    }
+  },
+  "frequency_wavelength": {
+    "label": "Frequency & Wavelength",
+    "baseUnit": "hertz",
+    "units": {
+      "hertz": {
+        "label": "Hertz (Hz)",
+        "conversion": { "baseUnit": "hertz", "formula": "x=x" }
+      },
+      "wavelength_meters": {
+        "label": "Wavelength (m)",
+        "conversion": { "baseUnit": "hertz", "formula": "x=299792458/x" }
+      }
+    }
+  }
+}

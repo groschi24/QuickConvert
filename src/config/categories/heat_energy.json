@@ -1,0 +1,138 @@
+{
+  "temperature": {
+    "label": "Temperature",
+    "baseUnit": "kelvin",
+    "units": {
+      "kelvin": {
+        "label": "Kelvin (K)",
+        "conversion": { "baseUnit": "kelvin", "formula": "x=x" }
+      },
+      "celsius": {
+        "label": "Celsius (°C)",
+        "conversion": {
+          "baseUnit": "kelvin",
+          "formula": "x=x+273.15",
+          "reverseFormula": "x=x-273.15"
+        }
+      },
+      "fahrenheit": {
+        "label": "Fahrenheit (°F)",
+        "conversion": {
+          "baseUnit": "kelvin",
+          "formula": "x=(x-32)*5/9+273.15",
+          "reverseFormula": "x=(x-273.15)*9/5+32"
+        }
+      },
+      "rankine": {
+        "label": "Rankine (°R)",
+        "conversion": {
+          "baseUnit": "kelvin",
+          "formula": "x=x*0.555556",
+          "reverseFormula": "x=x*1.8"
+        }
+      }
+    }
+  },
+  "thermal_conductivity": {
+    "label": "Thermal Conductivity",
+    "baseUnit": "watts_per_meter_kelvin",
+    "units": {
+      "watts_per_meter_kelvin": {
+        "label": "Watts per Meter Kelvin (W/m·K)",
+        "conversion": { "baseUnit": "watts_per_meter_kelvin", "formula": "x=x" }
+      },
+      "btu_per_hour_foot_fahrenheit": {
+        "label": "BTU per Hour Foot Fahrenheit (BTU/h·ft·°F)",
+        "conversion": {
+          "baseUnit": "watts_per_meter_kelvin",
+          "formula": "x=x*1.730735"
+        }
+      },
+      "kilocalories_per_hour_meter_celsius": {
+        "label": "Kilocalories per Hour Meter Celsius (kcal/h·m·°C)",
+        "conversion": {
+          "baseUnit": "watts_per_meter_kelvin",
+          "formula": "x=x*0.860421"
+        }
+      }
+    }
+  },
+  "energy": {
+    "label": "Energy",
+    "baseUnit": "joules",
+    "units": {
+      "joules": {
+        "label": "Joules (J)",
+        "conversion": { "baseUnit": "joules", "formula": "x=x" }
+      },
+      "kilojoules": {
+        "label": "Kilojoules (kJ)",
+        "conversion": { "baseUnit": "joules", "formula": "x=x*1000" }
+      },
+      "calories": {
+        "label": "Calories (cal)",
+        "conversion": { "baseUnit": "joules", "formula": "x=x*4.184" }
+      },
+      "kilowatt_hours": {
+        "label": "Kilowatt Hours (kWh)",
+        "conversion": { "baseUnit": "joules", "formula": "x=x*3600000" }
+      },
+      "btu": {
+        "label": "British Thermal Units (BTU)",
+        "conversion": { "baseUnit": "joules", "formula": "x=x*1055.06" }
+      }
+    }
+  },
+  "fuel_efficiency": {
+    "label": "Fuel Efficiency",
+    "baseUnit": "grams_per_kilowatt_hour",
+    "units": {
+      "grams_per_kilowatt_hour": {
+        "label": "Grams per Kilowatt Hour (g/kWh)",
+        "conversion": {
+          "baseUnit": "grams_per_kilowatt_hour",
+          "formula": "x=x"
+        }
+      },
+      "pounds_per_horsepower_hour": {
+        "label": "Pounds per Horsepower Hour (lb/hp·h)",
+        "conversion": {
+          "baseUnit": "grams_per_kilowatt_hour",
+          "formula": "x=x*608.277"
+        }
+      },
+      "kilograms_per_megajoule": {
+        "label": "Kilograms per Megajoule (kg/MJ)",
+        "conversion": {
+          "baseUnit": "grams_per_kilowatt_hour",
+          "formula": "x=x*0.0036"
+        }
+      }
+    }
+  },
+  "fuel_consumption": {
+    "label": "Fuel Consumption",
+    "baseUnit": "liters_per_100km",
+    "units": {
+      "liters_per_100km": {
+        "label": "Liters per 100 Kilometers (L/100km)",
+        "conversion": { "baseUnit": "liters_per_100km", "formula": "x=x" }
+      },
+      "miles_per_gallon": {
+        "label": "Miles per Gallon (MPG)",
+        "conversion": {
+          "baseUnit": "liters_per_100km",
+          "formula": "x=235.215/x"
+        }
+      },
+      "kilometers_per_liter": {
+        "label": "Kilometers per Liter (km/L)",
+        "conversion": { "baseUnit": "liters_per_100km", "formula": "x=100/x" }
+      },
+      "gallons_per_100_miles": {
+        "label": "Gallons per 100 Miles (gal/100mi)",
+        "conversion": { "baseUnit": "liters_per_100km", "formula": "x=1000/x" }
+      }
+    }
+  }
+}

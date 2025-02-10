@@ -5,11 +5,31 @@ import Link from "next/link";
 import { Menu, MenuButton, MenuItems } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import { categoryGroups } from "@/config/units";
+import {
+  type GroupedUnitConfigs,
+  loadAllUnitConfigs,
+} from "@/utils/loadUnitConfigs";
 import { UnitSearch } from "./UnitConverter/UnitSearch";
 
 export function TopBar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [configs, setConfigs] = useState<GroupedUnitConfigs>({});
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchConfigs = async () => {
+      setIsLoading(true);
+      try {
+        const allConfigs = await loadAllUnitConfigs();
+        setConfigs(allConfigs);
+      } catch (error) {
+        console.error("Error loading configs:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    void fetchConfigs();
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -54,29 +74,50 @@ export function TopBar() {
               </MenuButton>
 
               <MenuItems className="absolute left-0 z-50 mt-2 max-h-[calc(100vh-6rem)] w-[500px] origin-top-left overflow-y-auto rounded-xl bg-white p-4 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-[#151515] dark:ring-[#ffffff10]">
-                <div className="grid grid-cols-1 gap-6">
-                  <div className="mb-4 w-full">
-                    <UnitSearch />
+                {isLoading ? (
+                  <div className="flex items-center justify-center py-8">
+                    <div className="inline-block h-6 w-6 animate-spin rounded-full border-2 border-solid border-indigo-500 border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" />
                   </div>
-                  {categoryGroups.map((group) => (
-                    <div key={group.name} className="space-y-3">
-                      <h3 className="text-sm font-medium text-gray-900 dark:text-white">
-                        {group.name}
-                      </h3>
-                      <div className="grid grid-cols-2 gap-2">
-                        {group.categories.map((category) => (
-                          <Link
-                            key={category.value}
-                            href={`/${category.value}`}
-                            className="rounded-lg p-2 text-sm text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:text-[#ffffff80] dark:hover:bg-[#ffffff10] dark:hover:text-white"
-                          >
-                            {category.label}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                ) : (
+                  <div className="grid grid-cols-1 gap-6">
+                    {Object.entries(configs)
+                      .sort(([keyA], [keyB]) => {
+                        const groupOrder: Record<string, number> = {
+                          common: 0,
+                          engineering: 1,
+                          heat_energy: 2,
+                          fluid_volume: 3,
+                          light: 4,
+                          electromagnetism: 5,
+                          radiation: 6,
+                          misc: 7,
+                        };
+                        return (
+                          (groupOrder[keyA] ?? 999) - (groupOrder[keyB] ?? 999)
+                        );
+                      })
+                      .map(([groupKey, group]) => (
+                        <div key={groupKey} className="space-y-3">
+                          <h3 className="text-sm font-semibold text-gray-900 dark:text-[#ffffffee]">
+                            {group.label || groupKey}
+                          </h3>
+                          <div className="grid grid-cols-2 gap-2">
+                            {Object.entries(group.categories || {})
+                              .sort(([a], [b]) => a.localeCompare(b))
+                              .map(([categoryKey, category]) => (
+                                <Link
+                                  key={`${groupKey}-${categoryKey}`}
+                                  href={`/${categoryKey}`}
+                                  className="block rounded-lg p-2 text-sm text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:text-[#ffffff80] dark:hover:bg-[#ffffff10] dark:hover:text-white"
+                                >
+                                  {category.label}
+                                </Link>
+                              ))}
+                          </div>
+                        </div>
+                      ))}
+                  </div>
+                )}
               </MenuItems>
             </Menu>
             <div className="w-[300px]">
@@ -156,25 +197,43 @@ export function TopBar() {
             <div className="mb-6">
               <UnitSearch />
             </div>
-            {categoryGroups.map((group) => (
-              <div key={group.name} className="space-y-4">
-                <h3 className="text-lg font-medium text-gray-900 dark:text-white">
-                  {group.name}
-                </h3>
-                <div className="grid grid-cols-2 gap-3">
-                  {group.categories.map((category) => (
-                    <Link
-                      key={category.value}
-                      href={`/${category.value}`}
-                      className="rounded-lg bg-gray-50 p-3 text-base text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:bg-[#ffffff08] dark:text-[#ffffff80] dark:hover:bg-[#ffffff10] dark:hover:text-white"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {category.label}
-                    </Link>
-                  ))}
-                </div>
+            <div className="space-y-4">
+              <h3 className="text-lg font-medium text-gray-900 dark:text-white">
+                All Converters
+              </h3>
+              <div className="grid grid-cols-2 gap-3">
+                {Object.entries(configs)
+                  .sort(([keyA], [keyB]) => {
+                    const groupOrder: Record<string, number> = {
+                      common: 0,
+                      engineering: 1,
+                      heat_energy: 2,
+                      fluid_volume: 3,
+                      light: 4,
+                      electromagnetism: 5,
+                      radiation: 6,
+                      misc: 7,
+                    };
+                    return (
+                      (groupOrder[keyA] ?? 999) - (groupOrder[keyB] ?? 999)
+                    );
+                  })
+                  .flatMap(([groupKey, group]) =>
+                    Object.entries(group.categories || {})
+                      .sort(([a], [b]) => a.localeCompare(b))
+                      .map(([categoryKey, category]) => (
+                        <Link
+                          key={`${groupKey}-${categoryKey}`}
+                          href={`/${categoryKey}`}
+                          className="rounded-lg bg-gray-50 p-3 text-base text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:bg-[#ffffff08] dark:text-[#ffffff80] dark:hover:bg-[#ffffff10] dark:hover:text-white"
+                          onClick={() => setIsOpen(false)}
+                        >
+                          {category.label}
+                        </Link>
+                      )),
+                  )}
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </div>

@@ -1,6 +1,9 @@
-import { useState, useEffect } from "react";
+"use client";
+
+import { useState, useEffect, useCallback } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import type { CategoryConfig } from "@/types/units";
+// import { convertWithFormula } from "@/utils/dynamicConverter";
+import type { UnitCategory } from "@/types/categoryTypes";
 
 interface ConversionHistoryEntry {
   id: string;
@@ -13,33 +16,66 @@ interface ConversionHistoryEntry {
 }
 
 export function useUnitConverter(
-  config: CategoryConfig,
-  category: string,
+  category: UnitCategory,
   initialFromUnit?: string,
   initialToUnit?: string,
+  units: { value: string; label: string }[] = [],
+  convertFn?: (value: number, from: string, to: string) => number,
 ) {
   const searchParams = useSearchParams();
   const router = useRouter();
 
   const defaultValue = searchParams.get("value") ?? "1";
-  const defaultFromUnit = initialFromUnit ?? config.defaultFrom;
-  const defaultToUnit = initialToUnit ?? config.defaultTo;
+  const defaultFromUnit = initialFromUnit ?? "";
+  const defaultToUnit = initialToUnit ?? "";
 
   const [fromValue, setFromValue] = useState(defaultValue);
-  const [toValue, setToValue] = useState(
-    config
-      .convertFn(parseFloat(defaultValue), defaultFromUnit, defaultToUnit)
-      .toFixed(4),
-  );
+  const [toValue, setToValue] = useState("");
   const [fromUnit, setFromUnit] = useState(defaultFromUnit);
   const [toUnit, setToUnit] = useState(defaultToUnit);
   const [isUserInteraction, setIsUserInteraction] = useState(false);
-  const [result, setResult] = useState(
-    `${defaultValue} ${config.units.find((u) => u.value === defaultFromUnit)?.label ?? defaultFromUnit} = ${config.convertFn(parseFloat(defaultValue), defaultFromUnit, defaultToUnit).toFixed(4)} ${config.units.find((u) => u.value === defaultToUnit)?.label ?? defaultToUnit}`,
-  );
+
+  const [result, setResult] = useState("");
   const [conversionHistory, setConversionHistory] = useState<
     ConversionHistoryEntry[]
   >([]);
+
+  useEffect(() => {
+    const initializeConversion = async () => {
+      try {
+        if (!convertFn) throw new Error("Convert function is required");
+        const converted = convertFn(
+          parseFloat(defaultValue),
+          defaultFromUnit,
+          defaultToUnit,
+        );
+        if (!isNaN(converted)) {
+          setToValue(converted.toFixed(4));
+          const fromUnitLabel =
+            units.find((u) => u.value === defaultFromUnit)?.label ??
+            defaultFromUnit;
+          const toUnitLabel =
+            units.find((u) => u.value === defaultToUnit)?.label ??
+            defaultToUnit;
+          setResult(
+            `${defaultValue} ${fromUnitLabel} = ${converted.toFixed(4)} ${toUnitLabel}`,
+          );
+        }
+      } catch (error) {
+        console.error("Error in initial conversion:", error);
+        setToValue("");
+        setResult("");
+      }
+    };
+    void initializeConversion();
+  }, [
+    defaultValue,
+    defaultFromUnit,
+    defaultToUnit,
+    category,
+    units,
+    convertFn,
+  ]);
 
   useEffect(() => {
     const savedHistory = localStorage.getItem("conversionHistory");
@@ -74,157 +110,108 @@ export function useUnitConverter(
     searchParams,
   ]);
 
-  useEffect(() => {
-    const value = searchParams.get("value") ?? defaultValue;
-    const from = searchParams.get("from") ?? defaultFromUnit;
-    const to = searchParams.get("to") ?? defaultToUnit;
-
-    setFromValue(value);
-    setFromUnit(from);
-    setToUnit(to);
-
-    const numValue = parseFloat(value);
-    if (!isNaN(numValue)) {
-      const converted = config.convertFn(numValue, from, to);
-      setToValue(converted.toFixed(4));
-      const fromUnitLabel =
-        config.units.find((u) => u.value === from)?.label ?? from;
-      const toUnitLabel = config.units.find((u) => u.value === to)?.label ?? to;
-      const resultText = `${numValue} ${fromUnitLabel} = ${converted.toFixed(4)} ${toUnitLabel}`;
-      setResult(resultText);
-    }
-  }, [searchParams, defaultValue, defaultFromUnit, defaultToUnit, config]);
-
-  useEffect(() => {
-    if (
-      !result ||
-      !fromValue ||
-      !isUserInteraction ||
-      isNaN(parseFloat(fromValue))
-    )
-      return;
-
-    const timer = setTimeout(() => {
-      const isDuplicate =
-        conversionHistory.length > 0 &&
-        conversionHistory[0] !== undefined &&
-        conversionHistory[0].value === fromValue &&
-        conversionHistory[0].from === fromUnit &&
-        conversionHistory[0].to === toUnit;
-
-      if (!isDuplicate) {
-        saveToHistory(fromValue, fromUnit, toUnit, result);
-      }
-    }, 1000);
-
-    return () => clearTimeout(timer);
-  }, [
-    result,
-    fromValue,
-    fromUnit,
-    toUnit,
-    conversionHistory,
-    isUserInteraction,
-  ]);
-
   const handleFromValueChange = (value: string) => {
-    setIsUserInteraction(true);
     setFromValue(value);
-    const numValue = parseFloat(value);
-    if (!isNaN(numValue)) {
-      const converted = config.convertFn(numValue, fromUnit, toUnit);
-      setToValue(converted.toFixed(4));
-      const fromUnitLabel =
-        config.units.find((u) => u.value === fromUnit)?.label ?? fromUnit;
-      const toUnitLabel =
-        config.units.find((u) => u.value === toUnit)?.label ?? toUnit;
-      const resultText = `${numValue} ${fromUnitLabel} = ${converted.toFixed(4)} ${toUnitLabel}`;
-      setResult(resultText);
-
-      const params = new URLSearchParams();
-      params.set("value", value);
-      router.push(`/${category}/${fromUnit}/${toUnit}?${params.toString()}`, {
-        scroll: false,
-      });
-    } else {
-      setToValue("");
-      setResult("");
-    }
+    setIsUserInteraction(true);
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("value", value);
+    router.push(`/${category}/${fromUnit}/${toUnit}?${params.toString()}`, {
+      scroll: false,
+    });
   };
 
   const handleToValueChange = (value: string) => {
-    setIsUserInteraction(true);
     setToValue(value);
-    const numValue = parseFloat(value);
-    if (!isNaN(numValue)) {
-      const converted = config.convertFn(numValue, toUnit, fromUnit);
-      setFromValue(converted.toFixed(4));
-      const toUnitLabel =
-        config.units.find((u) => u.value === toUnit)?.label ?? toUnit;
-      const fromUnitLabel =
-        config.units.find((u) => u.value === fromUnit)?.label ?? fromUnit;
-      const resultText = `${converted.toFixed(4)} ${fromUnitLabel} = ${numValue} ${toUnitLabel}`;
-      setResult(resultText);
-
-      const params = new URLSearchParams();
-      params.set("value", converted.toFixed(4));
-      router.push(`/${category}/${fromUnit}/${toUnit}?${params.toString()}`, {
-        scroll: false,
-      });
-    } else {
-      setFromValue("");
-      setResult("");
-    }
+    setIsUserInteraction(true);
   };
 
   const handleUnitChange = (newFromUnit: string, newToUnit: string) => {
-    setIsUserInteraction(true);
     setFromUnit(newFromUnit);
     setToUnit(newToUnit);
-    if (fromValue) {
-      const numValue = parseFloat(fromValue);
+    setIsUserInteraction(true);
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("from", newFromUnit);
+    params.set("to", newToUnit);
+    router.push(
+      `/${category}/${newFromUnit}/${newToUnit}?${params.toString()}`,
+      {
+        scroll: false,
+      },
+    );
+  };
+
+  useEffect(() => {
+    const updateFromSearchParams = async () => {
+      const value = searchParams.get("value") ?? defaultValue;
+      const from = searchParams.get("from") ?? defaultFromUnit;
+      const to = searchParams.get("to") ?? defaultToUnit;
+
+      setFromValue(value);
+      setFromUnit(from);
+      setToUnit(to);
+
+      const numValue = parseFloat(value);
       if (!isNaN(numValue)) {
-        const converted = config.convertFn(numValue, newFromUnit, newToUnit);
-        setToValue(converted.toFixed(4));
-        const fromUnitLabel =
-          config.units.find((u) => u.value === newFromUnit)?.label ??
-          newFromUnit;
-        const toUnitLabel =
-          config.units.find((u) => u.value === newToUnit)?.label ?? newToUnit;
-        setResult(
-          `${numValue} ${fromUnitLabel} = ${converted.toFixed(4)} ${toUnitLabel}`,
-        );
+        try {
+          if (!convertFn) throw new Error("Convert function is required");
+          const converted = convertFn(numValue, from, to);
+          const formatNumber = (num: number): string => {
+            // Convert to a fixed number of decimal places (max 12)
+            const fixed = num.toFixed(12);
+            // Remove trailing zeros while keeping significant decimals
+            const formatted = fixed.replace(/\.?0+$/, "");
+            return formatted || "0";
+          };
+          if (!isNaN(converted)) {
+            const formattedValue = formatNumber(converted);
+            setToValue(formattedValue);
+            const fromUnitLabel =
+              units.find((u) => u.value === from)?.label ?? from;
+            const toUnitLabel = units.find((u) => u.value === to)?.label ?? to;
+            const resultText = `${numValue} ${fromUnitLabel} = ${formattedValue} ${toUnitLabel}`;
+            setResult(resultText);
 
-        const params = new URLSearchParams();
-        params.set("value", fromValue);
-        router.push(
-          `/${category}/${newFromUnit}/${newToUnit}?${params.toString()}`,
-          { scroll: false },
-        );
+            if (isUserInteraction) {
+              saveToHistory(value, from, to, resultText);
+              setIsUserInteraction(false);
+            }
+          }
+        } catch (error) {
+          console.error("Error during conversion:", error);
+          setToValue("");
+          setResult("");
+        }
       }
-    }
-  };
-
-  const saveToHistory = (
-    value: string,
-    fromUnit: string,
-    toUnit: string,
-    result: string,
-  ) => {
-    const newEntry = {
-      id: Math.random().toString(36).substr(2, 9),
-      from: fromUnit,
-      to: toUnit,
-      value,
-      result,
-      category,
-      timestamp: Date.now(),
     };
+    void updateFromSearchParams();
+  }, [
+    searchParams,
+    defaultValue,
+    defaultFromUnit,
+    defaultToUnit,
+    category,
+    units,
+    convertFn,
+  ]);
 
-    const updatedHistory = [newEntry, ...conversionHistory].slice(0, 10);
-    setConversionHistory(updatedHistory);
-    localStorage.setItem("conversionHistory", JSON.stringify(updatedHistory));
-  };
+  const saveToHistory = useCallback(
+    (value: string, fromUnit: string, toUnit: string, result: string) => {
+      const newEntry = {
+        id: Math.random().toString(36).substr(2, 9),
+        from: fromUnit,
+        to: toUnit,
+        value,
+        result,
+        category,
+        timestamp: Date.now(),
+      };
+
+      const updatedHistory = [newEntry, ...conversionHistory].slice(0, 10);
+      setConversionHistory(updatedHistory);
+      localStorage.setItem("conversionHistory", JSON.stringify(updatedHistory));
+    },
+    [category, conversionHistory],
+  );
 
   const removeFromHistory = (id: string) => {
     const updatedHistory = conversionHistory.filter((entry) => entry.id !== id);
@@ -249,6 +236,5 @@ export function useUnitConverter(
     handleUnitChange,
     removeFromHistory,
     clearHistory,
-    config,
   };
 }

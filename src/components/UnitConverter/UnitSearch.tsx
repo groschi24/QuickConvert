@@ -2,12 +2,42 @@
 
 import React, { useState, useMemo, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
-import { categoryConfigs } from "@/config/categoryConfigs";
+import { loadAllUnitConfigs } from "@/utils/loadUnitConfigs";
 
 export function UnitSearch() {
   const [searchTerm, setSearchTerm] = useState("");
+  const [configs, setConfigs] = useState<
+    Record<
+      string,
+      {
+        label: string;
+        categories?: Record<
+          string,
+          {
+            label: string;
+            title?: string;
+            units: Record<
+              string,
+              {
+                value: string;
+                label: string;
+              }
+            >;
+          }
+        >;
+      }
+    >
+  >({});
   const router = useRouter();
   const searchContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const fetchConfigs = async () => {
+      const allConfigs = await loadAllUnitConfigs();
+      setConfigs(allConfigs);
+    };
+    void fetchConfigs();
+  }, []);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -37,28 +67,34 @@ export function UnitSearch() {
 
     const searchLower = searchTerm.toLowerCase();
 
-    Object.entries(categoryConfigs).forEach(([category, config]) => {
-      config.units.forEach((fromUnit) => {
-        if (
-          fromUnit.label.toLowerCase().includes(searchLower) ||
-          fromUnit.value.toLowerCase().includes(searchLower)
-        ) {
-          config.units.forEach((toUnit) => {
-            if (fromUnit.value !== toUnit.value) {
-              results.push({
-                fromUnit,
-                toUnit,
-                category,
-                categoryTitle: config.title,
-              });
-            }
-          });
-        }
-      });
+    Object.entries(configs).forEach(([_groupId, group]) => {
+      if (group.categories) {
+        Object.entries(group.categories).forEach(([category, config]) => {
+          if (config.units) {
+            Object.entries(config.units).forEach(([fromKey, fromUnit]) => {
+              if (
+                fromUnit.label.toLowerCase().includes(searchLower) ||
+                fromKey.toLowerCase().includes(searchLower)
+              ) {
+                Object.entries(config.units).forEach(([toKey, toUnit]) => {
+                  if (fromKey !== toKey) {
+                    results.push({
+                      fromUnit: { value: fromKey, label: fromUnit.label },
+                      toUnit: { value: toKey, label: toUnit.label },
+                      category,
+                      categoryTitle: config.title ?? "",
+                    });
+                  }
+                });
+              }
+            });
+          }
+        });
+      }
     });
 
     return results.slice(0, 10);
-  }, [searchTerm]);
+  }, [searchTerm, configs]);
 
   return (
     <div className="relative" ref={searchContainerRef}>

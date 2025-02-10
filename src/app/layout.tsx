@@ -1,7 +1,6 @@
 import "@/styles/globals.css";
 import { GeistSans } from "geist/font/sans";
 import { Analytics } from "@vercel/analytics/next";
-import { metadata as siteMetadata } from "./metadata";
 import { TopBar } from "@/components/TopBar";
 import Footer from "@/components/Footer";
 

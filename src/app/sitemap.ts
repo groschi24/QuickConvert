@@ -1,8 +1,7 @@
 import type { MetadataRoute } from "next";
-import { categories } from "@/config/units";
-import { categoryConfigs } from "@/config/categoryConfigs";
+import { loadAllUnitConfigs } from "@/utils/loadUnitConfigs";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://quickconvert.app";
 
   // Generate home page URL
@@ -13,28 +12,35 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 1,
   };
 
+  // Load all unit configurations
+  const unitGroups = await loadAllUnitConfigs();
+
   // Generate category pages URLs
-  const categoryUrls = categories.map((category) => ({
-    url: `${baseUrl}/${category.value}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly" as const,
-    priority: 0.8,
-  }));
+  const categoryUrls = Object.entries(unitGroups).flatMap(([groupId, group]) =>
+    Object.entries(group.categories).map(([category]) => ({
+      url: `${baseUrl}/${category}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
+  );
 
   // Generate conversion pages URLs
-  const conversionUrls = categories.flatMap((category) => {
-    const config = categoryConfigs[category.value];
-    if (!config) return [];
-
-    return config.units.flatMap((fromUnit: { value: string }) =>
-      config.units.map((toUnit: { value: string }) => ({
-        url: `${baseUrl}/${category.value}/${fromUnit.value}/${toUnit.value}`,
-        lastModified: new Date(),
-        changeFrequency: "monthly" as const,
-        priority: 0.5,
-      })),
-    );
-  });
+  const conversionUrls = Object.entries(unitGroups).flatMap(([_, group]) =>
+    Object.entries(group.categories).flatMap(([category, config]) => {
+      const unitEntries = Object.entries(config.units);
+      return unitEntries.flatMap(([fromUnit]) =>
+        unitEntries
+          .filter(([toUnit]) => fromUnit !== toUnit)
+          .map(([toUnit]) => ({
+            url: `${baseUrl}/${category}/${fromUnit}/${toUnit}`,
+            lastModified: new Date(),
+            changeFrequency: "monthly" as const,
+            priority: 0.5,
+          })),
+      );
+    }),
+  );
 
   // Generate static pages URLs
   const staticPages = [

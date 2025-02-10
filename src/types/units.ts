@@ -1,3 +1,5 @@
+import type { UnitCategory } from "./categoryTypes";
+
 /**
  * Represents a unit of measurement with its value and display label
  */
@@ -30,8 +32,18 @@ export interface CategoryConfig {
   defaultFrom: string;
   /** Default 'to' unit */
   defaultTo: string;
-  /** Function to perform the conversion */
-  convertFn: ConversionFunction;
+  /** Formula template for displaying the conversion formula */
+  formula?: string;
+  /** Base unit for the category (if applicable) */
+  baseUnit?: string;
+  /** Conversion factors and formulas */
+  conversions: Record<
+    string,
+    {
+      to: Record<string, number | string>;
+      formula?: string;
+    }
+  >;
 }
 
 /**
@@ -51,97 +63,6 @@ export interface PopularConversion {
   /** Emoji icon representing the conversion */
   icon: string;
 }
-
-export type UnitCategory =
-  // Common Converters
-  | "length"
-  | "weight"
-  | "volume"
-  | "temperature"
-  | "area"
-  | "pressure"
-  | "energy"
-  | "volume_dry"
-  | "currency"
-  | "case"
-  | "power"
-  | "force"
-  | "time"
-  | "speed"
-  | "angle"
-  | "fuel_consumption"
-  | "numbers"
-  | "digital"
-  // Other Converters
-  | "prefixes"
-  | "data_transfer"
-  | "sound"
-  | "typography"
-  | "volume_lumber"
-  // Engineering Converters
-  | "velocity_angular"
-  | "acceleration"
-  | "acceleration_angular"
-  | "density"
-  | "specific_volume"
-  | "moment_of_inertia"
-  | "moment_of_force"
-  | "torque"
-  | "data_rate"
-  // Heat Converters
-  | "fuel_efficiency_mass"
-  | "fuel_efficiency_volume"
-  | "temperature_interval"
-  | "thermal_expansion"
-  | "thermal_resistance"
-  | "thermal_conductivity"
-  | "specific_heat_capacity"
-  | "heat_density"
-  | "heat_flux_density"
-  | "heat_transfer_coefficient"
-  // Fluid Converters
-  | "flow"
-  | "flow_mass"
-  | "flow_molar"
-  | "mass_flux_density"
-  | "concentration_molar"
-  | "concentration_solution"
-  | "viscosity_dynamic"
-  | "viscosity_kinematic"
-  | "surface_tension"
-  | "permeability"
-  // Light Converters
-  | "luminance"
-  | "luminous_intensity"
-  | "illumination"
-  | "digital_image_resolution"
-  | "frequency_wavelength"
-  // Electricity Converters
-  | "charge"
-  | "linear_charge_density"
-  | "surface_charge_density"
-  | "volume_charge_density"
-  | "current"
-  | "linear_current_density"
-  | "surface_current_density"
-  | "electric_field_strength"
-  | "electric_potential"
-  | "electric_resistance"
-  | "electric_resistivity"
-  | "electric_conductance"
-  | "electric_conductivity"
-  | "electrostatic_capacitance"
-  | "inductance"
-  // Magnetism Converters
-  | "magnetomotive_force"
-  | "magnetic_field_strength"
-  | "magnetic_flux"
-  | "magnetic_flux_density"
-  // Radiology Converters
-  | "radiation"
-  | "radiation_activity"
-  | "radiation_exposure"
-  | "radiation_absorbed_dose";
 
 export type ConversionFunction = (
   value: number,
