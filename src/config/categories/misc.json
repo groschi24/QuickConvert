@@ -4,27 +4,27 @@
     "baseUnit": "radians",
     "units": {
       "radians": {
-        "label": "Radians",
+        "label": "Radians (rad)",
         "conversion": { "baseUnit": "radians", "formula": "x=x" }
       },
       "degrees": {
-        "label": "Degrees",
+        "label": "Degrees (°)",
         "conversion": { "baseUnit": "radians", "formula": "x=x*0.0174533" }
       },
       "gradians": {
-        "label": "Gradians",
+        "label": "Gradians (grad)",
         "conversion": { "baseUnit": "radians", "formula": "x=x*0.015708" }
       },
       "turns": {
-        "label": "Turns",
+        "label": "Turns (turn)",
         "conversion": { "baseUnit": "radians", "formula": "x=x*6.28319" }
       },
       "minutes_of_arc": {
-        "label": "Minutes of Arc",
+        "label": "Minutes of Arc (′)",
         "conversion": { "baseUnit": "radians", "formula": "x=x*0.000290888" }
       },
       "seconds_of_arc": {
-        "label": "Seconds of Arc",
+        "label": "Seconds of Arc (″)",
         "conversion": { "baseUnit": "radians", "formula": "x=x*4.8481e-6" }
       }
     }
@@ -34,27 +34,27 @@
     "baseUnit": "bytes",
     "units": {
       "bytes": {
-        "label": "Bytes",
+        "label": "Bytes (B)",
         "conversion": { "baseUnit": "bytes", "formula": "x=x" }
       },
       "kilobytes": {
-        "label": "Kilobytes",
+        "label": "Kilobytes (KB)",
         "conversion": { "baseUnit": "bytes", "formula": "x=x*1024" }
       },
       "megabytes": {
-        "label": "Megabytes",
+        "label": "Megabytes (MB)",
         "conversion": { "baseUnit": "bytes", "formula": "x=x*1048576" }
       },
       "gigabytes": {
-        "label": "Gigabytes",
+        "label": "Gigabytes (GB)",
         "conversion": { "baseUnit": "bytes", "formula": "x=x*1073741824" }
       },
       "terabytes": {
-        "label": "Terabytes",
+        "label": "Terabytes (TB)",
         "conversion": { "baseUnit": "bytes", "formula": "x=x*1099511627776" }
       },
       "petabytes": {
-        "label": "Petabytes",
+        "label": "Petabytes (PB)",
         "conversion": { "baseUnit": "bytes", "formula": "x=x*1125899906842624" }
       }
     }
@@ -64,19 +64,19 @@
     "baseUnit": "hertz",
     "units": {
       "hertz": {
-        "label": "Hertz",
+        "label": "Hertz (Hz)",
         "conversion": { "baseUnit": "hertz", "formula": "x=x" }
       },
       "kilohertz": {
-        "label": "Kilohertz",
+        "label": "Kilohertz (kHz)",
         "conversion": { "baseUnit": "hertz", "formula": "x=x*1000" }
       },
       "megahertz": {
-        "label": "Megahertz",
+        "label": "Megahertz (MHz)",
         "conversion": { "baseUnit": "hertz", "formula": "x=x*1000000" }
       },
       "gigahertz": {
-        "label": "Gigahertz",
+        "label": "Gigahertz (GHz)",
         "conversion": { "baseUnit": "hertz", "formula": "x=x*1000000000" }
       }
     }
@@ -90,23 +90,23 @@
         "conversion": { "baseUnit": "none", "formula": "x=x" }
       },
       "kilo": {
-        "label": "Kilo",
+        "label": "Kilo (k)",
         "conversion": { "baseUnit": "none", "formula": "x=x*1000" }
       },
       "mega": {
-        "label": "Mega",
+        "label": "Mega (M)",
         "conversion": { "baseUnit": "none", "formula": "x=x*1000000" }
       },
       "giga": {
-        "label": "Giga",
+        "label": "Giga (G)",
         "conversion": { "baseUnit": "none", "formula": "x=x*1000000000" }
       },
       "tera": {
-        "label": "Tera",
+        "label": "Tera (T)",
         "conversion": { "baseUnit": "none", "formula": "x=x*1e12" }
       },
       "peta": {
-        "label": "Peta",
+        "label": "Peta (P)",
         "conversion": { "baseUnit": "none", "formula": "x=x*1e15" }
       }
     }
@@ -116,29 +116,29 @@
     "baseUnit": "bits_per_second",
     "units": {
       "bits_per_second": {
-        "label": "bps",
+        "label": "Bits per Second (bps)",
         "conversion": { "baseUnit": "bits_per_second", "formula": "x=x" }
       },
       "kilobits_per_second": {
-        "label": "Kbps",
+        "label": "Kilobits per Second (Kbps)",
         "conversion": { "baseUnit": "bits_per_second", "formula": "x=x*1000" }
       },
       "megabits_per_second": {
-        "label": "Mbps",
+        "label": "Megabits per Second (Mbps)",
         "conversion": {
           "baseUnit": "bits_per_second",
           "formula": "x=x*1000000"
         }
       },
       "gigabits_per_second": {
-        "label": "Gbps",
+        "label": "Gigabits per Second (Gbps)",
         "conversion": {
           "baseUnit": "bits_per_second",
           "formula": "x=x*1000000000"
         }
       },
       "terabits_per_second": {
-        "label": "Tbps",
+        "label": "Terabits per Second (Tbps)",
         "conversion": { "baseUnit": "bits_per_second", "formula": "x=x*1e12" }
       }
     }
@@ -148,11 +148,11 @@
     "baseUnit": "decibels",
     "units": {
       "decibels": {
-        "label": "Decibels",
+        "label": "Decibels (dB)",
         "conversion": { "baseUnit": "decibels", "formula": "x=x" }
       },
       "bels": {
-        "label": "Bels",
+        "label": "Bels (B)",
         "conversion": { "baseUnit": "decibels", "formula": "x=x*10" }
       }
     }
@@ -162,11 +162,11 @@
     "baseUnit": "points",
     "units": {
       "points": {
-        "label": "Points",
+        "label": "Points (pt)",
         "conversion": { "baseUnit": "points", "formula": "x=x" }
       },
       "picas": {
-        "label": "Picas",
+        "label": "Picas (pc)",
         "conversion": { "baseUnit": "points", "formula": "x=x*12" }
       }
     }
@@ -176,19 +176,19 @@
     "baseUnit": "usd",
     "units": {
       "usd": {
-        "label": "US Dollars",
+        "label": "US Dollars (USD)",
         "conversion": { "baseUnit": "usd", "formula": "x=x" }
       },
       "eur": {
-        "label": "Euros",
+        "label": "Euros (EUR)",
         "conversion": { "baseUnit": "usd", "formula": "x=x*0.9" }
       },
       "gbp": {
-        "label": "British Pounds",
+        "label": "British Pounds (GBP)",
         "conversion": { "baseUnit": "usd", "formula": "x=x*0.8" }
       },
       "jpy": {
-        "label": "Japanese Yen",
+        "label": "Japanese Yen (JPY)",
         "conversion": { "baseUnit": "usd", "formula": "x=x*110" }
       }
     }

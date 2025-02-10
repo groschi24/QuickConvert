@@ -4,19 +4,19 @@
     "baseUnit": "gray",
     "units": {
       "gray": {
-        "label": "Gray",
+        "label": "Gray (Gy)",
         "conversion": { "baseUnit": "gray", "formula": "x=x" }
       },
       "rad": {
-        "label": "Rad",
+        "label": "Rad (rad)",
         "conversion": { "baseUnit": "gray", "formula": "x=x*0.01" }
       },
       "milligray": {
-        "label": "Milligray",
+        "label": "Milligray (mGy)",
         "conversion": { "baseUnit": "gray", "formula": "x=x*0.001" }
       },
       "millirad": {
-        "label": "Millirad",
+        "label": "Millirad (mrad)",
         "conversion": { "baseUnit": "gray", "formula": "x=x*0.00001" }
       }
     }
@@ -26,11 +26,11 @@
     "baseUnit": "coulomb_per_kilogram",
     "units": {
       "coulomb_per_kilogram": {
-        "label": "C/kg",
+        "label": "Coulomb per Kilogram (C/kg)",
         "conversion": { "baseUnit": "coulomb_per_kilogram", "formula": "x=x" }
       },
       "roentgen": {
-        "label": "Roentgen",
+        "label": "Roentgen (R)",
         "conversion": {
           "baseUnit": "coulomb_per_kilogram",
           "formula": "x=x*0.000258"
@@ -43,20 +43,20 @@
     "baseUnit": "sievert",
     "units": {
       "sievert": {
-        "label": "Sievert",
+        "label": "Sievert (Sv)",
         "conversion": { "baseUnit": "sievert", "formula": "x=x" }
       },
       "rem": {
-        "label": "Rem",
+        "label": "Rem (rem)",
         "conversion": { "baseUnit": "sievert", "formula": "x=x*0.01" }
       },
       "millisievert": {
-        "label": "Millisievert",
+        "label": "Millisievert (mSv)",
         "conversion": { "baseUnit": "sievert", "formula": "x=x*0.001" }
       },
       "millirem": {
-        "label": "Millirem",
-        "conversion": { "baseUnit": "sievert", "formula": "x=x*0.01*0.001" }
+        "label": "Millirem (mrem)",
+        "conversion": { "baseUnit": "sievert", "formula": "x=x*0.00001" }
       }
     }
   }
