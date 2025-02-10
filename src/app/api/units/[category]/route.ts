@@ -8,6 +8,14 @@ type CategoryGroupsConfig = { groups: CategoryGroup[] };
 type UnitConfigModule = { default: UnitConfig };
 type CategoryGroupsModule = { default: CategoryGroupsConfig };
 
+type CacheEntry = {
+  data: UnitConfig;
+  timestamp: number;
+};
+
+const cache = new Map<string, CacheEntry>();
+const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes in milliseconds
+
 export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ category: UnitCategory }> },
@@ -15,12 +23,25 @@ export async function GET(
   try {
     const { category } = await params;
 
-    // First try to load the category directly
+    // Check cache first
+    const cachedEntry = cache.get(category);
+    if (cachedEntry && Date.now() - cachedEntry.timestamp < CACHE_DURATION) {
+      return NextResponse.json(cachedEntry.data);
+    }
+
+    // If not in cache or expired, load from file system
     try {
       const unitConfigModule = (await import(
         `@/config/categories/${category}.json`
       )) as UnitConfigModule;
       const rawConfig = unitConfigModule.default;
+
+      // Store in cache
+      cache.set(category, {
+        data: rawConfig,
+        timestamp: Date.now(),
+      });
+
       return NextResponse.json(rawConfig);
     } catch {
       // If direct import fails, check parent categories from categoryGroups.json
@@ -38,10 +59,17 @@ export async function GET(
           const parentConfig = parentConfigModule.default;
 
           if (category in parentConfig) {
-            // If the category exists as a subcategory, return it wrapped in an object
-            return NextResponse.json({
+            const responseData = {
               [category]: parentConfig[category],
+            };
+
+            // Store in cache
+            cache.set(category, {
+              data: responseData,
+              timestamp: Date.now(),
             });
+
+            return NextResponse.json(responseData);
           }
         } catch {
           continue;
