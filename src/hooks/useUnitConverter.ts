@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { convertWithFormula } from "@/utils/dynamicConverter";
+// import { convertWithFormula } from "@/utils/dynamicConverter";
 import type { UnitCategory } from "@/types/categoryTypes";
 
 interface ConversionHistoryEntry {
@@ -20,6 +20,7 @@ export function useUnitConverter(
   initialFromUnit?: string,
   initialToUnit?: string,
   units: { value: string; label: string }[] = [],
+  convertFn?: (value: number, from: string, to: string) => number,
 ) {
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -42,11 +43,11 @@ export function useUnitConverter(
   useEffect(() => {
     const initializeConversion = async () => {
       try {
-        const converted = await convertWithFormula(
+        if (!convertFn) throw new Error("Convert function is required");
+        const converted = convertFn(
           parseFloat(defaultValue),
           defaultFromUnit,
           defaultToUnit,
-          category,
         );
         if (!isNaN(converted)) {
           setToValue(converted.toFixed(4));
@@ -67,7 +68,14 @@ export function useUnitConverter(
       }
     };
     void initializeConversion();
-  }, [defaultValue, defaultFromUnit, defaultToUnit, category, units]);
+  }, [
+    defaultValue,
+    defaultFromUnit,
+    defaultToUnit,
+    category,
+    units,
+    convertFn,
+  ]);
 
   useEffect(() => {
     const savedHistory = localStorage.getItem("conversionHistory");
@@ -145,27 +153,28 @@ export function useUnitConverter(
       const numValue = parseFloat(value);
       if (!isNaN(numValue)) {
         try {
-          const converted = await convertWithFormula(
-            numValue,
-            from,
-            to,
-            category,
-          );
+          if (!convertFn) throw new Error("Convert function is required");
+          const converted = convertFn(numValue, from, to);
+          const formatNumber = (num: number): string => {
+            // Convert to a fixed number of decimal places (max 12)
+            const fixed = num.toFixed(12);
+            // Remove trailing zeros while keeping significant decimals
+            const formatted = fixed.replace(/\.?0+$/, "");
+            return formatted || "0";
+          };
           if (!isNaN(converted)) {
-            setToValue(converted.toFixed(4));
+            const formattedValue = formatNumber(converted);
+            setToValue(formattedValue);
             const fromUnitLabel =
               units.find((u) => u.value === from)?.label ?? from;
             const toUnitLabel = units.find((u) => u.value === to)?.label ?? to;
-            const resultText = `${numValue} ${fromUnitLabel} = ${converted.toFixed(4)} ${toUnitLabel}`;
+            const resultText = `${numValue} ${fromUnitLabel} = ${formattedValue} ${toUnitLabel}`;
             setResult(resultText);
 
             if (isUserInteraction) {
               saveToHistory(value, from, to, resultText);
               setIsUserInteraction(false);
             }
-          } else {
-            setToValue("");
-            setResult("");
           }
         } catch (error) {
           console.error("Error during conversion:", error);
@@ -182,6 +191,7 @@ export function useUnitConverter(
     defaultToUnit,
     category,
     units,
+    convertFn,
   ]);
 
   const saveToHistory = useCallback(

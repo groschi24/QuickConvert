@@ -37,7 +37,7 @@ export default function ConversionWrapper({
     handleUnitChange,
     removeFromHistory,
     clearHistory,
-  } = useUnitConverter(category, from, to, units);
+  } = useUnitConverter(category, from, to, units, convertFn);
 
   return (
     <div className="font-inter flex min-h-screen flex-col bg-gradient-to-b from-gray-50 via-white to-gray-50 dark:from-[#151515] dark:via-[#000000] dark:to-[#151515]">
