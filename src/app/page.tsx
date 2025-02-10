@@ -175,6 +175,79 @@ export default async function Home() {
               Discover the powerful features that make our converter stand out
             </p>
           </div>
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="group rounded-2xl border border-gray-200 bg-white/90 p-8 shadow-lg backdrop-blur-lg transition-all duration-300 hover:scale-105 hover:border-gray-300 dark:border-[#ffffff10] dark:bg-[#151515]/90 dark:hover:border-[#ffffff20]">
+              <div className="mb-5 inline-flex rounded-lg bg-indigo-100 p-3 text-2xl dark:bg-indigo-950/30">
+                ⚡️
+              </div>
+              <h3 className="mb-3 text-xl font-semibold text-gray-900 group-hover:text-indigo-600 dark:text-[#ffffffcc] dark:group-hover:text-indigo-400">
+                Instant Calculations
+              </h3>
+              <p className="text-gray-600 dark:text-[#ffffff80]">
+                Get real-time conversions as you type, with instant updates and
+                precise results.
+              </p>
+            </div>
+            <div className="group rounded-2xl border border-gray-200 bg-white/90 p-8 shadow-lg backdrop-blur-lg transition-all duration-300 hover:scale-105 hover:border-gray-300 dark:border-[#ffffff10] dark:bg-[#151515]/90 dark:hover:border-[#ffffff20]">
+              <div className="mb-5 inline-flex rounded-lg bg-indigo-100 p-3 text-2xl dark:bg-indigo-950/30">
+                🎯
+              </div>
+              <h3 className="mb-3 text-xl font-semibold text-gray-900 group-hover:text-indigo-600 dark:text-[#ffffffcc] dark:group-hover:text-indigo-400">
+                Precision & Accuracy
+              </h3>
+              <p className="text-gray-600 dark:text-[#ffffff80]">
+                High-precision conversions you can trust, with detailed formulas
+                for transparency.
+              </p>
+            </div>
+            <div className="group rounded-2xl border border-gray-200 bg-white/90 p-8 shadow-lg backdrop-blur-lg transition-all duration-300 hover:scale-105 hover:border-gray-300 dark:border-[#ffffff10] dark:bg-[#151515]/90 dark:hover:border-[#ffffff20]">
+              <div className="mb-5 inline-flex rounded-lg bg-indigo-100 p-3 text-2xl dark:bg-indigo-950/30">
+                🌙
+              </div>
+              <h3 className="mb-3 text-xl font-semibold text-gray-900 group-hover:text-indigo-600 dark:text-[#ffffffcc] dark:group-hover:text-indigo-400">
+                Dark Mode Support
+              </h3>
+              <p className="text-gray-600 dark:text-[#ffffff80]">
+                Comfortable viewing day or night with automatic theme detection
+                and manual toggle.
+              </p>
+            </div>
+            <div className="group rounded-2xl border border-gray-200 bg-white/90 p-8 shadow-lg backdrop-blur-lg transition-all duration-300 hover:scale-105 hover:border-gray-300 dark:border-[#ffffff10] dark:bg-[#151515]/90 dark:hover:border-[#ffffff20]">
+              <div className="mb-5 inline-flex rounded-lg bg-indigo-100 p-3 text-2xl dark:bg-indigo-950/30">
+                📱
+              </div>
+              <h3 className="mb-3 text-xl font-semibold text-gray-900 group-hover:text-indigo-600 dark:text-[#ffffffcc] dark:group-hover:text-indigo-400">
+                Responsive Design
+              </h3>
+              <p className="text-gray-600 dark:text-[#ffffff80]">
+                Perfect experience across all devices - from desktop to mobile.
+              </p>
+            </div>
+            <div className="group rounded-2xl border border-gray-200 bg-white/90 p-8 shadow-lg backdrop-blur-lg transition-all duration-300 hover:scale-105 hover:border-gray-300 dark:border-[#ffffff10] dark:bg-[#151515]/90 dark:hover:border-[#ffffff20]">
+              <div className="mb-5 inline-flex rounded-lg bg-indigo-100 p-3 text-2xl dark:bg-indigo-950/30">
+                🔄
+              </div>
+              <h3 className="mb-3 text-xl font-semibold text-gray-900 group-hover:text-indigo-600 dark:text-[#ffffffcc] dark:group-hover:text-indigo-400">
+                Conversion History
+              </h3>
+              <p className="text-gray-600 dark:text-[#ffffff80]">
+                Track your recent conversions with built-in history, saved right
+                in your browser.
+              </p>
+            </div>
+            <div className="group rounded-2xl border border-gray-200 bg-white/90 p-8 shadow-lg backdrop-blur-lg transition-all duration-300 hover:scale-105 hover:border-gray-300 dark:border-[#ffffff10] dark:bg-[#151515]/90 dark:hover:border-[#ffffff20]">
+              <div className="mb-5 inline-flex rounded-lg bg-indigo-100 p-3 text-2xl dark:bg-indigo-950/30">
+                🌐
+              </div>
+              <h3 className="mb-3 text-xl font-semibold text-gray-900 group-hover:text-indigo-600 dark:text-[#ffffffcc] dark:group-hover:text-indigo-400">
+                Offline Support
+              </h3>
+              <p className="text-gray-600 dark:text-[#ffffff80]">
+                Access all conversion tools even without an internet connection,
+                ensuring reliability anywhere.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
     </main>
