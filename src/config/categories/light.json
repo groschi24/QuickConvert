@@ -23,6 +23,13 @@
           "baseUnit": "lux",
           "formula": "x=x*10000"
         }
+      },
+      "nox": {
+        "label": "Nox",
+        "conversion": {
+          "baseUnit": "lux",
+          "formula": "x=x*0.001"
+        }
       }
     }
   },
@@ -50,6 +57,20 @@
           "baseUnit": "candela_per_square_meter",
           "formula": "x=x*3183.099"
         }
+      },
+      "stilb": {
+        "label": "Stilb",
+        "conversion": {
+          "baseUnit": "candela_per_square_meter",
+          "formula": "x=x*10000"
+        }
+      },
+      "nit": {
+        "label": "Nit",
+        "conversion": {
+          "baseUnit": "candela_per_square_meter",
+          "formula": "x=x*1"
+        }
       }
     }
   },
@@ -68,7 +89,14 @@
         "label": "Candela Steradian",
         "conversion": {
           "baseUnit": "lumen",
-          "formula": "x=x"
+          "formula": "x=x*1"
+        }
+      },
+      "talbot": {
+        "label": "Talbot",
+        "conversion": {
+          "baseUnit": "lumen",
+          "formula": "x=x*1"
         }
       }
     }

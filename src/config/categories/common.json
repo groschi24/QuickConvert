@@ -73,6 +73,20 @@
           "formula": "x=x*0.000001"
         }
       },
+      "nanometers": {
+        "label": "Nanometers",
+        "conversion": {
+          "baseUnit": "meters",
+          "formula": "x=x*1e-9"
+        }
+      },
+      "astronomical_units": {
+        "label": "Astronomical Units",
+        "conversion": {
+          "baseUnit": "meters",
+          "formula": "x=x*1.496e+11"
+        }
+      },
       "light_years": {
         "label": "Light Years",
         "conversion": {
@@ -162,6 +176,20 @@
           "baseUnit": "kilograms",
           "formula": "x=x*1016.047"
         }
+      },
+      "atomic_mass_units": {
+        "label": "Atomic Mass Units",
+        "conversion": {
+          "baseUnit": "kilograms",
+          "formula": "x=x*1.66053907e-27"
+        }
+      },
+      "slugs": {
+        "label": "Slugs",
+        "conversion": {
+          "baseUnit": "kilograms",
+          "formula": "x=x*14.5939"
+        }
       }
     }
   },
@@ -218,6 +246,20 @@
           "formula": "x=x*31556952"
         }
       },
+      "decades": {
+        "label": "Decades",
+        "conversion": {
+          "baseUnit": "seconds",
+          "formula": "x=x*315569520"
+        }
+      },
+      "centuries": {
+        "label": "Centuries",
+        "conversion": {
+          "baseUnit": "seconds",
+          "formula": "x=x*3155695200"
+        }
+      },
       "milliseconds": {
         "label": "Milliseconds",
         "conversion": {
@@ -230,6 +272,13 @@
         "conversion": {
           "baseUnit": "seconds",
           "formula": "x=x*0.000001"
+        }
+      },
+      "nanoseconds": {
+        "label": "Nanoseconds",
+        "conversion": {
+          "baseUnit": "seconds",
+          "formula": "x=x*1e-9"
         }
       }
     }
@@ -306,6 +355,27 @@
         "conversion": {
           "baseUnit": "square_meters",
           "formula": "x=x*100"
+        }
+      },
+      "square_rods": {
+        "label": "Square Rods",
+        "conversion": {
+          "baseUnit": "square_meters",
+          "formula": "x=x*25.2929"
+        }
+      },
+      "square_chains": {
+        "label": "Square Chains",
+        "conversion": {
+          "baseUnit": "square_meters",
+          "formula": "x=x*404.6873"
+        }
+      },
+      "square_millimeters": {
+        "label": "Square Millimeters",
+        "conversion": {
+          "baseUnit": "square_meters",
+          "formula": "x=x*0.000001"
         }
       }
     }

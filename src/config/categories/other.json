@@ -23,6 +23,27 @@
           "baseUnit": "radians",
           "formula": "x=x*0.015708"
         }
+      },
+      "turns": {
+        "label": "Turns",
+        "conversion": {
+          "baseUnit": "radians",
+          "formula": "x=x*6.28319"
+        }
+      },
+      "minutes_of_arc": {
+        "label": "Minutes of Arc",
+        "conversion": {
+          "baseUnit": "radians",
+          "formula": "x=x*0.000290888"
+        }
+      },
+      "seconds_of_arc": {
+        "label": "Seconds of Arc",
+        "conversion": {
+          "baseUnit": "radians",
+          "formula": "x=x*4.8481e-6"
+        }
       }
     }
   },
@@ -64,6 +85,41 @@
           "baseUnit": "bytes",
           "formula": "x=x*1099511627776"
         }
+      },
+      "petabytes": {
+        "label": "Petabytes",
+        "conversion": {
+          "baseUnit": "bytes",
+          "formula": "x=x*1125899906842624"
+        }
+      },
+      "bits": {
+        "label": "Bits",
+        "conversion": {
+          "baseUnit": "bytes",
+          "formula": "x=x*0.125"
+        }
+      },
+      "kibibytes": {
+        "label": "Kibibytes",
+        "conversion": {
+          "baseUnit": "bytes",
+          "formula": "x=x*1024"
+        }
+      },
+      "mebibytes": {
+        "label": "Mebibytes",
+        "conversion": {
+          "baseUnit": "bytes",
+          "formula": "x=x*1048576"
+        }
+      },
+      "gibibytes": {
+        "label": "Gibibytes",
+        "conversion": {
+          "baseUnit": "bytes",
+          "formula": "x=x*1073741824"
+        }
       }
     }
   },
@@ -97,6 +153,27 @@
         "conversion": {
           "baseUnit": "hertz",
           "formula": "x=x*1000000000"
+        }
+      },
+      "cycles_per_second": {
+        "label": "Cycles per Second",
+        "conversion": {
+          "baseUnit": "hertz",
+          "formula": "x=x*1"
+        }
+      },
+      "revolutions_per_minute": {
+        "label": "Revolutions per Minute",
+        "conversion": {
+          "baseUnit": "hertz",
+          "formula": "x=x*0.0166667"
+        }
+      },
+      "beats_per_minute": {
+        "label": "Beats per Minute",
+        "conversion": {
+          "baseUnit": "hertz",
+          "formula": "x=x*0.0166667"
         }
       }
     }

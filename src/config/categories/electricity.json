@@ -44,18 +44,18 @@
           "formula": "x=x"
         }
       },
-      "milliamperes": {
-        "label": "Milliamperes",
-        "conversion": {
-          "baseUnit": "amperes",
-          "formula": "x=x*0.001"
-        }
-      },
       "kiloamperes": {
         "label": "Kiloamperes",
         "conversion": {
           "baseUnit": "amperes",
           "formula": "x=x*1000"
+        }
+      },
+      "milliamperes": {
+        "label": "Milliamperes",
+        "conversion": {
+          "baseUnit": "amperes",
+          "formula": "x=x*0.001"
         }
       },
       "microamperes": {
@@ -98,6 +98,13 @@
           "baseUnit": "ohms",
           "formula": "x=x*0.001"
         }
+      },
+      "microohms": {
+        "label": "Microohms",
+        "conversion": {
+          "baseUnit": "ohms",
+          "formula": "x=x*0.000001"
+        }
       }
     }
   },
@@ -139,6 +146,20 @@
           "baseUnit": "watts",
           "formula": "x=x*0.001"
         }
+      },
+      "microwatts": {
+        "label": "Microwatts",
+        "conversion": {
+          "baseUnit": "watts",
+          "formula": "x=x*0.000001"
+        }
+      },
+      "gigawatts": {
+        "label": "Gigawatts",
+        "conversion": {
+          "baseUnit": "watts",
+          "formula": "x=x*1000000000"
+        }
       }
     }
   },
@@ -173,6 +194,13 @@
           "baseUnit": "farads",
           "formula": "x=x*0.000000000001"
         }
+      },
+      "millifarads": {
+        "label": "Millifarads",
+        "conversion": {
+          "baseUnit": "farads",
+          "formula": "x=x*0.001"
+        }
       }
     }
   },
@@ -199,6 +227,13 @@
         "conversion": {
           "baseUnit": "henries",
           "formula": "x=x*0.000001"
+        }
+      },
+      "nanohenries": {
+        "label": "Nanohenries",
+        "conversion": {
+          "baseUnit": "henries",
+          "formula": "x=x*0.000000001"
         }
       }
     }

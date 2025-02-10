@@ -77,6 +77,20 @@
           "baseUnit": "radians_per_second_squared",
           "formula": "x=x*0.10472"
         }
+      },
+      "revolutions_per_second_squared": {
+        "label": "Revolutions per Second²",
+        "conversion": {
+          "baseUnit": "radians_per_second_squared",
+          "formula": "x=x*6.28319"
+        }
+      },
+      "gradians_per_second_squared": {
+        "label": "Gradians per Second²",
+        "conversion": {
+          "baseUnit": "radians_per_second_squared",
+          "formula": "x=x*0.015708"
+        }
       }
     }
   }
