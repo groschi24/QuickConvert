@@ -245,14 +245,14 @@ export default async function Home() {
             </div>
             <div className="group rounded-2xl border border-gray-200 bg-white/90 p-8 shadow-lg backdrop-blur-lg transition-all duration-300 hover:scale-105 hover:border-gray-300 dark:border-[#ffffff10] dark:bg-[#151515]/90 dark:hover:border-[#ffffff20]">
               <div className="mb-5 inline-flex rounded-lg bg-indigo-100 p-3 text-2xl dark:bg-indigo-950/30">
-                🌐
+                📋
               </div>
               <h3 className="mb-3 text-xl font-semibold text-gray-900 group-hover:text-indigo-600 dark:text-[#ffffffcc] dark:group-hover:text-indigo-400">
-                Offline Support
+                Value Copying
               </h3>
               <p className="text-gray-600 dark:text-[#ffffff80]">
-                Access all conversion tools even without an internet connection,
-                ensuring reliability anywhere.
+                Copy values to share them with others instantly, making it easy
+                to use conversion results anywhere you need them.
               </p>
             </div>
           </div>
