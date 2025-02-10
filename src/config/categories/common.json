@@ -72,6 +72,20 @@
           "baseUnit": "meters",
           "formula": "x=x*0.000001"
         }
+      },
+      "light_years": {
+        "label": "Light Years",
+        "conversion": {
+          "baseUnit": "meters",
+          "formula": "x=x*9.461e+15"
+        }
+      },
+      "parsecs": {
+        "label": "Parsecs",
+        "conversion": {
+          "baseUnit": "meters",
+          "formula": "x=x*3.086e+16"
+        }
       }
     }
   },
@@ -134,6 +148,20 @@
           "baseUnit": "kilograms",
           "formula": "x=x*907.185"
         }
+      },
+      "carats": {
+        "label": "Carats",
+        "conversion": {
+          "baseUnit": "kilograms",
+          "formula": "x=x*0.0002"
+        }
+      },
+      "long_tons": {
+        "label": "Long Tons",
+        "conversion": {
+          "baseUnit": "kilograms",
+          "formula": "x=x*1016.047"
+        }
       }
     }
   },
@@ -188,6 +216,20 @@
         "conversion": {
           "baseUnit": "seconds",
           "formula": "x=x*31556952"
+        }
+      },
+      "milliseconds": {
+        "label": "Milliseconds",
+        "conversion": {
+          "baseUnit": "seconds",
+          "formula": "x=x*0.001"
+        }
+      },
+      "microseconds": {
+        "label": "Microseconds",
+        "conversion": {
+          "baseUnit": "seconds",
+          "formula": "x=x*0.000001"
         }
       }
     }
@@ -250,6 +292,20 @@
         "conversion": {
           "baseUnit": "square_meters",
           "formula": "x=x*2589988.11"
+        }
+      },
+      "square_centimeters": {
+        "label": "Square Centimeters",
+        "conversion": {
+          "baseUnit": "square_meters",
+          "formula": "x=x*0.0001"
+        }
+      },
+      "are": {
+        "label": "Are",
+        "conversion": {
+          "baseUnit": "square_meters",
+          "formula": "x=x*100"
         }
       }
     }
