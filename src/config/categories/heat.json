@@ -204,7 +204,7 @@
         "label": "BTU per Hour Square Foot",
         "conversion": {
           "baseUnit": "watts_per_square_meter",
-          "formula": "x=x*0.317"
+          "formula": "x=x*3.155"
         }
       }
     }
