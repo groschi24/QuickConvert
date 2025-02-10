@@ -114,22 +114,36 @@ export default async function Home() {
               Find the perfect converter for your needs
             </p>
           </div>
-          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            {Object.entries(await loadAllUnitConfigs()).map(([key, config]) => (
-              <Link
-                key={key}
-                href={`/${key}`}
-                className="group relative transform overflow-hidden rounded-xl border border-gray-200 bg-white p-8 shadow-md backdrop-blur-sm transition-all duration-200 hover:scale-105 hover:border-gray-300 hover:shadow-lg dark:border-[#ffffff10] dark:bg-[#151515] dark:hover:border-[#ffffff20]"
-              >
-                <div className="absolute inset-0 -z-10 bg-gradient-to-br from-indigo-50 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 dark:from-indigo-950/30"></div>
-                <h3 className="text-xl font-semibold text-gray-900 group-hover:text-indigo-600 dark:text-[#ffffffcc] dark:group-hover:text-indigo-400">
-                  {config.label || key}
-                </h3>
-                <p className="mt-2 text-sm text-gray-600 dark:text-[#ffffff80]">
-                  Convert {(config.label || key).toLowerCase()} units instantly
-                </p>
-              </Link>
-            ))}
+          <div className="mx-auto grid max-w-6xl gap-8">
+            {Object.entries(await loadAllUnitConfigs()).map(
+              ([groupKey, group]) => (
+                <div key={groupKey} className="space-y-6">
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-[#ffffffee]">
+                    {group.label || groupKey}
+                  </h3>
+                  <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                    {Object.entries(group.categories || {}).map(
+                      ([categoryKey, category]) => (
+                        <Link
+                          key={`${groupKey}-${categoryKey}`}
+                          href={`/${categoryKey}`}
+                          className="group relative transform overflow-hidden rounded-xl border border-gray-200 bg-white p-8 shadow-md backdrop-blur-sm transition-all duration-200 hover:scale-105 hover:border-gray-300 hover:shadow-lg dark:border-[#ffffff10] dark:bg-[#151515] dark:hover:border-[#ffffff20]"
+                        >
+                          <div className="absolute inset-0 -z-10 bg-gradient-to-br from-indigo-50 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 dark:from-indigo-950/30"></div>
+                          <h3 className="text-xl font-semibold text-gray-900 group-hover:text-indigo-600 dark:text-[#ffffffcc] dark:group-hover:text-indigo-400">
+                            {category.label}
+                          </h3>
+                          <p className="mt-2 text-sm text-gray-600 dark:text-[#ffffff80]">
+                            Convert {category.label.toLowerCase()} units
+                            instantly
+                          </p>
+                        </Link>
+                      ),
+                    )}
+                  </div>
+                </div>
+              ),
+            )}
           </div>
         </div>
       </section>

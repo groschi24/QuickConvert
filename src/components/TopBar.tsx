@@ -71,30 +71,26 @@ export function TopBar() {
 
               <MenuItems className="absolute left-0 z-50 mt-2 max-h-[calc(100vh-6rem)] w-[500px] origin-top-left overflow-y-auto rounded-xl bg-white p-4 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-[#151515] dark:ring-[#ffffff10]">
                 <div className="grid grid-cols-1 gap-6">
-                  <div className="space-y-3">
-                    <div className="grid grid-cols-1 gap-4">
-                      {Object.entries(configs).map(([groupKey, group]) => (
-                        <div key={groupKey} className="space-y-3">
-                          <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                            {group.label}
-                          </h4>
-                          <div className="grid grid-cols-2 gap-2">
-                            {Object.entries(group.categories || {}).map(
-                              ([categoryKey, category]) => (
-                                <Link
-                                  key={categoryKey}
-                                  href={`/${categoryKey}`}
-                                  className="block rounded-lg p-2 text-sm text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:text-[#ffffff80] dark:hover:bg-[#ffffff10] dark:hover:text-white"
-                                >
-                                  {category.label}
-                                </Link>
-                              ),
-                            )}
-                          </div>
-                        </div>
-                      ))}
+                  {Object.entries(configs).map(([groupKey, group]) => (
+                    <div key={groupKey} className="space-y-3">
+                      <h3 className="text-sm font-semibold text-gray-900 dark:text-[#ffffffee]">
+                        {group.label || groupKey}
+                      </h3>
+                      <div className="grid grid-cols-2 gap-2">
+                        {Object.entries(group.categories || {}).map(
+                          ([categoryKey, category]) => (
+                            <Link
+                              key={`${groupKey}-${categoryKey}`}
+                              href={`/${categoryKey}`}
+                              className="block rounded-lg p-2 text-sm text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:text-[#ffffff80] dark:hover:bg-[#ffffff10] dark:hover:text-white"
+                            >
+                              {category.label}
+                            </Link>
+                          ),
+                        )}
+                      </div>
                     </div>
-                  </div>
+                  ))}
                 </div>
               </MenuItems>
             </Menu>
