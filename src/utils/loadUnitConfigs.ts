@@ -107,14 +107,10 @@ export async function loadUnitConfig(category: UnitCategory): Promise<
                 .replace(/\bpow\b/g, "Math.pow")
                 .replace(/\bpi\b/g, "Math.PI");
 
-              // Create a safe evaluation context
-              const evalContext = {
-                x,
-                Math,
-              };
-
               // Use Function constructor for a safer evaluation
+              // eslint-disable-next-line @typescript-eslint/no-implied-eval
               const evaluator = new Function("x", "Math", `return ${mathExpr}`);
+              // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call
               return evaluator(x, Math);
             };
 
