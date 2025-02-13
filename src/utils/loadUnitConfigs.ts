@@ -76,13 +76,15 @@ export async function loadUnitConfig(category: UnitCategory): Promise<
           label: string;
         };
         const typedUnitConfig = unitConfig as UnitConfigType;
-        const formula = typedUnitConfig?.conversion?.formula ?? "x=x";
+        const formula = typedUnitConfig?.conversion?.formula ?? "x";
         let factor = 1;
 
-        if (formula !== "x=x") {
+        if (formula !== "x") {
           try {
             // Handle both simple multiplication and complex formulas
-            const formulaExpression = formula.split("=")[1]?.trim();
+            const formulaExpression = formula.trim();
+            console.log("formulaExpression: ", formulaExpression);
+            console.log("formula: ", formula);
             if (!formulaExpression) {
               throw new Error(`Invalid formula format: ${formula}`);
             }
@@ -127,10 +129,10 @@ export async function loadUnitConfig(category: UnitCategory): Promise<
             if (unitKey === toKey && config.conversions[unitKey]) {
               config.conversions[unitKey].to[toKey] = 1;
             } else {
-              const toFormula = typedToUnitConfig?.conversion?.formula ?? "x=x";
+              const toFormula = typedToUnitConfig?.conversion?.formula ?? "x";
               try {
-                const fromExpression = formula.split("=")[1]?.trim();
-                const toExpression = toFormula.split("=")[1]?.trim();
+                const fromExpression = formula.trim();
+                const toExpression = toFormula.trim();
 
                 if (!fromExpression || !toExpression) {
                   throw new Error(
@@ -139,8 +141,15 @@ export async function loadUnitConfig(category: UnitCategory): Promise<
                 }
 
                 if (config.conversions[unitKey]) {
-                  config.conversions[unitKey].to[toKey] =
-                    `(${fromExpression})/(${toExpression})`;
+                  // Use the base unit as an intermediary for conversion
+                  const baseUnit = firstMeasureConfig.baseUnit;
+                  if (baseUnit && unitKey !== baseUnit && toKey !== baseUnit) {
+                    // Keep the original formulas for conversion through base unit
+                    config.conversions[unitKey].to[toKey] = formula;
+                  } else {
+                    // Direct conversion when either unit is the base unit
+                    config.conversions[unitKey].to[toKey] = formula;
+                  }
                 }
               } catch (error) {
                 console.error(

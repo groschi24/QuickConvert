@@ -7,7 +7,7 @@
         "label": "Meters (m)",
         "conversion": {
           "baseUnit": "meters",
-          "formula": "x=x"
+          "formula": "x"
         }
       },
       "kilometers": {
@@ -28,140 +28,140 @@
         "label": "Millimeters (mm)",
         "conversion": {
           "baseUnit": "meters",
-          "formula": "x=x*0.001"
+          "formula": "x*0.001"
         }
       },
       "micrometers": {
         "label": "Micrometers (\u00b5m)",
         "conversion": {
           "baseUnit": "meters",
-          "formula": "x=x*0.000001"
+          "formula": "x*0.000001"
         }
       },
       "nanometers": {
         "label": "Nanometers (nm)",
         "conversion": {
           "baseUnit": "meters",
-          "formula": "x=x*1e-9"
+          "formula": "x*1e-9"
         }
       },
       "inches": {
         "label": "Inches (in)",
         "conversion": {
           "baseUnit": "meters",
-          "formula": "x=x*0.0254"
+          "formula": "x*0.0254"
         }
       },
       "feet": {
         "label": "Feet (ft)",
         "conversion": {
           "baseUnit": "meters",
-          "formula": "x=x*0.3048"
+          "formula": "x*0.3048"
         }
       },
       "yards": {
         "label": "Yards (yd)",
         "conversion": {
           "baseUnit": "meters",
-          "formula": "x=x*0.9144"
+          "formula": "x*0.9144"
         }
       },
       "miles": {
         "label": "Miles (mi)",
         "conversion": {
           "baseUnit": "meters",
-          "formula": "x=x*1609.344"
+          "formula": "x*1609.344"
         }
       },
       "nautical_miles": {
         "label": "Nautical Miles (NM)",
         "conversion": {
           "baseUnit": "meters",
-          "formula": "x=x*1852"
+          "formula": "x*1852"
         }
       },
       "furlongs": {
         "label": "Furlongs (fur)",
         "conversion": {
           "baseUnit": "meters",
-          "formula": "x=x*201.168"
+          "formula": "x*201.168"
         }
       },
       "rods": {
         "label": "Rods (rod)",
         "conversion": {
           "baseUnit": "meters",
-          "formula": "x=x*5.0292"
+          "formula": "x*5.0292"
         }
       },
       "cubits": {
         "label": "Cubits (cubit)",
         "conversion": {
           "baseUnit": "meters",
-          "formula": "x=x*0.4572"
+          "formula": "x*0.4572"
         }
       },
       "leagues": {
         "label": "Leagues (league)",
         "conversion": {
           "baseUnit": "meters",
-          "formula": "x=x*4828.032"
+          "formula": "x*4828.032"
         }
       },
       "versts": {
         "label": "Versts (verst)",
         "conversion": {
           "baseUnit": "meters",
-          "formula": "x=x*1066.8"
+          "formula": "x*1066.8"
         }
       },
       "chains": {
         "label": "Chains (chain)",
         "conversion": {
           "baseUnit": "meters",
-          "formula": "x=x*20.1168"
+          "formula": "x*20.1168"
         }
       },
       "astronomical_units": {
         "label": "Astronomical Units (AU)",
         "conversion": {
           "baseUnit": "meters",
-          "formula": "x=x*1.496e+11"
+          "formula": "x*1.496e+11"
         }
       },
       "light_years": {
         "label": "Light Years (ly)",
         "conversion": {
           "baseUnit": "meters",
-          "formula": "x=x*9.461e+15"
+          "formula": "x*9.461e+15"
         }
       },
       "parsecs": {
         "label": "Parsecs (pc)",
         "conversion": {
           "baseUnit": "meters",
-          "formula": "x=x*3.086e+16"
+          "formula": "x*3.086e+16"
         }
       },
       "angstroms": {
         "label": "Angstroms (\u00c5)",
         "conversion": {
           "baseUnit": "meters",
-          "formula": "x=x*1e-10"
+          "formula": "x*1e-10"
         }
       },
       "picometers": {
         "label": "Picometers (pm)",
         "conversion": {
           "baseUnit": "meters",
-          "formula": "x=x*1e-12"
+          "formula": "x*1e-12"
         }
       },
       "femtometers": {
         "label": "Femtometers (fm)",
         "conversion": {
           "baseUnit": "meters",
-          "formula": "x=x*1e-15"
+          "formula": "x*1e-15"
         }
       }
     }
@@ -174,98 +174,98 @@
         "label": "Kilograms (kg)",
         "conversion": {
           "baseUnit": "kilograms",
-          "formula": "x=x"
+          "formula": "x"
         }
       },
       "grams": {
         "label": "Grams (g)",
         "conversion": {
           "baseUnit": "kilograms",
-          "formula": "x=x*0.001"
+          "formula": "x*0.001"
         }
       },
       "milligrams": {
         "label": "Milligrams (mg)",
         "conversion": {
           "baseUnit": "kilograms",
-          "formula": "x=x*0.000001"
+          "formula": "x*0.000001"
         }
       },
       "pounds": {
         "label": "Pounds (lb)",
         "conversion": {
           "baseUnit": "kilograms",
-          "formula": "x=x*0.453592"
+          "formula": "x*0.453592"
         }
       },
       "ounces": {
         "label": "Ounces (oz)",
         "conversion": {
           "baseUnit": "kilograms",
-          "formula": "x=x*0.0283495"
+          "formula": "x*0.0283495"
         }
       },
       "stone": {
         "label": "Stone (st)",
         "conversion": {
           "baseUnit": "kilograms",
-          "formula": "x=x*6.35029"
+          "formula": "x*6.35029"
         }
       },
       "short_tons": {
         "label": "Short Tons (ton)",
         "conversion": {
           "baseUnit": "kilograms",
-          "formula": "x=x*907.185"
+          "formula": "x*907.185"
         }
       },
       "long_tons": {
         "label": "Long Tons (UK ton)",
         "conversion": {
           "baseUnit": "kilograms",
-          "formula": "x=x*1016.047"
+          "formula": "x*1016.047"
         }
       },
       "troy_ounces": {
         "label": "Troy Ounces (oz t)",
         "conversion": {
           "baseUnit": "kilograms",
-          "formula": "x=x*0.0311035"
+          "formula": "x*0.0311035"
         }
       },
       "carats": {
         "label": "Carats (ct)",
         "conversion": {
           "baseUnit": "kilograms",
-          "formula": "x=x*0.0002"
+          "formula": "x*0.0002"
         }
       },
       "drams": {
         "label": "Drams (dr)",
         "conversion": {
           "baseUnit": "kilograms",
-          "formula": "x=x*0.00177185"
+          "formula": "x*0.00177185"
         }
       },
       "grains": {
         "label": "Grains (gr)",
         "conversion": {
           "baseUnit": "kilograms",
-          "formula": "x=x*0.0000647989"
+          "formula": "x*0.0000647989"
         }
       },
       "atomic_mass_units": {
         "label": "Atomic Mass Units (u)",
         "conversion": {
           "baseUnit": "kilograms",
-          "formula": "x=x*1.66053907e-27"
+          "formula": "x*1.66053907e-27"
         }
       },
       "slugs": {
         "label": "Slugs (slug)",
         "conversion": {
           "baseUnit": "kilograms",
-          "formula": "x=x*14.5939"
+          "formula": "x*14.5939"
         }
       }
     }
@@ -278,105 +278,105 @@
         "label": "Nanoseconds (ns)",
         "conversion": {
           "baseUnit": "seconds",
-          "formula": "x=x*1e-9"
+          "formula": "x*1e-9"
         }
       },
       "microseconds": {
         "label": "Microseconds (\u00b5s)",
         "conversion": {
           "baseUnit": "seconds",
-          "formula": "x=x*0.000001"
+          "formula": "x*0.000001"
         }
       },
       "milliseconds": {
         "label": "Milliseconds (ms)",
         "conversion": {
           "baseUnit": "seconds",
-          "formula": "x=x*0.001"
+          "formula": "x*0.001"
         }
       },
       "seconds": {
         "label": "Seconds (s)",
         "conversion": {
           "baseUnit": "seconds",
-          "formula": "x=x"
+          "formula": "x"
         }
       },
       "minutes": {
         "label": "Minutes (min)",
         "conversion": {
           "baseUnit": "seconds",
-          "formula": "x=x*60"
+          "formula": "x*60"
         }
       },
       "hours": {
         "label": "Hours (h)",
         "conversion": {
           "baseUnit": "seconds",
-          "formula": "x=x*3600"
+          "formula": "x*3600"
         }
       },
       "days": {
         "label": "Days (d)",
         "conversion": {
           "baseUnit": "seconds",
-          "formula": "x=x*86400"
+          "formula": "x*86400"
         }
       },
       "weeks": {
         "label": "Weeks (wk)",
         "conversion": {
           "baseUnit": "seconds",
-          "formula": "x=x*604800"
+          "formula": "x*604800"
         }
       },
       "months": {
         "label": "Months (mo)",
         "conversion": {
           "baseUnit": "seconds",
-          "formula": "x=x*2629746"
+          "formula": "x*2629746"
         }
       },
       "years": {
         "label": "Years (yr)",
         "conversion": {
           "baseUnit": "seconds",
-          "formula": "x=x*31556952"
+          "formula": "x*31556952"
         }
       },
       "decades": {
         "label": "Decades (dec)",
         "conversion": {
           "baseUnit": "seconds",
-          "formula": "x=x*315569520"
+          "formula": "x*315569520"
         }
       },
       "centuries": {
         "label": "Centuries (cent)",
         "conversion": {
           "baseUnit": "seconds",
-          "formula": "x=x*3155695200"
+          "formula": "x*3155695200"
         }
       },
       "fortnights": {
         "label": "Fortnights (fn)",
         "conversion": {
           "baseUnit": "seconds",
-          "formula": "x=x*1209600"
+          "formula": "x*1209600"
         }
       },
       "shakes": {
         "label": "Shakes (shake)",
         "conversion": {
           "baseUnit": "seconds",
-          "formula": "x=x*1e-8"
+          "formula": "x*1e-8"
         }
       },
       "sidereal_day": {
         "label": "Sidereal Day (sd)",
         "conversion": {
           "baseUnit": "seconds",
-          "formula": "x=x*0.99726957"
+          "formula": "x*0.99726957"
         }
       }
     }
@@ -389,105 +389,105 @@
         "label": "Square Meters (m\u00b2)",
         "conversion": {
           "baseUnit": "square_meters",
-          "formula": "x=x"
+          "formula": "x"
         }
       },
       "square_kilometers": {
         "label": "Square Kilometers (km\u00b2)",
         "conversion": {
           "baseUnit": "square_meters",
-          "formula": "x=x*1000000"
+          "formula": "x*1000000"
         }
       },
       "square_centimeters": {
         "label": "Square Centimeters (cm\u00b2)",
         "conversion": {
           "baseUnit": "square_meters",
-          "formula": "x=x*0.0001"
+          "formula": "x*0.0001"
         }
       },
       "square_millimeters": {
         "label": "Square Millimeters (mm\u00b2)",
         "conversion": {
           "baseUnit": "square_meters",
-          "formula": "x=x*0.000001"
+          "formula": "x*0.000001"
         }
       },
       "square_feet": {
         "label": "Square Feet (ft\u00b2)",
         "conversion": {
           "baseUnit": "square_meters",
-          "formula": "x=x*0.092903"
+          "formula": "x*0.092903"
         }
       },
       "square_yards": {
         "label": "Square Yards (yd\u00b2)",
         "conversion": {
           "baseUnit": "square_meters",
-          "formula": "x=x*0.836127"
+          "formula": "x*0.836127"
         }
       },
       "acres": {
         "label": "Acres (ac)",
         "conversion": {
           "baseUnit": "square_meters",
-          "formula": "x=x*4046.86"
+          "formula": "x*4046.86"
         }
       },
       "hectares": {
         "label": "Hectares (ha)",
         "conversion": {
           "baseUnit": "square_meters",
-          "formula": "x=x*10000"
+          "formula": "x*10000"
         }
       },
       "square_miles": {
         "label": "Square Miles (mi\u00b2)",
         "conversion": {
           "baseUnit": "square_meters",
-          "formula": "x=x*2589988.11"
+          "formula": "x*2589988.11"
         }
       },
       "are": {
         "label": "Are (a)",
         "conversion": {
           "baseUnit": "square_meters",
-          "formula": "x=x*100"
+          "formula": "x*100"
         }
       },
       "square_rods": {
         "label": "Square Rods (rod\u00b2)",
         "conversion": {
           "baseUnit": "square_meters",
-          "formula": "x=x*25.2929"
+          "formula": "x*25.2929"
         }
       },
       "square_chains": {
         "label": "Square Chains (chain\u00b2)",
         "conversion": {
           "baseUnit": "square_meters",
-          "formula": "x=x*404.6873"
+          "formula": "x*404.6873"
         }
       },
       "square_inches": {
         "label": "Square Inches (in\u00b2)",
         "conversion": {
           "baseUnit": "square_meters",
-          "formula": "x=x*0.00064516"
+          "formula": "x*0.00064516"
         }
       },
       "roods": {
         "label": "Roods (rood)",
         "conversion": {
           "baseUnit": "square_meters",
-          "formula": "x=x*1011.7141"
+          "formula": "x*1011.7141"
         }
       },
       "barns": {
         "label": "Barns (b)",
         "conversion": {
           "baseUnit": "square_meters",
-          "formula": "x=x*1e-28"
+          "formula": "x*1e-28"
         }
       }
     }
