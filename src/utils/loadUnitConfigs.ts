@@ -83,10 +83,49 @@ export async function loadUnitConfig(category: UnitCategory): Promise<
           try {
             // Handle both simple multiplication and complex formulas
             const formulaExpression = formula.trim();
-            console.log("formulaExpression: ", formulaExpression);
-            console.log("formula: ", formula);
             if (!formulaExpression) {
               throw new Error(`Invalid formula format: ${formula}`);
+            }
+
+            // Parse and evaluate the formula safely
+            const safeEvaluate = (expr: string, x: number): number => {
+              // Replace scientific notation (e.g., 1e-6) with decimal form
+              const normalizedExpr = expr.replace(
+                /([0-9])e([+-][0-9]+)/g,
+                (_, base, exp) => {
+                  return (Number(base) * Math.pow(10, Number(exp))).toString();
+                },
+              );
+
+              // Replace mathematical functions with Math equivalents
+              const mathExpr = normalizedExpr
+                .replace(/\bsin\b/g, "Math.sin")
+                .replace(/\bcos\b/g, "Math.cos")
+                .replace(/\btan\b/g, "Math.tan")
+                .replace(/\bsqrt\b/g, "Math.sqrt")
+                .replace(/\babs\b/g, "Math.abs")
+                .replace(/\bpow\b/g, "Math.pow")
+                .replace(/\bpi\b/g, "Math.PI");
+
+              // Create a safe evaluation context
+              const evalContext = {
+                x,
+                Math,
+              };
+
+              // Use Function constructor for a safer evaluation
+              const evaluator = new Function("x", "Math", `return ${mathExpr}`);
+              return evaluator(x, Math);
+            };
+
+            try {
+              factor = safeEvaluate(formulaExpression, 1);
+              if (isNaN(factor) || !isFinite(factor)) {
+                throw new Error(`Invalid formula result: ${factor}`);
+              }
+            } catch (error) {
+              console.error(`Error evaluating formula for ${unitKey}:`, error);
+              factor = 1;
             }
 
             // Handle simple multiplication (e.g., "x=x*1000")
@@ -177,6 +216,24 @@ export async function loadUnitConfig(category: UnitCategory): Promise<
           throw new Error(`Invalid units: ${from} -> ${to}`);
         }
 
+        // Special handling for temperature conversions
+        if (category === "temperature") {
+          if (from === "celsius" && to === "fahrenheit") {
+            return (value * 9) / 5 + 32;
+          } else if (from === "fahrenheit" && to === "celsius") {
+            return ((value - 32) * 5) / 9;
+          } else if (from === "celsius" && to === "kelvin") {
+            return value + 273.15;
+          } else if (from === "kelvin" && to === "celsius") {
+            return value - 273.15;
+          } else if (from === "fahrenheit" && to === "kelvin") {
+            return ((value - 32) * 5) / 9 + 273.15;
+          } else if (from === "kelvin" && to === "fahrenheit") {
+            return ((value - 273.15) * 9) / 5 + 32;
+          }
+        }
+
+        // For non-temperature conversions, use the factor-based conversion
         return value * (fromUnit.factor / toUnit.factor);
       },
     };

@@ -30,10 +30,37 @@ export const convertWithFormula = async (
         return value * conversion;
       } else if (typeof conversion === "string") {
         try {
-          const result = evaluate(
+          const safeEvaluate = (expr: string, x: number): number => {
+            // Replace scientific notation (e.g., 1e-6) with decimal form
+            const normalizedExpr = expr.replace(
+              /([0-9])e([+-][0-9]+)/g,
+              (_, base, exp) => {
+                return (Number(base) * Math.pow(10, Number(exp))).toString();
+              },
+            );
+
+            // Replace mathematical functions with Math equivalents
+            const mathExpr = normalizedExpr
+              .replace(/\bsin\b/g, "Math.sin")
+              .replace(/\bcos\b/g, "Math.cos")
+              .replace(/\btan\b/g, "Math.tan")
+              .replace(/\bsqrt\b/g, "Math.sqrt")
+              .replace(/\babs\b/g, "Math.abs")
+              .replace(/\bpow\b/g, "Math.pow")
+              .replace(/\bpi\b/g, "Math.PI");
+
+            // Use Function constructor for a safer evaluation
+            const evaluator = new Function("x", "Math", `return ${mathExpr}`);
+            return evaluator(x, Math);
+          };
+
+          const result = safeEvaluate(
             conversion.replace(/x/g, value.toString()),
-          ) as number;
-          return typeof result === "number" ? result : value;
+            value,
+          );
+          return typeof result === "number" && isFinite(result)
+            ? result
+            : value;
         } catch (error) {
           console.error(`Error evaluating formula: ${conversion}`, error);
           return value;
