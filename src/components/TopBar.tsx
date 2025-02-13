@@ -64,6 +64,12 @@ export function TopBar() {
             Quick Convert
           </Link>
           <div className="hidden items-center space-x-8 md:flex">
+            <Link
+              href="/blog"
+              className="text-sm font-medium text-gray-600 transition-colors hover:text-gray-900 dark:text-[#ffffff80] dark:hover:text-white"
+            >
+              Blog
+            </Link>
             <Menu as="div" className="relative inline-block text-left">
               <MenuButton className="inline-flex items-center text-sm font-medium text-gray-600 transition-colors hover:text-gray-900 dark:text-[#ffffff80] dark:hover:text-white">
                 Converters
