@@ -5,27 +5,45 @@
     "units": {
       "radians": {
         "label": "Radians (rad)",
-        "conversion": { "baseUnit": "radians", "formula": "x=x" }
+        "conversion": {
+          "baseUnit": "radians",
+          "formula": "x=x"
+        }
       },
       "degrees": {
-        "label": "Degrees (°)",
-        "conversion": { "baseUnit": "radians", "formula": "x=x*0.0174533" }
+        "label": "Degrees (\u00b0)",
+        "conversion": {
+          "baseUnit": "radians",
+          "formula": "x=x*0.0174533"
+        }
       },
       "gradians": {
         "label": "Gradians (grad)",
-        "conversion": { "baseUnit": "radians", "formula": "x=x*0.015708" }
+        "conversion": {
+          "baseUnit": "radians",
+          "formula": "x=x*0.015708"
+        }
       },
       "turns": {
         "label": "Turns (turn)",
-        "conversion": { "baseUnit": "radians", "formula": "x=x*6.28319" }
+        "conversion": {
+          "baseUnit": "radians",
+          "formula": "x=x*6.28319"
+        }
       },
       "minutes_of_arc": {
-        "label": "Minutes of Arc (′)",
-        "conversion": { "baseUnit": "radians", "formula": "x=x*0.000290888" }
+        "label": "Minutes of Arc (\u2032)",
+        "conversion": {
+          "baseUnit": "radians",
+          "formula": "x=x*0.000290888"
+        }
       },
       "seconds_of_arc": {
-        "label": "Seconds of Arc (″)",
-        "conversion": { "baseUnit": "radians", "formula": "x=x*4.8481e-6" }
+        "label": "Seconds of Arc (\u2033)",
+        "conversion": {
+          "baseUnit": "radians",
+          "formula": "x=x*4.8481e-6"
+        }
       }
     }
   },
@@ -35,27 +53,45 @@
     "units": {
       "bytes": {
         "label": "Bytes (B)",
-        "conversion": { "baseUnit": "bytes", "formula": "x=x" }
+        "conversion": {
+          "baseUnit": "bytes",
+          "formula": "x=x"
+        }
       },
       "kilobytes": {
         "label": "Kilobytes (KB)",
-        "conversion": { "baseUnit": "bytes", "formula": "x=x*1024" }
+        "conversion": {
+          "baseUnit": "bytes",
+          "formula": "x=x*1024"
+        }
       },
       "megabytes": {
         "label": "Megabytes (MB)",
-        "conversion": { "baseUnit": "bytes", "formula": "x=x*1048576" }
+        "conversion": {
+          "baseUnit": "bytes",
+          "formula": "x=x*1048576"
+        }
       },
       "gigabytes": {
         "label": "Gigabytes (GB)",
-        "conversion": { "baseUnit": "bytes", "formula": "x=x*1073741824" }
+        "conversion": {
+          "baseUnit": "bytes",
+          "formula": "x=x*1073741824"
+        }
       },
       "terabytes": {
         "label": "Terabytes (TB)",
-        "conversion": { "baseUnit": "bytes", "formula": "x=x*1099511627776" }
+        "conversion": {
+          "baseUnit": "bytes",
+          "formula": "x=x*1099511627776"
+        }
       },
       "petabytes": {
         "label": "Petabytes (PB)",
-        "conversion": { "baseUnit": "bytes", "formula": "x=x*1125899906842624" }
+        "conversion": {
+          "baseUnit": "bytes",
+          "formula": "x=x*1125899906842624"
+        }
       }
     }
   },
@@ -65,19 +101,31 @@
     "units": {
       "hertz": {
         "label": "Hertz (Hz)",
-        "conversion": { "baseUnit": "hertz", "formula": "x=x" }
+        "conversion": {
+          "baseUnit": "hertz",
+          "formula": "x=x"
+        }
       },
       "kilohertz": {
         "label": "Kilohertz (kHz)",
-        "conversion": { "baseUnit": "hertz", "formula": "x=x*1000" }
+        "conversion": {
+          "baseUnit": "hertz",
+          "formula": "x=x*1000"
+        }
       },
       "megahertz": {
         "label": "Megahertz (MHz)",
-        "conversion": { "baseUnit": "hertz", "formula": "x=x*1000000" }
+        "conversion": {
+          "baseUnit": "hertz",
+          "formula": "x=x*1000000"
+        }
       },
       "gigahertz": {
         "label": "Gigahertz (GHz)",
-        "conversion": { "baseUnit": "hertz", "formula": "x=x*1000000000" }
+        "conversion": {
+          "baseUnit": "hertz",
+          "formula": "x=x*1000000000"
+        }
       }
     }
   },
@@ -87,27 +135,45 @@
     "units": {
       "none": {
         "label": "None",
-        "conversion": { "baseUnit": "none", "formula": "x=x" }
+        "conversion": {
+          "baseUnit": "none",
+          "formula": "x=x"
+        }
       },
       "kilo": {
         "label": "Kilo (k)",
-        "conversion": { "baseUnit": "none", "formula": "x=x*1000" }
+        "conversion": {
+          "baseUnit": "none",
+          "formula": "x=x*1000"
+        }
       },
       "mega": {
         "label": "Mega (M)",
-        "conversion": { "baseUnit": "none", "formula": "x=x*1000000" }
+        "conversion": {
+          "baseUnit": "none",
+          "formula": "x=x*1000000"
+        }
       },
       "giga": {
         "label": "Giga (G)",
-        "conversion": { "baseUnit": "none", "formula": "x=x*1000000000" }
+        "conversion": {
+          "baseUnit": "none",
+          "formula": "x=x*1000000000"
+        }
       },
       "tera": {
         "label": "Tera (T)",
-        "conversion": { "baseUnit": "none", "formula": "x=x*1e12" }
+        "conversion": {
+          "baseUnit": "none",
+          "formula": "x=x*1e12"
+        }
       },
       "peta": {
         "label": "Peta (P)",
-        "conversion": { "baseUnit": "none", "formula": "x=x*1e15" }
+        "conversion": {
+          "baseUnit": "none",
+          "formula": "x=x*1e15"
+        }
       }
     }
   },
@@ -117,11 +183,17 @@
     "units": {
       "bits_per_second": {
         "label": "Bits per Second (bps)",
-        "conversion": { "baseUnit": "bits_per_second", "formula": "x=x" }
+        "conversion": {
+          "baseUnit": "bits_per_second",
+          "formula": "x=x"
+        }
       },
       "kilobits_per_second": {
         "label": "Kilobits per Second (Kbps)",
-        "conversion": { "baseUnit": "bits_per_second", "formula": "x=x*1000" }
+        "conversion": {
+          "baseUnit": "bits_per_second",
+          "formula": "x=x*1000"
+        }
       },
       "megabits_per_second": {
         "label": "Megabits per Second (Mbps)",
@@ -139,7 +211,10 @@
       },
       "terabits_per_second": {
         "label": "Terabits per Second (Tbps)",
-        "conversion": { "baseUnit": "bits_per_second", "formula": "x=x*1e12" }
+        "conversion": {
+          "baseUnit": "bits_per_second",
+          "formula": "x=x*1e12"
+        }
       }
     }
   },
@@ -149,11 +224,17 @@
     "units": {
       "decibels": {
         "label": "Decibels (dB)",
-        "conversion": { "baseUnit": "decibels", "formula": "x=x" }
+        "conversion": {
+          "baseUnit": "decibels",
+          "formula": "x=x"
+        }
       },
       "bels": {
         "label": "Bels (B)",
-        "conversion": { "baseUnit": "decibels", "formula": "x=x*10" }
+        "conversion": {
+          "baseUnit": "decibels",
+          "formula": "x=x*10"
+        }
       }
     }
   },
@@ -163,11 +244,17 @@
     "units": {
       "points": {
         "label": "Points (pt)",
-        "conversion": { "baseUnit": "points", "formula": "x=x" }
+        "conversion": {
+          "baseUnit": "points",
+          "formula": "x=x"
+        }
       },
       "picas": {
         "label": "Picas (pc)",
-        "conversion": { "baseUnit": "points", "formula": "x=x*12" }
+        "conversion": {
+          "baseUnit": "points",
+          "formula": "x=x*12"
+        }
       }
     }
   },
@@ -177,19 +264,31 @@
     "units": {
       "usd": {
         "label": "US Dollars (USD)",
-        "conversion": { "baseUnit": "usd", "formula": "x=x" }
+        "conversion": {
+          "baseUnit": "usd",
+          "formula": "x=x"
+        }
       },
       "eur": {
         "label": "Euros (EUR)",
-        "conversion": { "baseUnit": "usd", "formula": "x=x*0.9" }
+        "conversion": {
+          "baseUnit": "usd",
+          "formula": "x=x*0.9"
+        }
       },
       "gbp": {
         "label": "British Pounds (GBP)",
-        "conversion": { "baseUnit": "usd", "formula": "x=x*0.8" }
+        "conversion": {
+          "baseUnit": "usd",
+          "formula": "x=x*0.8"
+        }
       },
       "jpy": {
         "label": "Japanese Yen (JPY)",
-        "conversion": { "baseUnit": "usd", "formula": "x=x*110" }
+        "conversion": {
+          "baseUnit": "usd",
+          "formula": "x=x*110"
+        }
       }
     }
   },
@@ -199,19 +298,31 @@
     "units": {
       "decimal": {
         "label": "Decimal",
-        "conversion": { "baseUnit": "decimal", "formula": "x=x" }
+        "conversion": {
+          "baseUnit": "decimal",
+          "formula": "x=x"
+        }
       },
       "binary": {
         "label": "Binary",
-        "conversion": { "baseUnit": "decimal", "formula": "x=parseInt(x,2)" }
+        "conversion": {
+          "baseUnit": "decimal",
+          "formula": "int(str(x), 2)"
+        }
       },
       "hexadecimal": {
         "label": "Hexadecimal",
-        "conversion": { "baseUnit": "decimal", "formula": "x=parseInt(x,16)" }
+        "conversion": {
+          "baseUnit": "decimal",
+          "formula": "int(str(x), 16)"
+        }
       },
       "octal": {
         "label": "Octal",
-        "conversion": { "baseUnit": "decimal", "formula": "x=parseInt(x,8)" }
+        "conversion": {
+          "baseUnit": "decimal",
+          "formula": "int(str(x), 8)"
+        }
       }
     }
   }

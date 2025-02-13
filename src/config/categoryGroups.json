@@ -1,12 +1,36 @@
 {
   "groups": [
-    { "id": "common", "label": "Common Conversions" },
-    { "id": "engineering", "label": "Engineering & Mechanics" },
-    { "id": "heat_energy", "label": "Heat & Energy" },
-    { "id": "fluid_volume", "label": "Fluid & Volume" },
-    { "id": "light", "label": "Light Conversions" },
-    { "id": "electromagnetism", "label": "Electromagnetism" },
-    { "id": "radiation", "label": "Radiation" },
-    { "id": "misc", "label": "Miscellaneous" }
+    {
+      "id": "common",
+      "label": "Common Conversions"
+    },
+    {
+      "id": "engineering",
+      "label": "Engineering & Mechanics"
+    },
+    {
+      "id": "heat_energy",
+      "label": "Heat & Energy"
+    },
+    {
+      "id": "fluid_volume",
+      "label": "Fluid & Volume"
+    },
+    {
+      "id": "light",
+      "label": "Light Conversions"
+    },
+    {
+      "id": "electromagnetism",
+      "label": "Electromagnetism"
+    },
+    {
+      "id": "radiation",
+      "label": "Radiation"
+    },
+    {
+      "id": "misc",
+      "label": "Miscellaneous"
+    }
   ]
 }
