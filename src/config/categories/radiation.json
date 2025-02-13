@@ -5,19 +5,31 @@
     "units": {
       "gray": {
         "label": "Gray (Gy)",
-        "conversion": { "baseUnit": "gray", "formula": "x=x" }
+        "conversion": {
+          "baseUnit": "gray",
+          "formula": "x"
+        }
       },
       "rad": {
         "label": "Rad (rad)",
-        "conversion": { "baseUnit": "gray", "formula": "x=x*0.01" }
+        "conversion": {
+          "baseUnit": "gray",
+          "formula": "x*0.01"
+        }
       },
       "milligray": {
         "label": "Milligray (mGy)",
-        "conversion": { "baseUnit": "gray", "formula": "x=x*0.001" }
+        "conversion": {
+          "baseUnit": "gray",
+          "formula": "x*0.001"
+        }
       },
       "millirad": {
         "label": "Millirad (mrad)",
-        "conversion": { "baseUnit": "gray", "formula": "x=x*0.00001" }
+        "conversion": {
+          "baseUnit": "gray",
+          "formula": "x*0.00001"
+        }
       }
     }
   },
@@ -27,13 +39,16 @@
     "units": {
       "coulomb_per_kilogram": {
         "label": "Coulomb per Kilogram (C/kg)",
-        "conversion": { "baseUnit": "coulomb_per_kilogram", "formula": "x=x" }
+        "conversion": {
+          "baseUnit": "coulomb_per_kilogram",
+          "formula": "x"
+        }
       },
       "roentgen": {
         "label": "Roentgen (R)",
         "conversion": {
           "baseUnit": "coulomb_per_kilogram",
-          "formula": "x=x*0.000258"
+          "formula": "x*0.000258"
         }
       }
     }
@@ -44,19 +59,31 @@
     "units": {
       "sievert": {
         "label": "Sievert (Sv)",
-        "conversion": { "baseUnit": "sievert", "formula": "x=x" }
+        "conversion": {
+          "baseUnit": "sievert",
+          "formula": "x"
+        }
       },
       "rem": {
         "label": "Rem (rem)",
-        "conversion": { "baseUnit": "sievert", "formula": "x=x*0.01" }
+        "conversion": {
+          "baseUnit": "sievert",
+          "formula": "x*0.01"
+        }
       },
       "millisievert": {
         "label": "Millisievert (mSv)",
-        "conversion": { "baseUnit": "sievert", "formula": "x=x*0.001" }
+        "conversion": {
+          "baseUnit": "sievert",
+          "formula": "x*0.001"
+        }
       },
       "millirem": {
         "label": "Millirem (mrem)",
-        "conversion": { "baseUnit": "sievert", "formula": "x=x*0.00001" }
+        "conversion": {
+          "baseUnit": "sievert",
+          "formula": "x*0.00001"
+        }
       }
     }
   }

@@ -4,38 +4,38 @@
     "baseUnit": "cubic_meters_per_second",
     "units": {
       "cubic_meters_per_second": {
-        "label": "Cubic Meters per Second (m³/s)",
+        "label": "Cubic Meters per Second (m\u00b3/s)",
         "conversion": {
           "baseUnit": "cubic_meters_per_second",
-          "formula": "x=x"
+          "formula": "x"
         }
       },
       "liters_per_second": {
         "label": "Liters per Second (L/s)",
         "conversion": {
           "baseUnit": "cubic_meters_per_second",
-          "formula": "x=x*0.001"
+          "formula": "x*0.001"
         }
       },
       "cubic_feet_per_second": {
-        "label": "Cubic Feet per Second (ft³/s)",
+        "label": "Cubic Feet per Second (ft\u00b3/s)",
         "conversion": {
           "baseUnit": "cubic_meters_per_second",
-          "formula": "x=x*0.0283168"
+          "formula": "x*0.0283168"
         }
       },
       "gallons_per_minute": {
         "label": "Gallons per Minute (GPM)",
         "conversion": {
           "baseUnit": "cubic_meters_per_second",
-          "formula": "x=x*0.00006309"
+          "formula": "x*0.00006309"
         }
       },
       "cubic_feet_per_minute": {
         "label": "Cubic Feet per Minute (CFM)",
         "conversion": {
           "baseUnit": "cubic_meters_per_second",
-          "formula": "x=x*0.000471947"
+          "formula": "x*0.000471947"
         }
       }
     }
@@ -45,16 +45,25 @@
     "baseUnit": "pascal_second",
     "units": {
       "pascal_second": {
-        "label": "Pascal Second (Pa·s)",
-        "conversion": { "baseUnit": "pascal_second", "formula": "x=x" }
+        "label": "Pascal Second (Pa\u00b7s)",
+        "conversion": {
+          "baseUnit": "pascal_second",
+          "formula": "x"
+        }
       },
       "poise": {
         "label": "Poise (P)",
-        "conversion": { "baseUnit": "pascal_second", "formula": "x=x*0.1" }
+        "conversion": {
+          "baseUnit": "pascal_second",
+          "formula": "x*0.1"
+        }
       },
       "centipoise": {
         "label": "Centipoise (cP)",
-        "conversion": { "baseUnit": "pascal_second", "formula": "x=x*0.001" }
+        "conversion": {
+          "baseUnit": "pascal_second",
+          "formula": "x*0.001"
+        }
       }
     }
   },
@@ -63,36 +72,45 @@
     "baseUnit": "cubic_meters",
     "units": {
       "cubic_meters": {
-        "label": "Cubic Meters (m³)",
-        "conversion": { "baseUnit": "cubic_meters", "formula": "x=x" }
+        "label": "Cubic Meters (m\u00b3)",
+        "conversion": {
+          "baseUnit": "cubic_meters",
+          "formula": "x"
+        }
       },
       "liters": {
         "label": "Liters (L)",
-        "conversion": { "baseUnit": "cubic_meters", "formula": "x=x*0.001" }
+        "conversion": {
+          "baseUnit": "cubic_meters",
+          "formula": "x*0.001"
+        }
       },
       "gallons": {
         "label": "Gallons (gal)",
         "conversion": {
           "baseUnit": "cubic_meters",
-          "formula": "x=x*0.00378541"
+          "formula": "x*0.00378541"
         }
       },
       "cubic_inches": {
-        "label": "Cubic Inches (in³)",
+        "label": "Cubic Inches (in\u00b3)",
         "conversion": {
           "baseUnit": "cubic_meters",
-          "formula": "x=x*0.0000163871"
+          "formula": "x*0.0000163871"
         }
       },
       "bushels": {
         "label": "Bushels (Dry)",
-        "conversion": { "baseUnit": "cubic_meters", "formula": "x=x*0.0352391" }
+        "conversion": {
+          "baseUnit": "cubic_meters",
+          "formula": "x*0.0352391"
+        }
       },
       "board_feet": {
         "label": "Board Feet (bd ft)",
         "conversion": {
           "baseUnit": "cubic_meters",
-          "formula": "x=x*0.00235974"
+          "formula": "x*0.00235974"
         }
       }
     }
@@ -103,18 +121,24 @@
     "units": {
       "kilograms_per_second": {
         "label": "Kilograms per Second (kg/s)",
-        "conversion": { "baseUnit": "kilograms_per_second", "formula": "x=x" }
+        "conversion": {
+          "baseUnit": "kilograms_per_second",
+          "formula": "x"
+        }
       },
       "grams_per_second": {
         "label": "Grams per Second (g/s)",
         "conversion": {
           "baseUnit": "kilograms_per_second",
-          "formula": "x=x*0.001"
+          "formula": "x*0.001"
         }
       },
       "moles_per_second": {
         "label": "Moles per Second (mol/s)",
-        "conversion": { "baseUnit": "moles_per_second", "formula": "x=x" }
+        "conversion": {
+          "baseUnit": "moles_per_second",
+          "formula": "x"
+        }
       }
     }
   },
@@ -124,15 +148,24 @@
     "units": {
       "moles_per_liter": {
         "label": "Moles per Liter (mol/L)",
-        "conversion": { "baseUnit": "moles_per_liter", "formula": "x=x" }
+        "conversion": {
+          "baseUnit": "moles_per_liter",
+          "formula": "x"
+        }
       },
       "percent": {
         "label": "Percent (%)",
-        "conversion": { "baseUnit": "percent", "formula": "x=x" }
+        "conversion": {
+          "baseUnit": "percent",
+          "formula": "x"
+        }
       },
       "ppm": {
         "label": "Parts Per Million (ppm)",
-        "conversion": { "baseUnit": "percent", "formula": "x=x*1e-4" }
+        "conversion": {
+          "baseUnit": "percent",
+          "formula": "x*1e-4"
+        }
       }
     }
   },
@@ -142,18 +175,24 @@
     "units": {
       "newtons_per_meter": {
         "label": "Newtons per Meter (N/m)",
-        "conversion": { "baseUnit": "newtons_per_meter", "formula": "x=x" }
+        "conversion": {
+          "baseUnit": "newtons_per_meter",
+          "formula": "x"
+        }
       },
       "milli_newtons_per_meter": {
         "label": "MilliNewtons per Meter (mN/m)",
         "conversion": {
           "baseUnit": "newtons_per_meter",
-          "formula": "x=x*0.001"
+          "formula": "x*0.001"
         }
       },
       "dynes_per_centimeter": {
         "label": "Dynes per Centimeter (dyn/cm)",
-        "conversion": { "baseUnit": "newtons_per_meter", "formula": "x=x*1000" }
+        "conversion": {
+          "baseUnit": "newtons_per_meter",
+          "formula": "x*1000"
+        }
       }
     }
   }

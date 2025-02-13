@@ -21,8 +21,7 @@
                     "type": "object",
                     "properties": {
                       "baseUnit": { "type": "string" },
-                      "formula": { "type": "string" },
-                      "reverseFormula": { "type": "string" }
+                      "formula": { "type": "string" }
                     },
                     "required": ["baseUnit", "formula"]
                   }
