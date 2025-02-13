@@ -1,43 +1,8 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
+import { getAllPosts } from "@/utils/mdxUtils";
 import Link from "next/link";
 
-type BlogPost = {
-  slug: string;
-  title: string;
-  date: string;
-  author: string;
-  description: string;
-};
-
-async function getBlogPosts(): Promise<BlogPost[]> {
-  const postsDirectory = path.join(process.cwd(), "src/content/blog");
-  const files = fs.readdirSync(postsDirectory);
-
-  const posts = files
-    .filter((fileName) => fileName.endsWith(".mdx"))
-    .map((fileName) => {
-      const slug = fileName.replace(/\.mdx$/, "");
-      const filePath = path.join(postsDirectory, fileName);
-      const fileContents = fs.readFileSync(filePath, "utf8");
-      const { data } = matter(fileContents);
-
-      return {
-        slug,
-        title: data.title,
-        date: data.date,
-        author: data.author,
-        description: data.description,
-      };
-    })
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-
-  return posts;
-}
-
 export default async function BlogPage() {
-  const posts = await getBlogPosts();
+  const posts = await getAllPosts();
 
   return (
     <div className="font-inter flex min-h-screen flex-col bg-gradient-to-b from-gray-50 via-white to-gray-50 dark:from-[#151515] dark:via-[#000000] dark:to-[#151515]">
