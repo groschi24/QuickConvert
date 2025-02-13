@@ -1,3 +1,6 @@
+/* Import MDX styles */
+@import "./mdx.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

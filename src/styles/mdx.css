@@ -1,0 +1,47 @@
+/* MDX Content Styling */
+.mdx-content {
+  @apply prose prose-lg prose-headings:text-gray-900 prose-headings:font-bold prose-p:text-gray-600 prose-a:text-indigo-600 prose-strong:text-gray-900 prose-ul:text-gray-600 prose-ol:text-gray-600 prose-blockquote:text-gray-600 prose-code:text-gray-900 prose-pre:bg-gray-100 prose-pre:text-gray-900 max-w-none;
+}
+
+/* Dark mode styles */
+.dark .mdx-content {
+  @apply prose-headings:text-[#ffffffee] prose-p:text-[#ffffffaa] prose-a:text-indigo-400 prose-strong:text-[#ffffffee] prose-ul:text-[#ffffffaa] prose-ol:text-[#ffffffaa] prose-blockquote:text-[#ffffffaa] prose-code:text-[#ffffffee] prose-pre:bg-[#151515] prose-pre:text-[#ffffffee];
+}
+
+/* Additional spacing and layout */
+.mdx-content h1 {
+  @apply mb-8 text-4xl;
+}
+
+.mdx-content h2 {
+  @apply mb-6 mt-12 text-3xl;
+}
+
+.mdx-content h3 {
+  @apply mb-4 mt-8 text-2xl;
+}
+
+.mdx-content p {
+  @apply mb-6;
+}
+
+.mdx-content ul,
+.mdx-content ol {
+  @apply mb-6 ml-6;
+}
+
+.mdx-content li {
+  @apply mb-2;
+}
+
+.mdx-content pre {
+  @apply mb-6 rounded-xl p-4;
+}
+
+.mdx-content code {
+  @apply rounded-md bg-gray-100 px-1.5 py-0.5 text-sm dark:bg-[#151515];
+}
+
+.mdx-content blockquote {
+  @apply border-l-4 border-indigo-500 pl-4;
+}

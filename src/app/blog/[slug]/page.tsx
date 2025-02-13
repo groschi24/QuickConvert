@@ -43,7 +43,7 @@ export default async function BlogPost({
             <span>•</span>
             <span>{data.author}</span>
           </div>
-          <div className="prose prose-lg prose-gray dark:prose-invert prose-headings:text-gray-900 dark:prose-headings:text-[#ffffffee] prose-a:text-indigo-600 dark:prose-a:text-indigo-400 prose-strong:text-gray-900 dark:prose-strong:text-[#ffffffee] prose-code:text-gray-900 dark:prose-code:text-[#ffffffee] prose-pre:bg-gray-100 dark:prose-pre:bg-[#151515] prose-pre:text-gray-900 dark:prose-pre:text-[#ffffffee] prose-blockquote:text-gray-700 dark:prose-blockquote:text-[#ffffffaa] prose-li:text-gray-700 dark:prose-li:text-[#ffffffaa] max-w-none dark:text-[#ffffffcc]">
+          <div className="prose prose-lg prose-gray dark:prose-invert prose-headings:font-bold prose-h1:text-4xl prose-h2:text-3xl prose-h3:text-2xl prose-h4:text-xl prose-headings:text-gray-900 dark:prose-headings:text-[#ffffffee] prose-a:text-indigo-600 hover:prose-a:text-indigo-500 dark:prose-a:text-indigo-400 dark:hover:prose-a:text-indigo-300 prose-strong:text-gray-900 dark:prose-strong:text-[#ffffffee] prose-code:text-gray-900 dark:prose-code:text-[#ffffffee] prose-pre:bg-gray-100 dark:prose-pre:bg-[#151515] prose-pre:text-gray-900 dark:prose-pre:text-[#ffffffee] prose-blockquote:text-gray-700 dark:prose-blockquote:text-[#ffffffaa] prose-blockquote:border-l-indigo-500 prose-li:text-gray-700 dark:prose-li:text-[#ffffffaa] prose-ul:list-disc prose-ol:list-decimal prose-li:marker:text-indigo-500 dark:prose-li:marker:text-indigo-400 max-w-none dark:text-[#ffffffcc]">
             <MDXRemote source={content} />
           </div>
         </div>
