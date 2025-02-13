@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { loadAllUnitConfigs } from "@/utils/loadUnitConfigs";
+import { getAllPosts } from "@/utils/mdxUtils";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://quickconvert.app";
@@ -42,6 +43,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }),
   );
 
+  // Generate blog-related URLs
+  const blogIndexUrl = {
+    url: `${baseUrl}/blog`,
+    lastModified: new Date(),
+    changeFrequency: "daily" as const,
+    priority: 0.9,
+  };
+
+  // Get all blog posts and generate their URLs
+  const posts = await getAllPosts();
+  const blogPostUrls = posts.map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: new Date(post.date),
+    changeFrequency: "weekly" as const,
+    priority: 0.7,
+  }));
+
   // Generate static pages URLs
   const staticPages = [
     {
@@ -70,5 +88,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  return [homeUrl, ...categoryUrls, ...conversionUrls, ...staticPages];
+  return [
+    homeUrl,
+    blogIndexUrl,
+    ...blogPostUrls,
+    ...categoryUrls,
+    ...conversionUrls,
+    ...staticPages,
+  ];
 }
